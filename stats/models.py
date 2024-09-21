@@ -1,24 +1,31 @@
 from django.db import models
-from players.models import Player
 from teams.models import Team
 from gamedata.models import Agent
-from matches.models import Match
 
 
 class Stat(models.Model):
-    player = models.ForeignKey(Player, on_delete=models.CASCADE, related_name="stats")
-    team = models.ForeignKey(Team, on_delete=models.CASCADE, related_name="stats")
+    player = models.ForeignKey(
+        "players.Player", on_delete=models.CASCADE, related_name="stats"
+    )
+    team = models.ForeignKey(
+        "teams.Team",
+        on_delete=models.SET_NULL,
+        related_name="stats",
+        null=True,
+        blank=True,
+    )
     agent = models.ForeignKey(
-        Agent, on_delete=models.CASCADE, related_name="stats", null=True
+        "gamedata.Agent",
+        on_delete=models.SET_NULL,
+        related_name="stats",
+        null=True,
+        blank=True,
     )
-    kills = models.IntegerField(null=True)
-    deaths = models.IntegerField(null=True)
-    assists = models.IntegerField(null=True)
-    mvp = models.BooleanField(null=True)
-    ace = models.BooleanField(null=True)
-    match = models.ForeignKey(
-        Match, on_delete=models.CASCADE, related_name="stats", null=True
-    )
+    kills = models.PositiveIntegerField(null=True, blank=True)
+    deaths = models.PositiveIntegerField(null=True, blank=True)
+    assists = models.PositiveIntegerField(null=True, blank=True)
+    mvp = models.BooleanField(null=True, blank=True)
+    ace = models.BooleanField(null=True, blank=True)
 
     def __str__(self):
-        return self.player
+        return self.player.username

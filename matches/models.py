@@ -1,14 +1,24 @@
 from django.db import models
+import uuid
 
 
 class Match(models.Model):
-    uuid = models.UUIDField()
+
+    uuid = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
     map = models.ForeignKey(
-        "gamedata.Map", on_delete=models.CASCADE, related_name="matches", null=True
+        "gamedata.Map", on_delete=models.SET_NULL, related_name="matches", null=True
     )
     winner = models.ForeignKey(
-        "teams.Team", on_delete=models.CASCADE, related_name="matches", null=True
+        "teams.Team",
+        on_delete=models.SET_NULL,
+        related_name="matches",
+        null=True,
+        blank=True,
     )
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.map
+        return f"{self.created_at.strftime("%d/%m/%Y")} - {self.map}"
+
+    class Meta:
+        verbose_name_plural = "Matches"

@@ -1,16 +1,19 @@
 from django.db import models
-from players.models import Player
-from matches.models import Match
+import uuid
 
 
 class Team(models.Model):
-    uuid = models.UUIDField()
+    uuid = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
     players = models.ManyToManyField(
-        Player, through="Stat", related_name="teams"
+        "players.Player", through="stats.Stat", related_name="teams"
     )
     match = models.ForeignKey(
-        Match, on_delete=models.CASCADE, related_name="teams", null=True
+        "matches.Match",
+        on_delete=models.SET_NULL,
+        related_name="teams",
+        null=True,
+        blank=True,
     )
 
     def __str__(self):
-        return self.players
+        return str(self.uuid)

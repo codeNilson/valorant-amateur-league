@@ -1,11 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-from gamedata.models import Tier
-from matches.models import Match
+import uuid
 
 
 class Player(AbstractUser):
-    matches = models.ManyToManyField(Match, through="Stat", related_name="players")
+    uuid = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
     tier = models.ForeignKey(
-        Tier, on_delete=models.CASCADE, related_name="players", null=True
+        "gamedata.Tier", on_delete=models.SET_NULL, related_name="players", null=True
     )

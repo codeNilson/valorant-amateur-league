@@ -4,7 +4,10 @@ from .models import Agent, Role, Map, Tier
 
 @admin.register(Agent)
 class AgentAdmin(admin.ModelAdmin):
-    pass
+    list_display = [
+        "name",
+        "role",
+    ]
 
 
 @admin.register(Role)
@@ -19,4 +22,7 @@ class MapAdmin(admin.ModelAdmin):
 
 @admin.register(Tier)
 class TierAdmin(admin.ModelAdmin):
-    pass
+    list_display = [
+        "tier",
+        "division",
+    ]

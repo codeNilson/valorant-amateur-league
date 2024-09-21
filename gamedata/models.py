@@ -1,14 +1,15 @@
 from django.db import models
+import uuid
 
 
 class Agent(models.Model):
-    uuid = models.UUIDField()
+    uuid = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
     name = models.CharField(max_length=20, unique=True)
     description = models.TextField()
     role = models.ForeignKey(
         "Role", on_delete=models.SET_NULL, related_name="agents", blank=True, null=True
     )
-    icon = models.ImageField(upload_to="agents/icons/", null=True, blank=True)
+    icon = models.CharField(max_length=255)
     small_icon = models.CharField(max_length=255)
     full_portrait = models.CharField(max_length=255)
     background = models.CharField(max_length=255)
