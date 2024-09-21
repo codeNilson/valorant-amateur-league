@@ -1,4 +1,9 @@
 INSTALLED_APPS = [
+    "players",
+    "stats",
+    "matches",
+    "teams",
+    "gamedata",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
