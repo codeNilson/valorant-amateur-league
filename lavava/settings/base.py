@@ -10,6 +10,8 @@ WSGI_APPLICATION = "lavava.wsgi.application"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+AUTH_USER_MODEL = "players.Player"
+
 # Language and time zone
 
 LANGUAGE_CODE = "pt-BR"

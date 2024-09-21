@@ -6,5 +6,4 @@ venv/
 *.vscode/
 .coverage*
 static/
-db.sqlite3
 gunicorn-error-log

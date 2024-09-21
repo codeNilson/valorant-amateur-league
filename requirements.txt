@@ -2,6 +2,7 @@ asgiref==3.8.1
 attrs==24.2.0
 certifi==2024.8.30
 cffi==1.17.1
+charset-normalizer==3.3.2
 colorama==0.4.6
 coverage==7.6.1
 Django==5.1.1
@@ -12,12 +13,14 @@ iniconfig==2.0.0
 outcome==1.3.0.post0
 packaging==24.1
 parameterized==0.9.0
+pillow==10.4.0
 pluggy==1.5.0
 pycparser==2.22
 PySocks==1.7.1
 pytest==8.3.3
 pytest-django==4.9.0
 python-dotenv==1.0.1
+requests==2.32.3
 selenium==4.25.0
 sniffio==1.3.1
 sortedcontainers==2.4.0
