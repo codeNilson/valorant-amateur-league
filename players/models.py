@@ -6,5 +6,9 @@ import uuid
 class Player(AbstractUser):
     uuid = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
     tier = models.ForeignKey(
-        "gamedata.Tier", on_delete=models.SET_NULL, related_name="players", null=True
+        "gamedata.Tier",
+        on_delete=models.SET_NULL,
+        related_name="players",
+        blank=True,
+        null=True,
     )

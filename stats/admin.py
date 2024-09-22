@@ -29,6 +29,11 @@ class StatAdmin(admin.ModelAdmin):
         ),
     ]
 
+    readonly_fields = [
+        "player",
+        "team",
+    ]
+
     list_display = [
         "player",
         "team",
@@ -48,6 +53,7 @@ class StatAdmin(admin.ModelAdmin):
 
     list_filter = [
         "agent",
+        "player",
     ]
 
     list_per_page = 10
