@@ -4,6 +4,36 @@ from .models import Player
 
 @admin.register(Player)
 class PlayerAdmin(admin.ModelAdmin):
+
+    fieldsets = (
+        (
+            "Player Info",
+            {
+                "fields": (
+                    "username",
+                    "first_name",
+                    "email",
+                    "tier",
+                    "last_login",
+                    "date_joined",
+                )
+            },
+        ),
+        (
+            "Permissions",
+            {
+                "fields": (
+                    "is_active",
+                    "is_staff",
+                    "is_superuser",
+                    "groups",
+                    "user_permissions",
+                ),
+                "classes": ("collapse",), "description": "Permissions can be changed in the User Permissions section.",
+            },
+        ),
+    )
+
     list_display = [
         "username",
         "first_name",
@@ -15,6 +45,10 @@ class PlayerAdmin(admin.ModelAdmin):
         "tier",
     ]
 
+    readonly_fields = [
+        "last_login",
+    ]
+
     list_filter = [
         "tier",
     ]
@@ -24,3 +58,5 @@ class PlayerAdmin(admin.ModelAdmin):
         "first_name",
         "email",
     ]
+
+    list_per_page = 10
