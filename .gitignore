@@ -7,3 +7,4 @@ venv/
 .coverage*
 static/
 gunicorn-error-log
+.pytest_cache/
