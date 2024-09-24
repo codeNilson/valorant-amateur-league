@@ -4,6 +4,6 @@ from .database import *
 from .environment import *
 from .installed_apps import *
 from .middlewares import *
-from .static import *
+from .assets import *
 from .templates import *
 from .messages import *
