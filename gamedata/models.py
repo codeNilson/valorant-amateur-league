@@ -32,7 +32,7 @@ class Map(models.Model):
     uuid = models.UUIDField()
     name = models.CharField(max_length=20, unique=True)
     display_icon = models.CharField(max_length=255)
-    list_horintal_icon = models.CharField(max_length=255)
+    list_horizontal_icon = models.CharField(max_length=255)
     list_vertical_icon = models.CharField(max_length=255)
     splash = models.CharField(max_length=255)
 

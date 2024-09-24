@@ -49,8 +49,12 @@ class PlayerAdmin(admin.ModelAdmin):
         "last_login",
     ]
 
-    list_filter = [
+    list_select_related = [
         "tier",
+    ]
+
+    list_filter = [
+        "tier__division",
     ]
 
     search_fields = [
