@@ -23,8 +23,8 @@ class Stat(models.Model):
     kills = models.PositiveIntegerField(null=True, blank=True)
     deaths = models.PositiveIntegerField(null=True, blank=True)
     assists = models.PositiveIntegerField(null=True, blank=True)
-    mvp = models.BooleanField(null=True, blank=True)
-    ace = models.BooleanField(null=True, blank=True)
+    mvp = models.BooleanField(null=True, default=False)
+    ace = models.BooleanField(null=True, default=False)
 
     class Meta:
         unique_together = ("player", "team")
