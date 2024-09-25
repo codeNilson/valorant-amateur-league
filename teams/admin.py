@@ -5,10 +5,13 @@ from stats.models import Stat
 
 class PlayerInline(admin.StackedInline):
 
-    model = Team.players.through
+    model = Stat
     fields = [
         "player",
     ]
+
+    def get_queryset(self, request):
+        return super().get_queryset(request).select_related("player")
 
     def get_extra(self, request, obj=None, **kwargs):
         if obj:
@@ -33,10 +36,6 @@ class TeamAdmin(admin.ModelAdmin):
     list_filter = [
         "players",
         "match",
-    ]
-
-    list_select_related = [
-        "match__map",
     ]
 
     inlines = [

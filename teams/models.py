@@ -26,6 +26,8 @@ class Team(models.Model):
 
     def clean_match(self):
         """Check if the match has already two teams."""
+        
+
         if (
             self.match is not None
             and self.match.teams.count() >= 2
