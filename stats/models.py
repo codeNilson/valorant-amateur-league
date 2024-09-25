@@ -30,7 +30,12 @@ class Stat(models.Model):
         unique_together = ("player", "team")
 
     def get_kda(self):
-        return self.kills + self.assists / self.deaths
+        """Calculates the KDA of the player."""
+        try:
+            kda = self.kills + self.assists / self.deaths
+        except ZeroDivisionError:
+            kda = self.kills + self.assists
+        return kda
 
     def clean_players(self):
         """Checks if the team already has five players and raises an exception if so."""
