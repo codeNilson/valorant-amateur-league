@@ -5,9 +5,19 @@ from matches.models import Match
 
 
 class TeamsModelTest(TestCase):
-    def test_teams_model_clean(self):
+    def test_teams_models_raises_an_error_if_three_teams_are_associated(self):
+
+        # Create a Match instance
         match = Match.objects.create()
-        with self.assertRaises(ValidationError):
-            for i in range(4):
-                team = Team.objects.create(match=match)
-                team.full_clean()  # Aqui o save acionará a validação e levantará o erro
+
+        # Create two Team instances and associate them with the Match instance
+        for i in range(2):
+            Team.objects.create(match=match)
+
+        # Create a third Team instance and associate it with the Match instance
+        with self.assertRaises(ValidationError) as cm:
+            third_team = Team(match=match)
+            third_team.full_clean()
+
+        error = cm.exception
+        self.assertIn('A match cannot have more than two teams', error.messages)

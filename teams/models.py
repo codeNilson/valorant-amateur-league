@@ -1,6 +1,7 @@
 import uuid
 from django.db import models
 from django.forms import ValidationError
+from django.utils.translation import gettext_lazy as _
 
 
 class Team(models.Model):
@@ -32,7 +33,7 @@ class Team(models.Model):
             and self.match.teams.count() >= 2
             and not self.match.teams.filter(uuid=self.uuid).exists()
         ):
-            raise ValidationError("A match can only have two teams.")
+            raise ValidationError(_("A match cannot have more than two teams"))
 
     def clean(self):
         self.clean_match()
