@@ -10,7 +10,7 @@ class Migration(migrations.Migration):
         ('gamedata', '0002_alter_agent_background_alter_agent_full_portrait_and_more_squashed_0009_rename_list_horintal_icon_map_list_horizontal_icon'),
         ('gamedata', '0002_alter_agent_background_alter_agent_full_portrait_and_more_squashed_0009_rename_list_horintal_icon_map_list_horizontal_icon'),
         ('matches', '0004_alter_match_map_alter_match_winner'),
-        ('matches', '0010_match_created_at'),
+        ('matches', '0005_alter_match_winner_squashed_0010_match_created_at'),
         ('stats', '0001_initial'),
         ('teams', '0001_initial'),
         ('teams', '0002_alter_team_match_alter_team_uuid'),
