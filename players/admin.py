@@ -29,7 +29,8 @@ class PlayerAdmin(admin.ModelAdmin):
                     "groups",
                     "user_permissions",
                 ),
-                "classes": ("collapse",), "description": "Permissions can be changed in the User Permissions section.",
+                "classes": ("collapse",),
+                "description": "Permissions can be changed in the User Permissions section.",
             },
         ),
     )

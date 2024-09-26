@@ -38,6 +38,10 @@ class TeamAdmin(admin.ModelAdmin):
         "match",
     ]
 
+    list_select_related = [
+        "match__map",
+    ]
+
     inlines = [
         PlayerInline,
     ]

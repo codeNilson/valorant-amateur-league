@@ -26,7 +26,6 @@ class Team(models.Model):
 
     def clean_match(self):
         """Check if the match has already two teams."""
-        
 
         if (
             self.match is not None
@@ -35,7 +34,7 @@ class Team(models.Model):
         ):
             raise ValidationError("A match can only have two teams.")
 
-    def clean(self) -> None:
+    def clean(self):
         self.clean_match()
         return super().clean()
 

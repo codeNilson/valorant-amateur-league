@@ -56,4 +56,10 @@ class StatAdmin(admin.ModelAdmin):
         "player",
     ]
 
+    list_select_related = [
+        "player",
+        "team",
+        "agent",
+    ]
+
     list_per_page = 10

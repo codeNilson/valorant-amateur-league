@@ -34,6 +34,10 @@ class AgentAdmin(admin.ModelAdmin):
         "role",
     ]
 
+    list_select_related = [
+        "role",
+    ]
+
 
 @admin.register(Role)
 class RoleAdmin(admin.ModelAdmin):

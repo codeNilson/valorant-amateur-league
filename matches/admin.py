@@ -32,3 +32,8 @@ class MatchAdmin(admin.ModelAdmin):
     ordering = [
         "-created_at",
     ]
+
+    list_select_related = [
+        "map",
+        "winner",
+    ]
