@@ -7,7 +7,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('gamedata', '0008_agent_icon'),
+        ('gamedata', '0002_alter_agent_background_alter_agent_full_portrait_and_more_squashed_0009_rename_list_horintal_icon_map_list_horizontal_icon'),
         ('players', '0006_remove_player_matches'),
     ]
 
