@@ -7,10 +7,8 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    replaces = [('stats', '0006_remove_stat_match_alter_stat_assists_and_more'), ('stats', '0007_alter_stat_unique_together'), ('stats', '0008_alter_stat_ace_alter_stat_mvp'), ('stats', '0009_alter_stat_ace_alter_stat_mvp')]
-
     dependencies = [
-        ('stats', '0005_alter_stat_match'),
+        ('stats', '0002_initial_squashed_0005_alter_stat_match'),
         ('teams', '0003_alter_team_match'),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]

@@ -6,8 +6,6 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    replaces = [('stats', '0002_initial'), ('stats', '0003_alter_stat_agent_alter_stat_match_alter_stat_team'), ('stats', '0004_alter_stat_ace_alter_stat_agent_alter_stat_assists_and_more'), ('stats', '0005_alter_stat_match')]
-
     dependencies = [
         ('gamedata', '0006_alter_agent_uuid'),
         ('gamedata', '0008_agent_icon'),
