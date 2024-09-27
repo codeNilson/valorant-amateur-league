@@ -3,6 +3,7 @@ from django.forms import ValidationError
 from django.utils.translation import gettext_lazy as _
 
 
+# pylint: disable=unused-variable,unused-argument
 class Stat(models.Model):
     player = models.ForeignKey(
         "players.Player", on_delete=models.CASCADE, related_name="stats"
@@ -34,24 +35,29 @@ class Stat(models.Model):
         """Calculates the KDA of the player."""
         if self.kills is not None and self.assists is not None:
 
-            if self.deaths == 0 or self.deaths is None:
-                # If the player has no deaths, the KDA is just the sum of kills and assists
+            if not self.deaths:
+                # If the player has no deaths or self.deaths for None,
+                # the KDA is just the sum of kills and assists
                 return round((self.kills + self.assists), 2)
-            
-            # Otherwise, the KDA is the sum of kills and assists divided by the number of deaths, rounded to two decimal places
+
+            # Otherwise, the KDA is the sum of kills and assists
+            # divided by the number of deaths, rounded to two decimal places
             return round((self.kills + self.assists) / self.deaths, 2)
         return None
 
-def clean_players(self):
-    """Checks if the team already has five players and raises an exception if so."""
-    team_has_five_players = Stat.objects.filter(team=self.team).count() >= 5
-    player_not_in_team = not Stat.objects.filter(player=self.player, team=self.team).exists()
+    def clean_players(self):
+        """Checks if the team already has five players stats and raises an exception if so."""
+        team_has_five_players = Stat.objects.filter(team=self.team).count() >= 5
+        player_not_in_team = not Stat.objects.filter(
+            player=self.player, team=self.team
+        ).exists()
 
-    if team_has_five_players and player_not_in_team:
-        raise ValidationError(
-            _("The team '%(team)s' already has 5 players.") % {"team": self.team.uuid},
-            code="team_full"
-        )
+        if team_has_five_players and player_not_in_team:
+            raise ValidationError(
+                _("The team '%(team)s' already has 5 players.")
+                % {"team": self.team.uuid},
+                code="team_full",
+            )
 
     def clean(self, *args, **kwargs):
         self.clean_players()

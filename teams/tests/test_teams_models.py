@@ -11,7 +11,7 @@ class TeamsModelTest(TestCase):
         match = Match.objects.create()
 
         # Create two Team instances and associate them with the Match instance
-        for i in range(2):
+        for _ in range(2):
             Team.objects.create(match=match)
 
         # Create a third Team instance and associate it with the Match instance
@@ -20,4 +20,4 @@ class TeamsModelTest(TestCase):
             third_team.full_clean()
 
         error = cm.exception
-        self.assertIn('A match cannot have more than two teams', error.messages)
+        self.assertIn("A match cannot have more than two teams", error.messages)
