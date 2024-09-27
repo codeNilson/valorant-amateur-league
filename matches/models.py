@@ -1,5 +1,6 @@
-from django.db import models
 import uuid
+from django.db import models
+from django.utils.translation import gettext_lazy as _
 
 
 class Match(models.Model):
@@ -21,4 +22,4 @@ class Match(models.Model):
         return f"{self.created_at.strftime("%d/%m/%Y")} - {self.map}"
 
     class Meta:
-        verbose_name_plural = "Matches"
+        verbose_name_plural = _("Matches")

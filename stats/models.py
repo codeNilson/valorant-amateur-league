@@ -1,5 +1,6 @@
 from django.db import models
 from django.forms import ValidationError
+from django.utils.translation import gettext_lazy as _
 
 
 class Stat(models.Model):
@@ -31,21 +32,26 @@ class Stat(models.Model):
 
     def get_kda(self):
         """Calculates the KDA of the player."""
-        if self.kills and self.assists:
-            try:
-                kda = self.kills + self.assists / self.deaths
-            except ZeroDivisionError:
-                kda = self.kills + self.assists
-            return kda
+        if self.kills is not None and self.assists is not None:
+
+            if self.deaths == 0 or self.deaths is None:
+                # If the player has no deaths, the KDA is just the sum of kills and assists
+                return round((self.kills + self.assists), 2)
+            
+            # Otherwise, the KDA is the sum of kills and assists divided by the number of deaths, rounded to two decimal places
+            return round((self.kills + self.assists) / self.deaths, 2)
         return None
 
-    def clean_players(self):
-        """Checks if the team already has five players and raises an exception if so."""
-        if (
-            Stat.objects.filter(team=self.team).count() >= 5
-            and not Stat.objects.filter(player=self.player, team=self.team).exists()
-        ):
-            raise ValidationError(f"The team '{self.team.uuid}' already has 5 players.")
+def clean_players(self):
+    """Checks if the team already has five players and raises an exception if so."""
+    team_has_five_players = Stat.objects.filter(team=self.team).count() >= 5
+    player_not_in_team = not Stat.objects.filter(player=self.player, team=self.team).exists()
+
+    if team_has_five_players and player_not_in_team:
+        raise ValidationError(
+            _("The team '%(team)s' already has 5 players.") % {"team": self.team.uuid},
+            code="team_full"
+        )
 
     def clean(self, *args, **kwargs):
         self.clean_players()

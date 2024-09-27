@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.utils.translation import gettext_lazy as _
 from .models import Stat
 
 
@@ -64,3 +65,7 @@ class StatAdmin(admin.ModelAdmin):
     ]
 
     list_per_page = 10
+
+    @admin.display(description=_("KDA"))
+    def get_kda(self, obj):
+        return obj.get_kda()
