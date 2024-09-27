@@ -31,11 +31,13 @@ class Stat(models.Model):
 
     def get_kda(self):
         """Calculates the KDA of the player."""
-        try:
-            kda = self.kills + self.assists / self.deaths
-        except ZeroDivisionError:
-            kda = self.kills + self.assists
-        return kda
+        if self.kills and self.assists:
+            try:
+                kda = self.kills + self.assists / self.deaths
+            except ZeroDivisionError:
+                kda = self.kills + self.assists
+            return kda
+        return None
 
     def clean_players(self):
         """Checks if the team already has five players and raises an exception if so."""

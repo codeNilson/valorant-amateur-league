@@ -41,6 +41,7 @@ class StatAdmin(admin.ModelAdmin):
         "kills",
         "deaths",
         "assists",
+        "get_kda",
         "mvp",
         "ace",
     ]
