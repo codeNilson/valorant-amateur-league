@@ -3,7 +3,6 @@ from django.core.exceptions import ValidationError
 from stats.models import Stat
 from teams.models import Team
 from players.models import Player
-from gamedata.models import Agent
 
 
 class TestStatModel(TestCase):
@@ -23,8 +22,7 @@ class TestStatModel(TestCase):
         stat = Stat()
         self.assertEqual(stat.get_kda(), None)
 
-    def test_stats_clean_players_method(self):
-        """Test the clean_players method of the Stat model."""
+    def test_stats_clean_players_method_raises_error_if_it_has_too_many_players(self):
 
         # Create a team with 5 players
         team = Team.objects.create()
@@ -34,17 +32,26 @@ class TestStatModel(TestCase):
             )
             Stat.objects.create(player=player, team=team)
 
-        with self.assertRaises(
-            ValidationError,
-            msg="The team 'team5 players.",
-        ) as cm:
-            # Try to add a new player to the team
+        # Test if a ValidationError is raised when trying to add a sixth player
+        with self.assertRaises(ValidationError):
             player = Player.objects.create(username="new_player", password="password")
             stat = Stat(player=player, team=team)
             stat.full_clean()
 
-        # Try to add a player to a team with less than 5 players
-        # team = Team.objects.create()
-        # player = Player.objects.create()
-        # stat = Stat(player=player, team=team)
-        # stat.clean_players()
+    def test_stats_clean_players_methods_raises_error_if_player_is_already_in_team(
+        self,
+    ):
+
+        # Create a team with 4 players
+        team = Team.objects.create()
+        for i in range(4):
+            player = Player.objects.create_user(
+                username=f"player{i}", password="password"
+            )
+            Stat.objects.create(player=player, team=team)
+
+        # Test if a ValidationError is raised when trying
+        # to add a player that is already in the team
+        with self.assertRaises(ValidationError):
+            stat = Stat(player=player, team=team)
+            stat.full_clean()
