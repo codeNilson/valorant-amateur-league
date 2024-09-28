@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models import Team
 from stats.models import Stat
+from .models import Team
 
 
 class PlayerInline(admin.StackedInline):
@@ -9,6 +9,7 @@ class PlayerInline(admin.StackedInline):
     fields = [
         "player",
     ]
+    max_num = 5
 
     def get_queryset(self, request):
         return super().get_queryset(request).select_related("player")

@@ -11,6 +11,7 @@ class PlayerAdmin(admin.ModelAdmin):
             {
                 "fields": (
                     "username",
+                    "password",
                     "first_name",
                     "email",
                     "tier",
@@ -65,3 +66,9 @@ class PlayerAdmin(admin.ModelAdmin):
     ]
 
     list_per_page = 10
+
+    def save_model(self, request, obj, form, change):
+        # If the password is changed, update it
+        if form.cleaned_data["password"]:
+            obj.set_password(form.cleaned_data["password"])
+        super().save_model(request, obj, form, change)

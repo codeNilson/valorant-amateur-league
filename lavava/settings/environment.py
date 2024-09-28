@@ -1,17 +1,8 @@
 import os
 from dotenv import load_dotenv
-from pprint import pprint
+from utils import get_env_list
 
 load_dotenv()
-
-
-def get_env_list(variable_name: str) -> list:
-    if not isinstance(variable_name, str):
-        return []
-    value = os.environ.get(variable_name, "")
-    list_value = [value.strip() for value in value.split(",") if value]
-    return list_value
-
 
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
