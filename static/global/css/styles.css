@@ -1,0 +1,83 @@
+:root {
+  --red-light: #fd4556;
+  --red-medium: #bd3944;
+  --red-dark: #53212b;
+
+  --white: #fffbf5;
+  --black: #000000;
+}
+
+.red-background {
+  background-color: var(--red-light);
+  color: var(--white);
+}
+
+.cta {
+  color: var(--white);
+}
+
+.cta:hover {
+  color: var(--red-light);
+}
+
+.centered-hr {
+  max-width: 75px;
+  margin: 0 auto;
+}
+
+.social-icons-container {
+  gap: 16px
+}
+
+.social-icons-container .fa-youtube {
+  color: #ff0000;
+}
+
+.social-icons-container .fa-youtube:hover {
+  color: var(--red-medium);
+  animation: translateY 500ms 4 alternate;
+}
+
+
+.social-icons-container .fa-discord {
+  color: #7289da;
+}
+
+.social-icons-container .fa-discord:hover {
+  color: #48578d;
+  animation: translateY 500ms 4 alternate;
+}
+
+.feature-icon:hover {
+  animation: translateY 500ms 2 alternate;
+}
+
+/* Footer  */
+.footer-social-icons a {
+  color: #000000;
+  margin: 0 10px;
+}
+
+.footer-social-icons a:hover {
+  text-decoration: none;
+  color: var(--red-medium);
+}
+
+.footer-logo p {
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+
+/* Keyframes */
+@keyframes translateY {
+  from {
+    transform: translateY(0);
+    scale: 1;
+  }
+
+  to {
+    transform: translateY(-10px);
+    scale: 1.1;
+  }
+}
