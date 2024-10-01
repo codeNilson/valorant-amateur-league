@@ -8,3 +8,11 @@ class LandingPage(View):
             request,
             "lavava/landing_page.html",
         )
+
+
+class Home(View):
+    def get(self, request):
+        return render(
+            request,
+            "lavava/home.html",
+        )

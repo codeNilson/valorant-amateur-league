@@ -7,6 +7,17 @@
   --black: #000000;
 }
 
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+}
+
+main {
+  flex: 1; /* Faz com que o conteúdo principal ocupe o espaço restante */
+}
+
 .red-background {
   background-color: var(--red-light);
   color: var(--white);
@@ -66,6 +77,31 @@
 .footer-logo p {
   font-size: 12px;
   margin-top: 10px;
+}
+
+.btn-red {
+  background-color: var(--red-light);
+  color: var(--white);
+}
+
+.btn-red:hover {
+  background-color: var(--red-medium);
+  color: white
+}
+
+.btn-light {
+  color: var(--red-light);
+  background-color: transparent;
+  border: none;
+}
+
+.btn-light:hover {
+  color: var(--red-medium);
+  background-color: transparent;
+}
+
+.text-red {
+  color: var(--red-light);
 }
 
 
