@@ -120,6 +120,10 @@ main {
 
 /* teeeste */
 
-.carousel-item img {
-  margin: 0 auto;
+h1 {
+  font-size: 5rem;
+}
+
+p {
+  font-size: 1.5rem;
 }
