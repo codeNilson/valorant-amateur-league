@@ -15,7 +15,7 @@ body {
 }
 
 main {
-  flex: 1; /* Faz com que o conteúdo principal ocupe o espaço restante */
+  flex: 1;
 }
 
 .red-background {
@@ -23,56 +23,42 @@ main {
   color: var(--white);
 }
 
-.cta {
-  color: var(--white);
-}
-
-.cta:hover {
-  color: var(--red-light);
-}
-
-.centered-hr {
-  max-width: 75px;
-  margin: 0 auto;
-}
-
 .social-icons-container {
   gap: 16px
+}
+
+/* Landing page socials*/
+
+.social-icons-container .fa-youtube,
+.social-icons-container .fa-discord {
+  transition: color 0.3s ease, transform 0.5s ease;
 }
 
 .social-icons-container .fa-youtube {
   color: #ff0000;
 }
 
-.social-icons-container .fa-youtube:hover {
+.fa-youtube:hover {
   color: var(--red-medium);
-  animation: translateY 500ms 4 alternate;
 }
-
 
 .social-icons-container .fa-discord {
   color: #7289da;
 }
 
-.social-icons-container .fa-discord:hover {
+.fa-discord:hover {
   color: #48578d;
+}
+
+.fa-github:hover {
+  color: #333;
+}
+
+.jump-animation:hover {
   animation: translateY 500ms 4 alternate;
 }
 
-.feature-icon:hover {
-  animation: translateY 500ms 2 alternate;
-}
-
 /* Footer  */
-.footer-social-icons a {
-  color: #000000;
-  margin: 0 10px;
-}
-
-.footer-social-icons a:hover {
-  text-decoration: none;
-  color: var(--red-medium);
-}
 
 .footer-logo p {
   font-size: 12px;
@@ -89,22 +75,6 @@ main {
   color: white
 }
 
-.btn-light {
-  color: var(--red-light);
-  background-color: transparent;
-  border: none;
-}
-
-.btn-light:hover {
-  color: var(--red-medium);
-  background-color: transparent;
-}
-
-.text-red {
-  color: var(--red-light);
-}
-
-
 /* Keyframes */
 @keyframes translateY {
   from {
@@ -118,12 +88,26 @@ main {
   }
 }
 
-/* teeeste */
 
-h1 {
-  font-size: 5rem;
+
+
+
+
+
+
+
+
+
+
+
+
+
+.welcome-text {
+  font-size: 4rem;
+  font-weight: 500;
 }
 
-p {
-  font-size: 1.5rem;
+
+.text-red {
+  color: var(--red-light);
 }
