@@ -117,3 +117,9 @@ main {
     scale: 1.1;
   }
 }
+
+/* teeeste */
+
+.carousel-item img {
+  margin: 0 auto;
+}
