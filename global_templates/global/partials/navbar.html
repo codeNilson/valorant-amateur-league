@@ -26,20 +26,20 @@
                     <a class="nav-link" href="#">Shop</a>
                 </li>
                 <li>
-                    <hr class="centered-hr">
+                    <hr class="w-25">
                 </li>
 
                 {% if not user.is_authenticated %}
                 <li class="nav-item d-md-none">
-                    <a class="ps-0 btn btn-light rounded-pill" href="#">Sign in</a>
+                    <a class="ps-0 btn text-red rounded-pill" href="#">Sign in</a>
                 </li>
                 {% else %}
                 <!-- if user is logged -->
                 <li class="nav-item d-md-none">
-                    <a class="ps-0 btn btn-light rounded-pill" href="#">My account</a>
+                    <a class="ps-0 btn text-red rounded-pill" href="#">My account</a>
                 </li>
                 <li class="nav-item d-md-none">
-                    <a class="ps-0 btn btn-light rounded-pill" href="#">My statistics</a>
+                    <a class="ps-0 btn text-red rounded-pill" href="#">My statistics</a>
                 </li>
                 {% endif %}
             </ul>
@@ -48,7 +48,7 @@
             {% if not user.is_authenticated %}
             <ul class="navbar-nav ms-auto d-none d-md-flex">
                 <li class="nav-item">
-                    <a class="btn btn-light rounded-0" href="#">Sign in</a>
+                    <a class="btn text-red rounded-0" href="#">Sign in</a>
                 </li>
                 <li class="nav-item">
                     <a class="btn btn-red rounded-0" href="/admin">Sign up</a>
@@ -90,7 +90,7 @@
                 <a class="nav-link" href="#">Shop</a>
             </li>
             <li>
-                <hr class="centered-hr">
+                <hr class="w-25">
             </li>
             <!-- if user is logged -->
             <li class="nav-item">
