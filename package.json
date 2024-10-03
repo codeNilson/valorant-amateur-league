@@ -1,0 +1,18 @@
+{
+  "name": "valorant-amateur-league",
+  "version": "1.0.0",
+  "description": "Liga Amadora de Valorant (AKA LAVAVA)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-css": "sass global_static/global/scss/custom.scss global_static/global/css/styles.css",
+    "watch-css": "sass --watch global_static/global/scss/custom.scss:global_static/global/css/styles.css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^5.3.3",
+    "sass": "^1.79.4"
+  }
+}
