@@ -8,3 +8,4 @@ venv/
 gunicorn-error-log
 .pytest_cache/
 node_modules/
+npm-debug.log
