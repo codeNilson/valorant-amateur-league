@@ -1,4 +1,91 @@
-$primary: lightgreen;
-$secondary: lightblue;
+$primary: #fd4556;
+$white: #fff;
+
+/* bootstrap */
+.bg-primary {
+    color: $white !important;
+}
+
+.btn-primary {
+    color: $white !important;
+}
+
+/*custom*/
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+main {
+    flex: 1;
+}
+
+.social-icons-container {
+    gap: 16px
+}
+
+/* Landing page socials*/
+
+.social-icons-container .fa-youtube,
+.social-icons-container .fa-discord {
+    transition: color 0.3s ease, transform 0.5s ease;
+}
+
+.social-icons-container .fa-youtube {
+    color: #ff0000;
+}
+
+.fa-youtube:hover {
+    color: var(--red-medium);
+}
+
+.social-icons-container .fa-discord {
+    color: #7289da;
+}
+
+.fa-discord:hover {
+    color: #48578d;
+}
+
+.fa-github:hover {
+    color: #333;
+}
+
+.jump-animation:hover {
+    animation: translateY 500ms 4 alternate;
+}
+
+/* Footer  */
+
+.footer-logo p {
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+.btn-red {
+    background-color: var(--red-light);
+    color: var(--white);
+}
+
+.btn-red:hover {
+    background-color: var(--red-medium);
+    color: white
+}
+
+/* Keyframes */
+@keyframes translateY {
+    from {
+        transform: translateY(0);
+        scale: 1;
+    }
+
+    to {
+        transform: translateY(-10px);
+        scale: 1.1;
+    }
+}
+
 
 @import '../../../node_modules/bootstrap/scss/bootstrap';
