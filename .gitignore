@@ -7,3 +7,4 @@ venv/
 .coverage*
 gunicorn-error-log
 .pytest_cache/
+node_modules/
