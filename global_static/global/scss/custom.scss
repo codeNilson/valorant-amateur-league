@@ -1,10 +1,12 @@
 @import "../../../node_modules/bootstrap/scss/functions";
 
+$red: #fd4556;
+
 @import "../../../node_modules/bootstrap/scss/variables";
 @import "../../../node_modules/bootstrap/scss/mixins";
 
 $custom-colors: (
-  "red": #fd4556
+  "red": $red,
 );
 
 // Combina seu map customizado com o map de cores do Bootstrap
