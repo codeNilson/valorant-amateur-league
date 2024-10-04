@@ -1,7 +1,20 @@
-$primary: #fd4556;
-$white: #fff;
+@import "../../../node_modules/bootstrap/scss/functions";
 
-/* bootstrap */
+@import "../../../node_modules/bootstrap/scss/variables";
+@import "../../../node_modules/bootstrap/scss/mixins";
+
+$custom-colors: (
+  "red": #fd4556
+);
+
+// Combina seu map customizado com o map de cores do Bootstrap
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
+@import "../../../node_modules/bootstrap/scss/bootstrap";
+
+// bootstrap custom
+@import "partials/full_heigh_body";
+
 .bg-primary {
     color: $white !important;
 }
@@ -10,39 +23,26 @@ $white: #fff;
     color: $white !important;
 }
 
-/*custom*/
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    margin: 0;
-}
-
-main {
-    flex: 1;
-}
 
 .social-icons-container {
-    gap: 16px
-}
+    gap: 16px;
 
-/* Landing page socials*/
+    .fa-youtube,
+    .fa-discord {
+        transition: color 0.3s ease, transform 0.5s ease;
+    }
 
-.social-icons-container .fa-youtube,
-.social-icons-container .fa-discord {
-    transition: color 0.3s ease, transform 0.5s ease;
-}
+    .fa-youtube {
+        color: #ff0000;
+    }
 
-.social-icons-container .fa-youtube {
-    color: #ff0000;
+    .fa-discord {
+        color: #7289da;
+    }
 }
 
 .fa-youtube:hover {
     color: var(--red-medium);
-}
-
-.social-icons-container .fa-discord {
-    color: #7289da;
 }
 
 .fa-discord:hover {
@@ -86,6 +86,3 @@ main {
         scale: 1.1;
     }
 }
-
-
-@import '../../../node_modules/bootstrap/scss/bootstrap';
