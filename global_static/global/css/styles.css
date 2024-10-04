@@ -8469,7 +8469,11 @@ textarea.form-control-lg {
   color: rgba(var(--bs-danger-rgb), var(--bs-text-opacity)) !important;
 }
 
-.text-light {
+.text-light, .bg-red,
+.btn-red,
+.btn-outline-red:hover,
+.btn-outline-red:focus,
+.btn-outline-red:active {
   --bs-text-opacity: 1;
   color: rgba(var(--bs-light-rgb), var(--bs-text-opacity)) !important;
 }
@@ -11949,14 +11953,6 @@ main {
   flex: 1;
 }
 
-.bg-primary {
-  color: #fff !important;
-}
-
-.btn-primary {
-  color: #fff !important;
-}
-
 .social-icons-container {
   gap: 16px;
 }
@@ -11972,7 +11968,7 @@ main {
 }
 
 .fa-youtube:hover {
-  color: var(--red-medium);
+  color: #fd4556;
 }
 
 .fa-discord:hover {
@@ -11991,16 +11987,6 @@ main {
 .footer-logo p {
   font-size: 12px;
   margin-top: 10px;
-}
-
-.btn-red {
-  background-color: var(--red-light);
-  color: var(--white);
-}
-
-.btn-red:hover {
-  background-color: var(--red-medium);
-  color: white;
 }
 
 /* Keyframes */
