@@ -92,3 +92,30 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
         scale: 1.1;
     }
 }
+
+@media screen and (max-width: 768px) {
+    .landing-page {
+        position: relative;
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+        }
+        .hero-content {
+            position: relative;
+
+            .hero-text {
+                position: absolute;
+                top: 12, 5%;
+                left: 12, 5%;
+                z-index: 2;
+            }
+        }
+    }
+}
