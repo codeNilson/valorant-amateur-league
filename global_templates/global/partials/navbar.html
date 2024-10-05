@@ -8,7 +8,7 @@
 
         <button class="btn d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span><i class="fa-solid fa-caret-down fs-2 text-primary"></i></span>
+            <span><i class="fa-solid fa-caret-down fs-2 text-red"></i></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -25,21 +25,23 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Shop</a>
                 </li>
-                <li>
-                    <hr class="w-25">
-                </li>
-
                 {% if not user.is_authenticated %}
                 <li class="nav-item d-md-none">
-                    <a class="ps-0 btn text-primary rounded-pill" href="#">Sign in</a>
+                    <a class="text-red nav-link" href="/admin">Sign in</a>
                 </li>
                 {% else %}
                 <!-- if user is logged -->
-                <li class="nav-item d-md-none">
-                    <a class="ps-0 btn text-primary rounded-pill" href="#">My account</a>
+                <li>
+                    <hr class="w-25">
                 </li>
                 <li class="nav-item d-md-none">
-                    <a class="ps-0 btn text-primary rounded-pill" href="#">My statistics</a>
+                    <a class="text-red nav-link" href="#">My account</a>
+                </li>
+                <li class="nav-item d-md-none">
+                    <a class="text-red nav-link" href="#">My statistics</a>
+                </li>
+                <li class="nav-item d-md-none">
+                    <a class="text-red nav-link" href="/admin">Logout</a>
                 </li>
                 {% endif %}
             </ul>
@@ -48,18 +50,19 @@
             {% if not user.is_authenticated %}
             <ul class="navbar-nav ms-auto d-none d-md-flex">
                 <li class="nav-item">
-                    <a class="btn text-primary rounded-0" href="#">Sign in</a>
+                    <a class="btn btn-outline-red rounded-0" href="#">Sign in</a>
                 </li>
                 <li class="nav-item">
-                    <a class="btn btn-primary rounded-0" href="/admin">Sign up</a>
+                    <a class="btn btn-red rounded-0" href="/admin">Sign up</a>
                 </li>
             </ul>
             {% else %}
             <!-- if user is logged -->
             <div class="ms-md-auto d-none d-md-flex">
-                <button class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions"
-                    aria-controls="offcanvasWithBothOptions">
-                    <i class="fa-solid fa-user fa-2x text-primary"></i>
+                <button class="btn d-flex align-items-center" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
+                    <i class="fa-solid fa-user text-red fs-3"></i>
+                    <span class="ms-2 text-red">Profile</span>
                 </button>
             </div>
             {% endif %}
@@ -69,7 +72,7 @@
 
 <!-- off canva content -->
 {% if user.is_authenticated %}
-<div class="offcanvas offcanvas-end bg-primary" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
+<div class="offcanvas offcanvas-end bg-red" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
     aria-labelledby="offcanvasWithBothOptionsLabel" style="max-width: 200px;">
     <div class="offcanvas-header">
         <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Menu</h5>
@@ -78,27 +81,12 @@
     <div class="offcanvas-body">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Features</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Blog</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Shop</a>
-            </li>
-            <li>
-                <hr class="w-25">
-            </li>
-            <!-- if user is logged -->
-            <li class="nav-item">
                 <a class="ps-0 nav-link text-light rounded-pill" href="#">My account</a>
             </li>
             <li class="nav-item">
                 <a class="ps-0 nav-link text-light rounded-pill" href="#">My statistics</a>
             </li>
+            <hr class="w-25">
             <li class="nav-item">
                 <a class="ps-0 nav-link text-light rounded-pill" href="/admin">Logout</a>
             </li>

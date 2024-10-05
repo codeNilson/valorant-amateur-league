@@ -1,48 +1,45 @@
-$primary: #fd4556;
-$white: #fff;
+@import "../../../node_modules/bootstrap/scss/functions";
 
-/* bootstrap */
-.bg-primary {
-    color: $white !important;
-}
+$red: #fd4556;
+$min-contrast-ratio: 3.4;
 
-.btn-primary {
-    color: $white !important;
-}
+@import "../../../node_modules/bootstrap/scss/variables";
+@import "../../../node_modules/bootstrap/scss/mixins";
 
-/*custom*/
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    margin: 0;
-}
+$custom-colors: (
+    "red": $red,
+);
 
-main {
-    flex: 1;
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
+@import "../../../node_modules/bootstrap/scss/bootstrap";
+
+@import "partials/full_heigh_body";
+
+.bg-red {
+    @extend .text-light;
 }
 
 .social-icons-container {
-    gap: 16px
-}
 
-/* Landing page socials*/
+    gap: 16px;
 
-.social-icons-container .fa-youtube,
-.social-icons-container .fa-discord {
-    transition: color 0.3s ease, transform 0.5s ease;
-}
+    .fa-youtube,
+    .fa-discord {
+        transition: color 0.3s ease, transform 0.5s ease;
+    }
 
-.social-icons-container .fa-youtube {
-    color: #ff0000;
+    .fa-youtube {
+        color: #ff0000;
+    }
+
+    .fa-discord {
+        color: #7289da;
+    }
 }
 
 .fa-youtube:hover {
-    color: var(--red-medium);
-}
-
-.social-icons-container .fa-discord {
-    color: #7289da;
+    color: $red;
 }
 
 .fa-discord:hover {
@@ -57,21 +54,30 @@ main {
     animation: translateY 500ms 4 alternate;
 }
 
+.carousel-item {
+    position: relative;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.4);
+        z-index: 1;
+    }
+}
+
+.carousel-caption {
+    z-index: 2;
+}
+
 /* Footer  */
 
 .footer-logo p {
     font-size: 12px;
     margin-top: 10px;
-}
-
-.btn-red {
-    background-color: var(--red-light);
-    color: var(--white);
-}
-
-.btn-red:hover {
-    background-color: var(--red-medium);
-    color: white
 }
 
 /* Keyframes */
@@ -86,6 +92,3 @@ main {
         scale: 1.1;
     }
 }
-
-
-@import '../../../node_modules/bootstrap/scss/bootstrap';
