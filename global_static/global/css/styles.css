@@ -8479,7 +8479,7 @@ textarea.form-control-lg {
   color: rgba(var(--bs-dark-rgb), var(--bs-text-opacity)) !important;
 }
 
-.text-red {
+.text-red, .bg-red .btn-outline-light:hover {
   --bs-text-opacity: 1;
   color: rgba(var(--bs-red-rgb), var(--bs-text-opacity)) !important;
 }

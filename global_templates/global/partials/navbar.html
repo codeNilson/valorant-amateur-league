@@ -6,9 +6,11 @@
             <img src="{% static 'lavava/assets/lavava_logo.png' %}" alt="Logo da Lavava">
         </a>
 
-        <button class="btn d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span><i class="fa-solid fa-caret-down fs-2 text-red"></i></span>
+        <button class="btn btn-outline-red border-0 d-md-none d-flex aling-items-center" type="button"
+            data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions"
+            aria-controls="offcanvasWithBothOptions" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fa-solid fa-caret-down fs-2"></i>
+            <span class="ms-2 fw-semibold">Menu</span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -29,20 +31,6 @@
                 <li class="nav-item d-md-none">
                     <a class="text-red nav-link" href="/admin">Sign in</a>
                 </li>
-                {% else %}
-                <!-- if user is logged -->
-                <li>
-                    <hr class="w-25">
-                </li>
-                <li class="nav-item d-md-none">
-                    <a class="text-red nav-link" href="#">My account</a>
-                </li>
-                <li class="nav-item d-md-none">
-                    <a class="text-red nav-link" href="#">My statistics</a>
-                </li>
-                <li class="nav-item d-md-none">
-                    <a class="text-red nav-link" href="/admin">Logout</a>
-                </li>
                 {% endif %}
             </ul>
 
@@ -59,10 +47,11 @@
             {% else %}
             <!-- if user is logged -->
             <div class="ms-md-auto d-none d-md-flex">
-                <button class="btn d-flex align-items-center" type="button" data-bs-toggle="offcanvas"
-                    data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
-                    <i class="fa-solid fa-user text-red fs-3"></i>
-                    <span class="ms-2 text-red">Profile</span>
+                <button class="btn btn-outline-red border-0 d-flex align-items-center" type="button"
+                    data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions"
+                    aria-controls="offcanvasWithBothOptions">
+                    <i class="fa-solid fa-caret-down fs-2"></i></i>
+                    <span class="ms-2 fw-semibold">Menu</span>
                 </button>
             </div>
             {% endif %}
@@ -70,8 +59,6 @@
     </div>
 </nav>
 
-<!-- off canva content -->
-{% if user.is_authenticated %}
 <div class="offcanvas offcanvas-end bg-red" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
     aria-labelledby="offcanvasWithBothOptionsLabel" style="max-width: 200px;">
     <div class="offcanvas-header">
@@ -79,18 +66,35 @@
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 d-md-none">
             <li class="nav-item">
-                <a class="ps-0 nav-link text-light rounded-pill" href="#">My account</a>
+                <a class="nav-link rounded-pill" href="#">Home</a>
             </li>
             <li class="nav-item">
-                <a class="ps-0 nav-link text-light rounded-pill" href="#">My statistics</a>
+                <a class="nav-link rounded-pill" href="#">Features</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link rounded-pill" href="#">Blog</a>
+            </li>
+        </ul>
+        <hr class="w-25 d-md-none">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+                <a class="nav-link" href="#">My account</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">My statistics</a>
             </li>
             <hr class="w-25">
             <li class="nav-item">
-                <a class="ps-0 nav-link text-light rounded-pill" href="/admin">Logout</a>
+                <a class="nav-link" href="/admin">Logout</a>
             </li>
+            {% else %}
+            <li class="nav-item">
+                <a class="btn btn-outline-light w-100" href="/admin">Sign in</a>
+            </li>
+            {% endif %}
         </ul>
     </div>
 </div>
-{% endif %}

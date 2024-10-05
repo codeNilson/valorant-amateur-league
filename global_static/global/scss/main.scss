@@ -18,11 +18,15 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
 
 .bg-red {
     @extend .text-light;
+
+    .btn-outline-light:hover {
+        @extend .text-red;
+    }
 }
 
 .text-shadow {
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); // Ajuste os valores conforme necessário
-  }
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
 
 .social-icons-container {
 
