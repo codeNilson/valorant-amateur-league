@@ -1,20 +1,17 @@
 @import "../../../node_modules/bootstrap/scss/functions";
 
-$red: #fd4556;
-$min-contrast-ratio: 3.4;
+@import "partials/custom_colors";
+@import "partials/custom_settings";
 
 @import "../../../node_modules/bootstrap/scss/variables";
 @import "../../../node_modules/bootstrap/scss/mixins";
-
-$custom-colors: (
-    "red": $red,
-);
 
 $theme-colors: map-merge($theme-colors, $custom-colors);
 
 @import "../../../node_modules/bootstrap/scss/bootstrap";
 @import "partials/custom_mixins";
 @import "partials/full_heigh_body";
+
 
 .bg-red {
     @extend .text-light;
@@ -91,5 +88,34 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
     to {
         transform: translateY(-10px);
         scale: 1.1;
+    }
+}
+
+table.result-point {
+    tr {
+        td {
+            img {
+                max-width: 80px;
+                margin-right: 11px;
+            }
+        }
+    }
+
+    tfoot {
+        td {
+            background-color: transparent;
+            border: none;
+            font-size: 0.8rem;
+        }
+    }
+
+    .fa-caret-down {
+        color: red;
+        transition: transform 0.3s ease;
+    }
+
+    .fa-caret-up {
+        color: green;
+        transition: transform 0.3s ease;
     }
 }
