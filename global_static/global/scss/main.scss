@@ -59,10 +59,6 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
     animation: translateY 500ms 4 alternate;
 }
 
-.oi:hover {
-    animation: translateY 500ms 4 alternate;
-}
-
 .carousel-caption {
     z-index: 2;
 }
