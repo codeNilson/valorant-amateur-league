@@ -8,7 +8,6 @@
 
 <main>
 
-
   <div id="carouselAutoplaying" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators z-3">
       <button type="button" data-bs-target="#carouselAutoplaying" data-bs-slide-to="0" class="active"
@@ -73,166 +72,24 @@
               </tr>
             </thead>
             <tbody class="text-center border shadow">
+              {% for player in players %}
               <tr>
-                <td class="text-start">1 <i class="fa fa-caret-up" aria-hidden="true"></i></td>
+                <td class="text-start">{{forloop.counter}} <i class="fa fa-caret-up" aria-hidden="true"></i></td>
                 <td class="text-start">
                   <div class="d-flex align-items-center">
-                    <img src="{% static 'lavava/assets/delete.png' %}" class="me-2" alt="player">
-                    <span>Aro Might</span>
+                    <img src={{player.main_agent.small_icon}} class="me-2" alt="player">
+                    <span>{{player.first_name}}</span>
                   </div>
                 </td>
-                <td>38</td>
-                <td>26</td>
-                <td>9</td>
-                <td>2</td>
-                <td>2</td>
-                <td>3</td>
-                <td>3.0</td>
+                <td>{{player.points}}</td>
+                <td>{{player.wins}}</td>
+                <td>{{player.losses}}</td>
+                <td>{{player.mvp}}</td>
+                <td>{{player.ace}}</td>
+                <td>{{player.winratio}}%</td>
+                <td>3.6</td>
               </tr>
-              <tr>
-                <td class="text-start">2 <i class="fa fa-caret-up" aria-hidden="true"></i></td>
-                <td class="text-start">
-                  <div class="d-flex align-items-center">
-                    <img src="{% static 'lavava/assets/delete10.png' %}" class="me-2" alt="player">
-                    <span>Gado de B...</span>
-                  </div>
-                </td>
-                <td>38</td>
-                <td>24</td>
-                <td>7</td>
-                <td>7</td>
-                <td>7</td>
-                <td>7</td>
-                <td>1.7</td>
-              </tr>
-              <tr>
-                <td class="text-start">3 <i class="fa fa-caret-up" aria-hidden="true"></i></td>
-                <td class="text-start">
-                  <div class="d-flex align-items-center">
-                    <img src="{% static 'lavava/assets/delete2.png' %}" class="me-2" alt="player">
-                    <span>Demolitor15</span>
-                  </div>
-                </td>
-                <td>38</td>
-                <td>22</td>
-                <td>9</td>
-                <td>9</td>
-                <td>9</td>
-                <td>7</td>
-                <td>2.7</td>
-              </tr>
-              <tr>
-                <td class="text-start">4 <i class="fa-solid fa-equals"></i></td>
-                <td class="text-start">
-                  <div class="d-flex align-items-center">
-                    <img src="{% static 'lavava/assets/delete3.png' %}" class="me-2" alt="player">
-                    <span>SóQueri...</span>
-                  </div>
-                </td>
-                <td>62</td>
-                <td>37</td>
-                <td>10</td>
-                <td>7</td>
-                <td>7</td>
-                <td>2</td>
-                <td>2.0</td>
-              </tr>
-              <tr>
-                <td class="text-start">5 <i class="fa fa-caret-up" aria-hidden="true"></i></td>
-                <td class="text-start">
-                  <div class="d-flex align-items-center">
-                    <img src="{% static 'lavava/assets/delete4.png' %}" class="me-2" alt="player">
-                    <span>Klauz</span>
-                  </div>
-                </td>
-                <td>38</td>
-                <td>19</td>
-                <td>7</td>
-                <td>12</td>
-                <td>12</td>
-                <td>12</td>
-                <td>1.2</td>
-              </tr>
-              <tr>
-                <td class="text-start">6 <i class="fa fa-caret-down" aria-hidden="true"></i></td>
-                <td class="text-start">
-                  <div class="d-flex align-items-center">
-                    <img src="{% static 'lavava/assets/delete5.png' %}" class="me-2" alt="player">
-                    <span>Kickes</span>
-                  </div>
-                </td>
-                <td>38</td>
-                <td>18</td>
-                <td>18</td>
-                <td>8</td>
-                <td>8</td>
-                <td>12</td>
-                <td>1.6</td>
-              </tr>
-              <tr>
-                <td class="text-start">7 <i class="fa fa-caret-down" aria-hidden="true"></i></td>
-                <td class="text-start">
-                  <div class="d-flex align-items-center">
-                    <img src="{% static 'lavava/assets/delete6.png' %}" class="me-2" alt="player">
-                    <span>Taifu</span>
-                  </div>
-                </td>
-                <td>38</td>
-                <td>18</td>
-                <td>6</td>
-                <td>6</td>
-                <td>14</td>
-                <td>7</td>
-                <td>0.9</td>
-              </tr>
-              <tr>
-                <td class="text-start">8 <i class="fa-solid fa-equals"></i></i></td>
-                <td class="text-start">
-                  <div class="d-flex align-items-center">
-                    <img src="{% static 'lavava/assets/delete7.png' %}" class="me-2" alt="player">
-                    <span>Leozin</span>
-                  </div>
-                </td>
-                <td>38</td>
-                <td>12</td>
-                <td>11</td>
-                <td>10</td>
-                <td>2</td>
-                <td>9</td>
-                <td>0.9</td>
-              </tr>
-              <tr>
-                <td class="text-start">9 <i class="fa fa-caret-up" aria-hidden="true"></i></td>
-                <td class="text-start">
-                  <div class="d-flex align-items-center">
-                    <img src="{% static 'lavava/assets/delete8.png' %}" class="me-2" alt="player">
-                    <span>Bielzin</span>
-                  </div>
-                </td>
-                <td>38</td>
-                <td>26</td>
-                <td>9</td>
-                <td>3</td>
-                <td>4</td>
-                <td>3</td>
-                <td>0.3</td>
-              </tr>
-              <tr>
-                <td class="text-start">10 <i class="fa fa-caret-down" aria-hidden="true"></i></td>
-                <td class="text-start">
-                  <div class="d-flex align-items-center">
-                    <img src="{% static 'lavava/assets/delete9.png' %}" class="me-2" alt="player">
-                    <span>Fran</span>
-                  </div>
-                </td>
-                <td>38</td>
-                <td>24</td>
-                <td>7</td>
-                <td>7</td>
-                <td>7</td>
-                <td>2</td>
-                <td>0.2</td>
-              </tr>
+              {% endfor %}
             </tbody>
             <tfoot>
               <tr class="opacity-75 border-0">

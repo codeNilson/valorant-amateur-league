@@ -15,6 +15,7 @@ class PlayerAdmin(admin.ModelAdmin):
                     "first_name",
                     "email",
                     "tier",
+                    "main_agent",
                     "last_login",
                     "date_joined",
                 )
@@ -40,11 +41,14 @@ class PlayerAdmin(admin.ModelAdmin):
         "username",
         "first_name",
         "tier",
+        "main_agent",
         "email",
     ]
 
     list_editable = [
+        "first_name",
         "tier",
+        "main_agent",
     ]
 
     readonly_fields = [
@@ -53,6 +57,11 @@ class PlayerAdmin(admin.ModelAdmin):
 
     list_select_related = [
         "tier",
+        "main_agent",
+    ]
+
+    list_prefetch_related = [
+        "stats",
     ]
 
     list_filter = [
@@ -69,6 +78,6 @@ class PlayerAdmin(admin.ModelAdmin):
 
     def save_model(self, request, obj, form, change):
         # If the password is changed, update it
-        if form.cleaned_data["password"]:
+        if form.cleaned_data.get("password"):
             obj.set_password(form.cleaned_data["password"])
         super().save_model(request, obj, form, change)

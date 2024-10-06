@@ -1,6 +1,6 @@
+import uuid
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-import uuid
 
 
 class Player(AbstractUser):
@@ -11,4 +11,10 @@ class Player(AbstractUser):
         related_name="players",
         blank=True,
         null=True,
+    )
+    main_agent = models.ForeignKey(
+        "gamedata.Agent",
+        on_delete=models.SET_NULL,
+        null=True,
+        default=22,
     )
