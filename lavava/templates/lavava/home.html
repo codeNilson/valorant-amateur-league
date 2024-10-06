@@ -68,10 +68,11 @@
                 <th>L</th>
                 <th>MVP</th>
                 <th>ACE</th>
-                <th>WR</th>
+                <th>W/R</th>
+                <th>KDA</th>
               </tr>
             </thead>
-            <tbody class="text-center">
+            <tbody class="text-center border shadow">
               <tr>
                 <td class="text-start">1 <i class="fa fa-caret-up" aria-hidden="true"></i></td>
                 <td class="text-start">
@@ -86,6 +87,7 @@
                 <td>2</td>
                 <td>2</td>
                 <td>3</td>
+                <td>3.0</td>
               </tr>
               <tr>
                 <td class="text-start">2 <i class="fa fa-caret-up" aria-hidden="true"></i></td>
@@ -101,6 +103,7 @@
                 <td>7</td>
                 <td>7</td>
                 <td>7</td>
+                <td>1.7</td>
               </tr>
               <tr>
                 <td class="text-start">3 <i class="fa fa-caret-up" aria-hidden="true"></i></td>
@@ -116,9 +119,10 @@
                 <td>9</td>
                 <td>9</td>
                 <td>7</td>
+                <td>2.7</td>
               </tr>
               <tr>
-                <td class="text-start">4 <i class="fa fa-caret-down" aria-hidden="true"></i></td>
+                <td class="text-start">4 <i class="fa-solid fa-equals"></i></td>
                 <td class="text-start">
                   <div class="d-flex align-items-center">
                     <img src="{% static 'lavava/assets/delete3.png' %}" class="me-2" alt="player">
@@ -131,6 +135,7 @@
                 <td>7</td>
                 <td>7</td>
                 <td>2</td>
+                <td>2.0</td>
               </tr>
               <tr>
                 <td class="text-start">5 <i class="fa fa-caret-up" aria-hidden="true"></i></td>
@@ -146,6 +151,7 @@
                 <td>12</td>
                 <td>12</td>
                 <td>12</td>
+                <td>1.2</td>
               </tr>
               <tr>
                 <td class="text-start">6 <i class="fa fa-caret-down" aria-hidden="true"></i></td>
@@ -161,6 +167,7 @@
                 <td>8</td>
                 <td>8</td>
                 <td>12</td>
+                <td>1.6</td>
               </tr>
               <tr>
                 <td class="text-start">7 <i class="fa fa-caret-down" aria-hidden="true"></i></td>
@@ -175,10 +182,11 @@
                 <td>6</td>
                 <td>6</td>
                 <td>14</td>
-                <td>14</td>
+                <td>7</td>
+                <td>0.9</td>
               </tr>
               <tr>
-                <td class="text-start">8 <i class="fa fa-caret-up" aria-hidden="true"></i></td>
+                <td class="text-start">8 <i class="fa-solid fa-equals"></i></i></td>
                 <td class="text-start">
                   <div class="d-flex align-items-center">
                     <img src="{% static 'lavava/assets/delete7.png' %}" class="me-2" alt="player">
@@ -189,8 +197,9 @@
                 <td>12</td>
                 <td>11</td>
                 <td>10</td>
-                <td>2/td>
+                <td>2</td>
                 <td>9</td>
+                <td>0.9</td>
               </tr>
               <tr>
                 <td class="text-start">9 <i class="fa fa-caret-up" aria-hidden="true"></i></td>
@@ -206,6 +215,7 @@
                 <td>3</td>
                 <td>4</td>
                 <td>3</td>
+                <td>0.3</td>
               </tr>
               <tr>
                 <td class="text-start">10 <i class="fa fa-caret-down" aria-hidden="true"></i></td>
@@ -221,6 +231,7 @@
                 <td>7</td>
                 <td>7</td>
                 <td>2</td>
+                <td>0.2</td>
               </tr>
             </tbody>
             <tfoot>
@@ -231,7 +242,8 @@
           </table>
         </div>
 
-        <div class="col-lg-3">
+        <div class="col-10 col-md-8 col-lg-3 mx-auto">
+          <!-- Card 1 -->
           <div class="card rounded">
             <div class="card-header text-bg-dark fw-bold fs-4">
               Top Player
@@ -243,7 +255,22 @@
               <a href="#" class="btn btn-red">Check Profile</a>
             </div>
           </div>
-          <div class="card mt-1">
+
+          <!-- Card 2 -->
+          <div class="card mt-3 mt-md-1">
+            <div class="card-header text-bg-dark fw-bold fs-4">
+              Last Match
+            </div>
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+              <p class="card-text">Aro Might is the player with most wins so far. His win ratio is 85,7%!
+              </p>
+              <a href="#" class="btn btn-red">Watch on Youtube!</a>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="card mt-3 mt-md-1">
             <div class="card-header text-bg-dark fw-bold fs-4">
               Last Match
             </div>
