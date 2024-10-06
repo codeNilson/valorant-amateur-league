@@ -9,6 +9,7 @@
 $theme-colors: map-merge($theme-colors, $custom-colors);
 
 @import "../../../node_modules/bootstrap/scss/bootstrap";
+
 @import "partials/custom_mixins";
 @import "partials/full_heigh_body";
 
@@ -59,10 +60,6 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
     animation: translateY 500ms 4 alternate;
 }
 
-.carousel-caption {
-    z-index: 2;
-}
-
 /* Footer  */
 
 .footer-logo p {
@@ -111,11 +108,34 @@ table.result-point {
 
     .fa-caret-down {
         color: red;
-        transition: transform 0.3s ease;
     }
 
     .fa-caret-up {
         color: green;
-        transition: transform 0.3s ease;
+    }
+}
+
+
+%botao {
+    padding: 10px 20px;
+    border: 1px solid black;
+    border-radius: 5px;
+    text-decoration: none;
+    color: black;
+
+    &:hover {
+        background-color: black;
+        color: rgb(0, 243, 130);
+    }
+}
+
+.botao-danger {
+    background-color: red;
+    color: white;
+    @extend %botao;
+
+    &:hover {
+        background-color: #000;
+        color: red;
     }
 }
