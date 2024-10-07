@@ -74,7 +74,7 @@
             <tbody class="text-center border shadow">
               {% for player in players %}
               <tr>
-                <td class="text-start">{{forloop.counter}} <i class="fa fa-caret-up" aria-hidden="true"></i></td>
+                <td class="text-start">{{forloop.counter}} <i class="fa {{player.position_changes}}" aria-hidden="true"></i></td>
                 <td class="text-start">
                   <div class="d-flex align-items-center">
                     <img src={{player.main_agent.small_icon}} class="me-2" alt="player">

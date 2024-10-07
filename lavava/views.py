@@ -1,7 +1,7 @@
 from django.db.models import Count, F, Q, Sum
 from django.views.generic import TemplateView
 from players.models import Player
-from utils import calc_kda, calc_win_ratio
+from utils import calc_kda, calc_win_ratio, calc_position_changes
 
 
 class LandingPageView(TemplateView):
@@ -34,6 +34,7 @@ class HomeView(TemplateView):
         )
 
         for player in players:
+
             player.points = (player.mvp + player.ace) + player.wins * 3
             player.winratio = calc_win_ratio(
                 wins=player.wins,
@@ -44,6 +45,10 @@ class HomeView(TemplateView):
                 assists=player.total_assists,
                 deaths=player.total_deaths,
             )
+
+            player.position_changes = player.get_position_class()
+
         players = sorted(players, key=lambda p: (p.points, p.mvp, p.ace), reverse=True)
+
         ctx["players"] = players
         return ctx

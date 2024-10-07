@@ -16,6 +16,7 @@ class PlayerAdmin(admin.ModelAdmin):
                     "email",
                     "tier",
                     "main_agent",
+                    "last_position",
                     "last_login",
                     "date_joined",
                 )
@@ -43,6 +44,7 @@ class PlayerAdmin(admin.ModelAdmin):
         "tier",
         "main_agent",
         "email",
+        "last_position",
     ]
 
     list_editable = [

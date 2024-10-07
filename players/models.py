@@ -17,3 +17,11 @@ class Player(AbstractUser):
         on_delete=models.SET_NULL,
         null=True,
     )
+    last_position_change = models.IntegerField(default=0)
+
+    def get_position_class(self):
+        if self.last_position_change < 0:
+            return "fa-caret-down"
+        if self.last_position_change > 0:
+            return "fa-caret-up"
+        return "fa-minus"
