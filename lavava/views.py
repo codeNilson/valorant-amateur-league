@@ -24,7 +24,7 @@ class Home(TemplateView):
                 ),
                 mvp=Count("stats", filter=Q(stats__mvp=True)),
                 ace=Count("stats", filter=Q(stats__ace=True)),
-            ).annotate(kda=F("stats__kills") + F("stats__assists") / F("stats__deaths"))
+            ).annotate(kda=(F("stats__kills") + F("stats__assists")) / F("stats__deaths"))
         )
 
         for player in players:
