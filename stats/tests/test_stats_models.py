@@ -9,7 +9,6 @@ class TestStatModel(TestCase):
 
     @classmethod
     def setUpTestData(cls):
-        # Create a player
         cls.player = Player.objects.create_user(
             username="jhon_doe", password="password"
         )

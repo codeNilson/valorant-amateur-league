@@ -16,5 +16,4 @@ class Player(AbstractUser):
         "gamedata.Agent",
         on_delete=models.SET_NULL,
         null=True,
-        default=22,
     )
