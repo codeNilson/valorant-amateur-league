@@ -3,7 +3,7 @@
 <nav class="navbar navbar-expand-md">
     <div class="container-fluid d-flex px-5">
         <a class="navbar-brand" href="/">
-            <img src="{% static 'lavava/assets/lavava_logo.png' %}" alt="Logo da Lavava">
+            <img src="{% static 'global/assets/lavava_logo.png' %}" alt="Logo da Lavava" class="lavava-logo img-fluid">
         </a>
 
         <button class="btn btn-outline-red border-0 d-md-none d-flex aling-items-center" type="button"
@@ -88,7 +88,10 @@
             </li>
             <hr class="w-25">
             <li class="nav-item">
-                <a class="nav-link" href="/admin">Logout</a>
+                <form action="{% url "players:logout" %}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit" class="nav-link">Logout</button>
+                </form>
             </li>
             {% else %}
             <li class="nav-item">

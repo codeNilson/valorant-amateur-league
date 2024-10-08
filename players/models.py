@@ -41,5 +41,6 @@ class RankingLog(models.Model):
     def save_position_changes(self, index: int) -> None:
         self.last_position_change = (index - self.last_position) * (-1)
         self.last_position = index
-        self.updated_at = datetime.now()
+        self.updated_at = datetime.today().date()
+        self.full_clean()
         self.save()

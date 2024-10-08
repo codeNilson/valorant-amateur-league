@@ -14,8 +14,7 @@ class HomeView(TemplateView):
 
     def get_players_ranking(self):
         players = (
-            Player.objects.prefetch_related("stats")
-            .select_related("tier", "main_agent", "rankinglog")
+            Player.objects.select_related("main_agent", "rankinglog")
             .annotate(
                 wins=Count(
                     "teams", filter=Q(teams__matches__winner__id=F("teams__id"))
@@ -30,12 +29,12 @@ class HomeView(TemplateView):
                 total_kills=Sum("stats__kills"),
                 total_deaths=Sum("stats__deaths"),
                 total_assists=Sum("stats__assists"),
+                points=F("mvp") + F("ace") + F("wins") * 3,
             )
         )
 
         for player in players:
 
-            player.points = (player.mvp + player.ace) + player.wins * 3
             player.winratio = calc_win_ratio(
                 wins=player.wins,
                 losses=player.losses,
@@ -56,10 +55,10 @@ class HomeView(TemplateView):
 
         players = self.get_players_ranking()
         ctx["players"] = players
-        ctx["update_at"] = players[0].rankinglog.updated_at
+        ctx["update_at"] = players[0].rankinglog.updated_at.strftime("%d/%m/%Y")
         return ctx
 
-    def post(self, request, *args, **kwargs):
+    def post(self, request, *args, **kwargs):  # pylint: disable=unused-argument
 
         players = self.get_players_ranking()
 

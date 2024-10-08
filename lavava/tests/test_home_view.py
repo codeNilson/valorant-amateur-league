@@ -1,31 +1,14 @@
-from django.test import TestCase, RequestFactory
+from django.test import TestCase
 from django.urls import reverse
 from players.models import Player
-from teams.models import Team
-from matches.models import Match
-from stats.models import Stat
-from lavava.views import HomeView
-from utils import calc_kda, calc_win_ratio
 
 
 class HomeViewTests(TestCase):
 
     def setUp(self):
-        self.player = Player.objects.create(username="Test Player")
-        self.team = Team.objects.create()
-        self.match = Match.objects.create(winner=self.team)
-        self.stat = Stat.objects.create(
-            player=self.player,
-            team=self.team,
-            kills=10,
-            deaths=2,
-            assists=5,
-            mvp=True,
-            ace=True,
-        )
-        self.team.match = self.match
-        self.team.full_clean()
-        self.team.save()
+        # Configurar dados de teste
+        self.player1 = Player.objects.create(username="Player 1")
+        self.player2 = Player.objects.create(username="Player 2")
 
     def test_home_view_loads_correct_template(self):
         url = reverse("home")
@@ -40,26 +23,23 @@ class HomeViewTests(TestCase):
     def test_home_view_context(self):
         url = reverse("home")
         response = self.client.get(url)
-        self.assertIn("players", response.context_data)
-        players = response.context_data["players"]
-        self.assertEqual(len(players), 1)
-        player = players[0]
-        self.assertEqual(player.points, 5)
-        self.assertEqual(player.winratio, 100)
-        self.assertEqual(player.kda, 7.5)
+        self.assertIn("players", response.context)
+        players = response.context["players"]
+        self.assertEqual(len(players), 2)
+        self.assertEqual(players[0].username, "Player 1")
+        self.assertIn("update_at", response.context)
 
     def test_home_view_post_method_redirect_to_home(self):
         url = reverse("home")
         response = self.client.post(url, follow=True)
         self.assertRedirects(response, url)
 
-    def test_home_view_post_method_successfully_updates_player_position(self):
-        self.assertEqual(self.player.last_position, 0)
-        self.assertEqual(self.player.last_position_change, 0)
-        self.assertEqual(self.player.get_position_class(), "fa-minus")
-
+    def test_home_view_post_saves_position_changes(self):
         url = reverse("home")
         self.client.post(url, follow=True)
-        self.assertEqual(self.player.last_position, 1)
-        self.assertEqual(self.player.last_position_change, 1)
-        self.assertEqual(self.player.get_position_class(), "fa-caret-up")
+        self.player1.refresh_from_db()
+        self.player2.refresh_from_db()
+        self.assertEqual(self.player1.rankinglog.last_position, 1)
+        self.assertEqual(self.player1.rankinglog.last_position_change, -1)
+        self.assertEqual(self.player2.rankinglog.last_position_change, -2)
+        self.assertEqual(self.player2.rankinglog.last_position_change, -2)

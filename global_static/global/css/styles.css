@@ -12077,6 +12077,11 @@ main {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
+.lavava-logo {
+  max-width: 80px;
+  height: auto;
+}
+
 .social-icons-container {
   gap: 16px;
 }

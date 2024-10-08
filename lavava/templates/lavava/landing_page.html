@@ -4,29 +4,33 @@
 {% block content %}
     <header class="p-3">
         <div class="text-center">
-            <img src={% static 'lavava/assets/lavava_logo.png'%} alt="lavava logo">
+            <a href="{% url "home" %}">
+                <img src={% static 'global/assets/lavava_logo.png'%} alt="lavava logo" class="lavava-logo">
+            </a>
         </div>
     </header>
 
-    <main class="overlay-md mb-4 bg-red">
-        <div class="hero container">
-            <div class="hero-content row justify-content-center align-items-center p-2">
-                <div class="hero-image col-12 col-md-5">
-                    <img src={% static 'lavava/assets/lp_geeko_bg.png'%} alt="hero-image" class="img-fluid">
-                </div>
-                <div class="hero-text col-12 col-md-5 m-3 text-center text-md-end z-1 position-md-absolute text-shadow">
-                    <h1 class="display-1 display-sm-2 display-md-3 display-lg-4 fw-semibold">
-                        WELCOME TO LAVAVA
-                    </h1>
-                    <p class="fs-4">Follow the standings, statistics, and much more of the Valorant Amateur League.</p>
-                    <a type="btn" href="/home" class="btn btn-outline-light btn-lg rounded-0 shadow">
-                        Join the fun!
-                    </a>
+    <main>
+        <div class="overlay-md bg-red">
+            <div class="hero container">
+                <div class="hero-content row justify-content-center align-items-center p-2">
+                    <div class="hero-image col-12 col-md-5">
+                        <img src={% static 'lavava/assets/lp_geeko_bg.png'%} alt="hero-image" class="img-fluid">
+                    </div>
+                    <div class="hero-text col-12 col-md-5 m-3 text-center text-md-end z-1 position-md-absolute text-shadow">
+                        <h1 class="display-1 display-sm-2 display-md-3 display-lg-4 fw-semibold">
+                            WELCOME TO LAVAVA
+                        </h1>
+                        <p class="fs-4">Follow the standings, statistics, and much more of the Valorant Amateur League.</p>
+                        <a type="btn" href="/home" class="btn btn-outline-light btn-lg rounded-0 shadow">
+                            Join the fun!
+                        </a>
+                    </div>
                 </div>
             </div>
-    </main>
+        </div>
 
-    <section class="section-social mb-4">
+    <section class="section-social py-5">
         <div class="container container-social text-center">
             <h2>
                 Follow us for more!
@@ -40,7 +44,7 @@
         </div>
     </section>
 
-    <section class="section-features bg-dark p-4 d-flex justify-content-center">
+    <section class="section-features bg-dark d-flex justify-content-center py-5">
         <div class="container container-features text-center text-light row gx-5 gy-2">
 
             <div class="feature col-12 col-md-4">
@@ -70,8 +74,8 @@
                 <hr class="w-25 mx-auto">
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
             </div>
-
         </div>
     </section>
+</main>
 
 {% endblock content %}
