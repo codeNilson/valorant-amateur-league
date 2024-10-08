@@ -11,9 +11,3 @@ def calc_kda(kills=None, assists=None, deaths=None):
             return round((kills + assists), 2)
         return round((kills + assists) / deaths, 2)
     return 0
-
-
-def save_position_changes(player: object, index: int) -> str:
-    player.last_position_change = (index - player.last_position) * (-1)
-    player.last_position = index
-    player.save()

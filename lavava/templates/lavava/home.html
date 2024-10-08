@@ -56,7 +56,7 @@
     <div class="container">
       <div class="d-flex align-items-center">
         <h3 class="me-auto">Ranking</h3>
-        <form action="{% url "update_ranking" %}" method="POST" class="me-lg-auto">
+        <form action="{% url "home" %}" method="POST" class="me-lg-auto">
           {% csrf_token %}
           <button type="submit" class="badge text-bg-red">Update Ranking</button>
         </form>

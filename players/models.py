@@ -20,9 +20,14 @@ class Player(AbstractUser):
     last_position = models.IntegerField(default=0)
     last_position_change = models.IntegerField(default=0)
 
-    def get_position_class(self):
+    def get_position_class(self) -> str:
         if self.last_position_change < 0:
             return "fa-caret-down"
         if self.last_position_change > 0:
             return "fa-caret-up"
         return "fa-minus"
+
+    def save_position_changes(self, index: int) -> None:
+        self.last_position_change = (index - self.last_position) * (-1)
+        self.last_position = index
+        self.save()
