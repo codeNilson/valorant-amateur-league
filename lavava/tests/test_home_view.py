@@ -11,7 +11,6 @@ from utils import calc_kda, calc_win_ratio
 class HomeViewTests(TestCase):
 
     def setUp(self):
-        self.factory = RequestFactory()
         self.player = Player.objects.create(username="Test Player")
         self.team = Team.objects.create()
         self.match = Match.objects.create(winner=self.team)
@@ -39,8 +38,8 @@ class HomeViewTests(TestCase):
         self.assertEqual(response.status_code, 200)
 
     def test_home_view_context(self):
-        request = self.factory.get(reverse("home"))
-        response = HomeView.as_view()(request)
+        url = reverse("home")
+        response = self.client.get(url)
         self.assertIn("players", response.context_data)
         players = response.context_data["players"]
         self.assertEqual(len(players), 1)
@@ -48,3 +47,19 @@ class HomeViewTests(TestCase):
         self.assertEqual(player.points, 5)
         self.assertEqual(player.winratio, 100)
         self.assertEqual(player.kda, 7.5)
+
+    def test_home_view_post_method_redirect_to_home(self):
+        url = reverse("home")
+        response = self.client.post(url, follow=True)
+        self.assertRedirects(response, url)
+
+    def test_home_view_post_method_successfully_updates_player_position(self):
+        self.assertEqual(self.player.last_position, 0)
+        self.assertEqual(self.player.last_position_change, 0)
+        self.assertEqual(self.player.get_position_class(), "fa-minus")
+
+        url = reverse("home")
+        self.client.post(url, follow=True)
+        self.assertEqual(self.player.last_position, 1)
+        self.assertEqual(self.player.last_position_change, 1)
+        self.assertEqual(self.player.get_position_class(), "fa-caret-up")
