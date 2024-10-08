@@ -15,7 +15,7 @@ class HomeView(TemplateView):
     def get_players_ranking(self):
         players = (
             Player.objects.prefetch_related("stats")
-            .select_related("tier", "main_agent")
+            .select_related("tier", "main_agent", "rankinglog")
             .annotate(
                 wins=Count(
                     "teams", filter=Q(teams__matches__winner__id=F("teams__id"))
@@ -45,7 +45,7 @@ class HomeView(TemplateView):
                 assists=player.total_assists,
                 deaths=player.total_deaths,
             )
-            player.position_changes = player.get_position_class()
+            player.position_changes = player.rankinglog.get_position_class()
 
         players = sorted(players, key=lambda p: (p.points, p.mvp, p.ace), reverse=True)
 
@@ -54,7 +54,9 @@ class HomeView(TemplateView):
     def get_context_data(self, **kwargs):
         ctx = super().get_context_data(**kwargs)
 
-        ctx["players"] = self.get_players_ranking()
+        players = self.get_players_ranking()
+        ctx["players"] = players
+        ctx["update_at"] = players[0].rankinglog.updated_at
         return ctx
 
     def post(self, request, *args, **kwargs):
@@ -62,6 +64,6 @@ class HomeView(TemplateView):
         players = self.get_players_ranking()
 
         for index, player in enumerate(players, start=1):
-            player.save_position_changes(index)
+            player.rankinglog.save_position_changes(index)
 
         return redirect("home")

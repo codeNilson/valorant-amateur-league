@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Player
+from .models import Player, RankingLog
 
 
 @admin.register(Player)
@@ -81,3 +81,25 @@ class PlayerAdmin(admin.ModelAdmin):
         if form.cleaned_data.get("password"):
             obj.set_password(form.cleaned_data["password"])
         super().save_model(request, obj, form, change)
+
+
+@admin.register(RankingLog)
+class RankingLogAdmin(admin.ModelAdmin):
+
+    readonly_fields = [
+        "last_position",
+        "last_position_change",
+    ]
+
+    list_display = [
+        "player",
+        "last_position",
+        "last_position_change",
+        "updated_at",
+    ]
+
+    search_fields = [
+        "player__username",
+    ]
+
+    list_per_page = 10

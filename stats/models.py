@@ -10,7 +10,7 @@ class Stat(models.Model):
     )
     team = models.ForeignKey(
         "teams.Team",
-        on_delete=models.SET_NULL,
+        on_delete=models.CASCADE,
         related_name="stats",
         null=True,
         blank=True,
