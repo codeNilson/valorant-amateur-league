@@ -54,7 +54,13 @@
 
   <section class="content-info py-5 bg-light">
     <div class="container">
-      <h3>Ranking</h3>
+      <div class="d-flex align-items-center">
+        <h3 class="me-auto">Ranking</h3>
+        <form action="{% url "update_ranking" %}" method="POST" class="me-lg-auto">
+          {% csrf_token %}
+          <button type="submit" class="badge text-bg-red">Update Ranking</button>
+        </form>
+      </div>
       <div class="row gy-3">
         <div class="col-lg-8 table-responsive">
           <table class="table-striped table table-hover result-point text-center align-middle ">

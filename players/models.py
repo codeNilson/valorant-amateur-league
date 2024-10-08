@@ -17,6 +17,7 @@ class Player(AbstractUser):
         on_delete=models.SET_NULL,
         null=True,
     )
+    last_position = models.IntegerField(default=0)
     last_position_change = models.IntegerField(default=0)
 
     def get_position_class(self):

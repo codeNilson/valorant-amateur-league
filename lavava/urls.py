@@ -9,6 +9,7 @@ urlpatterns = [
     path("__debug__/", include("debug_toolbar.urls")),
     path("", views.LandingPageView.as_view(), name="landing_page"),
     path("home", views.HomeView.as_view(), name="home"),
+    path("ranking/update/", views.UpdateRankingView.as_view(), name="update_ranking"),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
