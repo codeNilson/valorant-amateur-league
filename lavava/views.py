@@ -13,24 +13,13 @@ class HomeView(TemplateView):
     template_name = "lavava/home.html"
 
     def get_players_ranking(self):
-        players = (
-            Player.objects.select_related("main_agent", "rankinglog")
-            .annotate(
-                wins=Count(
-                    "teams", filter=Q(teams__matches__winner__id=F("teams__id"))
-                ),
-                losses=Count(
-                    "teams", filter=~Q(teams__matches__winner__id=F("teams__id"))
-                ),
-                mvp=Count("stats", filter=Q(stats__mvp=True)),
-                ace=Count("stats", filter=Q(stats__ace=True)),
-            )
-            .annotate(
-                total_kills=Sum("stats__kills"),
-                total_deaths=Sum("stats__deaths"),
-                total_assists=Sum("stats__assists"),
-                points=F("mvp") + F("ace") + F("wins") * 3,
-            )
+        players = Player.objects.select_related("main_agent", "rankinglog")
+        players = Player.annotate_wins_and_losses(players)
+        players = Player.annotate_mvp_and_ace(players)
+        players = Player.annotate_kills_deaths_assists(players)
+        players = Player.annotate_points(players)
+        players = players.annotate(
+            winratio
         )
 
         for player in players:

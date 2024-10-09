@@ -1,5 +1,5 @@
-from datetime import datetime
 import uuid
+from datetime import datetime
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
@@ -18,6 +18,40 @@ class Player(AbstractUser):
         on_delete=models.SET_NULL,
         null=True,
     )
+
+    @staticmethod
+    def annotate_wins_and_losses(queryset):
+        return queryset.annotate(
+            wins=models.Count(
+                "teams",
+                filter=models.Q(teams__matches__winner__id=models.F("teams__id")),
+            ),
+            losses=models.Count(
+                "teams",
+                filter=~models.Q(teams__matches__winner__id=models.F("teams__id")),
+            ),
+        )
+
+    @staticmethod
+    def annotate_mvp_and_ace(queryset):
+        return queryset.annotate(
+            mvp=models.Count("stats", filter=models.Q(stats__mvp=True)),
+            ace=models.Count("stats", filter=models.Q(stats__ace=True)),
+        )
+
+    @staticmethod
+    def annotate_kills_deaths_assists(queryset):
+        return queryset.annotate(
+            total_kills=models.Sum("stats__kills"),
+            total_deaths=models.Sum("stats__deaths"),
+            total_assists=models.Sum("stats__assists"),
+        )
+
+    @staticmethod
+    def annotate_points(queryset):
+        return queryset.annotate(
+            points=models.F("mvp") + models.F("ace") + models.F("wins") * 3
+        )
 
 
 class RankingLog(models.Model):
