@@ -1,4 +1,5 @@
-from django.db.models import Count, F, Q, Sum
+from django.db.models import When, Case, F
+from django.db import models
 from django.shortcuts import redirect
 from django.views.generic import TemplateView
 from players.models import Player
@@ -18,21 +19,17 @@ class HomeView(TemplateView):
         players = Player.annotate_mvp_and_ace(players)
         players = Player.annotate_kills_deaths_assists(players)
         players = Player.annotate_points(players)
+        players = Player.annotate_kda(players)
         players = players.annotate(
-            winratio
+            winratio=F("wins") / (F("wins") + F("losses"))
         )
 
         for player in players:
 
-            player.winratio = calc_win_ratio(
-                wins=player.wins,
-                losses=player.losses,
-            )
-            player.kda = calc_kda(
-                kills=player.total_kills,
-                assists=player.total_assists,
-                deaths=player.total_deaths,
-            )
+            # player.winratio = calc_win_ratio(
+            #     wins=player.wins,
+            #     losses=player.losses,
+            # )
             player.position_changes = player.rankinglog.get_position_class()
 
         players = sorted(players, key=lambda p: (p.points, p.mvp, p.ace), reverse=True)

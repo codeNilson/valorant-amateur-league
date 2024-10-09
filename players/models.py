@@ -2,6 +2,7 @@ import uuid
 from datetime import datetime
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.db.models.functions import Round
 
 
 class Player(AbstractUser):
@@ -28,7 +29,7 @@ class Player(AbstractUser):
             ),
             losses=models.Count(
                 "teams",
-                filter=~models.Q(teams__matches__winner__id=models.F("teams__id")),
+                filter=models.Q(teams__matches__winner__id=~models.F("teams__id")),
             ),
         )
 
@@ -51,6 +52,20 @@ class Player(AbstractUser):
     def annotate_points(queryset):
         return queryset.annotate(
             points=models.F("mvp") + models.F("ace") + models.F("wins") * 3
+        )
+
+    @staticmethod
+    def annotate_kda(queryset):
+        return queryset.annotate(
+            kda=models.Case(
+                models.When(
+                    total_deaths=0,
+                    then=models.F("total_kills") + models.F("total_assists"),
+                ),
+                default=Round((models.F("total_kills") + models.F("total_assists"))
+                / models.F("total_deaths"), 2),
+                output_field=models.FloatField(),
+            )
         )
 
 
