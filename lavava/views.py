@@ -1,9 +1,6 @@
-from django.db.models import When, Case, F
-from django.db import models
 from django.shortcuts import redirect
 from django.views.generic import TemplateView
 from players.models import Player
-from utils import calc_kda, calc_win_ratio
 
 
 class LandingPageView(TemplateView):
@@ -20,16 +17,9 @@ class HomeView(TemplateView):
         players = Player.annotate_kills_deaths_assists(players)
         players = Player.annotate_points(players)
         players = Player.annotate_kda(players)
-        players = players.annotate(
-            winratio=F("wins") / (F("wins") + F("losses"))
-        )
+        players = Player.annotate_win_ratio(players)
 
         for player in players:
-
-            # player.winratio = calc_win_ratio(
-            #     wins=player.wins,
-            #     losses=player.losses,
-            # )
             player.position_changes = player.rankinglog.get_position_class()
 
         players = sorted(players, key=lambda p: (p.points, p.mvp, p.ace), reverse=True)

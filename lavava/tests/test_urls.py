@@ -16,7 +16,7 @@ class LavavaUrlTests(TestCase):
 
     def test_home_namespace(self):
         url = reverse("home")
-        self.assertEqual(url, "/home")
+        self.assertEqual(url, "/home/")
 
     def test_home_loads_correct_function(self):
         url = reverse("home")

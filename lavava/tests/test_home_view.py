@@ -41,5 +41,5 @@ class HomeViewTests(TestCase):
         self.player2.refresh_from_db()
         self.assertEqual(self.player1.rankinglog.last_position, 1)
         self.assertEqual(self.player1.rankinglog.last_position_change, -1)
-        self.assertEqual(self.player2.rankinglog.last_position_change, -2)
+        self.assertEqual(self.player2.rankinglog.last_position, 2)
         self.assertEqual(self.player2.rankinglog.last_position_change, -2)

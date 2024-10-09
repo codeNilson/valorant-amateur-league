@@ -1,6 +1,7 @@
 import uuid
 from datetime import datetime
 from django.db import models
+from django.db.models.functions import Cast
 from django.contrib.auth.models import AbstractUser
 from django.db.models.functions import Round
 
@@ -29,7 +30,7 @@ class Player(AbstractUser):
             ),
             losses=models.Count(
                 "teams",
-                filter=models.Q(teams__matches__winner__id=~models.F("teams__id")),
+                filter=~models.Q(teams__matches__winner__id=models.F("teams__id")),
             ),
         )
 
@@ -62,10 +63,31 @@ class Player(AbstractUser):
                     total_deaths=0,
                     then=models.F("total_kills") + models.F("total_assists"),
                 ),
-                default=Round((models.F("total_kills") + models.F("total_assists"))
-                / models.F("total_deaths"), 2),
+                default=Round(
+                    (
+                        Cast(models.F("total_kills"), models.FloatField())
+                        + Cast(models.F("total_assists"), models.FloatField())
+                    )
+                    / Cast(models.F("total_deaths"), models.FloatField()),
+                    2,
+                ),
                 output_field=models.FloatField(),
             )
+        )
+
+    @staticmethod
+    def annotate_win_ratio(queryset):
+        return queryset.annotate(
+            win_ratio=models.Case(
+                models.When(models.Q(wins=0) & models.Q(losses=0), then=0),
+                default=Cast(models.F("wins"), models.FloatField())
+                / (
+                    Cast(models.F("wins"), models.FloatField())
+                    + Cast(models.F("losses"), models.FloatField())
+                ),
+                output_field=models.FloatField(),
+            )
+            * 100
         )
 
 

@@ -13,14 +13,11 @@ class TestStatModel(TestCase):
             username="jhon_doe", password="password"
         )
 
-        # Create a team
         cls.team = Team.objects.create()
 
-        # Create a stat
         cls.stat = Stat.objects.create(player=cls.player, team=cls.team)
 
     def test_stats_get_kda_method(self):
-        """Test the get_kda method of the Stat model."""
 
         # Test the case where the player has no kills or assists
         self.assertEqual(self.stat.get_kda(), None)

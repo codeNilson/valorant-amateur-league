@@ -54,15 +54,15 @@
 
   <section class="content-info py-5 bg-light">
     <div class="container">
-      <div class="d-flex align-items-center">
-        <h3 class="me-auto">Ranking</h3>
-        <form action="{% url "home" %}" method="POST" class="me-lg-auto">
-          {% csrf_token %}
-          <button type="submit" class="badge text-bg-red">Update Ranking</button>
-        </form>
-      </div>
       <div class="row gy-3">
         <div class="col-lg-8 table-responsive">
+          <div class="d-flex align-items-center">
+            <h3 class="me-auto">Ranking</h3>
+            <form action="{% url "home" %}" method="POST">
+              {% csrf_token %}
+              <button type="submit" class="badge text-bg-red">Update Ranking</button>
+            </form>
+          </div>
           <table class="table-striped table table-hover result-point text-center align-middle ">
             <thead class="table-dark">
               <tr>
@@ -92,7 +92,7 @@
                 <td>{{player.losses}}</td>
                 <td>{{player.mvp}}</td>
                 <td>{{player.ace}}</td>
-                <td>{{player.winratio}}%</td>
+                <td>{{player.win_ratio}}%</td>
                 <td>{{player.kda}}</td>
               </tr>
               {% endfor %}

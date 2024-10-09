@@ -119,28 +119,3 @@ table.result-point {
         color: green;
     }
 }
-
-
-%botao {
-    padding: 10px 20px;
-    border: 1px solid black;
-    border-radius: 5px;
-    text-decoration: none;
-    color: black;
-
-    &:hover {
-        background-color: black;
-        color: rgb(0, 243, 130);
-    }
-}
-
-.botao-danger {
-    background-color: red;
-    color: white;
-    @extend %botao;
-
-    &:hover {
-        background-color: #000;
-        color: red;
-    }
-}
