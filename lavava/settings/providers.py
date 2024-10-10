@@ -1,5 +1,5 @@
-from dotenv import load_dotenv
 import os
+from dotenv import load_dotenv
 
 load_dotenv()
 
@@ -22,15 +22,12 @@ SOCIALACCOUNT_PROVIDERS = {
 }
 
 # Regular Accounts
-ACCOUNT_EMAIL_REQUIRED=True # Require email for registration
-ACCOUNT_AUTHENTICATION_METHOD = "email" # Use email to login
-ACCOUNT_CHANGE_EMAIL = True # Limit to one email per account
+ACCOUNT_EMAIL_REQUIRED = True  # Require email for registration
+ACCOUNT_AUTHENTICATION_METHOD = "email"  # Use email to login
+ACCOUNT_CHANGE_EMAIL = True  # Limit to one email per account
 
 # Social Accounts
-SOCIALACCOUNT_EMAIL_AUTHENTICATION: True
-SOCIALACCOUNT_EMAIL_AUTHENTICATION_AUTO_CONNECT: True
+SOCIALACCOUNT_EMAIL_AUTHENTICATION = True
+SOCIALACCOUNT_EMAIL_AUTHENTICATION_AUTO_CONNECT = True
 
-ID_SITE = 1
-
-print("client id", os.environ.get("GOOGLE_CLIENT_ID"))
-print("client secret", os.environ.get("GOOGLE_CLIENT_SECRET"))
+SITE_ID = 1

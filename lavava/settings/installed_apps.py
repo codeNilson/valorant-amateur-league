@@ -6,6 +6,7 @@ INSTALLED_APPS = [
     "gamedata",
     "debug_toolbar",
     "django.contrib.admin",
+    "django.contrib.sites",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",

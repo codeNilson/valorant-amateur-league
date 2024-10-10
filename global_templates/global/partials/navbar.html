@@ -29,7 +29,7 @@
                 </li>
                 {% if not user.is_authenticated %}
                 <li class="nav-item d-md-none">
-                    <a class="text-red nav-link" href="/admin">Sign in</a>
+                    <a class="text-red nav-link" href="/accounts/login">Sign in</a>
                 </li>
                 {% endif %}
             </ul>
@@ -38,10 +38,10 @@
             {% if not user.is_authenticated %}
             <ul class="navbar-nav ms-auto d-none d-md-flex">
                 <li class="nav-item">
-                    <a class="btn btn-outline-red rounded-0" href="#">Sign in</a>
+                    <a class="btn btn-outline-red rounded-0" href="/accounts/login">Sign in</a>
                 </li>
                 <li class="nav-item">
-                    <a class="btn btn-red rounded-0" href="/admin">Sign up</a>
+                    <a class="btn btn-red rounded-0" href="/accounts/signup">Sign up</a>
                 </li>
             </ul>
             {% else %}
@@ -95,7 +95,7 @@
             </li>
             {% else %}
             <li class="nav-item">
-                <a class="btn btn-outline-light w-100" href="/admin">Sign in</a>
+                <a class="btn btn-outline-light w-100" href="/accounts/login">Sign in</a>
             </li>
             {% endif %}
         </ul>
