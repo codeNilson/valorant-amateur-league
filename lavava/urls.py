@@ -7,6 +7,7 @@ from . import views
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("__debug__/", include("debug_toolbar.urls")),
+    path("accounts/", include("allauth.urls")),
     path("", views.LandingPageView.as_view(), name="landing_page"),
     path("home/", views.HomeView.as_view(), name="home"),
     path("player/", include("players.urls")),

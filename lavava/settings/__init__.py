@@ -7,3 +7,4 @@ from .middlewares import *
 from .assets import *
 from .templates import *
 from .messages import *
+from .providers import *

@@ -12,6 +12,9 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL = "players.Player"
 
+LOGIN_REDIRECT_URL = reverse_lazy("home")
+LOGOUT_REDIRECT_URL = reverse_lazy("home")
+
 # Language and time zone
 
 LANGUAGE_CODE = "pt-BR"
