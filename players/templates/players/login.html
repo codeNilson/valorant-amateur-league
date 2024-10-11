@@ -1,0 +1,17 @@
+{% extends "global/base.html" %}
+{% load socialaccount %}
+{% block content %}
+{% get_providers as socialaccount_providers %}
+
+
+{{form.as_p}}
+
+{% if socialaccount_providers %}
+{% for provider in socialaccount_providers %}
+<a href="{% provider_login_url provider.id %}" class="btn btn-red">
+    {{provider.name}}
+</a>
+{% endfor %}
+{% endif %}
+
+{% endblock content %}

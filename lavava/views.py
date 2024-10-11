@@ -2,7 +2,6 @@ from django.shortcuts import redirect
 from django.views.generic import TemplateView
 from players.models import Player
 
-
 class LandingPageView(TemplateView):
     template_name = "lavava/landing_page.html"
 
