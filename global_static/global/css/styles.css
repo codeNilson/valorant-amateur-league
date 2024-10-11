@@ -12126,6 +12126,12 @@ main {
   }
 }
 
+.alert {
+  border-width: 0px 0px 5px 0px;
+  bottom: 5px;
+  left: 25px;
+}
+
 /* Keyframes */
 @keyframes translateY {
   from {
@@ -12164,8 +12170,8 @@ table.result-point .fa-caret-up {
   color: #000;
 }
 
-input {
-  border: none;
+.hero-image img {
+  max-width: 330px;
 }
 
 /*# sourceMappingURL=styles.css.map */

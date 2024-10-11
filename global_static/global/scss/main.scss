@@ -80,6 +80,12 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
     }
 }
 
+.alert {
+    border-width: 0px 0px 5px 0px;
+    bottom: 5px;
+    left: 25px;
+}
+
 /* Keyframes */
 @keyframes translateY {
     from {
@@ -131,7 +137,14 @@ table.result-point {
     color: $black;
 }
 
+// .message {
+//     padding: 10px;
+//     width: 75%;
+//     background-color: $light;
+// }
 
-input {
-    border: none;
+
+// TEMPORARIO
+.hero-image img {
+    max-width: 330px;
 }

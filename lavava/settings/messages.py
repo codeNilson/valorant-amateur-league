@@ -1,9 +1,9 @@
 from django.contrib.messages import constants as messages
 
 MESSAGE_TAGS = {
-    messages.DEBUG: "alert alert-info",
-    messages.INFO: "alert alert-info",
-    messages.SUCCESS: "alert alert-success",
-    messages.WARNING: "alert alert-warning",
-    messages.ERROR: "alert alert-danger",
+    messages.DEBUG: "text-bg-info border-info alert-dismissible fade show",
+    messages.INFO: "text-bg-info border-info alert-dismissible fade show",
+    messages.SUCCESS: "text-bg-success border-success alert-success alert-dismissible fade show",
+    messages.WARNING: "text-bg-warning border-warning alert-dismissible fade show",
+    messages.ERROR: "text-bg-red border-danger alert-dismissible fade show",
 }

@@ -1,0 +1,9 @@
+{% if messages %}
+    {% for message in messages %}
+    <div class="{{message.tags}} row alert messages-container position-fixed z-9" role="alert">
+        <i class="fa-solid col-auto fa-check"></i>
+        <p class="m-0 col">{{message}}</p>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+{% endif %}
