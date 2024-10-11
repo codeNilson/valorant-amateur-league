@@ -12153,25 +12153,19 @@ table.result-point .fa-caret-up {
   color: green;
 }
 
-.botao-danger {
-  padding: 10px 20px;
-  border: 1px solid black;
-  border-radius: 5px;
-  text-decoration: none;
-  color: black;
-}
-.botao-danger:hover {
-  background-color: black;
-  color: rgb(0, 243, 130);
+.login-background {
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
 }
 
-.botao-danger {
-  background-color: red;
-  color: white;
+.help-text a {
+  text-decoration: none;
+  color: #000;
 }
-.botao-danger:hover {
-  background-color: #000;
-  color: red;
+
+input {
+  border: none;
 }
 
 /*# sourceMappingURL=styles.css.map */

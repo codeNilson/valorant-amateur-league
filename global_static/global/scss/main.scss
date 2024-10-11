@@ -119,3 +119,19 @@ table.result-point {
         color: green;
     }
 }
+
+.login-background {
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
+
+.help-text a {
+    text-decoration: none;
+    color: $black;
+}
+
+
+input {
+    border: none;
+}
