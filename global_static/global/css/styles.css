@@ -12109,6 +12109,11 @@ table.result-point .fa-caret-up {
   content: "\f05a";
 }
 
+.social-background {
+  background-size: cover;
+  background-position: center;
+}
+
 .hero-image img {
   max-width: 330px;
 }

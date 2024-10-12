@@ -5,5 +5,5 @@ MESSAGE_TAGS = {
     messages.INFO: "text-bg-info border-info",
     messages.SUCCESS: "text-bg-success border-success",
     messages.WARNING: "text-bg-warning border-warning",
-    messages.ERROR: "text-bg-red border-danger",
+    messages.ERROR: "text-bg-danger border-danger",
 }

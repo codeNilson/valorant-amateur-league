@@ -35,15 +35,3 @@ SOCIALACCOUNT_PROVIDERS = {
         },
     },
 }
-
-# Regular Accounts
-ACCOUNT_EMAIL_REQUIRED = True  # Require email for registration
-ACCOUNT_AUTHENTICATION_METHOD = "email"  # Use email to login
-ACCOUNT_CHANGE_EMAIL = True  # Limit to one email per account
-
-# Social Accounts
-SOCIALACCOUNT_EMAIL_AUTHENTICATION = True
-SOCIALACCOUNT_EMAIL_AUTHENTICATION_AUTO_CONNECT = True
-
-SITE_ID = 1
-ACCOUNT_SESSION_REMEMBER = True
