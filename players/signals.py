@@ -1,6 +1,6 @@
 from django.db.models.signals import post_save
-from players.models import Player, RankingLog
 from django.dispatch import receiver
+from players.models import Player, RankingLog
 
 
 @receiver(post_save, sender=Player)

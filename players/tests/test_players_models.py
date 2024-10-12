@@ -1,5 +1,4 @@
 from django.test import TestCase
-from django.db.models import F
 from players.models import Player
 from teams.models import Team
 from stats.models import Stat

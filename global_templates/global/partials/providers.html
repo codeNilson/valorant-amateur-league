@@ -2,10 +2,10 @@
 {% get_providers as socialaccount_providers %}
 
 {% if socialaccount_providers %}
-<div class="providers-icons text-center mt-2">
+<div class="providers-icons text-center mt-2 d-flex justify-content-evenly align-items-center">
     {% for provider in socialaccount_providers %}
-    <a href="{% provider_login_url provider.id %}" class="btn btn-red rounded-circle">
-        <i class="fa-brands fa-google"></i>
+    <a href="{% provider_login_url provider.id %}" role="button" class="btn btn-{{provider.id}}">
+        <i class="fa-brands fa-{{provider.id}}"></i> <span class="text-white">{{provider.name}}</span>
     </a>
     {% endfor %}
 </div>
