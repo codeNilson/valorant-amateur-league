@@ -1,7 +1,13 @@
 $red: #fd4556;
-$dark-red: #53212b;
+$google: $red;
+$youtube: #ff0000;
+$discord: #7289da;
 
 $custom-colors: (
-    "red": $red,
-    "dark-red": $dark-red,
+    "red": $red
+);
+
+$providers: (
+    discord: $discord,
+    google: $google
 );

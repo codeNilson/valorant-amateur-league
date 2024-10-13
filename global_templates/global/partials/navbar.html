@@ -3,9 +3,8 @@
 <nav class="navbar navbar-expand-md">
     <div class="container-fluid d-flex px-5">
         <a class="navbar-brand" href="/">
-            <img src="{% static 'lavava/assets/lavava_logo.png' %}" alt="Logo da Lavava">
+            <img src="{% static 'global/assets/lavava_logo.png' %}" alt="Logo da Lavava" class="lavava-logo img-fluid">
         </a>
-
         <button class="btn btn-outline-red border-0 d-md-none d-flex aling-items-center" type="button"
             data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions"
             aria-controls="offcanvasWithBothOptions" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,7 +28,7 @@
                 </li>
                 {% if not user.is_authenticated %}
                 <li class="nav-item d-md-none">
-                    <a class="text-red nav-link" href="/admin">Sign in</a>
+                    <a class="text-red nav-link" href="{% url "account_login" %}">Sign in</a>
                 </li>
                 {% endif %}
             </ul>
@@ -38,10 +37,10 @@
             {% if not user.is_authenticated %}
             <ul class="navbar-nav ms-auto d-none d-md-flex">
                 <li class="nav-item">
-                    <a class="btn btn-outline-red rounded-0" href="#">Sign in</a>
+                    <a class="btn btn-outline-red rounded-0" role="button" href="{% url "account_login" %}">Sign in</a>
                 </li>
                 <li class="nav-item">
-                    <a class="btn btn-red rounded-0" href="/admin">Sign up</a>
+                    <a class="btn btn-red rounded-0" role="button" href="/accounts/signup">Sign up</a>
                 </li>
             </ul>
             {% else %}
@@ -88,11 +87,14 @@
             </li>
             <hr class="w-25">
             <li class="nav-item">
-                <a class="nav-link" href="/admin">Logout</a>
+                <form action="{% url "account_logout" %}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit" class="nav-link">Logout</button>
+                </form>
             </li>
             {% else %}
             <li class="nav-item">
-                <a class="btn btn-outline-light w-100" href="/admin">Sign in</a>
+                <a class="btn btn-outline-light w-100" role="button" href="{% url "account_login" %}">Sign in</a>
             </li>
             {% endif %}
         </ul>

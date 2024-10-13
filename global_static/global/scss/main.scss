@@ -11,8 +11,18 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
 @import "../../../node_modules/bootstrap/scss/bootstrap";
 
 @import "partials/custom_mixins";
-@import "partials/full_heigh_body";
 
+html {
+    body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    main {
+        flex: 1;
+    }
+}
 
 .bg-red {
     @extend .text-light;
@@ -22,49 +32,30 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
     }
 }
 
+// verificar
 .text-shadow {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.social-icons-container {
-
-    gap: 16px;
-
-    .fa-youtube,
-    .fa-discord {
-        transition: color 0.3s ease, transform 0.5s ease;
-    }
-
-    .fa-youtube {
-        color: #ff0000;
-    }
-
-    .fa-discord {
-        color: #7289da;
-    }
+.lavava-logo {
+    max-width: 80px;
+    height: auto;
 }
 
-.fa-youtube:hover {
-    color: $red;
+.fa-youtube {
+    @include fa-brand-icon($youtube);
 }
 
-.fa-discord:hover {
-    color: #48578d;
+.fa-discord {
+    @include fa-brand-icon($discord);
 }
 
-.fa-github:hover {
-    color: #333;
+.fa-github {
+    @include fa-brand-icon($black);
 }
 
 .jump-animation:hover {
     animation: translateY 500ms 4 alternate;
-}
-
-/* Footer  */
-
-.footer-logo p {
-    font-size: 12px;
-    margin-top: 10px;
 }
 
 .position-md-absolute {
@@ -75,17 +66,11 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
     }
 }
 
-/* Keyframes */
-@keyframes translateY {
-    from {
-        transform: translateY(0);
-        scale: 1;
-    }
-
-    to {
-        transform: translateY(-10px);
-        scale: 1.1;
-    }
+.alert {
+    border-width: 3px;
+    bottom: 5px;
+    left: 25px;
+    z-index: 99;
 }
 
 table.result-point {
@@ -115,27 +100,66 @@ table.result-point {
     }
 }
 
+.login-background {
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
 
-%botao {
-    padding: 10px 20px;
-    border: 1px solid black;
-    border-radius: 5px;
+.help-text a {
     text-decoration: none;
-    color: black;
+    color: $black;
+}
 
-    &:hover {
-        background-color: black;
-        color: rgb(0, 243, 130);
+/* Keyframes */
+@keyframes translateY {
+    from {
+        transform: translateY(0);
+        scale: 1;
+    }
+
+    to {
+        transform: translateY(-5px);
+        scale: 1.1;
     }
 }
 
-.botao-danger {
-    background-color: red;
-    color: white;
-    @extend %botao;
 
-    &:hover {
-        background-color: #000;
-        color: red;
+.messages-container {
+    .alert {
+        position: relative;
+        padding-left: 2rem;
+
+        &::before {
+            content: '';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 600;
+            position: absolute;
+            left: 0.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+        }
     }
+
+    .text-bg-danger::before {
+        content: '\f06a';
+    }
+
+    .text-bg-success::before {
+        content: '\f058';
+    }
+
+    .text-bg-warning::before {
+        content: '\f071';
+    }
+
+    .text-bg-info::before {
+        content: '\f05a';
+    }
+}
+
+
+.social-background {
+    background-size: cover;
+    background-position: top;
 }

@@ -10,7 +10,7 @@ class Stat(models.Model):
     )
     team = models.ForeignKey(
         "teams.Team",
-        on_delete=models.SET_NULL,
+        on_delete=models.CASCADE,
         related_name="stats",
         null=True,
         blank=True,
@@ -32,16 +32,11 @@ class Stat(models.Model):
         unique_together = ("player", "team")
 
     def get_kda(self):
-        """Calculates the KDA of the player."""
         if self.kills is not None and self.assists is not None:
 
             if not self.deaths:
-                # If the player has no deaths or self.deaths for None,
-                # the KDA is just the sum of kills and assists
                 return round((self.kills + self.assists), 2)
 
-            # Otherwise, the KDA is the sum of kills and assists
-            # divided by the number of deaths, rounded to two decimal places
             return round((self.kills + self.assists) / self.deaths, 2)
         return None
 

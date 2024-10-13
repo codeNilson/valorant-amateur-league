@@ -1,29 +1,73 @@
-@mixin overlay($color: rgba(0, 0, 0, 0.4)) {
+// mixins
+@mixin overlay($color: rgba(0, 0, 0, 0.4), $breakpoint: null) {
   position: relative;
 
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: $color;
-    z-index: 1;
+  @if $breakpoint {
+    @include media-breakpoint-down($breakpoint) {
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: $color;
+        z-index: 1;
+      }
+    }
+  }
+
+  @else {
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: $color;
+      z-index: 1;
+    }
   }
 }
 
-@mixin overlay-md($color: rgba(0, 0, 0, 0.4)) {
-  @include media-breakpoint-down(md) {
-    @include overlay($color);
+@mixin fa-brand-icon($color) {
+  color: $color;
+
+  &:hover {
+    color: tint-color($color, 20%);
   }
 }
 
+@mixin provider-button($bg-color, $color: $white) {
+  background-color: $bg-color;
+
+  &:hover {
+    background-color: darken($bg-color, 20%);
+  }
+
+  i {
+    color: $color;
+  }
+}
+
+// definição das variáveis dos mixins
 .overlay {
-  @include overlay;
+  @include overlay();
+
+  &-md {
+    @include overlay($breakpoint: md);
+  }
+
+  &-sm {
+    @include overlay($breakpoint: sm);
+  }
 }
 
-.overlay-md {
-  @include overlay-md;
-}
+@each $provider, $color in $providers {
 
+  // providers buttons
+  .btn-#{$provider} {
+    @include provider-button($color);
+  }
+}

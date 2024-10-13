@@ -1,0 +1,14 @@
+{% extends "global/base.html" %}
+{% load static %}
+{% block content %}
+
+<main>
+    <div class="login-background d-flex justify-content-center align-items-center"
+        style="background-image: url('{% static 'global/assets/login_bg.jpg' %}');">
+        <div class="form-container bg-light p-5 rounded mx-4">
+        {% include "global/partials/forms.html" %}
+        </div>
+        {% include "global/components/sign_with_social.html" %}
+    </div>
+</main>
+{% endblock content %}

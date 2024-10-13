@@ -1,0 +1,40 @@
+<form action="{{form_action}}" method="post">
+    {% csrf_token %}
+    <div class="login-form">
+        <h1 class="text-center">{{form_title}}</h1>
+        <div class="form-group">
+            {% for field in form %}
+            <div class="form-fields mt-3">
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                <div class="input-group focus-ring bg-white border-bottom shadow-sm">
+                    <span class="input-group-text bg-transparent border-0" id="basic-addon1"><i
+                            class="fa-regular fa-user"></i></span>
+                    {{ field }}
+                </div>
+                {% for error in field.errors %}
+                <p class="text-red">
+                    {{ error }}
+                </p>
+                {% endfor %}
+                {% if field.help_text %}
+                {% if field.name == 'password1' %}
+                <p class="mt-1">
+                    <a class="text-decoration-none" data-bs-toggle="collapse" href="#collapse" role="button"
+                        aria-expanded="false" aria-controls="collapse">
+                        Password tips
+                    </a>
+                </p>
+                <div class="collapse" id="collapse">
+                    <div class="card card-body">
+                        <p class="form-text help-text text-end">{{ field.help_text }}</p>
+                    </div>
+                </div>
+                {% else %}
+                <p class="form-text help-text text-end">{{ field.help_text }}</p>
+                {% endif %}
+                {% endif %}
+            </div>
+            {% endfor %}
+            <button type="submit" class="btn btn-red mt-3 w-100">Login</button>
+        </div>
+</form>

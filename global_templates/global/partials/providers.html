@@ -1,0 +1,15 @@
+{% load socialaccount %}
+{% get_providers as socialaccount_providers %}
+
+{% if socialaccount_providers %}
+<div class="providers-icons text-center mt-2 d-flex justify-content-evenly align-items-center">
+    {% for provider in socialaccount_providers %}
+    <form method="POST" action="{% provider_login_url provider.id %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-{{provider.id}}">
+            <i class="fa-brands fa-{{provider.id}}"></i> <span class="text-white">{{provider.name}}</span>
+        </button>
+    </form>
+    {% endfor %}
+</div>
+{% endif %}

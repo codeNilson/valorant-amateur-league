@@ -43,8 +43,8 @@ class Map(models.Model):
 class Tier(models.Model):
     tier = models.CharField(max_length=20, unique=True)
     division = models.CharField(max_length=20)
-    small_icon = models.ImageField(upload_to="tiers/icons/", null=True, blank=True)
-    large_icon = models.ImageField(upload_to="tiers/icons/", null=True, blank=True)
+    small_icon = models.CharField(max_length=255)
+    large_icon = models.CharField(max_length=255)
 
     def __str__(self):
         return self.tier
