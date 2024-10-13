@@ -53,7 +53,7 @@
 
 // definição das variáveis dos mixins
 .overlay {
-  @include overlay();
+  @include overlay($color: rgba(0, 0, 0, 0.3));
 
   &-md {
     @include overlay($breakpoint: md);

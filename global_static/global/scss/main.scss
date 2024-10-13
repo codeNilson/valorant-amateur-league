@@ -25,7 +25,7 @@ html {
 }
 
 .bg-red {
-    @extend .text-light;
+    @extend .text-title;
 
     .btn-outline-light:hover {
         @extend .text-red;
@@ -161,5 +161,36 @@ table.result-point {
 
 .social-background {
     background-size: cover;
-    background-position: top;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+.container-social {
+    h2 {
+        font-size: 4rem;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+
+    i {
+        color: $light;
+    }
+}
+
+
+
+@media (min-width: 992px) {
+    .container-social {
+        max-width: 40%;
+        h2 {
+            font-size: 8rem;
+        }
+
+        p {
+            font-size: 2rem;
+        }
+    }
 }
