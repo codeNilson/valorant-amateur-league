@@ -11987,12 +11987,14 @@ textarea.form-control-lg {
   color: #fff;
 }
 
-html body {
+body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  margin: 0;
 }
-html main {
+
+main {
   flex: 1;
 }
 
@@ -12000,51 +12002,61 @@ html main {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.lavava-logo {
-  max-width: 80px;
-  height: auto;
+.social-icons-container {
+  gap: 16px;
 }
-
-.fa-youtube {
+.social-icons-container .fa-youtube,
+.social-icons-container .fa-discord {
+  transition: color 0.3s ease, transform 0.5s ease;
+}
+.social-icons-container .fa-youtube {
   color: #ff0000;
 }
-.fa-youtube:hover {
-  color: #ff3333;
-}
-
-.fa-discord {
+.social-icons-container .fa-discord {
   color: #7289da;
 }
-.fa-discord:hover {
-  color: rgb(142.2, 160.6, 225.4);
+
+.fa-youtube:hover {
+  color: #fd4556;
 }
 
-.fa-github {
-  color: #000;
+.fa-discord:hover {
+  color: #48578d;
 }
+
 .fa-github:hover {
-  color: #333333;
+  color: #333;
 }
 
 .jump-animation:hover {
   animation: translateY 500ms 4 alternate;
 }
 
+/* Footer  */
+.footer-logo p {
+  font-size: 12px;
+  margin-top: 10px;
+}
+
 @media (max-width: 767.98px) {
   .position-md-absolute {
     position: absolute;
-    top: 12.5%;
-    left: 12.5%;
+    top: 12, 5%;
+    left: 12, 5%;
   }
 }
 
-.alert {
-  border-width: 3px;
-  bottom: 5px;
-  left: 25px;
-  z-index: 99;
+/* Keyframes */
+@keyframes translateY {
+  from {
+    transform: translateY(0);
+    scale: 1;
+  }
+  to {
+    transform: translateY(-10px);
+    scale: 1.1;
+  }
 }
-
 table.result-point tr td img {
   max-width: 80px;
   margin-right: 11px;
@@ -12061,61 +12073,25 @@ table.result-point .fa-caret-up {
   color: green;
 }
 
-.login-background {
-  background-size: cover;
-  background-position: center;
-  height: 100vh;
-}
-
-.help-text a {
+.botao-danger {
+  padding: 10px 20px;
+  border: 1px solid black;
+  border-radius: 5px;
   text-decoration: none;
-  color: #000;
+  color: black;
+}
+.botao-danger:hover {
+  background-color: black;
+  color: rgb(0, 243, 130);
 }
 
-/* Keyframes */
-@keyframes translateY {
-  from {
-    transform: translateY(0);
-    scale: 1;
-  }
-  to {
-    transform: translateY(-5px);
-    scale: 1.1;
-  }
+.botao-danger {
+  background-color: red;
+  color: white;
 }
-.messages-container .alert {
-  position: relative;
-  padding-left: 2rem;
-}
-.messages-container .alert::before {
-  content: "";
-  font-family: "Font Awesome 5 Free";
-  font-weight: 600;
-  position: absolute;
-  left: 0.5rem;
-  top: 50%;
-  transform: translateY(-50%);
-}
-.messages-container .text-bg-danger::before {
-  content: "\f06a";
-}
-.messages-container .text-bg-success::before {
-  content: "\f058";
-}
-.messages-container .text-bg-warning::before {
-  content: "\f071";
-}
-.messages-container .text-bg-info::before {
-  content: "\f05a";
-}
-
-.social-background {
-  background-size: cover;
-  background-position: top;
-}
-
-.hero-image img {
-  max-width: 330px;
+.botao-danger:hover {
+  background-color: #000;
+  color: red;
 }
 
 /*# sourceMappingURL=styles.css.map */
