@@ -58,6 +58,10 @@
   &-md {
     @include overlay($breakpoint: md);
   }
+
+  &-sm {
+    @include overlay($breakpoint: sm);
+  }
 }
 
 @each $provider, $color in $providers {

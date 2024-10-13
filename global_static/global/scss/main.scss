@@ -61,8 +61,8 @@ html {
 .position-md-absolute {
     @include media-breakpoint-down(md) {
         position: absolute;
-        top: 12.5%;
-        left: 12.5%;
+        top: 12, 5%;
+        left: 12, 5%;
     }
 }
 
@@ -162,10 +162,4 @@ table.result-point {
 .social-background {
     background-size: cover;
     background-position: top;
-}
-
-
-// TEMPORARIO
-.hero-image img {
-    max-width: 330px;
 }
