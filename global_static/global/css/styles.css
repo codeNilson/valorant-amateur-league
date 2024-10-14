@@ -4559,8 +4559,8 @@ textarea.form-control-lg {
   --bs-accordion-inner-border-radius: calc(var(--bs-border-radius) - (var(--bs-border-width)));
   --bs-accordion-btn-padding-x: 1.25rem;
   --bs-accordion-btn-padding-y: 1rem;
-  --bs-accordion-btn-color: var(--bs-body-color);
-  --bs-accordion-btn-bg: var(--bs-accordion-bg);
+  --bs-accordion-btn-color: #0f1923;
+  --bs-accordion-btn-bg: #ece8e0;
   --bs-accordion-btn-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23212529' stroke-linecap='round' stroke-linejoin='round'%3e%3cpath d='M2 5L8 11L14 5'/%3e%3c/svg%3e");
   --bs-accordion-btn-icon-width: 1.25rem;
   --bs-accordion-btn-icon-transform: rotate(-180deg);
@@ -4569,8 +4569,8 @@ textarea.form-control-lg {
   --bs-accordion-btn-focus-box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
   --bs-accordion-body-padding-x: 1.25rem;
   --bs-accordion-body-padding-y: 1rem;
-  --bs-accordion-active-color: var(--bs-primary-text-emphasis);
-  --bs-accordion-active-bg: var(--bs-primary-bg-subtle);
+  --bs-accordion-active-color: #0f1923;
+  --bs-accordion-active-bg: #fd4556;
 }
 
 .accordion-button {
@@ -12112,11 +12112,6 @@ html main {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.lavava-logo {
-  max-width: 80px;
-  height: auto;
-}
-
 .fa-youtube {
   color: #ff0000;
 }
@@ -12148,13 +12143,6 @@ html main {
     top: 12, 5%;
     left: 12, 5%;
   }
-}
-
-.alert {
-  border-width: 3px;
-  bottom: 5px;
-  left: 25px;
-  z-index: 99;
 }
 
 table.result-point tr td img {
@@ -12198,6 +12186,16 @@ table.result-point .fa-caret-up {
 .messages-container .alert {
   position: relative;
   padding-left: 2rem;
+  max-width: 20rem;
+  position: fixed;
+  left: 25px;
+  z-index: 99;
+}
+.messages-container .alert.alert-index-1 {
+  bottom: 5px;
+}
+.messages-container .alert.alert-index-2 {
+  bottom: 125px;
 }
 .messages-container .alert::before {
   content: "";

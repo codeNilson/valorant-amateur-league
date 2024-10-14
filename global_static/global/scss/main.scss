@@ -3,7 +3,33 @@
 @import "partials/custom_colors";
 @import "partials/custom_settings";
 
+// $accordion-padding-y: 1rem;
+// $accordion-padding-x: 1.25rem;
+
+// $accordion-icon-color: $red; // cor do ícone
+// $accordion-icon-active-color: $title; // cor do ícone ativo
+
 @import "../../../node_modules/bootstrap/scss/variables";
+
+// $accordion-color: $dark; // cor do texto body
+// $accordion-bg: $warning; // cor do header e do body
+// $accordion-border-width: 5px; // largura da borda
+// $accordion-border-color: green; // cor da borda
+// $accordion-border-radius: var(--#{$prefix}border-radius); // raio da borda
+
+// $accordion-body-padding-y: $accordion-padding-y; // padding do body
+
+// $accordion-button-padding-y: $accordion-padding-y; // padding do botão
+// $accordion-button-padding-x: $accordion-padding-x;
+$accordion-button-color: $dark; // cor do texto do botão
+$accordion-button-bg: $title; //cor especificamente do botão
+// $accordion-transition: $btn-transition, border-radius .15s ease;
+$accordion-button-active-bg: $red; // cor do botão ativo
+$accordion-button-active-color: $dark; // cor do texto do botão ativo
+
+// $accordion-icon-width: 1.25rem; // largura do ícone
+
+
 @import "../../../node_modules/bootstrap/scss/mixins";
 
 $theme-colors: map-merge($theme-colors, $custom-colors);
@@ -37,10 +63,6 @@ html {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.lavava-logo {
-    max-width: 80px;
-    height: auto;
-}
 
 .fa-youtube {
     @include fa-brand-icon($youtube);
@@ -66,12 +88,7 @@ html {
     }
 }
 
-.alert {
-    border-width: 3px;
-    bottom: 5px;
-    left: 25px;
-    z-index: 99;
-}
+
 
 table.result-point {
     tr {
@@ -129,6 +146,19 @@ table.result-point {
     .alert {
         position: relative;
         padding-left: 2rem;
+        max-width: 20rem;
+        position: fixed;
+        left: 25px;
+        z-index: 99;
+
+        &.alert-index-1 {
+            bottom: 5px;
+        }
+
+        &.alert-index-2 {
+            bottom: 125px;
+        }
+
 
         &::before {
             content: '';
@@ -185,6 +215,7 @@ table.result-point {
 @media (min-width: 992px) {
     .container-social {
         max-width: 40%;
+
         h2 {
             font-size: 8rem;
         }
