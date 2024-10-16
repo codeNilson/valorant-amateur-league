@@ -6,55 +6,51 @@
 // $accordion-padding-y: 1rem;
 // $accordion-padding-x: 1.25rem;
 
-// $accordion-icon-color: $red; // cor do ícone
-// $accordion-icon-active-color: $title; // cor do ícone ativo
+$accordion-icon-color: white; // cor do ícone
+$accordion-icon-active-color: white; // cor do ícone ativo
 
 @import "../../../node_modules/bootstrap/scss/variables";
 
-// $accordion-color: $dark; // cor do texto body
-// $accordion-bg: $warning; // cor do header e do body
-// $accordion-border-width: 5px; // largura da borda
+$accordion-color: $dark; // cor do texto body
+$accordion-bg: $light; // cor do header e do body
+$accordion-border-width: 0px; // largura da borda
 // $accordion-border-color: green; // cor da borda
 // $accordion-border-radius: var(--#{$prefix}border-radius); // raio da borda
 
 // $accordion-body-padding-y: $accordion-padding-y; // padding do body
+$accordion-body-padding-x: 0rem; // padding do body
 
 // $accordion-button-padding-y: $accordion-padding-y; // padding do botão
 // $accordion-button-padding-x: $accordion-padding-x;
-$accordion-button-color: $dark; // cor do texto do botão
-$accordion-button-bg: $title; //cor especificamente do botão
+$accordion-button-color: $white; // cor do texto do botão
+$accordion-button-bg: $light; //cor especificamente do botão
 // $accordion-transition: $btn-transition, border-radius .15s ease;
-$accordion-button-active-bg: $red; // cor do botão ativo
-$accordion-button-active-color: $dark; // cor do texto do botão ativo
+// $accordion-button-active-bg: $red; // cor do botão ativo
+$accordion-button-active-color: $light; // cor do texto do botão ativo
 
-// $accordion-icon-width: 1.25rem; // largura do ícone
+$accordion-icon-width: 1.87rem; // largura do ícone
 
 
 @import "../../../node_modules/bootstrap/scss/mixins";
 
 $theme-colors: map-merge($theme-colors, $custom-colors);
+$table-variants: map-merge($table-variants, $custom-tables);
 
 @import "../../../node_modules/bootstrap/scss/bootstrap";
 
 @import "partials/custom_mixins";
 
-html {
-    body {
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-    }
-
-    main {
-        flex: 1;
-    }
+main {
+    flex: 1;
 }
 
 .bg-red {
     color: $title;
 
     .btn-outline-light:hover {
-        @extend .text-red;
+        @extend .text-title;
+        @extend .bg-dark;
+        border: $dark;
     }
 }
 
@@ -88,8 +84,6 @@ html {
     }
 }
 
-
-
 table.result-point {
     tr {
         td {
@@ -113,7 +107,7 @@ table.result-point {
     }
 
     .fa-caret-up {
-        color: green;
+        color: $teal-600;
     }
 }
 
@@ -123,21 +117,14 @@ table.result-point {
     height: 100vh;
 }
 
-.help-text a {
-    text-decoration: none;
-    color: $black;
-}
-
 /* Keyframes */
 @keyframes translateY {
     from {
-        transform: translateY(0);
-        scale: 1;
+        transform: translateY(0) scale(1);
     }
 
     to {
-        transform: translateY(-5px);
-        scale: 1.1;
+        transform: translateY(-5px) scale(1.1);
     }
 }
 
@@ -159,69 +146,131 @@ table.result-point {
             bottom: 125px;
         }
 
+        @include icon-before('');
 
-        &::before {
-            content: '';
-            font-family: 'Font Awesome 5 Free';
-            font-weight: 600;
-            position: absolute;
-            left: 0.5rem;
-            top: 50%;
-            transform: translateY(-50%);
+        &.text-bg-danger::before {
+            content: '\f06a';
+        }
+
+        &.text-bg-success::before {
+            content: '\f058';
+        }
+
+        &.text-bg-warning::before {
+            content: '\f071';
+        }
+
+        &.text-bg-info::before {
+            content: '\f05a';
         }
     }
-
-    .text-bg-danger::before {
-        content: '\f06a';
-    }
-
-    .text-bg-success::before {
-        content: '\f058';
-    }
-
-    .text-bg-warning::before {
-        content: '\f071';
-    }
-
-    .text-bg-info::before {
-        content: '\f05a';
-    }
 }
 
-
-.social-background {
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-
-.container-social {
-    h2 {
-        font-size: 4rem;
+.section-social {
+    .social-background {
+        background-size: cover;
+        background-position: center;
     }
 
-    p {
-        font-size: 1rem;
-    }
-
-    i {
-        color: $light;
-    }
-}
-
-
-
-@media (min-width: 992px) {
     .container-social {
-        max-width: 40%;
-
         h2 {
-            font-size: 8rem;
+            font-size: 4rem;
         }
 
         p {
-            font-size: 2rem;
+            font-size: 1rem;
+        }
+
+        i {
+            color: $title;
+        }
+    }
+
+    @media (min-width: 992px) {
+
+        .container-social {
+            max-width: 40%;
+
+            h2 {
+                font-size: 6rem;
+            }
+
+            p {
+                font-size: 2rem;
+            }
+        }
+    }
+}
+
+// accordion
+
+.accordion-header button {
+    font-size: 1.2rem;
+
+    &::after {
+        margin-left: 0rem;
+    }
+}
+
+.mvp-logo {
+    max-width: 60px;
+}
+
+.ace-logo,
+.agent-icon {
+    max-width: 3.2rem;
+
+    &-small {
+        max-width: 20px;
+    }
+}
+
+.badge-mvp,
+.badge-ace {
+    @extend .badge;
+    padding: 2px 0;
+}
+
+.youtube {
+    .fa-youtube {
+        color: $youtube;
+    }
+
+    span a {
+        color: $accordion-button-color;
+    }
+}
+
+.accordion-button,
+.accordion-body {
+    background-size: cover;
+    background-position: center;
+}
+
+button:not(.collapsed) {
+
+    .fa-youtube,
+    a {
+        color: $accordion-button-active-color;
+    }
+}
+
+// tornar reutilizável
+.table-match-history {
+
+    color: $dark;
+    font-size: 0.8rem;
+    font-weight: 500;
+
+    .table-winner-body {
+        tr {
+            --bs-table-hover-bg: rgba(0, 128, 0, 0.1);
+        }
+    }
+
+    .table-losser-body {
+        tr {
+            --bs-table-hover-bg: rgba(255, 0, 0, 0.1);
         }
     }
 }

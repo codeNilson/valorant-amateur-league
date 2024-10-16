@@ -1,14 +1,23 @@
+// Custom colors
 $red: #fd4556;
 $dark: #0f1923;
 $title: #ece8e0;
 
-$google: $red;
-$youtube: #ff0000;
-$discord: #7289da;
+// Brand colors
+$google: #ff0000;
+$youtube: $google;
+$discord: #5865F2;
+
+// Maps
 
 $custom-colors: (
     "red": $red,
     "title": $title
+);
+
+$custom-tables: (
+    "winner": #198754,
+    "losser": shade-color($red, 20%)
 );
 
 $providers: (

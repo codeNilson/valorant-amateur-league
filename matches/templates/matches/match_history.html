@@ -1,55 +1,1076 @@
 {% extends "global/base.html" %}
 
+{% load static %}
+
 {% block content %}
 
 {% include "global/partials/navbar.html" %}
 
 <main>
+  <div class="bg-light py-5">
     <div class="container">
-        <div class="accordion" id="accordionExample">
-            <div class="accordion-item">
-              <h2 class="accordion-header">
-                <button class="accordion-button collapsed d-flex justify-content-between" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                <div class="">
-                    <span>Accordion Item #1</span>
+      <h1 class="text-dark">Match History</h1>
+      <div class="accordion" id="accordionExample">
+          <div class="accordion-item mb-1">
+            <h2 class="accordion-header">
+              <button class="accordion-button overlay collapsed d-flex justify-content-between" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-1"style="background-image: url(https://media.valorant-api.com/maps/7eaecc1b-4337-bbf6-6ab9-04b8f06b3319/splash.png);" aria-expanded="false" aria-controls="collapse-1">
+              <div class="mvp-content z-1 d-flex align-items-center justify-content-center gap-2">
+                <div class"mvp-logo-container">
+                  <img src="{% static "global/assets/small_icon.png" %}" alt="" class="img-fluid mvp-logo border border-3 border-warning rounded-circle bg-title">
                 </div>
-                <div class=""><h2>Teste oi ola</h2></div>
-                <div class=""><h3> Teste oi ola</h3></div>
-                </button>
-              </h2>
-              <div id="collapseOne" class="accordion-collapse collapse">
-                <div class="accordion-body">
-                  <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                <div class="d-flex flex-column">
+                  <span class="text-bg-warning badge-mvp">MVP</span>
+                  <small>Aro Might</small>
+                </div>
+              </div>
+              <div class="youtube z-1 text-center">
+                  <a href="#" target="_blank">
+                    <i class="fa-brands fa-youtube fa-2x"></i>
+                  </a>
+                  <span class="d-none d-md-block">Watch on Youtube</span>
+              </div>
+              <div class="d-none d-md-block z-1">
+                <div class="match-info d-flex gap-3 align-items-center justify-content-evenly">
+                  <div class="team-1 d-flex flex-column">
+                    <div>
+                      <img src="{% static "global/assets/small_icon.png" %}" alt="" class="agent-icon-small">
+                      <span>Aro Might</span>
+                    </div>
+                    <div>
+                      <img src="{% static "global/assets/small_icon.png" %}" alt="" class="agent-icon-small">
+                      <span>Aro Might</span>
+                    </div>
+                    <div>
+                      <img src="{% static "global/assets/small_icon.png" %}" alt="" class="agent-icon-small">
+                      <span>Aro Might</span>
+                    </div>
+                    <div>
+                      <img src="{% static "global/assets/small_icon.png" %}" alt="" class="agent-icon-small">
+                      <span>Aro Might</span>
+                    </div>
+                    <div>
+                      <img src="{% static "global/assets/small_icon.png" %}" alt="" class="agent-icon-small">
+                      <span>Aro Might</span>
+                    </div>
+                  </div>
+                  <div class="vs">vs.</div>
+                  <div class="team-2 d-flex flex-column">
+                    <div>
+                      <img src="{% static "global/assets/small_icon.png" %}" alt="" class="agent-icon-small">
+                      <span>Aro Might</span>
+                    </div>
+                    <div>
+                      <img src="{% static "global/assets/small_icon.png" %}" alt="" class="agent-icon-small">
+                      <span>Aro Might</span>
+                    </div>
+                    <div>
+                      <img src="{% static "global/assets/small_icon.png" %}" alt="" class="agent-icon-small">
+                      <span>Aro Might</span>
+                    </div>
+                    <div>
+                      <img src="{% static "global/assets/small_icon.png" %}" alt="" class="agent-icon-small">
+                      <span>Aro Might</span>
+                    </div>
+                    <div>
+                      <img src="{% static "global/assets/small_icon.png" %}" alt="" class="agent-icon-small">
+                      <span>Aro Might</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              </button>
+            </h2>
+            <div id="collapse-1" class="accordion-collapse collapse">
+              <div class="accordion-body">
+                <div class="container">
+                  <div class="row gy-5 justify-content-center">
+                    <div class="col-auto container-responsive">
+                      <div class="row row-cols-lg-2">
+                        <div class="table-responsive">
+                          <table class="table table-hover table-borderless table-match-history align-middle border text-center caption-top">
+                              <caption>Winner</caption>
+                              <thead>
+                                  <tr class="table-winner align-middle">
+                                      <th>Agent</th>
+                                      <th>Average Points</th>
+                                      <th>KDA</th>
+                                      <th>Stats</th>
+                                      <th>First Bloods</th>
+                                      <th>Spikes Planted</th>
+                                      <th>Spikes Desarmed</th>
+                                  </tr>
+                              </thead>
+                              <tbody class="table-winner-body">
+                                  <tr>
+                                      <td class="text-start">
+                                          <span class="text-nowrap">
+                                            <img src="{% static 'global/assets/small_icon.png' %}" alt="" class="agent-icon">
+                                            Taifuzinha
+                                          </span>
+                                      </td>
+                                      <td>5.2</td>
+                                      <td>3.1</td>
+                                      <td>5/2/0</td>
+                                      <td>2</td>
+                                      <td>1</td>
+                                      <td>5</td>
+                                  </tr>
+                                  <tr>
+                                      <td class="text-start">
+                                        <span class="text-nowrap">
+                                          <img src="{% static 'global/assets/small_icon.png' %}" alt="" class="agent-icon">
+                                          Charlol
+                                        </span>
+                                      </td>
+                                      <td>5.2</td>
+                                      <td>3.1</td>
+                                      <td>5/2/0</td>
+                                      <td>2</td>
+                                      <td>1</td>
+                                      <td>5</td>
+                                  </tr>
+                                  <tr>
+                                      <td class="text-start">
+                                        <span class="text-nowrap">
+                                          <img src="{% static 'global/assets/small_icon.png' %}" alt="" class="agent-icon">
+                                          Gado de Botas
+                                        </span>
+                                      </td>
+                                      <td>5.2</td>
+                                      <td>3.1</td>
+                                      <td>5/2/0</td>
+                                      <td>2</td>
+                                      <td>1</td>
+                                      <td>5</td>
+                                  </tr>
+                                  <tr>
+                                      <td class="text-start">
+                                        <span class="text-nowrap">
+                                          <img src="{% static 'global/assets/small_icon.png' %}" alt="" class="agent-icon">
+                                          Aro Might
+                                        </span>
+                                      </td>
+                                      <td>5.2</td>
+                                      <td>3.1</td>
+                                      <td>5/2/0</td>
+                                      <td>2</td>
+                                      <td>1</td>
+                                      <td>5</td>
+                                  </tr>
+                                  <tr>
+                                      <td class="text-start">
+                                        <span class="text-nowrap">
+                                          <img src="{% static 'global/assets/small_icon.png' %}" alt="" class="agent-icon">
+                                          Aro Might
+                                        </span>
+                                      </td>
+                                      <td>5.2</td>
+                                      <td>3.1</td>
+                                      <td>5/2/0</td>
+                                      <td>2</td>
+                                      <td>1</td>
+                                      <td>5</td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                        </div>
+                        <div class="table-responsive">
+                          <table class="table table-hover table-borderless table-match-history align-middle border text-center caption-top">
+                              <caption>Losser</caption>
+                              <thead>
+                                  <tr class="table-losser align-middle">
+                                      <th>Agent</th>
+                                      <th>Average Points</th>
+                                      <th>KDA</th>
+                                      <th>Stats</th>
+                                      <th>First Bloods</th>
+                                      <th>Spikes Planted</th>
+                                      <th>Spikes Desarmed</th>
+                                  </tr>
+                              </thead>
+                              <tbody class="table-losser-body">
+                                  <tr>
+                                      <td class="text-start">
+                                          <span class="text-nowrap">
+                                            <img src="{% static 'global/assets/small_icon.png' %}" alt="" class="agent-icon">
+                                            Aro Might
+                                          </span>
+                                      </td>
+                                      <td>5.2</td>
+                                      <td>3.1</td>
+                                      <td>5/2/0</td>
+                                      <td>2</td>
+                                      <td>1</td>
+                                      <td>5</td>
+                                  </tr>
+                                  <tr>
+                                      <td class="text-start">
+                                        <span class="text-nowrap">
+                                          <img src="{% static 'global/assets/small_icon.png' %}" alt="" class="agent-icon">
+                                          Aro Might
+                                        </span>
+                                      </td>
+                                      <td>5.2</td>
+                                      <td>3.1</td>
+                                      <td>5/2/0</td>
+                                      <td>2</td>
+                                      <td>1</td>
+                                      <td>5</td>
+                                  </tr>
+                                  <tr>
+                                      <td class="text-start">
+                                        <span class="text-nowrap">
+                                          <img src="{% static 'global/assets/small_icon.png' %}" alt="" class="agent-icon">
+                                          Aro Might
+                                        </span>
+                                      </td>
+                                      <td>5.2</td>
+                                      <td>3.1</td>
+                                      <td>5/2/0</td>
+                                      <td>2</td>
+                                      <td>1</td>
+                                      <td>5</td>
+                                  </tr>
+                                  <tr>
+                                      <td class="text-start">
+                                        <span class="text-nowrap">
+                                          <img src="{% static 'global/assets/small_icon.png' %}" alt="" class="agent-icon">
+                                          Aro Might
+                                        </span>
+                                      </td>
+                                      <td>5.2</td>
+                                      <td>3.1</td>
+                                      <td>5/2/0</td>
+                                      <td>2</td>
+                                      <td>1</td>
+                                      <td>5</td>
+                                  </tr>
+                                  <tr>
+                                      <td class="text-start">
+                                        <span class="text-nowrap">
+                                          <img src="{% static 'global/assets/small_icon.png' %}" alt="" class="agent-icon">
+                                          Aro Might
+                                        </span>
+                                      </td>
+                                      <td>5.2</td>
+                                      <td>3.1</td>
+                                      <td>5/2/0</td>
+                                      <td>2</td>
+                                      <td>1</td>
+                                      <td>5</td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-10">
+                      <h3 class="fs-2 fw-bold">VOD</h3>
+                      <div class="ratio ratio-16x9">
+                        <iframe id="ytplayer" class="w-100 h-100" src="https://www.youtube.com/embed/6oRX1J2-33I" title="YouTube video" allowfullscreen></iframe>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-            <div class="accordion-item">
-              <h2 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                  Accordion Item #2
-                </button>
-              </h2>
-              <div id="collapseTwo" class="accordion-collapse collapse">
-                <div class="accordion-body">
-                  <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+          </div>
+          <div class="accordion-item mb-1">
+            <h2 class="accordion-header">
+              <button class="accordion-button overlay collapsed d-flex justify-content-between" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-1"style="background-image: url(https://media.valorant-api.com/maps/7eaecc1b-4337-bbf6-6ab9-04b8f06b3319/splash.png);" aria-expanded="false" aria-controls="collapse-1">
+              <div class="mvp-content z-1 d-flex align-items-center justify-content-center gap-2">
+                <div class"mvp-logo-container">
+                  <img src="{% static "global/assets/small_icon.png" %}" alt="" class="img-fluid mvp-logo border border-3 border-warning rounded-circle bg-title">
+                </div>
+                <div class="d-flex flex-column">
+                  <span class="text-bg-warning badge-mvp">MVP</span>
+                  <small>Aro Might</small>
+                </div>
+              </div>
+              <div class="youtube z-1 text-center">
+                  <a href="#" target="_blank">
+                    <i class="fa-brands fa-youtube fa-2x"></i>
+                  </a>
+                  <span class="d-none d-md-block">Watch on Youtube</span>
+              </div>
+              <div class="d-none d-md-block z-1">
+                <div class="match-info d-flex gap-3 align-items-center justify-content-evenly">
+                  <div class="team-1 d-flex flex-column">
+                    <div>
+                      <img src="{% static "global/assets/small_icon.png" %}" alt="" class="agent-icon-small">
+                      <span>Aro Might</span>
+                    </div>
+                    <div>
+                      <img src="{% static "global/assets/small_icon.png" %}" alt="" class="agent-icon-small">
+                      <span>Aro Might</span>
+                    </div>
+                    <div>
+                      <img src="{% static "global/assets/small_icon.png" %}" alt="" class="agent-icon-small">
+                      <span>Aro Might</span>
+                    </div>
+                    <div>
+                      <img src="{% static "global/assets/small_icon.png" %}" alt="" class="agent-icon-small">
+                      <span>Aro Might</span>
+                    </div>
+                    <div>
+                      <img src="{% static "global/assets/small_icon.png" %}" alt="" class="agent-icon-small">
+                      <span>Aro Might</span>
+                    </div>
+                  </div>
+                  <div class="vs">vs.</div>
+                  <div class="team-2 d-flex flex-column">
+                    <div>
+                      <img src="{% static "global/assets/small_icon.png" %}" alt="" class="agent-icon-small">
+                      <span>Aro Might</span>
+                    </div>
+                    <div>
+                      <img src="{% static "global/assets/small_icon.png" %}" alt="" class="agent-icon-small">
+                      <span>Aro Might</span>
+                    </div>
+                    <div>
+                      <img src="{% static "global/assets/small_icon.png" %}" alt="" class="agent-icon-small">
+                      <span>Aro Might</span>
+                    </div>
+                    <div>
+                      <img src="{% static "global/assets/small_icon.png" %}" alt="" class="agent-icon-small">
+                      <span>Aro Might</span>
+                    </div>
+                    <div>
+                      <img src="{% static "global/assets/small_icon.png" %}" alt="" class="agent-icon-small">
+                      <span>Aro Might</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              </button>
+            </h2>
+            <div id="collapse-1" class="accordion-collapse collapse">
+              <div class="accordion-body">
+                <div class="container">
+                  <div class="row gy-5 justify-content-center">
+                    <div class="col-auto container-responsive">
+                      <div class="row row-cols-lg-2">
+                        <div class="table-responsive">
+                          <table class="table table-hover table-borderless table-match-history align-middle border text-center caption-top">
+                              <caption>Winner</caption>
+                              <thead>
+                                  <tr class="table-winner align-middle">
+                                      <th>Agent</th>
+                                      <th>Average Points</th>
+                                      <th>KDA</th>
+                                      <th>Stats</th>
+                                      <th>First Bloods</th>
+                                      <th>Spikes Planted</th>
+                                      <th>Spikes Desarmed</th>
+                                  </tr>
+                              </thead>
+                              <tbody class="table-winner-body">
+                                  <tr>
+                                      <td class="text-start">
+                                          <span class="text-nowrap">
+                                            <img src="{% static 'global/assets/small_icon.png' %}" alt="" class="agent-icon">
+                                            Taifuzinha
+                                          </span>
+                                      </td>
+                                      <td>5.2</td>
+                                      <td>3.1</td>
+                                      <td>5/2/0</td>
+                                      <td>2</td>
+                                      <td>1</td>
+                                      <td>5</td>
+                                  </tr>
+                                  <tr>
+                                      <td class="text-start">
+                                        <span class="text-nowrap">
+                                          <img src="{% static 'global/assets/small_icon.png' %}" alt="" class="agent-icon">
+                                          Charlol
+                                        </span>
+                                      </td>
+                                      <td>5.2</td>
+                                      <td>3.1</td>
+                                      <td>5/2/0</td>
+                                      <td>2</td>
+                                      <td>1</td>
+                                      <td>5</td>
+                                  </tr>
+                                  <tr>
+                                      <td class="text-start">
+                                        <span class="text-nowrap">
+                                          <img src="{% static 'global/assets/small_icon.png' %}" alt="" class="agent-icon">
+                                          Gado de Botas
+                                        </span>
+                                      </td>
+                                      <td>5.2</td>
+                                      <td>3.1</td>
+                                      <td>5/2/0</td>
+                                      <td>2</td>
+                                      <td>1</td>
+                                      <td>5</td>
+                                  </tr>
+                                  <tr>
+                                      <td class="text-start">
+                                        <span class="text-nowrap">
+                                          <img src="{% static 'global/assets/small_icon.png' %}" alt="" class="agent-icon">
+                                          Aro Might
+                                        </span>
+                                      </td>
+                                      <td>5.2</td>
+                                      <td>3.1</td>
+                                      <td>5/2/0</td>
+                                      <td>2</td>
+                                      <td>1</td>
+                                      <td>5</td>
+                                  </tr>
+                                  <tr>
+                                      <td class="text-start">
+                                        <span class="text-nowrap">
+                                          <img src="{% static 'global/assets/small_icon.png' %}" alt="" class="agent-icon">
+                                          Aro Might
+                                        </span>
+                                      </td>
+                                      <td>5.2</td>
+                                      <td>3.1</td>
+                                      <td>5/2/0</td>
+                                      <td>2</td>
+                                      <td>1</td>
+                                      <td>5</td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                        </div>
+                        <div class="table-responsive">
+                          <table class="table table-hover table-borderless table-match-history align-middle border text-center caption-top">
+                              <caption>Losser</caption>
+                              <thead>
+                                  <tr class="table-losser align-middle">
+                                      <th>Agent</th>
+                                      <th>Average Points</th>
+                                      <th>KDA</th>
+                                      <th>Stats</th>
+                                      <th>First Bloods</th>
+                                      <th>Spikes Planted</th>
+                                      <th>Spikes Desarmed</th>
+                                  </tr>
+                              </thead>
+                              <tbody class="table-losser-body">
+                                  <tr>
+                                      <td class="text-start">
+                                          <span class="text-nowrap">
+                                            <img src="{% static 'global/assets/small_icon.png' %}" alt="" class="agent-icon">
+                                            Aro Might
+                                          </span>
+                                      </td>
+                                      <td>5.2</td>
+                                      <td>3.1</td>
+                                      <td>5/2/0</td>
+                                      <td>2</td>
+                                      <td>1</td>
+                                      <td>5</td>
+                                  </tr>
+                                  <tr>
+                                      <td class="text-start">
+                                        <span class="text-nowrap">
+                                          <img src="{% static 'global/assets/small_icon.png' %}" alt="" class="agent-icon">
+                                          Aro Might
+                                        </span>
+                                      </td>
+                                      <td>5.2</td>
+                                      <td>3.1</td>
+                                      <td>5/2/0</td>
+                                      <td>2</td>
+                                      <td>1</td>
+                                      <td>5</td>
+                                  </tr>
+                                  <tr>
+                                      <td class="text-start">
+                                        <span class="text-nowrap">
+                                          <img src="{% static 'global/assets/small_icon.png' %}" alt="" class="agent-icon">
+                                          Aro Might
+                                        </span>
+                                      </td>
+                                      <td>5.2</td>
+                                      <td>3.1</td>
+                                      <td>5/2/0</td>
+                                      <td>2</td>
+                                      <td>1</td>
+                                      <td>5</td>
+                                  </tr>
+                                  <tr>
+                                      <td class="text-start">
+                                        <span class="text-nowrap">
+                                          <img src="{% static 'global/assets/small_icon.png' %}" alt="" class="agent-icon">
+                                          Aro Might
+                                        </span>
+                                      </td>
+                                      <td>5.2</td>
+                                      <td>3.1</td>
+                                      <td>5/2/0</td>
+                                      <td>2</td>
+                                      <td>1</td>
+                                      <td>5</td>
+                                  </tr>
+                                  <tr>
+                                      <td class="text-start">
+                                        <span class="text-nowrap">
+                                          <img src="{% static 'global/assets/small_icon.png' %}" alt="" class="agent-icon">
+                                          Aro Might
+                                        </span>
+                                      </td>
+                                      <td>5.2</td>
+                                      <td>3.1</td>
+                                      <td>5/2/0</td>
+                                      <td>2</td>
+                                      <td>1</td>
+                                      <td>5</td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-10">
+                      <h3 class="fs-2 fw-bold">VOD</h3>
+                      <div class="ratio ratio-16x9">
+                        <iframe id="ytplayer" class="w-100 h-100" src="https://www.youtube.com/embed/6oRX1J2-33I" title="YouTube video" allowfullscreen></iframe>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-            <div class="accordion-item">
-              <h2 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                  Accordion Item #3
-                </button>
-              </h2>
-              <div id="collapseThree" class="accordion-collapse collapse">
-                <div class="accordion-body">
-                  <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+          </div>
+          <div class="accordion-item mb-1">
+            <h2 class="accordion-header">
+              <button class="accordion-button overlay collapsed d-flex justify-content-between" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-1"style="background-image: url(https://media.valorant-api.com/maps/7eaecc1b-4337-bbf6-6ab9-04b8f06b3319/splash.png);" aria-expanded="false" aria-controls="collapse-1">
+              <div class="mvp-content z-1 d-flex align-items-center justify-content-center gap-2">
+                <div class"mvp-logo-container">
+                  <img src="{% static "global/assets/small_icon.png" %}" alt="" class="img-fluid mvp-logo border border-3 border-warning rounded-circle bg-title">
+                </div>
+                <div class="d-flex flex-column">
+                  <span class="text-bg-warning badge-mvp">MVP</span>
+                  <small>Aro Might</small>
+                </div>
+              </div>
+              <div class="youtube z-1 text-center">
+                  <a href="#" target="_blank">
+                    <i class="fa-brands fa-youtube fa-2x"></i>
+                  </a>
+                  <span class="d-none d-md-block">Watch on Youtube</span>
+              </div>
+              <div class="d-none d-md-block z-1">
+                <div class="match-info d-flex gap-3 align-items-center justify-content-evenly">
+                  <div class="team-1 d-flex flex-column">
+                    <div>
+                      <img src="{% static "global/assets/small_icon.png" %}" alt="" class="agent-icon-small">
+                      <span>Aro Might</span>
+                    </div>
+                    <div>
+                      <img src="{% static "global/assets/small_icon.png" %}" alt="" class="agent-icon-small">
+                      <span>Aro Might</span>
+                    </div>
+                    <div>
+                      <img src="{% static "global/assets/small_icon.png" %}" alt="" class="agent-icon-small">
+                      <span>Aro Might</span>
+                    </div>
+                    <div>
+                      <img src="{% static "global/assets/small_icon.png" %}" alt="" class="agent-icon-small">
+                      <span>Aro Might</span>
+                    </div>
+                    <div>
+                      <img src="{% static "global/assets/small_icon.png" %}" alt="" class="agent-icon-small">
+                      <span>Aro Might</span>
+                    </div>
+                  </div>
+                  <div class="vs">vs.</div>
+                  <div class="team-2 d-flex flex-column">
+                    <div>
+                      <img src="{% static "global/assets/small_icon.png" %}" alt="" class="agent-icon-small">
+                      <span>Aro Might</span>
+                    </div>
+                    <div>
+                      <img src="{% static "global/assets/small_icon.png" %}" alt="" class="agent-icon-small">
+                      <span>Aro Might</span>
+                    </div>
+                    <div>
+                      <img src="{% static "global/assets/small_icon.png" %}" alt="" class="agent-icon-small">
+                      <span>Aro Might</span>
+                    </div>
+                    <div>
+                      <img src="{% static "global/assets/small_icon.png" %}" alt="" class="agent-icon-small">
+                      <span>Aro Might</span>
+                    </div>
+                    <div>
+                      <img src="{% static "global/assets/small_icon.png" %}" alt="" class="agent-icon-small">
+                      <span>Aro Might</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              </button>
+            </h2>
+            <div id="collapse-1" class="accordion-collapse collapse">
+              <div class="accordion-body">
+                <div class="container">
+                  <div class="row gy-5 justify-content-center">
+                    <div class="col-auto container-responsive">
+                      <div class="row row-cols-lg-2">
+                        <div class="table-responsive">
+                          <table class="table table-hover table-borderless table-match-history align-middle border text-center caption-top">
+                              <caption>Winner</caption>
+                              <thead>
+                                  <tr class="table-winner align-middle">
+                                      <th>Agent</th>
+                                      <th>Average Points</th>
+                                      <th>KDA</th>
+                                      <th>Stats</th>
+                                      <th>First Bloods</th>
+                                      <th>Spikes Planted</th>
+                                      <th>Spikes Desarmed</th>
+                                  </tr>
+                              </thead>
+                              <tbody class="table-winner-body">
+                                  <tr>
+                                      <td class="text-start">
+                                          <span class="text-nowrap">
+                                            <img src="{% static 'global/assets/small_icon.png' %}" alt="" class="agent-icon">
+                                            Taifuzinha
+                                          </span>
+                                      </td>
+                                      <td>5.2</td>
+                                      <td>3.1</td>
+                                      <td>5/2/0</td>
+                                      <td>2</td>
+                                      <td>1</td>
+                                      <td>5</td>
+                                  </tr>
+                                  <tr>
+                                      <td class="text-start">
+                                        <span class="text-nowrap">
+                                          <img src="{% static 'global/assets/small_icon.png' %}" alt="" class="agent-icon">
+                                          Charlol
+                                        </span>
+                                      </td>
+                                      <td>5.2</td>
+                                      <td>3.1</td>
+                                      <td>5/2/0</td>
+                                      <td>2</td>
+                                      <td>1</td>
+                                      <td>5</td>
+                                  </tr>
+                                  <tr>
+                                      <td class="text-start">
+                                        <span class="text-nowrap">
+                                          <img src="{% static 'global/assets/small_icon.png' %}" alt="" class="agent-icon">
+                                          Gado de Botas
+                                        </span>
+                                      </td>
+                                      <td>5.2</td>
+                                      <td>3.1</td>
+                                      <td>5/2/0</td>
+                                      <td>2</td>
+                                      <td>1</td>
+                                      <td>5</td>
+                                  </tr>
+                                  <tr>
+                                      <td class="text-start">
+                                        <span class="text-nowrap">
+                                          <img src="{% static 'global/assets/small_icon.png' %}" alt="" class="agent-icon">
+                                          Aro Might
+                                        </span>
+                                      </td>
+                                      <td>5.2</td>
+                                      <td>3.1</td>
+                                      <td>5/2/0</td>
+                                      <td>2</td>
+                                      <td>1</td>
+                                      <td>5</td>
+                                  </tr>
+                                  <tr>
+                                      <td class="text-start">
+                                        <span class="text-nowrap">
+                                          <img src="{% static 'global/assets/small_icon.png' %}" alt="" class="agent-icon">
+                                          Aro Might
+                                        </span>
+                                      </td>
+                                      <td>5.2</td>
+                                      <td>3.1</td>
+                                      <td>5/2/0</td>
+                                      <td>2</td>
+                                      <td>1</td>
+                                      <td>5</td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                        </div>
+                        <div class="table-responsive">
+                          <table class="table table-hover table-borderless table-match-history align-middle border text-center caption-top">
+                              <caption>Losser</caption>
+                              <thead>
+                                  <tr class="table-losser align-middle">
+                                      <th>Agent</th>
+                                      <th>Average Points</th>
+                                      <th>KDA</th>
+                                      <th>Stats</th>
+                                      <th>First Bloods</th>
+                                      <th>Spikes Planted</th>
+                                      <th>Spikes Desarmed</th>
+                                  </tr>
+                              </thead>
+                              <tbody class="table-losser-body">
+                                  <tr>
+                                      <td class="text-start">
+                                          <span class="text-nowrap">
+                                            <img src="{% static 'global/assets/small_icon.png' %}" alt="" class="agent-icon">
+                                            Aro Might
+                                          </span>
+                                      </td>
+                                      <td>5.2</td>
+                                      <td>3.1</td>
+                                      <td>5/2/0</td>
+                                      <td>2</td>
+                                      <td>1</td>
+                                      <td>5</td>
+                                  </tr>
+                                  <tr>
+                                      <td class="text-start">
+                                        <span class="text-nowrap">
+                                          <img src="{% static 'global/assets/small_icon.png' %}" alt="" class="agent-icon">
+                                          Aro Might
+                                        </span>
+                                      </td>
+                                      <td>5.2</td>
+                                      <td>3.1</td>
+                                      <td>5/2/0</td>
+                                      <td>2</td>
+                                      <td>1</td>
+                                      <td>5</td>
+                                  </tr>
+                                  <tr>
+                                      <td class="text-start">
+                                        <span class="text-nowrap">
+                                          <img src="{% static 'global/assets/small_icon.png' %}" alt="" class="agent-icon">
+                                          Aro Might
+                                        </span>
+                                      </td>
+                                      <td>5.2</td>
+                                      <td>3.1</td>
+                                      <td>5/2/0</td>
+                                      <td>2</td>
+                                      <td>1</td>
+                                      <td>5</td>
+                                  </tr>
+                                  <tr>
+                                      <td class="text-start">
+                                        <span class="text-nowrap">
+                                          <img src="{% static 'global/assets/small_icon.png' %}" alt="" class="agent-icon">
+                                          Aro Might
+                                        </span>
+                                      </td>
+                                      <td>5.2</td>
+                                      <td>3.1</td>
+                                      <td>5/2/0</td>
+                                      <td>2</td>
+                                      <td>1</td>
+                                      <td>5</td>
+                                  </tr>
+                                  <tr>
+                                      <td class="text-start">
+                                        <span class="text-nowrap">
+                                          <img src="{% static 'global/assets/small_icon.png' %}" alt="" class="agent-icon">
+                                          Aro Might
+                                        </span>
+                                      </td>
+                                      <td>5.2</td>
+                                      <td>3.1</td>
+                                      <td>5/2/0</td>
+                                      <td>2</td>
+                                      <td>1</td>
+                                      <td>5</td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-10">
+                      <h3 class="fs-2 fw-bold">VOD</h3>
+                      <div class="ratio ratio-16x9">
+                        <iframe id="ytplayer" class="w-100 h-100" src="https://www.youtube.com/embed/6oRX1J2-33I" title="YouTube video" allowfullscreen></iframe>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item mb-1">
+            <h2 class="accordion-header">
+              <button class="accordion-button overlay collapsed d-flex justify-content-between" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-1"style="background-image: url(https://media.valorant-api.com/maps/7eaecc1b-4337-bbf6-6ab9-04b8f06b3319/splash.png);" aria-expanded="false" aria-controls="collapse-1">
+              <div class="mvp-content z-1 d-flex align-items-center justify-content-center gap-2">
+                <div class"mvp-logo-container">
+                  <img src="{% static "global/assets/small_icon.png" %}" alt="" class="img-fluid mvp-logo border border-3 border-warning rounded-circle bg-title">
+                </div>
+                <div class="d-flex flex-column">
+                  <span class="text-bg-warning badge-mvp">MVP</span>
+                  <small>Aro Might</small>
+                </div>
+              </div>
+              <div class="youtube z-1 text-center">
+                  <a href="#" target="_blank">
+                    <i class="fa-brands fa-youtube fa-2x"></i>
+                  </a>
+                  <span class="d-none d-md-block">Watch on Youtube</span>
+              </div>
+              <div class="d-none d-md-block z-1">
+                <div class="match-info d-flex gap-3 align-items-center justify-content-evenly">
+                  <div class="team-1 d-flex flex-column">
+                    <div>
+                      <img src="{% static "global/assets/small_icon.png" %}" alt="" class="agent-icon-small">
+                      <span>Aro Might</span>
+                    </div>
+                    <div>
+                      <img src="{% static "global/assets/small_icon.png" %}" alt="" class="agent-icon-small">
+                      <span>Aro Might</span>
+                    </div>
+                    <div>
+                      <img src="{% static "global/assets/small_icon.png" %}" alt="" class="agent-icon-small">
+                      <span>Aro Might</span>
+                    </div>
+                    <div>
+                      <img src="{% static "global/assets/small_icon.png" %}" alt="" class="agent-icon-small">
+                      <span>Aro Might</span>
+                    </div>
+                    <div>
+                      <img src="{% static "global/assets/small_icon.png" %}" alt="" class="agent-icon-small">
+                      <span>Aro Might</span>
+                    </div>
+                  </div>
+                  <div class="vs">vs.</div>
+                  <div class="team-2 d-flex flex-column">
+                    <div>
+                      <img src="{% static "global/assets/small_icon.png" %}" alt="" class="agent-icon-small">
+                      <span>Aro Might</span>
+                    </div>
+                    <div>
+                      <img src="{% static "global/assets/small_icon.png" %}" alt="" class="agent-icon-small">
+                      <span>Aro Might</span>
+                    </div>
+                    <div>
+                      <img src="{% static "global/assets/small_icon.png" %}" alt="" class="agent-icon-small">
+                      <span>Aro Might</span>
+                    </div>
+                    <div>
+                      <img src="{% static "global/assets/small_icon.png" %}" alt="" class="agent-icon-small">
+                      <span>Aro Might</span>
+                    </div>
+                    <div>
+                      <img src="{% static "global/assets/small_icon.png" %}" alt="" class="agent-icon-small">
+                      <span>Aro Might</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              </button>
+            </h2>
+            <div id="collapse-1" class="accordion-collapse collapse">
+              <div class="accordion-body">
+                <div class="container">
+                  <div class="row gy-5 justify-content-center">
+                    <div class="col-auto container-responsive">
+                      <div class="row row-cols-lg-2">
+                        <div class="table-responsive">
+                          <table class="table table-hover table-borderless table-match-history align-middle border text-center caption-top">
+                              <caption>Winner</caption>
+                              <thead>
+                                  <tr class="table-winner align-middle">
+                                      <th>Agent</th>
+                                      <th>Average Points</th>
+                                      <th>KDA</th>
+                                      <th>Stats</th>
+                                      <th>First Bloods</th>
+                                      <th>Spikes Planted</th>
+                                      <th>Spikes Desarmed</th>
+                                  </tr>
+                              </thead>
+                              <tbody class="table-winner-body">
+                                  <tr>
+                                      <td class="text-start">
+                                          <span class="text-nowrap">
+                                            <img src="{% static 'global/assets/small_icon.png' %}" alt="" class="agent-icon">
+                                            Taifuzinha
+                                          </span>
+                                      </td>
+                                      <td>5.2</td>
+                                      <td>3.1</td>
+                                      <td>5/2/0</td>
+                                      <td>2</td>
+                                      <td>1</td>
+                                      <td>5</td>
+                                  </tr>
+                                  <tr>
+                                      <td class="text-start">
+                                        <span class="text-nowrap">
+                                          <img src="{% static 'global/assets/small_icon.png' %}" alt="" class="agent-icon">
+                                          Charlol
+                                        </span>
+                                      </td>
+                                      <td>5.2</td>
+                                      <td>3.1</td>
+                                      <td>5/2/0</td>
+                                      <td>2</td>
+                                      <td>1</td>
+                                      <td>5</td>
+                                  </tr>
+                                  <tr>
+                                      <td class="text-start">
+                                        <span class="text-nowrap">
+                                          <img src="{% static 'global/assets/small_icon.png' %}" alt="" class="agent-icon">
+                                          Gado de Botas
+                                        </span>
+                                      </td>
+                                      <td>5.2</td>
+                                      <td>3.1</td>
+                                      <td>5/2/0</td>
+                                      <td>2</td>
+                                      <td>1</td>
+                                      <td>5</td>
+                                  </tr>
+                                  <tr>
+                                      <td class="text-start">
+                                        <span class="text-nowrap">
+                                          <img src="{% static 'global/assets/small_icon.png' %}" alt="" class="agent-icon">
+                                          Aro Might
+                                        </span>
+                                      </td>
+                                      <td>5.2</td>
+                                      <td>3.1</td>
+                                      <td>5/2/0</td>
+                                      <td>2</td>
+                                      <td>1</td>
+                                      <td>5</td>
+                                  </tr>
+                                  <tr>
+                                      <td class="text-start">
+                                        <span class="text-nowrap">
+                                          <img src="{% static 'global/assets/small_icon.png' %}" alt="" class="agent-icon">
+                                          Aro Might
+                                        </span>
+                                      </td>
+                                      <td>5.2</td>
+                                      <td>3.1</td>
+                                      <td>5/2/0</td>
+                                      <td>2</td>
+                                      <td>1</td>
+                                      <td>5</td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                        </div>
+                        <div class="table-responsive">
+                          <table class="table table-hover table-borderless table-match-history align-middle border text-center caption-top">
+                              <caption>Losser</caption>
+                              <thead>
+                                  <tr class="table-losser align-middle">
+                                      <th>Agent</th>
+                                      <th>Average Points</th>
+                                      <th>KDA</th>
+                                      <th>Stats</th>
+                                      <th>First Bloods</th>
+                                      <th>Spikes Planted</th>
+                                      <th>Spikes Desarmed</th>
+                                  </tr>
+                              </thead>
+                              <tbody class="table-losser-body">
+                                  <tr>
+                                      <td class="text-start">
+                                          <span class="text-nowrap">
+                                            <img src="{% static 'global/assets/small_icon.png' %}" alt="" class="agent-icon">
+                                            Aro Might
+                                          </span>
+                                      </td>
+                                      <td>5.2</td>
+                                      <td>3.1</td>
+                                      <td>5/2/0</td>
+                                      <td>2</td>
+                                      <td>1</td>
+                                      <td>5</td>
+                                  </tr>
+                                  <tr>
+                                      <td class="text-start">
+                                        <span class="text-nowrap">
+                                          <img src="{% static 'global/assets/small_icon.png' %}" alt="" class="agent-icon">
+                                          Aro Might
+                                        </span>
+                                      </td>
+                                      <td>5.2</td>
+                                      <td>3.1</td>
+                                      <td>5/2/0</td>
+                                      <td>2</td>
+                                      <td>1</td>
+                                      <td>5</td>
+                                  </tr>
+                                  <tr>
+                                      <td class="text-start">
+                                        <span class="text-nowrap">
+                                          <img src="{% static 'global/assets/small_icon.png' %}" alt="" class="agent-icon">
+                                          Aro Might
+                                        </span>
+                                      </td>
+                                      <td>5.2</td>
+                                      <td>3.1</td>
+                                      <td>5/2/0</td>
+                                      <td>2</td>
+                                      <td>1</td>
+                                      <td>5</td>
+                                  </tr>
+                                  <tr>
+                                      <td class="text-start">
+                                        <span class="text-nowrap">
+                                          <img src="{% static 'global/assets/small_icon.png' %}" alt="" class="agent-icon">
+                                          Aro Might
+                                        </span>
+                                      </td>
+                                      <td>5.2</td>
+                                      <td>3.1</td>
+                                      <td>5/2/0</td>
+                                      <td>2</td>
+                                      <td>1</td>
+                                      <td>5</td>
+                                  </tr>
+                                  <tr>
+                                      <td class="text-start">
+                                        <span class="text-nowrap">
+                                          <img src="{% static 'global/assets/small_icon.png' %}" alt="" class="agent-icon">
+                                          Aro Might
+                                        </span>
+                                      </td>
+                                      <td>5.2</td>
+                                      <td>3.1</td>
+                                      <td>5/2/0</td>
+                                      <td>2</td>
+                                      <td>1</td>
+                                      <td>5</td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-10">
+                      <h3 class="fs-2 fw-bold">VOD</h3>
+                      <div class="ratio ratio-16x9">
+                        <iframe id="ytplayer" class="w-100 h-100" src="https://www.youtube.com/embed/6oRX1J2-33I" title="YouTube video" allowfullscreen></iframe>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+      </div>
     </div>
+  </div>
 </main>
 
 {% endblock content %}

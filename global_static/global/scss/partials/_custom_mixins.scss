@@ -32,7 +32,6 @@
 }
 
 @mixin fa-brand-icon($color) {
-  color: $color;
 
   &:hover {
     color: tint-color($color, 20%);
@@ -48,17 +47,33 @@
 
   i {
     color: $color;
+
+    &:hover {
+      color: $white;
+    }
+  }
+}
+
+@mixin icon-before($icon) {
+  &::before {
+      content: $icon;
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 600;
+      position: absolute;
+      left: 0.5rem;
+      top: 50%;
+      transform: translateY(-50%);
   }
 }
 
 // definição das variáveis dos mixins
 .overlay {
   @include overlay($color: rgba(0, 0, 0, 0.3));
-
+  
   &-md {
     @include overlay($breakpoint: md);
   }
-
+  
   &-sm {
     @include overlay($breakpoint: sm);
   }
