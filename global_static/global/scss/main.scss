@@ -34,7 +34,7 @@ $accordion-icon-width: 1.87rem; // largura do ícone
 @import "../../../node_modules/bootstrap/scss/mixins";
 
 $theme-colors: map-merge($theme-colors, $custom-colors);
-$table-variants: map-merge($table-variants, $custom-tables);
+// $table-variants: map-merge($table-variants, $custom-tables);
 
 @import "../../../node_modules/bootstrap/scss/bootstrap";
 
@@ -255,22 +255,18 @@ button:not(.collapsed) {
     }
 }
 
+@include table-variant("winner", $background: $success);
+.table-winner{
+    --bs-table-hover-bg: yellow;
+}
+@include table-variant("loser", $background: $red);
+.table-loser{
+    --bs-table-hover-bg: yellow;
+}
+
 // tornar reutilizável
 .table-match-history {
-
     color: $dark;
     font-size: 0.8rem;
     font-weight: 500;
-
-    .table-winner-body {
-        tr {
-            --bs-table-hover-bg: rgba(0, 128, 0, 0.1);
-        }
-    }
-
-    .table-losser-body {
-        tr {
-            --bs-table-hover-bg: rgba(255, 0, 0, 0.1);
-        }
-    }
 }

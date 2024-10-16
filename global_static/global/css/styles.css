@@ -2044,34 +2044,6 @@ progress {
   border-color: var(--bs-table-border-color);
 }
 
-.table-winner {
-  --bs-table-color: #fff;
-  --bs-table-bg: #198754;
-  --bs-table-border-color: rgb(71, 159, 118.2);
-  --bs-table-striped-bg: rgb(36.5, 141, 92.55);
-  --bs-table-striped-color: #fff;
-  --bs-table-active-bg: rgb(48, 147, 101.1);
-  --bs-table-active-color: #fff;
-  --bs-table-hover-bg: rgb(42.25, 144, 96.825);
-  --bs-table-hover-color: #fff;
-  color: var(--bs-table-color);
-  border-color: var(--bs-table-border-color);
-}
-
-.table-losser {
-  --bs-table-color: #fff;
-  --bs-table-bg: rgb(202.4, 55.2, 68.8);
-  --bs-table-border-color: rgb(212.92, 95.16, 106.04);
-  --bs-table-striped-bg: rgb(205.03, 65.19, 78.11);
-  --bs-table-striped-color: #fff;
-  --bs-table-active-bg: rgb(207.66, 75.18, 87.42);
-  --bs-table-active-color: #fff;
-  --bs-table-hover-bg: rgb(206.345, 70.185, 82.765);
-  --bs-table-hover-color: #fff;
-  color: var(--bs-table-color);
-  border-color: var(--bs-table-border-color);
-}
-
 .table-responsive {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
@@ -12307,16 +12279,46 @@ button:not(.collapsed) a {
   color: #f8f9fa;
 }
 
+.table-winner {
+  --bs-table-color: #fff;
+  --bs-table-bg: #198754;
+  --bs-table-border-color: rgb(71, 159, 118.2);
+  --bs-table-striped-bg: rgb(36.5, 141, 92.55);
+  --bs-table-striped-color: #fff;
+  --bs-table-active-bg: rgb(48, 147, 101.1);
+  --bs-table-active-color: #fff;
+  --bs-table-hover-bg: rgb(42.25, 144, 96.825);
+  --bs-table-hover-color: #fff;
+  color: var(--bs-table-color);
+  border-color: var(--bs-table-border-color);
+}
+
+.table-winner {
+  --bs-table-hover-bg: yellow;
+}
+
+.table-loser {
+  --bs-table-color: #fff;
+  --bs-table-bg: #fd4556;
+  --bs-table-border-color: rgb(253.4, 106.2, 119.8);
+  --bs-table-striped-bg: rgb(253.1, 78.3, 94.45);
+  --bs-table-striped-color: #000;
+  --bs-table-active-bg: rgb(253.2, 87.6, 102.9);
+  --bs-table-active-color: #000;
+  --bs-table-hover-bg: rgb(253.15, 82.95, 98.675);
+  --bs-table-hover-color: #000;
+  color: var(--bs-table-color);
+  border-color: var(--bs-table-border-color);
+}
+
+.table-loser {
+  --bs-table-hover-bg: yellow;
+}
+
 .table-match-history {
   color: #0f1923;
   font-size: 0.8rem;
   font-weight: 500;
-}
-.table-match-history .table-winner-body tr {
-  --bs-table-hover-bg: rgba(0, 128, 0, 0.1);
-}
-.table-match-history .table-losser-body tr {
-  --bs-table-hover-bg: rgba(255, 0, 0, 0.1);
 }
 
 /*# sourceMappingURL=styles.css.map */

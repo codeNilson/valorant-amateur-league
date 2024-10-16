@@ -15,10 +15,10 @@ $custom-colors: (
     "title": $title
 );
 
-$custom-tables: (
-    "winner": #198754,
-    "losser": shade-color($red, 20%)
-);
+// $custom-tables: (
+//     "winner": #198754,
+//     "losser": shade-color($red, 20%)
+// );
 
 $providers: (
     discord: $discord,
