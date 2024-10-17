@@ -11,16 +11,17 @@
     <div class="container">
       <h1 class="text-dark">Match History</h1>
       <div class="accordion" id="accordionExample">
+        {% for match in matches %}
           <div class="accordion-item mb-1">
             <h2 class="accordion-header">
-              <button class="accordion-button overlay collapsed d-flex justify-content-between" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-1"style="background-image: url(https://media.valorant-api.com/maps/7eaecc1b-4337-bbf6-6ab9-04b8f06b3319/splash.png);" aria-expanded="false" aria-controls="collapse-1">
+              <button class="accordion-button overlay collapsed d-flex justify-content-between" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{forloop.counter}}"style="background-image: url(https://media.valorant-api.com/maps/7eaecc1b-4337-bbf6-6ab9-04b8f06b3319/splash.png);" aria-expanded="false" aria-controls="collapse-{{forloop.counter}}">
               <div class="mvp-content z-1 d-flex align-items-center justify-content-center gap-2">
                 <div class"mvp-logo-container">
                   <img src="{% static "global/assets/small_icon.png" %}" alt="" class="img-fluid mvp-logo border border-3 border-warning rounded-circle bg-title">
                 </div>
                 <div class="d-flex flex-column">
                   <span class="text-bg-warning badge-mvp">MVP</span>
-                  <small>Aro Might</small>
+                  <small>{{match.mvp}}</small>
                 </div>
               </div>
               <div class="youtube z-1 text-center">
@@ -31,56 +32,22 @@
               </div>
               <div class="d-none d-md-block z-1">
                 <div class="match-info d-flex gap-3 align-items-center justify-content-evenly">
-                  <div class="team-1 d-flex flex-column">
+                  {% for team in match.teams.all %}
+                  <div class="team-{{forloop.counter}} d-flex flex-column">
+                    {% for player in team.players.all %}
                     <div>
-                      <img src="{% static "global/assets/small_icon.png" %}" alt="" class="agent-icon-small">
-                      <span>Aro Might</span>
+                      <img src={{player.main_agent.icon}} alt="" class="agent-icon-small">
+                      <span>{{player.username}}</span>
                     </div>
-                    <div>
-                      <img src="{% static "global/assets/small_icon.png" %}" alt="" class="agent-icon-small">
-                      <span>Aro Might</span>
-                    </div>
-                    <div>
-                      <img src="{% static "global/assets/small_icon.png" %}" alt="" class="agent-icon-small">
-                      <span>Aro Might</span>
-                    </div>
-                    <div>
-                      <img src="{% static "global/assets/small_icon.png" %}" alt="" class="agent-icon-small">
-                      <span>Aro Might</span>
-                    </div>
-                    <div>
-                      <img src="{% static "global/assets/small_icon.png" %}" alt="" class="agent-icon-small">
-                      <span>Aro Might</span>
-                    </div>
+                    {% endfor %}
                   </div>
-                  <div class="vs">vs.</div>
-                  <div class="team-2 d-flex flex-column">
-                    <div>
-                      <img src="{% static "global/assets/small_icon.png" %}" alt="" class="agent-icon-small">
-                      <span>Aro Might</span>
-                    </div>
-                    <div>
-                      <img src="{% static "global/assets/small_icon.png" %}" alt="" class="agent-icon-small">
-                      <span>Aro Might</span>
-                    </div>
-                    <div>
-                      <img src="{% static "global/assets/small_icon.png" %}" alt="" class="agent-icon-small">
-                      <span>Aro Might</span>
-                    </div>
-                    <div>
-                      <img src="{% static "global/assets/small_icon.png" %}" alt="" class="agent-icon-small">
-                      <span>Aro Might</span>
-                    </div>
-                    <div>
-                      <img src="{% static "global/assets/small_icon.png" %}" alt="" class="agent-icon-small">
-                      <span>Aro Might</span>
-                    </div>
-                  </div>
+                  {% if forloop.first %}<div class="vs">vs.</div>{% endif %}
+                  {% endfor %}
                 </div>
               </div>
               </button>
             </h2>
-            <div id="collapse-1" class="accordion-collapse collapse">
+            <div id="collapse-{{forloop.counter}}" class="accordion-collapse collapse">
               <div class="accordion-body">
                 <div class="container">
                   <div class="row gy-5 justify-content-center">
@@ -100,7 +67,7 @@
                                       <th>Spikes Desarmed</th>
                                   </tr>
                               </thead>
-                              <tbody class="table-winner-body">
+                              <tbody>
                                   <tr>
                                       <td class="text-start">
                                           <span class="text-nowrap">
@@ -177,7 +144,7 @@
                         <div class="table-responsive">
                           <table class="table table-hover table-borderless table-match-history align-middle border text-center caption-top table-loser">
                               <caption>Losser</caption>
-                              <thead class="">
+                              <thead>
                                   <tr class="align-middle">
                                       <th>Agent</th>
                                       <th>Average Points</th>
@@ -188,7 +155,7 @@
                                       <th>Spikes Desarmed</th>
                                   </tr>
                               </thead>
-                              <tbody class="">
+                              <tbody>
                                   <tr>
                                       <td class="text-start">
                                           <span class="text-nowrap">
@@ -275,6 +242,7 @@
               </div>
             </div>
           </div>
+        {% endfor %}
         </div>
       </div>
     </div>

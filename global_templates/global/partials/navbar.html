@@ -5,7 +5,7 @@
         <a class="navbar-brand" href="/">
             <img src="{% static 'global/assets/lavava_logo.webp' %}" alt="Logo da Lavava" class="lavava-logo img-fluid">
         </a>
-        <button class="btn btn-outline-red border-0 d-md-none d-flex aling-items-center" type="button"
+        <button class="btn btn-outline-primary-red border-0 d-md-none d-flex aling-items-center" type="button"
             data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions"
             aria-controls="offcanvasWithBothOptions" aria-expanded="false" aria-label="Toggle navigation">
             <i class="fa-solid fa-caret-down fs-2"></i>
@@ -18,7 +18,7 @@
                     <a class="nav-link active text-white" aria-current="page" href="#">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="#">Features</a>
+                    <a class="nav-link text-white" href="{% url "matches:history" %}">Match History</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-white" href="#">Blog</a>
@@ -37,16 +37,16 @@
             {% if not user.is_authenticated %}
             <ul class="navbar-nav ms-auto d-none d-md-flex">
                 <li class="nav-item">
-                    <a class="btn btn-outline-red rounded-0" role="button" href="{% url "account_login" %}">Sign in</a>
+                    <a class="btn btn-outline-primary-red rounded-0" role="button" href="{% url "account_login" %}">Sign in</a>
                 </li>
                 <li class="nav-item">
-                    <a class="btn btn-red rounded-0" role="button" href="/accounts/signup">Sign up</a>
+                    <a class="btn btn-primary-red rounded-0" role="button" href="/accounts/signup">Sign up</a>
                 </li>
             </ul>
             {% else %}
             <!-- if user is logged -->
             <div class="ms-md-auto d-none d-md-flex">
-                <button class="btn btn-outline-red border-0 d-flex align-items-center" type="button"
+                <button class="btn btn-outline-primary-red border-0 d-flex align-items-center" type="button"
                     data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions"
                     aria-controls="offcanvasWithBothOptions">
                     <i class="fa-solid fa-caret-down fs-2"></i></i>
@@ -58,7 +58,7 @@
     </div>
 </nav>
 
-<div class="offcanvas offcanvas-end bg-red" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
+<div class="offcanvas offcanvas-end bg-primary-red" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
     aria-labelledby="offcanvasWithBothOptionsLabel" style="max-width: 200px;">
     <div class="offcanvas-header">
         <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Menu</h5>
@@ -70,7 +70,7 @@
                 <a class="nav-link rounded-pill" href="#">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link rounded-pill" href="#">Features</a>
+                <a class="nav-link rounded-pill" href="{% url "matches:history" %}">Match History</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link rounded-pill" href="#">Blog</a>

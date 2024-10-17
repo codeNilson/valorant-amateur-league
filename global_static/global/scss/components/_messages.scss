@@ -1,0 +1,30 @@
+.alert {
+    @extend .position-fixed;
+    @include icon-before('');
+    padding-left: 2rem;
+    max-width: 20rem;
+    left: 25px;
+    z-index: 99;
+
+    &-index-1 {
+        bottom: 5px;
+    }
+
+    &-index-2 {
+        bottom: 125px;
+    }
+
+    .btn-close {
+        top: auto;
+    }
+
+    @each $alert, $icon in $alert-icons {
+        &-#{$alert} {
+            @extend .text-bg-#{$alert};
+
+            &::before {
+                content: $icon;
+            }
+        }
+    }
+}

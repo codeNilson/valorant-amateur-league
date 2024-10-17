@@ -14,15 +14,15 @@
     </div>
     <div class="carousel-inner">
       <div class="carousel-item overlay active carousel-overlay z-2">
-        <img src="{% static 'lavava/assets/carrosel_1_large.png'%}" srcset="{% static 'lavava/assets/carrosel_1_large.png'%} 2663w,
+        <img src="{% static 'lavava/assets/carrosel_1_large.png'%}" srcset="{% static 'lavava/assets/carrosel_1_large.png'%} 2560w,
                 {% static 'lavava/assets/carrosel_1_medium.png'%} 1692w,
                 {% static 'lavava/assets/carrosel_1_small.png'%} 968w" class="d-block w-100" alt="...">
         </img>
         <div class="container">
           <div class="carousel-caption z-2 text-start text-title">
-            <h2 class="display-1 fw-bold">WATCH THE ACTION</h2>
+            <h2 class="display-4 display-1-lg fw-bold">WATCH THE ACTION</h2>
             <p class="fs-3">Check Our Youtube Channel</p>
-            <a href="#" role="button" class="btn btn-red" target="_blank">Watch Now</a>
+            <a href="#" role="button" class="btn btn-primary-red" target="_blank">Watch Now</a>
           </div>
         </div>
       </div>
@@ -35,7 +35,7 @@
           <div class="carousel-caption z-2 text-center text-title">
             <h2 class="display-1 fw-bold">TOP PLAYERS</h2>
             <p class="fs-3">Explore Their Perfomance</p>
-            <a href="#" role="button" class="btn btn-red" target="_blank">Discover Now</a>
+            <a href="#" role="button" class="btn btn-primary-red" target="_blank">Discover Now</a>
           </div>
         </div>
       </div>
@@ -58,7 +58,7 @@
             <h3 class="me-auto">Ranking</h3>
             <form action="{% url "home" %}" method="POST">
               {% csrf_token %}
-              <button type="submit" class="badge text-bg-red">Update Ranking</button>
+              <button type="submit" class="badge text-bg-primary-red">Update Ranking</button>
             </form>
           </div>
           <table class="table-striped table table-hover result-point text-center align-middle ">
@@ -113,7 +113,7 @@
             <div class="card-body">
               <p class="card-text">Aro Might is the player with most wins so far. His win ratio is 85,7%!
               </p>
-              <a href="#" role="button" class="btn btn-red">Check Profile</a>
+              <a href="#" role="button" class="btn btn-primary-red">Check Profile</a>
             </div>
           </div>
 
@@ -126,7 +126,7 @@
             <div class="card-body">
               <p class="card-text">Aro Might is the player with most wins so far. His win ratio is 85,7%!
               </p>
-              <a href="#" role="button" class="btn btn-red">Watch on Youtube!</a>
+              <a href="#" role="button" class="btn btn-primary-red">Watch on Youtube!</a>
             </div>
           </div>
 
@@ -139,7 +139,7 @@
             <div class="card-body">
               <p class="card-text">Aro Might is the player with most wins so far. His win ratio is 85,7%!
               </p>
-              <a href="#" role="button" class="btn btn-red">Watch on Youtube!</a>
+              <a href="#" role="button" class="btn btn-primary-red">Watch on Youtube!</a>
             </div>
           </div>
         </aside>

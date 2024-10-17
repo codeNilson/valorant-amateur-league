@@ -1,15 +1,17 @@
 @import "../../../node_modules/bootstrap/scss/functions";
 
-@import "partials/custom_colors";
+@import "partials/variables";
 @import "partials/custom_settings";
-
-// $accordion-padding-y: 1rem;
-// $accordion-padding-x: 1.25rem;
 
 $accordion-icon-color: white; // cor do ícone
 $accordion-icon-active-color: white; // cor do ícone ativo
 
 @import "../../../node_modules/bootstrap/scss/variables";
+@import "../../../node_modules/bootstrap/scss/variables-dark";
+
+// $accordion-padding-y: 1rem;
+// $accordion-padding-x: 1.25rem;
+
 
 $accordion-color: $dark; // cor do texto body
 $accordion-bg: $light; // cor do header e do body
@@ -30,21 +32,53 @@ $accordion-button-active-color: $light; // cor do texto do botão ativo
 
 $accordion-icon-width: 1.87rem; // largura do ícone
 
-
-@import "../../../node_modules/bootstrap/scss/mixins";
-
 $theme-colors: map-merge($theme-colors, $custom-colors);
 // $table-variants: map-merge($table-variants, $custom-tables);
 
 @import "../../../node_modules/bootstrap/scss/bootstrap";
-
-@import "partials/custom_mixins";
+@import "partials/mixins";
+@import "components/messages";
+@import "components/tables";
 
 main {
     flex: 1;
 }
 
-.bg-red {
+// create an overlay for the overlay class and for each breakpoint
+.overlay {
+    @include overlay($color: rgba(0, 0, 0, 0.3));
+
+    @each $breakpoint, $value in $grid-breakpoints {
+        &-#{$breakpoint} {
+            @include overlay($breakpoint: $breakpoint)
+        }
+    }
+}
+
+// create a button for each provider
+@each $provider, $color in $providers {
+    @include provider-button($provider, $bg-color: $color)
+}
+
+.footer-brand-icons, .social-icons-container {
+    @include fa-brand-icon("youtube", $youtube);
+    @include fa-brand-icon("discord", $discord);
+    @include fa-brand-icon("github", $black);
+}
+
+@each $display, $size in $display-font-sizes {
+    .display-#{$display} {
+        @each $breakpoint, $value in $grid-breakpoints {
+            &-#{$breakpoint} {
+                @include media-breakpoint-up($breakpoint) {
+                    font-size: $size;
+                }
+            }
+        }
+    }
+}
+
+.bg-primary-red {
     color: $title;
 
     .btn-outline-light:hover {
@@ -59,19 +93,6 @@ main {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-
-.fa-youtube {
-    @include fa-brand-icon($youtube);
-}
-
-.fa-discord {
-    @include fa-brand-icon($discord);
-}
-
-.fa-github {
-    @include fa-brand-icon($black);
-}
-
 .jump-animation:hover {
     animation: translateY 500ms 4 alternate;
 }
@@ -84,37 +105,10 @@ main {
     }
 }
 
-table.result-point {
-    tr {
-        td {
-            img {
-                max-width: 80px;
-                margin-right: 11px;
-            }
-        }
-    }
-
-    tfoot {
-        td {
-            background-color: transparent;
-            border: none;
-            font-size: 0.8rem;
-        }
-    }
-
-    .fa-caret-down {
-        color: red;
-    }
-
-    .fa-caret-up {
-        color: $teal-600;
-    }
-}
-
 .login-background {
     background-size: cover;
     background-position: center;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 /* Keyframes */
@@ -128,44 +122,6 @@ table.result-point {
     }
 }
 
-
-.messages-container {
-    .alert {
-        position: relative;
-        padding-left: 2rem;
-        max-width: 20rem;
-        position: fixed;
-        left: 25px;
-        z-index: 99;
-
-        &.alert-index-1 {
-            bottom: 5px;
-        }
-
-        &.alert-index-2 {
-            bottom: 125px;
-        }
-
-        @include icon-before('');
-
-        &.text-bg-danger::before {
-            content: '\f06a';
-        }
-
-        &.text-bg-success::before {
-            content: '\f058';
-        }
-
-        &.text-bg-warning::before {
-            content: '\f071';
-        }
-
-        &.text-bg-info::before {
-            content: '\f05a';
-        }
-    }
-}
-
 .section-social {
     .social-background {
         background-size: cover;
@@ -173,32 +129,8 @@ table.result-point {
     }
 
     .container-social {
-        h2 {
-            font-size: 4rem;
-        }
-
-        p {
-            font-size: 1rem;
-        }
-
-        i {
-            color: $title;
-        }
-    }
-
-    @media (min-width: 992px) {
-
-        .container-social {
-            max-width: 40%;
-
-            h2 {
-                font-size: 6rem;
-            }
-
-            p {
-                font-size: 2rem;
-            }
-        }
+        padding: 100px 0;
+        max-height: 1020px;
     }
 }
 
@@ -208,7 +140,7 @@ table.result-point {
     font-size: 1.2rem;
 
     &::after {
-        margin-left: 0rem;
+        @extend .ms-0;
     }
 }
 
@@ -253,20 +185,4 @@ button:not(.collapsed) {
     a {
         color: $accordion-button-active-color;
     }
-}
-
-@include table-variant("winner", $background: $success);
-.table-winner{
-    --bs-table-hover-bg: yellow;
-}
-@include table-variant("loser", $background: $red);
-.table-loser{
-    --bs-table-hover-bg: yellow;
-}
-
-// tornar reutilizável
-.table-match-history {
-    color: $dark;
-    font-size: 0.8rem;
-    font-weight: 500;
 }
