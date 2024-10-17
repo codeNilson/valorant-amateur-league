@@ -17,7 +17,4 @@ class MatchHistory(View):
         matches = Match.objects.prefetch_related("map", "winner", "teams__stats__player", "teams__players__main_agent")
         matches = matches.annotate(mvp=Subquery(mvp_subquery))
 
-        for match in matches:
-            print(match.mvp)
-
         return render(request, "matches/match_history.html", {"matches": matches})
