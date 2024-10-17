@@ -14,7 +14,7 @@ class MatchHistory(View):
             team__match=OuterRef("pk"), mvp=True
         ).values("player__username")[:1]
 
-        matches = Match.objects.prefetch_related("map", "winner", "teams__players__main_agent")
+        matches = Match.objects.prefetch_related("map", "winner", "teams__stats__player", "teams__players__main_agent")
         matches = matches.annotate(mvp=Subquery(mvp_subquery))
 
         for match in matches:

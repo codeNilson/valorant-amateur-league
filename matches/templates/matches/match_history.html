@@ -53,9 +53,15 @@
                   <div class="row gy-5 justify-content-center">
                     <div class="col-auto container-responsive">
                       <div class="row row-cols-lg-2">
+                        {% for team in match.teams.all %}
                         <div class="table-responsive">
+                          {% if match.winner == team %}
                           <table class="table table-hover table-borderless table-match-history align-middle border text-center caption-top table-winner">
                               <caption>Winner</caption>
+                            {% else %}
+                            <table class="table table-hover table-borderless table-match-history align-middle border text-center caption-top table-loser">
+                              <caption>Loser</caption>
+                            {% endif %}
                               <thead>
                                   <tr class="align-middle">
                                       <th>Agent</th>
@@ -68,167 +74,26 @@
                                   </tr>
                               </thead>
                               <tbody>
+                                {% for stat in team.stats.all %}
                                   <tr>
                                       <td class="text-start">
                                           <span class="text-nowrap">
                                             <img src="{% static 'global/assets/small_icon.png' %}" alt="" class="agent-icon">
-                                            Taifuzinha
+                                            {{stat.player.username}}
                                           </span>
                                       </td>
-                                      <td>5.2</td>
-                                      <td>3.1</td>
-                                      <td>5/2/0</td>
-                                      <td>2</td>
-                                      <td>1</td>
-                                      <td>5</td>
-                                  </tr>
-                                  <tr>
-                                      <td class="text-start">
-                                        <span class="text-nowrap">
-                                          <img src="{% static 'global/assets/small_icon.png' %}" alt="" class="agent-icon">
-                                          Charlol
-                                        </span>
-                                      </td>
-                                      <td>5.2</td>
-                                      <td>3.1</td>
-                                      <td>5/2/0</td>
-                                      <td>2</td>
-                                      <td>1</td>
-                                      <td>5</td>
-                                  </tr>
-                                  <tr>
-                                      <td class="text-start">
-                                        <span class="text-nowrap">
-                                          <img src="{% static 'global/assets/small_icon.png' %}" alt="" class="agent-icon">
-                                          Gado de Botas
-                                        </span>
-                                      </td>
-                                      <td>5.2</td>
-                                      <td>3.1</td>
-                                      <td>5/2/0</td>
-                                      <td>2</td>
-                                      <td>1</td>
-                                      <td>5</td>
-                                  </tr>
-                                  <tr>
-                                      <td class="text-start">
-                                        <span class="text-nowrap">
-                                          <img src="{% static 'global/assets/small_icon.png' %}" alt="" class="agent-icon">
-                                          Aro Might
-                                        </span>
-                                      </td>
-                                      <td>5.2</td>
-                                      <td>3.1</td>
-                                      <td>5/2/0</td>
-                                      <td>2</td>
-                                      <td>1</td>
-                                      <td>5</td>
-                                  </tr>
-                                  <tr>
-                                      <td class="text-start">
-                                        <span class="text-nowrap">
-                                          <img src="{% static 'global/assets/small_icon.png' %}" alt="" class="agent-icon">
-                                          Aro Might
-                                        </span>
-                                      </td>
-                                      <td>5.2</td>
-                                      <td>3.1</td>
-                                      <td>5/2/0</td>
+                                      <td>{{stat.get_kda}}</td>
+                                      <td>{{stat.get_kda}}</td>
+                                      <td>{{stat.kills}}/{{stat.deaths}}/{{stat.assists}}</td>
                                       <td>2</td>
                                       <td>1</td>
                                       <td>5</td>
                                   </tr>
                               </tbody>
+                              {% endfor %}
                           </table>
                         </div>
-                        <div class="table-responsive">
-                          <table class="table table-hover table-borderless table-match-history align-middle border text-center caption-top table-loser">
-                              <caption>Losser</caption>
-                              <thead>
-                                  <tr class="align-middle">
-                                      <th>Agent</th>
-                                      <th>Average Points</th>
-                                      <th>KDA</th>
-                                      <th>Stats</th>
-                                      <th>First Bloods</th>
-                                      <th>Spikes Planted</th>
-                                      <th>Spikes Desarmed</th>
-                                  </tr>
-                              </thead>
-                              <tbody>
-                                  <tr>
-                                      <td class="text-start">
-                                          <span class="text-nowrap">
-                                            <img src="{% static 'global/assets/small_icon.png' %}" alt="" class="agent-icon">
-                                            Aro Might
-                                          </span>
-                                      </td>
-                                      <td>5.2</td>
-                                      <td>3.1</td>
-                                      <td>5/2/0</td>
-                                      <td>2</td>
-                                      <td>1</td>
-                                      <td>5</td>
-                                  </tr>
-                                  <tr>
-                                      <td class="text-start">
-                                        <span class="text-nowrap">
-                                          <img src="{% static 'global/assets/small_icon.png' %}" alt="" class="agent-icon">
-                                          Aro Might
-                                        </span>
-                                      </td>
-                                      <td>5.2</td>
-                                      <td>3.1</td>
-                                      <td>5/2/0</td>
-                                      <td>2</td>
-                                      <td>1</td>
-                                      <td>5</td>
-                                  </tr>
-                                  <tr>
-                                      <td class="text-start">
-                                        <span class="text-nowrap">
-                                          <img src="{% static 'global/assets/small_icon.png' %}" alt="" class="agent-icon">
-                                          Aro Might
-                                        </span>
-                                      </td>
-                                      <td>5.2</td>
-                                      <td>3.1</td>
-                                      <td>5/2/0</td>
-                                      <td>2</td>
-                                      <td>1</td>
-                                      <td>5</td>
-                                  </tr>
-                                  <tr>
-                                      <td class="text-start">
-                                        <span class="text-nowrap">
-                                          <img src="{% static 'global/assets/small_icon.png' %}" alt="" class="agent-icon">
-                                          Aro Might
-                                        </span>
-                                      </td>
-                                      <td>5.2</td>
-                                      <td>3.1</td>
-                                      <td>5/2/0</td>
-                                      <td>2</td>
-                                      <td>1</td>
-                                      <td>5</td>
-                                  </tr>
-                                  <tr>
-                                      <td class="text-start">
-                                        <span class="text-nowrap">
-                                          <img src="{% static 'global/assets/small_icon.png' %}" alt="" class="agent-icon">
-                                          Aro Might
-                                        </span>
-                                      </td>
-                                      <td>5.2</td>
-                                      <td>3.1</td>
-                                      <td>5/2/0</td>
-                                      <td>2</td>
-                                      <td>1</td>
-                                      <td>5</td>
-                                  </tr>
-                              </tbody>
-                          </table>
-                        </div>
+                        {% endfor %}
                       </div>
                     </div>
                     <div class="col-md-10">
