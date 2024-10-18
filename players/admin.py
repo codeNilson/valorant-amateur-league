@@ -18,7 +18,6 @@ class PlayerAdmin(admin.ModelAdmin):
                 "fields": (
                     "username",
                     "password",
-                    "first_name",
                     "email",
                     "tier",
                     "main_agent",

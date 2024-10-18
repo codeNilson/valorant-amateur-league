@@ -10,6 +10,7 @@ class PlayerSignupForm(SignupForm):
             "username",
             css_class="form-control border-0 bg-transparent",
             autofocus=True,
+            maxlength=15,
         )
         update_form_fields(
             self, "email", css_class="form-control border-0 bg-transparent"

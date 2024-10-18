@@ -4,6 +4,7 @@
  * Copyright 2011-2024 The Bootstrap Authors
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 :root,
 [data-bs-theme=light] {
   --bs-blue: #0d6efd;
@@ -12112,8 +12113,32 @@ table.result-point .fa-caret-up {
   --bs-table-color: var(--bs-white);
 }
 
+@font-face {
+  font-family: "Tungsten";
+  src: url(../fonts/Tungsten-Bold.ttf) format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
 main {
   flex: 1;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+h1, .h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
+  font-family: "Tungsten", sans-serif;
 }
 
 .overlay {
@@ -12473,6 +12498,24 @@ main {
 .section-social .container-social {
   padding: 100px 0;
   max-height: 1020px;
+}
+
+aside.hall-of-fame .card {
+  transition: all 300ms ease-in-out;
+}
+aside.hall-of-fame .card:hover {
+  border-color: #dc3545;
+  transform: scale(1.05);
+}
+aside.hall-of-fame .card:hover img {
+  background-color: #fd4556;
+}
+aside.hall-of-fame .card img {
+  transition: all 300ms ease-in-out;
+}
+aside.hall-of-fame .card .card-img-overlay {
+  top: auto;
+  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7));
 }
 
 .accordion-header button {

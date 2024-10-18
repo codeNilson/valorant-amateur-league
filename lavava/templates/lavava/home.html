@@ -55,7 +55,7 @@
       <div class="row gy-3">
         <div class="col-lg-8 table-responsive">
           <div class="d-flex align-items-center">
-            <h3 class="me-auto">Ranking</h3>
+            <h2 class="me-auto display-3 text-primary-red">Ranking</h2>
             <form action="{% url "home" %}" method="POST">
               {% csrf_token %}
               <button type="submit" class="badge text-bg-primary-red">Update Ranking</button>
@@ -97,15 +97,15 @@
             </tbody>
             <tfoot>
               <tr class="opacity-75 border-0">
-                <td colspan="6" class="text-start fw-bold">Last updated: {{update_at}}</td>
+                <td colspan="6" class="text-start fw-bold">Last update: {{update_at}}</td>
               </tr>
             </tfoot>
           </table>
         </div>
 
-        <aside class="col-10 col-md-8 col-lg-3 mx-auto">
+        <aside class="col-10 col-md-8 col-lg-3 mx-auto hall-of-fame">
           <!-- Card 1 -->
-          <div class="card rounded">
+          {% comment %} <div class="card rounded shadow">
             <div class="card-header text-bg-dark fw-bold fs-4">
               <h3 class="m-0">Top Player</h3>
             </div>
@@ -118,7 +118,7 @@
           </div>
 
           <!-- Card 2 -->
-          <div class="card mt-3 mt-md-1">
+          <div class="card mt-3 shadow mt-md-4">
             <div class="card-header text-bg-dark fw-bold fs-4">
               <h3 class="m-0">Last Match</h3>
             </div>
@@ -131,7 +131,7 @@
           </div>
 
           <!-- Card 3 -->
-          <div class="card mt-3 mt-md-1">
+          <div class="card mt-3 shadow mt-md-4">
             <div class="card-header text-bg-dark fw-bold fs-4">
               <h3 class="m-0">Last Match</h3>
             </div>
@@ -141,7 +141,17 @@
               </p>
               <a href="#" role="button" class="btn btn-primary-red">Watch on Youtube!</a>
             </div>
-          </div>
+          </div> {% endcomment %}
+
+            <h2 class="display-3 text-dark">Hall of Fame</h2>
+            <div class="card bg-success text-title">
+              <img src= {% static "lavava/assets/lp_geeko_bg.png" %} class="card-img" alt="...">
+              <div class="card-img-overlay">
+                <h5 class="card-title h3">THE GOAT</h5>
+                <p class="card-text">Aro Might is the player in the first place right now!</p>
+              </div>
+            </div>
+
         </aside>
       </div>
   </section>

@@ -5,11 +5,13 @@
         <a class="navbar-brand" href="/">
             <img src="{% static 'global/assets/lavava_logo.webp' %}" alt="Logo da Lavava" class="lavava-logo img-fluid">
         </a>
-        <button class="btn btn-outline-primary-red border-0 d-md-none d-flex aling-items-center" type="button"
+        <button class="btn btn-outline-primary-red border-0 d-md-none" type="button"
             data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions"
             aria-controls="offcanvasWithBothOptions" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="fa-solid fa-caret-down fs-2"></i>
-            <span class="ms-2 fw-semibold">Menu</span>
+            <div class="d-flex">
+                <i class="fa-solid fa-caret-down fs-2"></i>
+                <h4 class="ms-2 mb-0 h2 fw-semibold">Menu</h4>
+            </div>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -46,11 +48,13 @@
             {% else %}
             <!-- if user is logged -->
             <div class="ms-md-auto d-none d-md-flex">
-                <button class="btn btn-outline-primary-red border-0 d-flex align-items-center" type="button"
+                <button class="btn btn-outline-primary-red border-0 py-0" type="button"
                     data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions"
                     aria-controls="offcanvasWithBothOptions">
-                    <i class="fa-solid fa-caret-down fs-2"></i></i>
-                    <span class="ms-2 fw-semibold">Menu</span>
+                    <div class="d-flex mt-1">
+                        <i class="fa-solid fa-caret-down fs-2 mt-1"></i></i>
+                        <h4 class="ms-2 fw-semibold h2">Menu</h4>
+                    </div>
                 </button>
             </div>
             {% endif %}
@@ -61,7 +65,7 @@
 <div class="offcanvas offcanvas-end bg-primary-red" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
     aria-labelledby="offcanvasWithBothOptionsLabel" style="max-width: 200px;">
     <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Menu</h5>
+        <h4 class="offcanvas-title h2 text-title" id="offcanvasWithBothOptionsLabel">Menu</h4>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
