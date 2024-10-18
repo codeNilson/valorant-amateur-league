@@ -78,16 +78,19 @@ class Player(AbstractUser):
     @staticmethod
     def annotate_win_ratio(queryset):
         return queryset.annotate(
-            win_ratio=models.Case(
-                models.When(models.Q(wins=0) & models.Q(losses=0), then=0),
-                default=Cast(models.F("wins"), models.FloatField())
-                / (
-                    Cast(models.F("wins"), models.FloatField())
-                    + Cast(models.F("losses"), models.FloatField())
-                ),
-                output_field=models.FloatField(),
+            win_ratio=Round(
+                models.Case(
+                    models.When(models.Q(wins=0) & models.Q(losses=0), then=0),
+                    default=Cast(models.F("wins"), models.FloatField())
+                    / (
+                        Cast(models.F("wins"), models.FloatField())
+                        + Cast(models.F("losses"), models.FloatField())
+                    ),
+                    output_field=models.FloatField(),
+                )
+                * 100,
+                2,
             )
-            * 100
         )
 
 

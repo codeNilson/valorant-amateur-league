@@ -25,6 +25,10 @@ class Stat(models.Model):
     kills = models.PositiveIntegerField(null=True, blank=True)
     deaths = models.PositiveIntegerField(null=True, blank=True)
     assists = models.PositiveIntegerField(null=True, blank=True)
+    first_bloods = models.PositiveIntegerField(null=True, blank=True)
+    plants = models.PositiveIntegerField(null=True, blank=True)
+    spikes_defused = models.PositiveIntegerField(null=True, blank=True)
+    average_points = models.PositiveIntegerField(null=True, blank=True)
     mvp = models.BooleanField(null=True, default=False)
     ace = models.BooleanField(null=True, default=False)
 

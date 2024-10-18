@@ -38,11 +38,17 @@ class StatAdmin(admin.ModelAdmin):
     list_display = [
         "player",
         "team",
+        "team__match",
         "agent",
         "kills",
         "deaths",
         "assists",
         "get_kda",
+        "mvp",
+        "ace",
+    ]
+
+    list_editable = [
         "mvp",
         "ace",
     ]
@@ -56,6 +62,7 @@ class StatAdmin(admin.ModelAdmin):
     list_filter = [
         "agent",
         "player",
+        "team__match",
     ]
 
     list_select_related = [

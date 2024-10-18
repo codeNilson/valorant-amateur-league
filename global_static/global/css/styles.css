@@ -12493,7 +12493,7 @@ main {
 
 .badge-mvp,
 .badge-ace {
-  padding: 2px 0;
+  width: 50px;
 }
 
 .youtube .fa-youtube {

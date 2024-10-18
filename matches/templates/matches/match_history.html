@@ -14,10 +14,10 @@
         {% for match in matches %}
           <div class="accordion-item mb-1">
             <h2 class="accordion-header">
-              <button class="accordion-button overlay collapsed d-flex justify-content-between" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{forloop.counter}}"style="background-image: url(https://media.valorant-api.com/maps/7eaecc1b-4337-bbf6-6ab9-04b8f06b3319/splash.png);" aria-expanded="false" aria-controls="collapse-{{forloop.counter}}">
+              <button class="accordion-button overlay collapsed d-flex justify-content-between" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{forloop.counter}}"style="background-image: url({{match.map.splash}});" aria-expanded="false" aria-controls="collapse-{{forloop.counter}}">
               <div class="mvp-content z-1 d-flex align-items-center justify-content-center gap-2">
                 <div class"mvp-logo-container">
-                  <img src="{% static "global/assets/small_icon.png" %}" alt="" class="img-fluid mvp-logo border border-3 border-warning rounded-circle bg-title">
+                  <img src={{match.mvp_icon}} alt="" class="img-fluid mvp-logo border border-3 border-warning rounded-circle bg-title">
                 </div>
                 <div class="d-flex flex-column">
                   <span class="text-bg-warning badge-mvp">MVP</span>
@@ -69,8 +69,8 @@
                                       <th>KDA</th>
                                       <th>Stats</th>
                                       <th>First Bloods</th>
-                                      <th>Spikes Planted</th>
-                                      <th>Spikes Desarmed</th>
+                                      <th>Plants</th>
+                                      <th>Defuses</th>
                                   </tr>
                               </thead>
                               <tbody>
@@ -78,16 +78,16 @@
                                   <tr>
                                       <td class="text-start">
                                           <span class="text-nowrap">
-                                            <img src="{% static 'global/assets/small_icon.png' %}" alt="" class="agent-icon">
+                                            <img src={{stat.player.main_agent.icon}} alt="" class="agent-icon">
                                             {{stat.player.username}}
                                           </span>
                                       </td>
-                                      <td>{{stat.get_kda}}</td>
+                                      <td>{{stat.average_points}}</td>
                                       <td>{{stat.get_kda}}</td>
                                       <td>{{stat.kills}}/{{stat.deaths}}/{{stat.assists}}</td>
-                                      <td>2</td>
-                                      <td>1</td>
-                                      <td>5</td>
+                                      <td>{{stat.first_bloods}}</td>
+                                      <td>{{stat.plants}}</td>
+                                      <td>{{stat.defuses}}</td>
                                   </tr>
                               </tbody>
                               {% endfor %}
@@ -96,12 +96,14 @@
                         {% endfor %}
                       </div>
                     </div>
+                    {% if match.url %}
                     <div class="col-md-10">
                       <h3 class="fs-2 fw-bold">VOD</h3>
                       <div class="ratio ratio-16x9">
-                        <iframe id="ytplayer" class="w-100 h-100" src="https://www.youtube.com/embed/6oRX1J2-33I" title="YouTube video" allowfullscreen></iframe>
+                        <iframe id="ytplayer" class="w-100 h-100" src="https://www.youtube.com/embed/{{match.url}}" title="YouTube video" allowfullscreen></iframe>
                       </div>
                     </div>
+                    {% endif %}
                   </div>
                 </div>
               </div>
