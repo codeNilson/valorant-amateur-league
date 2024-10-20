@@ -21,7 +21,7 @@
                 </div>
                 <div class="d-flex flex-column">
                   <span class="text-bg-warning badge-mvp">MVP</span>
-                  <small>{{match.mvp}}</small>
+                  <small>{{match.mvp|truncatechars:18}}</small>
                 </div>
               </div>
               <div class="youtube z-1 text-center">
@@ -37,7 +37,7 @@
                     {% for player in team.players.all %}
                     <div>
                       <img src={{player.main_agent.icon}} alt="" class="agent-icon-small">
-                      <span>{{player.username}}</span>
+                      <span>{{player.username|truncatechars:18}}</span>
                     </div>
                     {% endfor %}
                   </div>
@@ -79,7 +79,7 @@
                                       <td class="text-start">
                                           <span class="text-nowrap">
                                             <img src={{stat.agent.icon}} alt="" class="agent-icon">
-                                            {{stat.player.username}}
+                                            {{stat.player.username|truncatechars:18}}
                                           </span>
                                       </td>
                                       <td>{{stat.average_points}}</td>

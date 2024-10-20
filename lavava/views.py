@@ -30,7 +30,7 @@ class HomeView(TemplateView):
 
         players = self.get_players_ranking()
         ctx["players"] = players
-        ctx["update_at"] = players[0].rankinglog.updated_at.strftime("%d/%m/%Y")
+        ctx["update_at"] = players[0].rankinglog.updated_at #  solução não ideal
         return ctx
 
     def post(self, request, *args, **kwargs):  # pylint: disable=unused-argument

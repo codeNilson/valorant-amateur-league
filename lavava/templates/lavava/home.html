@@ -82,7 +82,7 @@
                 <td class="text-start">
                   <div class="d-flex align-items-center">
                     <img src={{player.main_agent.small_icon}} class="me-2" alt="player">
-                    <span>{{player.username}}</span>
+                    <span>{{player.username|truncatechars:18}}</span>
                   </div>
                 </td>
                 <td>{{player.points}}</td>
@@ -90,14 +90,14 @@
                 <td>{{player.losses}}</td>
                 <td>{{player.mvp}}</td>
                 <td>{{player.ace}}</td>
-                <td>{{player.win_ratio}}%</td>
-                <td>{{player.kda}}</td>
+                <td>{{player.win_ratio|floatformat:2}}%</td>
+                <td>{{player.kda|floatformat:2}}</td>
               </tr>
               {% endfor %}
             </tbody>
             <tfoot>
               <tr class="opacity-75 border-0">
-                <td colspan="6" class="text-start fw-bold">Last update: {{update_at}}</td>
+                <td colspan="6" class="text-start fw-bold">Last update: {{ update_at|date:"d/m/Y" }}</td>
               </tr>
             </tfoot>
           </table>

@@ -3,7 +3,6 @@ from datetime import datetime
 from django.db import models
 from django.db.models.functions import Cast
 from django.contrib.auth.models import AbstractUser
-from django.db.models.functions import Round
 
 
 class Player(AbstractUser):
@@ -63,14 +62,11 @@ class Player(AbstractUser):
                     total_deaths=0,
                     then=models.F("total_kills") + models.F("total_assists"),
                 ),
-                default=Round(
-                    (
-                        Cast(models.F("total_kills"), models.FloatField())
-                        + Cast(models.F("total_assists"), models.FloatField())
-                    )
-                    / Cast(models.F("total_deaths"), models.FloatField()),
-                    2,
-                ),
+                default=(
+                    Cast(models.F("total_kills"), models.FloatField())
+                    + Cast(models.F("total_assists"), models.FloatField())
+                )
+                / Cast(models.F("total_deaths"), models.FloatField()),
                 output_field=models.FloatField(),
             )
         )
@@ -78,19 +74,16 @@ class Player(AbstractUser):
     @staticmethod
     def annotate_win_ratio(queryset):
         return queryset.annotate(
-            win_ratio=Round(
-                models.Case(
-                    models.When(models.Q(wins=0) & models.Q(losses=0), then=0),
-                    default=Cast(models.F("wins"), models.FloatField())
-                    / (
-                        Cast(models.F("wins"), models.FloatField())
-                        + Cast(models.F("losses"), models.FloatField())
-                    ),
-                    output_field=models.FloatField(),
-                )
-                * 100,
-                2,
+            win_ratio=models.Case(
+                models.When(models.Q(wins=0) & models.Q(losses=0), then=0),
+                default=Cast(models.F("wins"), models.FloatField())
+                / (
+                    Cast(models.F("wins"), models.FloatField())
+                    + Cast(models.F("losses"), models.FloatField())
+                ),
+                output_field=models.FloatField(),
             )
+            * 100
         )
 
 

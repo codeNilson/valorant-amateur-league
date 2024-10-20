@@ -12518,6 +12518,18 @@ aside.hall-of-fame .card .card-img-overlay {
   background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7));
 }
 
+.profile-picture img {
+  background-size: 600px 1000px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.profile-info,
+.profile-stats,
+.profile-matches {
+  background-color: rgb(27, 36.5, 46);
+}
+
 .accordion-header button {
   font-size: 1.2rem;
 }

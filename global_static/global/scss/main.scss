@@ -181,6 +181,18 @@ aside.hall-of-fame {
     }
 }
 
+.profile-picture img {
+    background-size: 600px 1000px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.profile-info,
+.profile-stats,
+.profile-matches {
+    background-color: tint-color($dark, 5%);
+}
+
 // accordion
 
 .accordion-header button {
