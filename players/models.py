@@ -31,6 +31,7 @@ class Player(AbstractUser):
                 "teams",
                 filter=~models.Q(teams__matches__winner__id=models.F("teams__id")),
             ),
+            total_matches=models.Count("teams"),
         )
 
     @staticmethod
@@ -72,9 +73,9 @@ class Player(AbstractUser):
         )
 
     @staticmethod
-    def annotate_win_ratio(queryset):
+    def annotate_win_rate(queryset):
         return queryset.annotate(
-            win_ratio=models.Case(
+            win_rate=models.Case(
                 models.When(models.Q(wins=0) & models.Q(losses=0), then=0),
                 default=Cast(models.F("wins"), models.FloatField())
                 / (

@@ -38,19 +38,19 @@
                             <h3 class="text-primary-red">Player Stats</h3>
                             <div class="row align-content-center justify-content-center">
                                 <div class="col-4">
-                                    <p>Matches Played: {{player.matches_played}}</p>
-                                    <p>Matches Won: {{player.matches_won}}</p>
-                                    <p>Matches Lost: {{player.matches_lost}}</p>
+                                    <p>Matches Played: {{player.total_matches}}</p>
+                                    <p>Matches Won: {{player.wins}}</p>
+                                    <p>Matches Lost: {{player.losses}}</p>
                                 </div>
                                 <div class="col-4">
-                                    <p>K/D Ratio: {{player.kd_ratio}}</p>
+                                    <p>K/D Ratio: {{player.kda}}</p>
                                     <p>MVP's: {{player.mvp}}</p>
                                     <p>ACE's: {{player.ace}}</p>
                                 </div>
                                 <div class="col-4">
                                     <p>Rank: {{player.rankinglog.last_position}}</p>
-                                    <p>Rank Points: {{player.rank_points}}</p>
-                                    <p>Win Rate: {{player.win_rate}}</p>
+                                    <p>Rank Points: {{player.points}}</p>
+                                    <p>Win Rate: {{player.win_rate|floatformat:2}}%</p>
                                 </div>
                             </div>
                         </div>

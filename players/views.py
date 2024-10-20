@@ -1,4 +1,5 @@
 from allauth.account.views import SignupView, LoginView, LogoutView
+from django.http import Http404
 from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import UpdateView
@@ -47,7 +48,17 @@ class PlayerProfileView(UpdateView):
 
     def get_object(self, queryset=None):
         username = self.kwargs.get("username")
-        return get_object_or_404(Player, username=username)
+        queryset = Player.objects.filter(username=username)
+        if not queryset.exists():
+            raise Http404("Player does not exist")
+        queryset = Player.annotate_wins_and_losses(queryset)
+        queryset = Player.annotate_mvp_and_ace(queryset)
+        queryset = Player.annotate_kills_deaths_assists(queryset)
+        queryset = Player.annotate_kda(queryset)
+        queryset = Player.annotate_win_rate(queryset)
+        queryset = Player.annotate_points(queryset)
+        queryset = Player.annotate_kda(queryset)
+        return queryset[0]
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

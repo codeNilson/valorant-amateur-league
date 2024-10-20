@@ -16,7 +16,7 @@ class HomeView(TemplateView):
         players = Player.annotate_kills_deaths_assists(players)
         players = Player.annotate_points(players)
         players = Player.annotate_kda(players)
-        players = Player.annotate_win_ratio(players)
+        players = Player.annotate_win_rate(players)
 
         for player in players:
             player.position_changes = player.rankinglog.get_position_class()

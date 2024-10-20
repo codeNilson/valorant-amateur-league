@@ -110,9 +110,9 @@ class PlayerModelTest(TestCase):
         expected_kda = 10 + 5  # total_kills + total_assists
         self.assertAlmostEqual(player.kda, expected_kda, places=2)
 
-    def test_annotate_win_ratio(self):
+    def test_annotate_win_rate(self):
         queryset = Player.objects.all()
         annotated_queryset = Player.annotate_wins_and_losses(queryset)
-        annotated_queryset = Player.annotate_win_ratio(annotated_queryset)
+        annotated_queryset = Player.annotate_win_rate(annotated_queryset)
         player = annotated_queryset.first()
         self.assertEqual(player.win_ratio, 50.0)
