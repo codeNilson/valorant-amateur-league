@@ -3,11 +3,22 @@ from datetime import datetime
 from django.db import models
 from django.db.models.functions import Cast
 from django.contrib.auth.models import AbstractUser
+from django.core.validators import RegexValidator
 from django.urls import reverse
 
 
 class Player(AbstractUser):
     uuid = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
+    username = models.CharField(
+        max_length=150,
+        unique=True,
+        validators=[
+            RegexValidator(
+                regex=r"^[\w ]+$",
+                message="Username must contain only letters, numbers, and spaces",
+            )
+        ],
+    )
     tier = models.ForeignKey(
         "gamedata.Tier",
         on_delete=models.SET_NULL,
