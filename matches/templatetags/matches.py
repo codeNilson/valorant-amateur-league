@@ -32,3 +32,9 @@ def match_history(context, username=None):
         matches = matches.filter(mvp=username)
 
     return {"matches": matches}
+
+
+@register.simple_tag
+def get_embed_url(youtube_url):
+    print(youtube_url)
+    return youtube_url.replace("watch?v=", "embed/")

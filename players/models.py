@@ -10,7 +10,7 @@ from django.urls import reverse
 class Player(AbstractUser):
     uuid = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
     username = models.CharField(
-        max_length=150,
+        max_length=30,
         unique=True,
         validators=[
             RegexValidator(
