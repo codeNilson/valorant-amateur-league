@@ -1,2 +1,3 @@
-from .player_login_form import PlayerLoginForm
-from .player_signup_form import PlayerSignupForm
+from .player_login_form import *
+from .player_signup_form import *
+from .player_model_form import *

@@ -8,4 +8,4 @@ setTimeout(function () {
             bsAlert.close();
         }, 150);
     });
-}, 3000);
+}, 4000);

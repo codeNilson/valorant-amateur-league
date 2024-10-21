@@ -12077,6 +12077,15 @@ table.result-point tr td img {
   max-width: 80px;
   margin-right: 11px;
 }
+table.result-point tr td span a {
+  text-decoration: none;
+  transition: all 0.2s ease;
+  color: #0f1923;
+}
+table.result-point tr td span a:hover {
+  text-decoration: underline;
+  color: #fd4556;
+}
 table.result-point tfoot td {
   background-color: transparent;
   border: none;
@@ -12528,6 +12537,16 @@ aside.hall-of-fame .card .card-img-overlay {
 .profile-stats,
 .profile-matches {
   background-color: rgb(27, 36.5, 46);
+}
+
+.btn-icon {
+  background: none;
+  border: none;
+  padding: 0;
+  color: inherit;
+}
+.btn-icon:hover {
+  color: #fd4556;
 }
 
 .profile-matches {

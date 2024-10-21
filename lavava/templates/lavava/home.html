@@ -82,7 +82,7 @@
                 <td class="text-start">
                   <div class="d-flex align-items-center">
                     <img src={{player.main_agent.small_icon}} class="me-2" alt="player">
-                    <span>{{player.username|truncatechars:18}}</span>
+                    <span><a href={{player.get_absolute_url}}>{{player.username|truncatechars:18}}</a></span>
                   </div>
                 </td>
                 <td>{{player.points}}</td>

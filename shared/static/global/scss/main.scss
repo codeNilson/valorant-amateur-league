@@ -1,4 +1,4 @@
-@import "../../../node_modules/bootstrap/scss/functions";
+@import "../../../../node_modules/bootstrap/scss/functions";
 
 @import "partials/variables";
 @import "partials/custom_settings";
@@ -6,8 +6,8 @@
 $accordion-icon-color: white; // cor do ícone
 $accordion-icon-active-color: white; // cor do ícone ativo
 
-@import "../../../node_modules/bootstrap/scss/variables";
-@import "../../../node_modules/bootstrap/scss/variables-dark";
+@import "../../../../node_modules/bootstrap/scss/variables";
+@import "../../../../node_modules/bootstrap/scss/variables-dark";
 
 // $accordion-padding-y: 1rem;
 // $accordion-padding-x: 1.25rem;
@@ -35,7 +35,7 @@ $accordion-icon-width: 1.87rem; // largura do ícone
 $theme-colors: map-merge($theme-colors, $custom-colors);
 // $table-variants: map-merge($table-variants, $custom-tables);
 
-@import "../../../node_modules/bootstrap/scss/bootstrap";
+@import "../../../../node_modules/bootstrap/scss/bootstrap";
 @import "partials/mixins";
 @import "components/messages";
 @import "components/tables";
@@ -192,6 +192,17 @@ aside.hall-of-fame {
 .profile-matches {
     background-color: tint-color($dark, 5%);
 }
+
+.btn-icon {
+    background: none;
+    border: none;
+    padding: 0;
+    color: inherit; 
+
+    &:hover {
+      color: $primary-red;
+    }
+  }
 
 .profile-matches {
     overflow: auto;

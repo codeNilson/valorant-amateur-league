@@ -6,9 +6,17 @@
     <div class="login-background d-flex justify-content-center align-items-center"
         style="background-image: url('{% static 'global/assets/login_background.webp' %}');">
         <div class="form-container bg-light p-5 rounded mx-4">
-        {% include "global/partials/forms.html" %}
+            <form action="{{form_action}}" method="post">
+                {% csrf_token %}
+                <div class="login-form">
+                    <h1 class="text-center">{{form_title}}</h1>
+                    <div class="form-group">
+                        {% include "global/partials/forms.html" %}
+                    </div>
+                </div>
+            </form>
+            {% include "global/components/sign_with_social.html" %}
         </div>
-        {% include "global/components/sign_with_social.html" %}
     </div>
 </main>
 {% endblock content %}

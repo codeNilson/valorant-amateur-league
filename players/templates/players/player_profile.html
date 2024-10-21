@@ -9,34 +9,40 @@
     <div class="container bg-dark mt-0 mt-sm-3">
         <div class="row gap-2 profile px-3 px-md-5 py-3">
             <h2 class="display-3 text-primary-red">Profile: <span class="text-title">{{player.username}}</span></h2>
-            <div class="col-4 profile-picture mx-auto w-auto" >
+            <div class="col-auto profile-picture mx-auto" >
                   <img src= {% static "lavava/assets/lp_geeko_bg.png" %} class="img-fluid" alt="..." style="background-image: url({{player.main_agent.background}});">
             </div>
-            <div class="col">
+            <div class="col-12 col-xl">
                 <div class="container-responsive">
                     <div class="row gap-2 text-light">
-                        <div class="profile-info col-12 text-center text-lg-start col-md-auto rounded p-3">
-                            <h3 class="text-primary-red">Player Info</h3>
+                        <div class="profile-info col-12 col-lg-auto text-center text-lg-start rounded p-3">
+                            <div class="d-flex gap-3">
+                                <h3 class="text-primary-red fs-1">Player Info</h3>
+                                {% if can_edit %}
+                                <button class="btn-icon" id="editButton">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </button>
+                                {% endif %}
+                            </div>
+                            <div id="playerInfo">
+                                <p><span class="fw-bold">Username:</span> {{player.username}}</p>
+                                <p><span class="fw-bold">Email:</span> {{player.email}}</p>
+                                <p><span class="fw-bold">Main Agent:</span> {{player.main_agent}}</p>
+                                <img src="{{player.tier.small_icon}}" alt="tier icon"> <span>{{player.tier}}</span>
+                            </div>
                             {% if can_edit %}
-                            <form action="#" method="post" class="col-10 mx-auto">
+                            {% comment %} <button type="button" class="btn btn-secondary p-0 w-100 mt-2">Edit</button> {% endcomment %}
+                            <form method="POST" id="editForm" class="rounded d-none">
                                 {% csrf_token %}
-                                <div class="d-flex flex-column">
-                                {% for field in form %}
-                                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-                                    {{field}}
-                                    {% endfor %}
-                                </div>
-                                <button class="mt-2 btn btn-primary-red ms-auto py-1" type="submit">Edit Profile</button>
+                                {% include "global/partials/forms.html" %}
+                                <button class="btn btn-outline-primary-red w-100 mt-1" id="editButton">
+                                    Cancel
+                                </button>
                             </form>
-                            {% else %}
-                            <p><span class="fw-bold">Username:</span> {{player.username}}</p>
-                            <p><span class="fw-bold">Email:</span> {{player.email}}</p>
-                            <p><span class="fw-bold">Main Agent:</span> {{player.main_agent}}</p>
-                            <img src="{{player.tier.small_icon}}" alt="tier icon"> <span>{{player.tier}}</span>
                             {% endif %}
                         </div>
-                        <div class="profile-stats col p-3 rounded d-flex flex-column gap-4">
-                            <h3 class="text-primary-red">Player Stats</h3>
+                        <div class="profile-stats col-12 col-lg p-3 rounded d-flex flex-column gap-4">
+                            <h3 class="text-primary-red fs-1">Player Stats</h3>
                             <div class="row align-content-center justify-content-center">
                                 <div class="col-4">
                                     <p><spam class="fw-bold">Matches Played</spam>: {{player.total_matches}}</p>
@@ -55,8 +61,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="profile-matches rounded p-3 col-12">
-                            <h3 class="text-primary-red">Match History</h3>
+                        <div class="profile-matches col-12 rounded p-3 col-12">
+                            <h3 class="text-primary-red fs-1">Match History</h3>
                             {% match_history %}
                         </div>
                     </div>

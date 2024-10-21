@@ -5,6 +5,16 @@ table.result-point {
                 max-width: 80px;
                 margin-right: 11px;
             }
+            span a {
+                text-decoration: none;
+                transition: all 0.2s ease;
+                color: $dark;
+
+                &:hover {
+                    text-decoration: underline;
+                    color: $primary-red;
+                }
+            }
         }
     }
 

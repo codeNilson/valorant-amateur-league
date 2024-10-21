@@ -69,7 +69,7 @@
                                 <td class="text-start">
                                     <span class="text-nowrap">
                                     <img src={{stat.agent.icon}} alt="agent icon" class="agent-icon">
-                                    {{stat.player.username|truncatechars:18}}
+                                    <a href={{stat.player.get_absolute_url}} class="text-decoration-none text-reset">{{stat.player.username|truncatechars:18}}</a>
                                     </span>
                                 </td>
                                 <td>{{stat.average_points}}</td>

@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build-css": "sass global_static/global/scss/main.scss global_static/global/css/styles.css",
-    "watch-css": "sass --watch global_static/global/scss/main.scss:global_static/global/css/styles.css"
+    "build-css": "sass shared/static/global/scss/main.scss shared/static/global/css/styles.css",
+    "watch-css": "sass --watch shared/static/global/scss/main.scss:shared/static/global/css/styles.css"
   },
   "keywords": [],
   "author": "",
