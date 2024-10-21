@@ -4,6 +4,7 @@ INSTALLED_APPS = [
     "matches",
     "teams",
     "gamedata",
+    "shared",
     "debug_toolbar",
     "django.contrib.admin",
     "django.contrib.sites",
