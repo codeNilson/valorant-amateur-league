@@ -12530,6 +12530,11 @@ aside.hall-of-fame .card .card-img-overlay {
   background-color: rgb(27, 36.5, 46);
 }
 
+.profile-matches {
+  overflow: auto;
+  max-height: 500px;
+}
+
 .accordion-header button {
   font-size: 1.2rem;
 }

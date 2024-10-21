@@ -1,0 +1,102 @@
+<div class="accordion" id="accordionExample">
+{% for match in matches %}
+    <div class="accordion-item mb-1">
+    <div class="accordion-header">
+        <button class="accordion-button overlay collapsed d-flex justify-content-between" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{forloop.counter}}"style="background-image: url({{match.map.splash}});" aria-expanded="false" aria-controls="collapse-{{forloop.counter}}">
+        <div class="mvp-content z-1 d-flex align-items-center justify-content-center gap-2">
+        <div class"mvp-logo-container">
+            <img src={{match.mvp_icon}} alt="" class="img-fluid mvp-logo border border-3 border-warning rounded-circle bg-title">
+        </div>
+        <div class="d-flex flex-column">
+            <span class="text-bg-warning badge-mvp">MVP</span>
+            <small>{{match.mvp|truncatechars:18}}</small>
+        </div>
+        </div>
+        <div class="youtube z-1 text-center">
+            <a href="#" target="_blank">
+            <i class="fa-brands fa-youtube fa-2x"></i>
+            </a>
+            <span class="d-none d-lg-block">Watch on Youtube</span>
+        </div>
+        <div class="d-none d-md-block z-1">
+        <div class="match-info d-flex gap-3 align-items-center justify-content-evenly">
+            {% for team in match.teams.all %}
+            <div class="team-{{forloop.counter}} d-flex flex-column">
+            {% for player in team.players.all %}
+            <div>
+                <img src={{player.main_agent.icon}} alt="" class="agent-icon-small">
+                <span>{{player.username|truncatechars:18}}</span>
+            </div>
+            {% endfor %}
+            </div>
+            {% if forloop.first %}<div class="vs">vs.</div>{% endif %}
+            {% endfor %}
+        </div>
+        </div>
+        </button>
+    </div>
+    <div id="collapse-{{forloop.counter}}" class="accordion-collapse collapse">
+        <div class="accordion-body">
+        <div class="container">
+            <div class="row gy-5 justify-content-center">
+            <div class="col-auto container-responsive">
+                <div class="row row-cols-lg-2">
+                {% for team in match.teams.all %}
+                <div class="table-responsive">
+                    {% if match.winner == team %}
+                    <table class="table table-hover table-borderless table-match-history align-middle border text-center caption-top table-winner">
+                        <caption class="text-success">Winner</caption>
+                    {% else %}
+                    <table class="table table-hover table-borderless table-match-history align-middle border text-center caption-top table-loser">
+                        <caption class="text-danger">Loser</caption>
+                    {% endif %}
+                        <thead>
+                            <tr class="align-middle">
+                                <th>Agent</th>
+                                <th>Average Points</th>
+                                <th>KDA</th>
+                                <th>Stats</th>
+                                <th>First Bloods</th>
+                                <th>Plants</th>
+                                <th>Defuses</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for stat in team.stats.all %}
+                            <tr>
+                                <td class="text-start">
+                                    <span class="text-nowrap">
+                                    <img src={{stat.agent.icon}} alt="agent icon" class="agent-icon">
+                                    {{stat.player.username|truncatechars:18}}
+                                    </span>
+                                </td>
+                                <td>{{stat.average_points}}</td>
+                                <td>{{stat.get_kda}}</td>
+                                <td>{{stat.kills}}/{{stat.deaths}}/{{stat.assists}}</td>
+                                <td>{{stat.first_bloods}}</td>
+                                <td>{{stat.plants}}</td>
+                                <td>{{stat.spikes_defused}}</td>
+                            </tr>
+                        </tbody>
+                        {% endfor %}
+                    </table>
+                </div>
+                {% endfor %}
+                </div>
+            </div>
+            {% if match.url %}
+            <div class="col-md-10">
+                <h3 class="fs-2 fw-bold">VOD</h3>
+                <div class="ratio ratio-16x9">
+                <iframe id="ytplayer" class="w-100 h-100" src="https://www.youtube.com/embed/{{match.url}}" title="YouTube video" allowfullscreen></iframe>
+                </div>
+            </div>
+            {% endif %}
+            </div>
+        </div>
+        </div>
+    </div>
+    </div>
+{% endfor %}
+</div>
+</div>

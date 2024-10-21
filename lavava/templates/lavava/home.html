@@ -56,7 +56,7 @@
         <div class="col-lg-8 table-responsive">
           <div class="d-flex align-items-center">
             <h2 class="me-auto display-3 text-primary-red">Ranking</h2>
-            <form action="{% url "home" %}" method="POST">
+            <form method="POST">
               {% csrf_token %}
               <button type="submit" class="badge text-bg-primary-red">Update Ranking</button>
             </form>
@@ -90,7 +90,7 @@
                 <td>{{player.losses}}</td>
                 <td>{{player.mvp}}</td>
                 <td>{{player.ace}}</td>
-                <td>{{player.win_ratio|floatformat:2}}%</td>
+                <td>{{player.win_rate|floatformat:2}}%</td>
                 <td>{{player.kda|floatformat:2}}</td>
               </tr>
               {% endfor %}

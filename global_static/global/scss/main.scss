@@ -193,6 +193,11 @@ aside.hall-of-fame {
     background-color: tint-color($dark, 5%);
 }
 
+.profile-matches {
+    overflow: auto;
+    max-height: 500px;
+}
+
 // accordion
 
 .accordion-header button {

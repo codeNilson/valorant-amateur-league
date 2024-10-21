@@ -3,6 +3,7 @@ from datetime import datetime
 from django.db import models
 from django.db.models.functions import Cast
 from django.contrib.auth.models import AbstractUser
+from django.urls import reverse
 
 
 class Player(AbstractUser):
@@ -19,6 +20,9 @@ class Player(AbstractUser):
         on_delete=models.SET_NULL,
         null=True,
     )
+
+    def get_absolute_url(self):
+        return reverse("account_profile", kwargs={"username": self.username})
 
     @staticmethod
     def annotate_wins_and_losses(queryset):

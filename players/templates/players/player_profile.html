@@ -1,23 +1,24 @@
 {% extends "global/base.html" %}
 {% load static %}
+{% load matches %}
 {% block content %}
 
 {% include "global/partials/navbar.html" %}
 
-<main class="mt-3">
-    <div class="container bg-dark">
-        <div class="row gap-2 p-2 profile">
-            <h2 class="display-3 text-primary-red">Profile: {{player.username}}</h2>
-            <div class="col-4 profile-picture" >
+<main class="">
+    <div class="container bg-dark mt-0 mt-sm-3">
+        <div class="row gap-2 profile px-3 px-md-5 py-3">
+            <h2 class="display-3 text-primary-red">Profile: <span class="text-title">{{player.username}}</span></h2>
+            <div class="col-4 profile-picture mx-auto w-auto" >
                   <img src= {% static "lavava/assets/lp_geeko_bg.png" %} class="img-fluid" alt="..." style="background-image: url({{player.main_agent.background}});">
             </div>
             <div class="col">
                 <div class="container-responsive">
                     <div class="row gap-2 text-light">
-                        <div class="profile-info col rounded p-3 text-center">
+                        <div class="profile-info col-12 text-center text-lg-start col-md-auto rounded p-3">
                             <h3 class="text-primary-red">Player Info</h3>
                             {% if can_edit %}
-                            <form action="#" method="post">
+                            <form action="#" method="post" class="col-10 mx-auto">
                                 {% csrf_token %}
                                 <div class="d-flex flex-column">
                                 {% for field in form %}
@@ -25,139 +26,38 @@
                                     {{field}}
                                     {% endfor %}
                                 </div>
-                                <button class="btn btn-primary-red" type="submit">Edit Profile</button>
+                                <button class="mt-2 btn btn-primary-red ms-auto py-1" type="submit">Edit Profile</button>
                             </form>
                             {% else %}
-                            <p>Username: {{player.username}}</p>
-                            <p>Email: {{player.email}}</p>
-                            <p>Main Agent: {{player.main_agent}}</p>
-                            <img src="{{player.tier.small_icon}}" alt=""></span>
+                            <p><span class="fw-bold">Username:</span> {{player.username}}</p>
+                            <p><span class="fw-bold">Email:</span> {{player.email}}</p>
+                            <p><span class="fw-bold">Main Agent:</span> {{player.main_agent}}</p>
+                            <img src="{{player.tier.small_icon}}" alt="tier icon"> <span>{{player.tier}}</span>
                             {% endif %}
                         </div>
-                        <div class="profile-stats col-8 p-3 rounded d-flex flex-column gap-4">
+                        <div class="profile-stats col p-3 rounded d-flex flex-column gap-4">
                             <h3 class="text-primary-red">Player Stats</h3>
                             <div class="row align-content-center justify-content-center">
                                 <div class="col-4">
-                                    <p>Matches Played: {{player.total_matches}}</p>
-                                    <p>Matches Won: {{player.wins}}</p>
-                                    <p>Matches Lost: {{player.losses}}</p>
+                                    <p><spam class="fw-bold">Matches Played</spam>: {{player.total_matches}}</p>
+                                    <p><spam class="fw-bold">Matches Won</spam>: {{player.wins}}</p>
+                                    <p><spam class="fw-bold">Matches Lost</spam>: {{player.losses}}</p>
                                 </div>
                                 <div class="col-4">
-                                    <p>K/D Ratio: {{player.kda}}</p>
-                                    <p>MVP's: {{player.mvp}}</p>
-                                    <p>ACE's: {{player.ace}}</p>
+                                    <p><spam class="fw-bold">K/D Ratio</spam>: {{player.kda|floatformat:2}}</p>
+                                    <p><spam class="fw-bold">MVP's</spam>: {{player.mvp}}</p>
+                                    <p><spam class="fw-bold">ACE's</spam>: {{player.ace}}</p>
                                 </div>
                                 <div class="col-4">
-                                    <p>Rank: {{player.rankinglog.last_position}}</p>
-                                    <p>Rank Points: {{player.points}}</p>
-                                    <p>Win Rate: {{player.win_rate|floatformat:2}}%</p>
+                                    <p><spam class="fw-bold">Rank</spam>: {{player.rankinglog.last_position}}</p>
+                                    <p><spam class="fw-bold">Rank Points</spam>: {{player.points}}</p>
+                                    <p><spam class="fw-bold">Win Rate</spam>: {{player.win_rate|floatformat:2}}%</p>
                                 </div>
                             </div>
                         </div>
                         <div class="profile-matches rounded p-3 col-12">
                             <h3 class="text-primary-red">Match History</h3>
-                            <div class="accordion" id="accordionExample">
-                                {% for match in matches %}
-                                  <div class="accordion-item mb-1">
-                                    <div class="accordion-header">
-                                      <button class="accordion-button overlay collapsed d-flex justify-content-between" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{forloop.counter}}"style="background-image: url({{match.map.splash}});" aria-expanded="false" aria-controls="collapse-{{forloop.counter}}">
-                                      <div class="mvp-content z-1 d-flex align-items-center justify-content-center gap-2">
-                                        <div class"mvp-logo-container">
-                                          <img src={{match.mvp_icon}} alt="" class="img-fluid mvp-logo border border-3 border-warning rounded-circle bg-title">
-                                        </div>
-                                        <div class="d-flex flex-column">
-                                          <span class="text-bg-warning badge-mvp">MVP</span>
-                                          <small>{{match.mvp|truncatechars:18}}</small>
-                                        </div>
-                                      </div>
-                                      <div class="youtube z-1 text-center">
-                                          <a href="#" target="_blank">
-                                            <i class="fa-brands fa-youtube fa-2x"></i>
-                                          </a>
-                                          <span class="d-none d-md-block">Watch on Youtube</span>
-                                      </div>
-                                      <div class="d-none d-md-block z-1">
-                                        <div class="match-info d-flex gap-3 align-items-center justify-content-evenly">
-                                          {% for team in match.teams.all %}
-                                          <div class="team-{{forloop.counter}} d-flex flex-column">
-                                            {% for player in team.players.all %}
-                                            <div>
-                                              <img src={{player.main_agent.icon}} alt="" class="agent-icon-small">
-                                              <span>{{player.username|truncatechars:18}}</span>
-                                            </div>
-                                            {% endfor %}
-                                          </div>
-                                          {% if forloop.first %}<div class="vs">vs.</div>{% endif %}
-                                          {% endfor %}
-                                        </div>
-                                      </div>
-                                      </button>
-                                    </div>
-                                    <div id="collapse-{{forloop.counter}}" class="accordion-collapse collapse">
-                                      <div class="accordion-body">
-                                        <div class="container">
-                                          <div class="row gy-5 justify-content-center">
-                                            <div class="col-auto container-responsive">
-                                              <div class="row row-cols-lg-2">
-                                                {% for team in match.teams.all %}
-                                                <div class="table-responsive">
-                                                  {% if match.winner == team %}
-                                                  <table class="table table-hover table-borderless table-match-history align-middle border text-center caption-top table-winner">
-                                                      <caption class="text-success">Winner</caption>
-                                                    {% else %}
-                                                    <table class="table table-hover table-borderless table-match-history align-middle border text-center caption-top table-loser">
-                                                      <caption class="text-danger">Loser</caption>
-                                                    {% endif %}
-                                                      <thead>
-                                                          <tr class="align-middle">
-                                                              <th>Agent</th>
-                                                              <th>Average Points</th>
-                                                              <th>KDA</th>
-                                                              <th>Stats</th>
-                                                              <th>First Bloods</th>
-                                                              <th>Plants</th>
-                                                              <th>Defuses</th>
-                                                          </tr>
-                                                      </thead>
-                                                      <tbody>
-                                                        {% for stat in team.stats.all %}
-                                                          <tr>
-                                                              <td class="text-start">
-                                                                  <span class="text-nowrap">
-                                                                    <img src={{stat.agent.icon}} alt="" class="agent-icon">
-                                                                    {{stat.player.username|truncatechars:18}}
-                                                                  </span>
-                                                              </td>
-                                                              <td>{{stat.average_points}}</td>
-                                                              <td>{{stat.get_kda}}</td>
-                                                              <td>{{stat.kills}}/{{stat.deaths}}/{{stat.assists}}</td>
-                                                              <td>{{stat.first_bloods}}</td>
-                                                              <td>{{stat.plants}}</td>
-                                                              <td>{{stat.spikes_defused}}</td>
-                                                          </tr>
-                                                      </tbody>
-                                                      {% endfor %}
-                                                  </table>
-                                                </div>
-                                                {% endfor %}
-                                              </div>
-                                            </div>
-                                            {% if match.url %}
-                                            <div class="col-md-10">
-                                              <h3 class="fs-2 fw-bold">VOD</h3>
-                                              <div class="ratio ratio-16x9">
-                                                <iframe id="ytplayer" class="w-100 h-100" src="https://www.youtube.com/embed/{{match.url}}" title="YouTube video" allowfullscreen></iframe>
-                                              </div>
-                                            </div>
-                                            {% endif %}
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                {% endfor %}
-                                </div>
-                              </div>
+                            {% match_history %}
                         </div>
                     </div>
                 </div>

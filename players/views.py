@@ -1,9 +1,7 @@
 from allauth.account.views import SignupView, LoginView, LogoutView
 from django.http import Http404
-from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import UpdateView
-from django.contrib.auth.mixins import LoginRequiredMixin
 from players.forms import PlayerLoginForm, PlayerSignupForm
 from players.models import Player
 
@@ -38,7 +36,6 @@ class PlayerProfileView(UpdateView):
     model = Player
     template_name = "players/player_profile.html"
     context_object_name = "player"
-    success_url = reverse_lazy("player_profile")
     fields = [
         "email",
         "username",
