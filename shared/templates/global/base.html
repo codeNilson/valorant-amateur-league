@@ -33,13 +33,24 @@
         });
     </script>
     <script>
-        button = document.getElementById("editButton");
-        form = document.getElementById("editForm");
-        playerInfo = document.getElementById("playerInfo");
+        document.addEventListener("DOMContentLoaded", function () {
+            function toggleEditForm() {
         
-        button.addEventListener("click", function () {
-            form.classList.toggle("d-none");
-            playerInfo.classList.toggle("d-none");
+                button = document.getElementById("editButton");
+                form = document.getElementById("editForm");
+                playerInfo = document.getElementById("playerInfo");
+        
+                if (button && form && playerInfo) {
+                    button.addEventListener("click", function () {
+                        form.classList.toggle("d-none");
+                        playerInfo.classList.toggle("d-none");
+                    });
+                } else {
+                    console.error("One or more elements not found.");
+                }
+            }
+        
+            toggleEditForm();
         });
     </script>
 </body>
