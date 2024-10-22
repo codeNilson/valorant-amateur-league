@@ -31,7 +31,6 @@
                                 <img src="{{player.tier.small_icon}}" alt="tier icon"> <span>{{player.tier}}</span>
                             </div>
                             {% if can_edit %}
-                            {% comment %} <button type="button" class="btn btn-secondary p-0 w-100 mt-2">Edit</button> {% endcomment %}
                             <form method="POST" id="editForm" class="rounded d-none">
                                 {% csrf_token %}
                                 {% include "global/partials/forms.html" %}
