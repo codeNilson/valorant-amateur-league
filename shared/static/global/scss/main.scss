@@ -198,8 +198,11 @@ aside.hall-of-fame {
     border: none;
     padding: 0;
     color: inherit; 
+    position: absolute;
+    top: 0;
+    right: 0;
 
-    &:hover {
+    &:active {
       color: $primary-red;
     }
   }
