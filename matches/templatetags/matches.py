@@ -1,5 +1,6 @@
 from django import template
 from django.db.models import OuterRef, Subquery
+from django.template.defaultfilters import stringfilter
 from matches.models import Match
 from stats.models import Stat
 from players.models import Player
@@ -34,7 +35,7 @@ def match_history(context, username=None):
     return {"matches": matches}
 
 
-@register.simple_tag
+@register.filter(is_safe=True)
+@stringfilter
 def get_embed_url(youtube_url):
-    print(youtube_url)
     return youtube_url.replace("watch?v=", "embed/")

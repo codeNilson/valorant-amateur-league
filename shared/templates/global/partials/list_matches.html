@@ -90,7 +90,7 @@
             <div class="col-md-10">
                 <h3 class="fs-2 fw-bold">VOD</h3>
                 <div class="ratio ratio-16x9">
-                <iframe id="ytplayer" class="w-100 h-100" src="{% get_embed_url match.youtube_url %}" title="YouTube video" allowfullscreen></iframe>
+                <iframe id="ytplayer" class="w-100 h-100" src="{{match.youtube_url|get_embed_url}}" title="YouTube video" allowfullscreen></iframe>
                 </div>
             </div>
             {% endif %}

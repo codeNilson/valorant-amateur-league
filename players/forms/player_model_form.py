@@ -22,11 +22,11 @@ class PlayerModelForm(forms.ModelForm):
             "main_agent",
             css_class="form-control border-0 bg-transparent",
         )
-        update_form_fields(
-            self,
-            "tier",
-            css_class="form-control border-0 bg-transparent",
-        )
+        # update_form_fields(
+        #     self,
+        #     "tier",
+        #     css_class="form-control border-0 bg-transparent",
+        # )
 
     class Meta:
         model = Player
@@ -34,5 +34,5 @@ class PlayerModelForm(forms.ModelForm):
             "username",
             "email",
             "main_agent",
-            "tier",
+            # "tier",
         ]
