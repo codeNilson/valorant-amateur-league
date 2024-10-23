@@ -199,8 +199,8 @@ aside.hall-of-fame {
     padding: 0;
     color: inherit; 
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 10px;
+    right: 10px;
 
     &:active {
       color: $primary-red;

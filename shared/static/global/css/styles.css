@@ -12545,8 +12545,8 @@ aside.hall-of-fame .card .card-img-overlay {
   padding: 0;
   color: inherit;
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 10px;
+  right: 10px;
 }
 .btn-icon:active {
   color: #fd4556;
