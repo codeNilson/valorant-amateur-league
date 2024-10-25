@@ -56,10 +56,12 @@
         <div class="col-lg-8 table-responsive">
           <div class="d-flex align-items-center">
             <h2 class="me-auto display-3 text-primary-red">Ranking</h2>
+            {% if user.is_staff %}
             <form method="POST">
               {% csrf_token %}
               <button type="submit" class="badge text-bg-primary-red">Update Ranking</button>
             </form>
+            {% endif %}
           </div>
           <table class="table-striped table table-hover result-point text-center align-middle ">
             <thead class="table-dark">

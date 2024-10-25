@@ -9,34 +9,11 @@ $accordion-icon-active-color: white; // cor do ícone ativo
 @import "../../../../node_modules/bootstrap/scss/variables";
 @import "../../../../node_modules/bootstrap/scss/variables-dark";
 
-// $accordion-padding-y: 1rem;
-// $accordion-padding-x: 1.25rem;
-
-
-$accordion-color: $dark; // cor do texto body
-$accordion-bg: $light; // cor do header e do body
-$accordion-border-width: 0px; // largura da borda
-// $accordion-border-color: green; // cor da borda
-// $accordion-border-radius: var(--#{$prefix}border-radius); // raio da borda
-
-// $accordion-body-padding-y: $accordion-padding-y; // padding do body
-$accordion-body-padding-x: 0rem; // padding do body
-
-// $accordion-button-padding-y: $accordion-padding-y; // padding do botão
-// $accordion-button-padding-x: $accordion-padding-x;
-$accordion-button-color: $white; // cor do texto do botão
-$accordion-button-bg: $light; //cor especificamente do botão
-// $accordion-transition: $btn-transition, border-radius .15s ease;
-// $accordion-button-active-bg: $red; // cor do botão ativo
-$accordion-button-active-color: $light; // cor do texto do botão ativo
-
-$accordion-icon-width: 1.87rem; // largura do ícone
-
 $theme-colors: map-merge($theme-colors, $custom-colors);
-// $table-variants: map-merge($table-variants, $custom-tables);
 
 @import "../../../../node_modules/bootstrap/scss/bootstrap";
 @import "partials/mixins";
+@import "partials/accordion";
 @import "components/messages";
 @import "components/tables";
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
@@ -113,7 +90,7 @@ h6 {
 
 // verificar
 .text-shadow {
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .jump-animation:hover {
@@ -187,6 +164,11 @@ aside.hall-of-fame {
     background-repeat: no-repeat;
 }
 
+.profile-matches {
+    overflow: auto;
+    max-height: 500px;
+}
+
 .profile-info,
 .profile-stats,
 .profile-matches {
@@ -197,70 +179,12 @@ aside.hall-of-fame {
     background: none;
     border: none;
     padding: 0;
-    color: inherit; 
+    color: inherit;
     position: absolute;
     top: 10px;
     right: 10px;
 
     &:active {
-      color: $primary-red;
-    }
-  }
-
-.profile-matches {
-    overflow: auto;
-    max-height: 500px;
-}
-
-// accordion
-
-.accordion-header button {
-    font-size: 1.2rem;
-
-    &::after {
-        @extend .ms-0;
-    }
-}
-
-.mvp-logo {
-    max-width: 60px;
-}
-
-.ace-logo,
-.agent-icon {
-    max-width: 3.2rem;
-
-    &-small {
-        max-width: 20px;
-    }
-}
-
-.badge-mvp,
-.badge-ace {
-    @extend .badge;
-    width: 50px;
-}
-
-.youtube {
-    .fa-youtube {
-        color: $youtube;
-    }
-
-    span a {
-        color: $accordion-button-color;
-    }
-}
-
-.accordion-button,
-.accordion-body {
-    background-size: cover;
-    background-position: center;
-}
-
-button:not(.collapsed) {
-
-    .fa-youtube,
-    a {
-        color: $accordion-button-active-color;
+        color: $primary-red;
     }
 }

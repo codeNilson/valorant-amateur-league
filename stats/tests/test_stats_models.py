@@ -1,15 +1,16 @@
 from django.test import TestCase
+from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
 from stats.models import Stat
 from teams.models import Team
-from players.models import Player
 
 
 class TestStatModel(TestCase):
 
     @classmethod
     def setUpTestData(cls):
-        cls.player = Player.objects.create_user(
+        cls.player_model = get_user_model()
+        cls.player = cls.player_model.objects.create_user(
             username="jhon_doe", password="password"
         )
 
@@ -38,7 +39,7 @@ class TestStatModel(TestCase):
 
         # Create a team with 5 players
         for i in range(5):
-            player = Player.objects.create_user(
+            player = self.player_model.objects.create_user(
                 username=f"player{i}", password="password"
             )
             Stat.objects.create(player=player, team=self.team)
@@ -54,7 +55,7 @@ class TestStatModel(TestCase):
 
         # Create a team with 4 players
         for i in range(4):
-            player = Player.objects.create_user(
+            player = self.player_model.objects.create_user(
                 username=f"player{i}", password="password"
             )
             Stat.objects.create(player=player, team=self.team)

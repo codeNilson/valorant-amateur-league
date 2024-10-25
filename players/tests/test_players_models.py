@@ -1,5 +1,5 @@
 from django.test import TestCase
-from players.models import Player
+from django.contrib.auth import get_user_model
 from teams.models import Team
 from stats.models import Stat
 from gamedata.models import Tier, Agent
@@ -10,10 +10,11 @@ class PlayerModelTest(TestCase):
 
     @classmethod
     def setUpTestData(cls):
+        cls.player_model = get_user_model()
         # Setup initial data for the tests
         cls.tier = Tier.objects.create(tier="Gold")
         cls.agent = Agent.objects.create(name="Jett")
-        cls.player = Player.objects.create_user(
+        cls.player = cls.player_model.objects.create_user(
             username="jhon_doe",
             password="password",
             tier=cls.tier,
@@ -48,46 +49,48 @@ class PlayerModelTest(TestCase):
         )
 
     def test_annotate_wins_and_losses(self):
-        queryset = Player.objects.all()
-        annotated_queryset = Player.annotate_wins_and_losses(queryset)
+        queryset = self.player_model.objects.all()
+        annotated_queryset = self.player_model.annotate_wins_and_losses(queryset)
         player = annotated_queryset.first()
         self.assertEqual(player.wins, 1)
         self.assertEqual(player.losses, 1)
 
     def test_annotate_mvp_and_ace(self):
-        queryset = Player.objects.all()
-        annotated_queryset = Player.annotate_mvp_and_ace(queryset)
+        queryset = self.player_model.objects.all()
+        annotated_queryset = self.player_model.annotate_mvp_and_ace(queryset)
         player = annotated_queryset.first()
         self.assertEqual(player.mvp, 1)
         self.assertEqual(player.ace, 1)
 
     def test_annotate_kills_deaths_assists(self):
-        queryset = Player.objects.all()
-        annotated_queryset = Player.annotate_kills_deaths_assists(queryset)
+        queryset = self.player_model.objects.all()
+        annotated_queryset = self.player_model.annotate_kills_deaths_assists(queryset)
         player = annotated_queryset.first()
         self.assertEqual(player.total_kills, 18)
         self.assertEqual(player.total_deaths, 8)
         self.assertEqual(player.total_assists, 3)
 
     def test_annotate_points(self):
-        queryset = Player.objects.all()
-        annotated_queryset = Player.annotate_mvp_and_ace(queryset)
-        annotated_queryset = Player.annotate_wins_and_losses(annotated_queryset)
-        annotated_queryset = Player.annotate_points(annotated_queryset)
+        queryset = self.player_model.objects.all()
+        annotated_queryset = self.player_model.annotate_mvp_and_ace(queryset)
+        annotated_queryset = self.player_model.annotate_wins_and_losses(
+            annotated_queryset
+        )
+        annotated_queryset = self.player_model.annotate_points(annotated_queryset)
         player = annotated_queryset.first()
         self.assertEqual(player.points, 5)  # 1 MVP + 1 ACE + 1 Wins * 3
 
     def test_annotate_kda(self):
         # Caso com total_deaths diferente de 0
-        queryset = Player.objects.all()
-        annotated_queryset = Player.annotate_kills_deaths_assists(queryset)
-        annotated_queryset = Player.annotate_kda(annotated_queryset)
+        queryset = self.player_model.objects.all()
+        annotated_queryset = self.player_model.annotate_kills_deaths_assists(queryset)
+        annotated_queryset = self.player_model.annotate_kda(annotated_queryset)
         player = annotated_queryset.first()
         expected_kda = (18 + 3) / 8  # (total_kills + total_assists) / total_deaths
         self.assertAlmostEqual(player.kda, expected_kda, places=2)
 
         # Caso com total_deaths igual a 0
-        player_with_no_deaths = Player.objects.create_user(
+        player_with_no_deaths = self.player_model.objects.create_user(
             username="no_deaths_player",
             password="password",
             tier=self.tier,
@@ -103,16 +106,16 @@ class PlayerModelTest(TestCase):
             ace=False,
         )
 
-        queryset = Player.objects.filter(username="no_deaths_player")
-        annotated_queryset = Player.annotate_kills_deaths_assists(queryset)
-        annotated_queryset = Player.annotate_kda(annotated_queryset)
+        queryset = self.player_model.objects.filter(username="no_deaths_player")
+        annotated_queryset = self.player_model.annotate_kills_deaths_assists(queryset)
+        annotated_queryset = self.player_model.annotate_kda(annotated_queryset)
         player = annotated_queryset.first()
         expected_kda = 10 + 5  # total_kills + total_assists
         self.assertAlmostEqual(player.kda, expected_kda, places=2)
 
     def test_annotate_win_rate(self):
-        queryset = Player.objects.all()
-        annotated_queryset = Player.annotate_wins_and_losses(queryset)
-        annotated_queryset = Player.annotate_win_rate(annotated_queryset)
+        queryset = self.player_model.objects.all()
+        annotated_queryset = self.player_model.annotate_wins_and_losses(queryset)
+        annotated_queryset = self.player_model.annotate_win_rate(annotated_queryset)
         player = annotated_queryset.first()
-        self.assertEqual(player.win_ratio, 50.0)
+        self.assertEqual(player.win_rate, 50.0)

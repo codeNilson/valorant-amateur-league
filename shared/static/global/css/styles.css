@@ -4551,26 +4551,26 @@ textarea.form-control-lg {
 }
 
 .accordion {
-  --bs-accordion-color: #0f1923;
-  --bs-accordion-bg: #f8f9fa;
+  --bs-accordion-color: var(--bs-body-color);
+  --bs-accordion-bg: var(--bs-body-bg);
   --bs-accordion-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, border-radius 0.15s ease;
   --bs-accordion-border-color: var(--bs-border-color);
-  --bs-accordion-border-width: 0px;
+  --bs-accordion-border-width: var(--bs-border-width);
   --bs-accordion-border-radius: var(--bs-border-radius);
   --bs-accordion-inner-border-radius: calc(var(--bs-border-radius) - (var(--bs-border-width)));
   --bs-accordion-btn-padding-x: 1.25rem;
   --bs-accordion-btn-padding-y: 1rem;
-  --bs-accordion-btn-color: #fff;
-  --bs-accordion-btn-bg: #f8f9fa;
+  --bs-accordion-btn-color: var(--bs-body-color);
+  --bs-accordion-btn-bg: var(--bs-accordion-bg);
   --bs-accordion-btn-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='white' stroke-linecap='round' stroke-linejoin='round'%3e%3cpath d='M2 5L8 11L14 5'/%3e%3c/svg%3e");
-  --bs-accordion-btn-icon-width: 1.87rem;
+  --bs-accordion-btn-icon-width: 1.25rem;
   --bs-accordion-btn-icon-transform: rotate(-180deg);
   --bs-accordion-btn-icon-transition: transform 0.2s ease-in-out;
   --bs-accordion-btn-active-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='white' stroke-linecap='round' stroke-linejoin='round'%3e%3cpath d='M2 5L8 11L14 5'/%3e%3c/svg%3e");
   --bs-accordion-btn-focus-box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
-  --bs-accordion-body-padding-x: 0rem;
+  --bs-accordion-body-padding-x: 1.25rem;
   --bs-accordion-body-padding-y: 1rem;
-  --bs-accordion-active-color: #f8f9fa;
+  --bs-accordion-active-color: var(--bs-primary-text-emphasis);
   --bs-accordion-active-bg: var(--bs-primary-bg-subtle);
 }
 
@@ -8111,7 +8111,7 @@ textarea.form-control-lg {
   margin-bottom: auto !important;
 }
 
-.ms-0, .accordion-header button::after {
+.ms-0 {
   margin-left: 0 !important;
 }
 
@@ -12036,6 +12036,51 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.accordion {
+  --bs-accordion-btn-icon-width: 1.87rem;
+}
+.accordion .accordion-header button {
+  font-size: 1.2rem;
+}
+.accordion .accordion-header button::after {
+  margin-left: unset;
+}
+
+.mvp-logo {
+  max-width: 60px;
+}
+
+.ace-logo,
+.agent-icon {
+  max-width: 3.2rem;
+}
+.ace-logo-small,
+.agent-icon-small {
+  max-width: 1.25rem;
+}
+
+.badge-mvp,
+.badge-ace {
+  width: 50px;
+}
+
+.youtube .fa-youtube {
+  color: #ff0000;
+}
+.youtube span a {
+  color: var(--bs-body-color);
+}
+
+.accordion-button {
+  background-size: cover;
+  background-position: center;
+}
+
+button:not(.collapsed) .fa-youtube,
+button:not(.collapsed) a {
+  color: white;
+}
+
 .alert {
   padding-left: 2rem;
   max-width: 20rem;
@@ -12470,7 +12515,7 @@ h6,
 }
 
 .text-shadow {
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .jump-animation:hover {
@@ -12533,6 +12578,11 @@ aside.hall-of-fame .card .card-img-overlay {
   background-repeat: no-repeat;
 }
 
+.profile-matches {
+  overflow: auto;
+  max-height: 500px;
+}
+
 .profile-info,
 .profile-stats,
 .profile-matches {
@@ -12550,50 +12600,6 @@ aside.hall-of-fame .card .card-img-overlay {
 }
 .btn-icon:active {
   color: #fd4556;
-}
-
-.profile-matches {
-  overflow: auto;
-  max-height: 500px;
-}
-
-.accordion-header button {
-  font-size: 1.2rem;
-}
-.mvp-logo {
-  max-width: 60px;
-}
-
-.ace-logo,
-.agent-icon {
-  max-width: 3.2rem;
-}
-.ace-logo-small,
-.agent-icon-small {
-  max-width: 20px;
-}
-
-.badge-mvp,
-.badge-ace {
-  width: 50px;
-}
-
-.youtube .fa-youtube {
-  color: #ff0000;
-}
-.youtube span a {
-  color: #fff;
-}
-
-.accordion-button,
-.accordion-body {
-  background-size: cover;
-  background-position: center;
-}
-
-button:not(.collapsed) .fa-youtube,
-button:not(.collapsed) a {
-  color: #f8f9fa;
 }
 
 /*# sourceMappingURL=styles.css.map */

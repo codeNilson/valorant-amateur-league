@@ -1,14 +1,15 @@
 from django.test import TestCase
 from django.urls import reverse
-from players.models import Player
+from django.contrib.auth import get_user_model
 
 
 class HomeViewTests(TestCase):
 
     def setUp(self):
         # Configurar dados de teste
-        self.player1 = Player.objects.create(username="Player 1")
-        self.player2 = Player.objects.create(username="Player 2")
+        player_model = get_user_model()
+        self.player1 = player_model.objects.create(username="Player 1")
+        self.player2 = player_model.objects.create(username="Player 2")
 
     def test_home_view_loads_correct_template(self):
         url = reverse("home")

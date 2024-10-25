@@ -1,6 +1,7 @@
 from django.shortcuts import redirect
 from django.views.generic import TemplateView
-from players.models import Player
+from django.contrib.auth import get_user_model
+
 
 class LandingPageView(TemplateView):
     template_name = "lavava/landing_page.html"
@@ -10,13 +11,14 @@ class HomeView(TemplateView):
     template_name = "lavava/home.html"
 
     def get_players_ranking(self):
-        players = Player.objects.select_related("main_agent", "rankinglog")
-        players = Player.annotate_wins_and_losses(players)
-        players = Player.annotate_mvp_and_ace(players)
-        players = Player.annotate_kills_deaths_assists(players)
-        players = Player.annotate_points(players)
-        players = Player.annotate_kda(players)
-        players = Player.annotate_win_rate(players)
+        player_model = get_user_model()
+        players = player_model.objects.select_related("main_agent", "rankinglog")
+        players = player_model.annotate_wins_and_losses(players)
+        players = player_model.annotate_mvp_and_ace(players)
+        players = player_model.annotate_kills_deaths_assists(players)
+        players = player_model.annotate_points(players)
+        players = player_model.annotate_kda(players)
+        players = player_model.annotate_win_rate(players)
 
         for player in players:
             player.position_changes = player.rankinglog.get_position_class()
@@ -30,7 +32,7 @@ class HomeView(TemplateView):
 
         players = self.get_players_ranking()
         ctx["players"] = players
-        ctx["update_at"] = players[0].rankinglog.updated_at #  solução não ideal
+        ctx["update_at"] = players[0].rankinglog.updated_at  #  solução não ideal
         return ctx
 
     def post(self, request, *args, **kwargs):  # pylint: disable=unused-argument

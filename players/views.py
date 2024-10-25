@@ -3,8 +3,8 @@ from django.http import Http404
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.views.generic import UpdateView
+from django.contrib.auth import get_user_model
 from players.forms import PlayerLoginForm, PlayerSignupForm, PlayerModelForm
-from players.models import Player
 
 
 class PlayerLoginView(LoginView):
@@ -43,16 +43,17 @@ class PlayerProfileView(SuccessMessageMixin, UpdateView):
 
     def get_object(self, queryset=None):
         username = self.kwargs.get("username")
-        queryset = Player.objects.filter(username=username)
+        player_model = get_user_model()
+        queryset = player_model.objects.filter(username=username)
         if not queryset.exists():
             raise Http404("Player does not exist")
-        queryset = Player.annotate_wins_and_losses(queryset)
-        queryset = Player.annotate_mvp_and_ace(queryset)
-        queryset = Player.annotate_kills_deaths_assists(queryset)
-        queryset = Player.annotate_kda(queryset)
-        queryset = Player.annotate_win_rate(queryset)
-        queryset = Player.annotate_points(queryset)
-        queryset = Player.annotate_kda(queryset)
+        queryset = player_model.annotate_wins_and_losses(queryset)
+        queryset = player_model.annotate_mvp_and_ace(queryset)
+        queryset = player_model.annotate_kills_deaths_assists(queryset)
+        queryset = player_model.annotate_kda(queryset)
+        queryset = player_model.annotate_win_rate(queryset)
+        queryset = player_model.annotate_points(queryset)
+        queryset = player_model.annotate_kda(queryset)
         return queryset[0]
 
     def get_context_data(self, **kwargs):
