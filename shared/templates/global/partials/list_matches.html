@@ -26,7 +26,7 @@
             <div class="team-{{forloop.counter}} d-flex flex-column">
             {% for player in team.players.all %}
             <div>
-                <img src={{player.main_agent.icon}} alt="" class="agent-icon-small">
+                <img src={{player.main_agent.icon}} alt="player agent icon" class="agent-icon-small">
                 <span>{{player.username|truncatechars:18}}</span>
             </div>
             {% endfor %}
