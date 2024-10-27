@@ -53,8 +53,6 @@ h6 {
     }
 }
 
-
-
 // create a button for each provider
 @each $provider, $color in $providers {
     @include provider-button($provider, $bg-color: $color)
