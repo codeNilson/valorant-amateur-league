@@ -11,37 +11,63 @@
             <h2 class="display-3 text-primary-red">
                 Profile: <span class="text-title">{{player.username}}</span>
             </h2>
-            <div class="col-12 col-xl profile-picture" >
-                  <img src= {% static player.main_agent.full_portrait %} class="img-fluid main_agent_portrait" alt="..." style="background-image: url({% static player.main_agent.background %});">
+            <div class="col-12 col-xl-5">
+                <div class="profile-picture" >
+                      <img src= {% static player.main_agent.full_portrait %} class="img-fluid main_agent_portrait" alt="..." style="background-image: url({% static player.main_agent.background %});">
+                </div>
+                <div class="profile-info d-none d-xl-block text-light position-relative rounded p-3">
+                    <div>
+                        <h3 class="text-primary-red fs-1">Player Info</h3>
+                        {% if can_edit %}
+                        <button class="btn-icon editButton" data-id="1">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </button>
+                        {% endif %}
+                    </div>
+                    <div data-id="1" class="text-center playerInfo">
+                        <p><span class="fw-bold">Username:</span> {{player.username}}</p>
+                        <p><span class="fw-bold">Main Agent:</span> {{player.main_agent}}</p>
+                        <img src={% static player.tier.small_icon %} alt="tier icon"> <span>{{player.tier}}</span>
+                    </div>
+                    {% if can_edit %}
+                    <form method="POST" data-id="1" class="rounded d-none editForm">
+                        {% csrf_token %}
+                        {% include "global/partials/forms.html" %}
+                        <button type="button" class="btn btn-outline-primary-red w-100 mt-1 cancelButton" data-id="1">
+                            Cancel
+                        </button>
+                    </form>
+                    {% endif %}
+                </div>
             </div>
             <div class="col-12 col-xl">
                 <div class="container-responsive">
                     <div class="row gap-2 text-light">
-                        <div class="profile-info position-relative col-12 px-md-5 col-md-auto text-center text-lg-start rounded p-3">
+                        <div class="profile-info p-3 col-12 col-md d-xl-none mx-auto text-light position-relative rounded">
                             <div>
                                 <h3 class="text-primary-red fs-1">Player Info</h3>
                                 {% if can_edit %}
-                                <button class="btn-icon" id="editButton">
+                                <button class="btn-icon editButton" data-id="2">
                                     <i class="fa-solid fa-pen-to-square"></i>
                                 </button>
                                 {% endif %}
                             </div>
-                            <div id="playerInfo">
+                            <div data-id="2" class="text-center py-md-3 playerInfo">
                                 <p><span class="fw-bold">Username:</span> {{player.username}}</p>
                                 <p><span class="fw-bold">Main Agent:</span> {{player.main_agent}}</p>
                                 <img src={% static player.tier.small_icon %} alt="tier icon"> <span>{{player.tier}}</span>
                             </div>
                             {% if can_edit %}
-                            <form method="POST" id="editForm" class="rounded d-none">
+                            <form method="POST" data-id="2" class="rounded d-none editForm">
                                 {% csrf_token %}
                                 {% include "global/partials/forms.html" %}
-                                <button type="button" class="btn btn-outline-primary-red w-100 mt-1" id="cancelButton">
+                                <button type="button" class="btn btn-outline-primary-red w-100 mt-1 cancelButton" data-id="2">
                                     Cancel
                                 </button>
                             </form>
                             {% endif %}
                         </div>
-                        <div class="profile-stats col-12 col-md p-3 rounded d-flex flex-column gap-4">
+                        <div class="profile-stats col-12 col-md col-lg-auto col-xl p-3 rounded d-flex flex-column gap-4">
                             <h3 class="text-primary-red fs-1">Player Stats</h3>
                             <div class="row align-content-center justify-content-center">
                                 <div class="col-4">

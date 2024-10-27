@@ -170,6 +170,10 @@ aside.hall-of-fame {
 .profile-matches {
     overflow: auto;
     max-height: 500px;
+
+    .youtube-captcha {
+        display: none !important;
+    }
 }
 
 .profile-info,

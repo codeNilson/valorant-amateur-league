@@ -12573,7 +12573,7 @@ aside.hall-of-fame .card .card-img-overlay {
 }
 
 .profile-picture img {
-  background-size: 600px 1000px;
+  background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
 }
@@ -12581,6 +12581,9 @@ aside.hall-of-fame .card .card-img-overlay {
 .profile-matches {
   overflow: auto;
   max-height: 500px;
+}
+.profile-matches .youtube-captcha {
+  display: none !important;
 }
 
 .profile-info,

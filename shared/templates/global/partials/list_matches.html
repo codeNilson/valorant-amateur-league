@@ -19,16 +19,16 @@
             <a href="{{match.youtube_url}}" target="_blank">
             <i class="fa-brands fa-youtube fa-2x"></i>
             </a>
-            <span class="d-none d-lg-block">Watch on Youtube</span>
+            <span class="d-none d-lg-block youtube-captcha">Watch on Youtube</span>
         </div>
         <div class="d-none d-md-block z-1">
         <div class="match-info d-flex gap-3 align-items-center justify-content-evenly">
             {% for team in match.teams.all %}
             <div class="team-{{forloop.counter}} d-flex flex-column">
-            {% for player in team.players.all %}
+            {% for stat in team.stats.all %}
             <div>
-                <img src={% static player.main_agent.icon %} alt="player agent icon" class="agent-icon-small">
-                <span>{{player.username|truncatechars:18}}</span>
+                <img src={% static stat.agent.icon %} alt="player agent icon" class="agent-icon-small">
+                <span>{{stat.player.username|truncatechars:18}}</span>
             </div>
             {% endfor %}
             </div>
