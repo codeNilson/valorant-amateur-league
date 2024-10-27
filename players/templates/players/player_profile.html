@@ -11,14 +11,14 @@
             <h2 class="display-3 text-primary-red">
                 Profile: <span class="text-title">{{player.username}}</span>
             </h2>
-            <div class="col-auto profile-picture mx-auto" >
-                  <img src= {% static "lavava/assets/lp_geeko_bg.png" %} class="img-fluid" alt="..." style="background-image: url({{player.main_agent.background}});">
+            <div class="col-12 col-xl profile-picture" >
+                  <img src= {% static player.main_agent.full_portrait %} class="img-fluid main_agent_portrait" alt="..." style="background-image: url({% static player.main_agent.background %});">
             </div>
             <div class="col-12 col-xl">
                 <div class="container-responsive">
                     <div class="row gap-2 text-light">
                         <div class="profile-info position-relative col-12 px-md-5 col-md-auto text-center text-lg-start rounded p-3">
-                            <div class="d-flex gap-3">
+                            <div>
                                 <h3 class="text-primary-red fs-1">Player Info</h3>
                                 {% if can_edit %}
                                 <button class="btn-icon" id="editButton">
@@ -29,7 +29,7 @@
                             <div id="playerInfo">
                                 <p><span class="fw-bold">Username:</span> {{player.username}}</p>
                                 <p><span class="fw-bold">Main Agent:</span> {{player.main_agent}}</p>
-                                <img src="{{player.tier.small_icon}}" alt="tier icon"> <span>{{player.tier}}</span>
+                                <img src={% static player.tier.small_icon %} alt="tier icon"> <span>{{player.tier}}</span>
                             </div>
                             {% if can_edit %}
                             <form method="POST" id="editForm" class="rounded d-none">

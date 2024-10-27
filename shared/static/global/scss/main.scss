@@ -158,10 +158,13 @@ aside.hall-of-fame {
     }
 }
 
-.profile-picture img {
-    background-size: 600px 1000px;
-    background-position: center;
-    background-repeat: no-repeat;
+.profile-picture {
+
+    img {
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
 }
 
 .profile-matches {

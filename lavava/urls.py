@@ -13,8 +13,6 @@ urlpatterns = [
     # django-allauth urls
     path("accounts/", include("players.urls")),
     path("accounts/", include("allauth.urls")),
-    # delete
-    path("shared/", include("shared.urls")),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

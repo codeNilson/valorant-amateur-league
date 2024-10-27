@@ -30,14 +30,9 @@ class AgentAdmin(admin.ModelAdmin):
         "role",
     ]
 
-    list_editable = [
-        "role",
-    ]
-
     list_select_related = [
         "role",
     ]
-
 
 @admin.register(Role)
 class RoleAdmin(admin.ModelAdmin):
@@ -62,10 +57,8 @@ class MapAdmin(admin.ModelAdmin):
             "Image URLs",
             {
                 "fields": (
-                    "display_icon",
-                    "list_horizontal_icon",
-                    "list_vertical_icon",
                     "splash",
+                    "vertical_icon",
                 )
             },
         ),

@@ -83,7 +83,7 @@
                 <td class="text-start">{{forloop.counter}} <i class="fa {{player.position_changes}}" aria-hidden="true"></i></td>
                 <td class="text-start">
                   <div class="d-flex align-items-center">
-                    <img src={{player.main_agent.small_icon}} class="me-2" alt="player">
+                    <img src={% static player.main_agent.small_icon %} class="me-2 player-icon" alt="player">
                     <span><a href={{player.get_absolute_url}}>{{player.username|truncatechars:18}}</a></span>
                   </div>
                 </td>

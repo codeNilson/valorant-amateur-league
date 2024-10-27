@@ -1,13 +1,14 @@
 {% load matches %}
+{% load static %}
 
 <div class="accordion" id="accordionExample">
 {% for match in matches %}
     <div class="accordion-item mb-1">
     <div class="accordion-header">
-        <button class="accordion-button text-light overlay collapsed d-flex justify-content-between" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{forloop.counter}}"style="background-image: url({{match.map.splash}});" aria-expanded="false" aria-controls="collapse-{{forloop.counter}}">
+        <button class="accordion-button text-light overlay collapsed d-flex justify-content-between" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{forloop.counter}}"style="background-image: url('{% static match.map.splash %}');" aria-expanded="false" aria-controls="collapse-{{forloop.counter}}">
         <div class="mvp-content z-1 d-flex align-items-center justify-content-center gap-2">
         <div class"mvp-logo-container">
-            <img src={{match.mvp_icon}} alt="" class="img-fluid mvp-logo border border-3 border-warning rounded-circle bg-title">
+            <img src={% static match.mvp_icon %} alt="" class="img-fluid mvp-logo border border-3 border-warning rounded-circle bg-title">
         </div>
         <div class="d-flex flex-column">
             <span class="text-bg-warning badge-mvp">MVP</span>
@@ -26,7 +27,7 @@
             <div class="team-{{forloop.counter}} d-flex flex-column">
             {% for player in team.players.all %}
             <div>
-                <img src={{player.main_agent.icon}} alt="player agent icon" class="agent-icon-small">
+                <img src={% static player.main_agent.icon %} alt="player agent icon" class="agent-icon-small">
                 <span>{{player.username|truncatechars:18}}</span>
             </div>
             {% endfor %}
@@ -68,7 +69,7 @@
                             <tr>
                                 <td class="text-start">
                                     <span class="text-nowrap">
-                                    <img src={{stat.agent.icon}} alt="agent icon" class="agent-icon">
+                                    <img src={% static stat.agent.icon %} alt="agent icon" class="agent-icon">
                                     <a href={{stat.player.get_absolute_url}} class="text-decoration-none text-reset">{{stat.player.username|truncatechars:18}}</a>
                                     </span>
                                 </td>

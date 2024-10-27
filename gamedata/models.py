@@ -9,10 +9,10 @@ class Agent(models.Model):
     role = models.ForeignKey(
         "Role", on_delete=models.SET_NULL, related_name="agents", blank=True, null=True
     )
-    icon = models.ImageField(upload_to="agents/icons/")
-    small_icon = models.ImageField(upload_to="agents/small_icons/")
-    full_portrait = models.ImageField(upload_to="agents/full_portraits/")
-    background = models.ImageField(upload_to="agents/backgrounds/")
+    icon = models.CharField(max_length=255)
+    small_icon = models.CharField(max_length=255)
+    full_portrait = models.CharField(max_length=255)
+    background = models.CharField(max_length=255)
 
     def __str__(self):
         return self.name
@@ -31,8 +31,8 @@ class Role(models.Model):
 class Map(models.Model):
     uuid = models.UUIDField()
     name = models.CharField(max_length=20, unique=True)
-    vertical_icon = models.ImageField(upload_to="maps/vertical_icons/")
-    splash = models.ImageField(upload_to="maps/splashes/")
+    splash = models.CharField(max_length=255)
+    vertical_icon = models.CharField(max_length=255)
 
     def __str__(self):
         return self.name
@@ -41,8 +41,8 @@ class Map(models.Model):
 class Tier(models.Model):
     tier = models.CharField(max_length=20, unique=True)
     division = models.CharField(max_length=20)
-    small_icon = models.ImageField(upload_to="tiers/small_icons/")
-    large_icon = models.ImageField(upload_to="tiers/large_icons/")
+    small_icon = models.CharField(max_length=255)
+    large_icon = models.CharField(max_length=255)
 
     def __str__(self):
         return self.tier
