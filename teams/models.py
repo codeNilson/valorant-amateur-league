@@ -13,17 +13,11 @@ class Team(models.Model):
     )
     match = models.ForeignKey(
         "matches.Match",
-        on_delete=models.SET_NULL,
+        on_delete=models.CASCADE,
         related_name="teams",
         null=True,
         blank=True,
     )
-
-    def get_players(self):
-        return self.players.all()
-
-    def get_players_perfomance(self):
-        return self.stats.all()
 
     def clean_match(self):
         """Check if the match has already two teams."""

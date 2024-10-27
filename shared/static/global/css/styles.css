@@ -12096,12 +12096,6 @@ button:not(.collapsed) a {
   top: 50%;
   transform: translateY(-50%);
 }
-.alert-index-1 {
-  bottom: 5px;
-}
-.alert-index-2 {
-  bottom: 125px;
-}
 .alert .btn-close {
   top: auto;
 }
@@ -12512,6 +12506,10 @@ h6,
 }
 .bg-primary-red .btn-outline-light:hover {
   border: #0f1923;
+}
+
+.offcanvas-body .nav-item a:active {
+  color: #0f1923 !important;
 }
 
 .text-shadow {

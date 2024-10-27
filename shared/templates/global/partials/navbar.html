@@ -62,38 +62,45 @@
     </div>
 </nav>
 
-<div class="offcanvas offcanvas-end bg-primary-red" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
-    aria-labelledby="offcanvasWithBothOptionsLabel" style="max-width: 200px;">
+<div class="offcanvas offcanvas-end bg-primary-red w-100 text-center" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
+    aria-labelledby="offcanvasWithBothOptionsLabel">
     <div class="offcanvas-header">
-        <h4 class="offcanvas-title h2 text-title" id="offcanvasWithBothOptionsLabel">Menu</h4>
+        <h4 class="offcanvas-title display-4 text-title" id="offcanvasWithBothOptionsLabel">Menu</h4>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 d-md-none">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 d-md-none fs-3">
             <li class="nav-item">
-                <a class="nav-link rounded-pill" href="{% url "home" %}">Home</a>
+                <a class="nav-link rounded-pill" href="{% url "home" %}">
+                    <i class="fa-solid fa-house"></i>
+                    Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link rounded-pill" href="{% url "matches:history" %}">Match History</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link rounded-pill" href="#">Blog</a>
+                <a class="nav-link rounded-pill" href="{% url "matches:history" %}">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                    Match History</a>
             </li>
         </ul>
         <hr class="w-25 d-md-none">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 fs-3">
             {% if user.is_authenticated %}
             <li class="nav-item">
-                <a class="nav-link" href="{{user.get_absolute_url}}">My profile</a>
+                <a class="nav-link" href="{{user.get_absolute_url}}">
+                    <i class="fa-solid fa-user"></i>
+                    Profile</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">My statistics</a>
+                <a class="nav-link" href="#">
+                    <i class="fa-solid fa-chart-simple"></i>
+                    Statistics</a>
             </li>
             <hr class="w-25">
-            <li class="nav-item">
+            <li class="nav-item fs-3 text-center">
                 <form action="{% url "account_logout" %}" method="POST">
                     {% csrf_token %}
-                    <button type="submit" class="nav-link">Logout</button>
+                    <button type="submit" class="nav-link mx-auto">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                        Logout</button>
                 </form>
             </li>
             {% else %}
