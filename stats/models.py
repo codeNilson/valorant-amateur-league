@@ -1,3 +1,4 @@
+from collections import defaultdict
 from django.db import models
 from django.forms import ValidationError
 from django.utils.translation import gettext_lazy as _
@@ -5,6 +6,10 @@ from django.utils.translation import gettext_lazy as _
 
 # pylint: disable=unused-variable,unused-argument
 class Stat(models.Model):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.errors = defaultdict(list)
+
     player = models.ForeignKey(
         "players.Player", on_delete=models.CASCADE, related_name="stats"
     )
@@ -46,20 +51,47 @@ class Stat(models.Model):
 
     def clean_players(self):
         """Checks if the team already has five players stats and raises an exception if so."""
+
         team_has_five_players = Stat.objects.filter(team=self.team).count() >= 5
         player_not_in_team = not Stat.objects.filter(
             player=self.player, team=self.team
         ).exists()
 
         if team_has_five_players and player_not_in_team:
-            raise ValidationError(
-                _("The team '%(team)s' already has 5 players.")
-                % {"team": self.team.uuid},
-                code="team_full",
+            self.errors["team"].append(_("The team already has five players."))
+
+    def clean_mvp(self):
+        # Check if the player is both ace and mvp and raise an exception if so.
+
+        if self.ace and self.mvp:
+            self.errors["mvp"].append(
+                ValidationError(
+                    _("A player can't be both ace and mvp."),
+                    code="ace_mvp_conflict",
+                )
+            )
+            self.errors["ace"].append(
+                ValidationError(
+                    _("A player can't be both ace and mvp."),
+                    code="ace_mvp_conflict",
+                )
+            )
+
+        # Check if the team already has an mvp and raise an exception if so.
+        team_has_mvp = self.team.stats.filter(mvp=True).exists()
+        if self.mvp and team_has_mvp and self.team.stats.get(mvp=True) != self:
+            self.errors["mvp"].append(
+                ValidationError(_("The team already has an mvp."), code="team_has_mvp")
             )
 
     def clean(self, *args, **kwargs):
+        self.errors.clear()
         self.clean_players()
+        self.clean_mvp()
+
+        if self.errors:
+            raise ValidationError(self.errors)
+
         return super().clean()
 
     def __str__(self):

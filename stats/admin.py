@@ -67,16 +67,17 @@ class StatAdmin(admin.ModelAdmin):
         "agent",
         "player",
         "team__match",
+        "team",
     ]
 
     list_select_related = [
         "player",
-        "team",
+        "team__match__map",
         "agent",
     ]
 
     list_per_page = 10
 
-    @admin.display(description=_("KDA"))
+    @admin.display(description=_("KDA"), empty_value="N/D")
     def get_kda(self, obj):
         return obj.get_kda()
