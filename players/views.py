@@ -58,7 +58,7 @@ class PlayerProfileView(SuccessMessageMixin, UpdateView):
         queryset = player_model.annotate_win_rate(queryset)
         queryset = player_model.annotate_points(queryset)
         queryset = player_model.annotate_kda(queryset)
-        return queryset[0]
+        return queryset.first()
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
