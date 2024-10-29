@@ -27,9 +27,11 @@ class PlayerRegistrationView(SignupView):
 
     def get_context_data(self, **kwargs):
         ctx = super().get_context_data(**kwargs)
-        ctx["form_title"] = "Sign Up"
-        ctx["form_action"] = reverse_lazy("account_signup")
-        ctx["submit_text"] = "Sign Up"
+        ctx.update({
+            "form_title": "Sign Up",
+            "form_action": reverse_lazy("account_signup"),
+            "submit_text": "Sign Up"
+        })
         return ctx
 
 
