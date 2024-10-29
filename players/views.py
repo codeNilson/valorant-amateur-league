@@ -13,9 +13,11 @@ class PlayerLoginView(LoginView):
 
     def get_context_data(self, **kwargs):
         ctx = super().get_context_data(**kwargs)
-        ctx["form_title"] = "Login"
-        ctx["form_action"] = reverse_lazy("account_login")
-        ctx["submit_text"] = "Login"
+        ctx.update({
+            "form_title": "Login",
+            "form_action": reverse_lazy("account_login"),
+            "submit_text":"Login",
+}) 
         return ctx
 
 
