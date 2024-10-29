@@ -62,6 +62,8 @@ class PlayerProfileView(SuccessMessageMixin, UpdateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["can_edit"] = self.request.user.username == self.kwargs.get("username")
-        context["submit_text"] = "Save"
+        context.update({
+            "can_edit": self.request.user.username == self.kwargs.get("username"),
+            "submit_text": "Save"
+        })
         return context

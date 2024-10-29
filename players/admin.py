@@ -1,4 +1,6 @@
 from django.contrib import admin
+from django.contrib.auth import get_user_model
+from django.contrib.auth.models import Permission
 from .models import Player, RankingLog
 
 
@@ -48,11 +50,6 @@ class PlayerAdmin(admin.ModelAdmin):
         "email",
     ]
 
-    list_editable = [
-        "tier",
-        "main_agent",
-    ]
-
     readonly_fields = [
         "last_login",
     ]
@@ -77,6 +74,11 @@ class PlayerAdmin(admin.ModelAdmin):
     ]
 
     list_per_page = 10
+
+    def formfield_for_manytomany(self, db_field, request, **kwargs):
+        if db_field.name == "user_permissions":
+            kwargs["queryset"] = Permission.objects.all().select_related("content_type")
+        return super().formfield_for_manytomany(db_field, request, **kwargs)
 
     def save_model(self, request, obj, form, change):
         # If the password is changed, update it
