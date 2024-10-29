@@ -10,7 +10,6 @@ from .models import Player, RankingLog
 @admin.register(Player)
 class PlayerAdmin(admin.ModelAdmin):
 
-
     fieldsets = (
         (
             "Player Info",

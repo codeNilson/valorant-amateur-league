@@ -1,6 +1,7 @@
 import uuid
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from django.core.exceptions import ValidationError
 
 
 class Match(models.Model):
@@ -24,3 +25,14 @@ class Match(models.Model):
 
     class Meta:
         verbose_name_plural = _("Matches")
+
+    def clean_winner(self):
+        if self.winner and self.winner not in self.teams.all():
+            raise ValidationError(
+                {"winner": _("Winner must be one of the teams in the match")},
+                code="invalid",
+            )
+
+    def clean(self):
+        self.clean_winner()
+        return super().clean()
