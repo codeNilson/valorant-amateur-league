@@ -10,3 +10,4 @@ gunicorn-error-log
 node_modules/
 npm-debug.log
 emails/
+/static

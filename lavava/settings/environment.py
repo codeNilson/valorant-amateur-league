@@ -11,7 +11,7 @@ DEBUG = os.environ.get("DEBUG_MODE", "False").lower() in ["true", "1"]
 ALLOWED_HOSTS = get_env_list("ALLOWED_HOSTS")
 
 # Django DEBUG Toolbar
-INTERNAL_IPS = get_env_list("INTERNAL_IPS")
+INTERNAL_IPS = "127.0.0.1"
 
 # Django CORS Headers
 CSRF_TRUSTED_ORIGINS = get_env_list("TRUSTED_ORIGINS")
