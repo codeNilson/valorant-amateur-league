@@ -6,6 +6,7 @@ from .base import LavavaFunctionalTests
 class LavavaLandingPageTests(LavavaFunctionalTests):
 
     def responsive_helper(self, width, height, callback):
+        """Helper function to test responsiveness of the welcome title"""
         self.browser.get(self.live_server_url)
         self.browser.set_window_size(width, height)
         welcome_title = self.browser.find_element(
@@ -29,16 +30,14 @@ class LavavaLandingPageTests(LavavaFunctionalTests):
         home_url = reverse("home")
         self.assertIn(home_url, current_page)
 
-    def test_welcome_title_responsive_behavior(self):
-        def welcome_title_position_is_absolute_if_width_less_than_768px(result):
+    def test_welcome_title_position_is_absolute_if_width_less_than_768px(self):
+        def callback(result):
             self.assertEqual("absolute", result)
 
-        def welcome_title_position_is_static_if_width_768px(result):
+        self.responsive_helper(783, 1024, callback)
+
+    def test_welcome_title_position_is_static_if_width_768px(self):
+        def callback(result):
             self.assertEqual("static", result)
 
-        self.responsive_helper(
-            783, 1024, welcome_title_position_is_absolute_if_width_less_than_768px
-        )
-        self.responsive_helper(
-            784, 1024, welcome_title_position_is_static_if_width_768px
-        )
+        self.responsive_helper(784, 1024, callback)
