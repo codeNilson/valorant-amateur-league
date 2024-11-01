@@ -59,7 +59,7 @@
             {% if user.is_staff %}
             <form method="POST">
               {% csrf_token %}
-              <button type="submit" class="badge text-bg-primary-red">Update Ranking</button>
+              <button type="submit" id="updateButton" class="badge text-bg-primary-red">Update Ranking</button>
             </form>
             {% endif %}
           </div>
