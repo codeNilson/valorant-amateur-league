@@ -12085,6 +12085,7 @@ button:not(.collapsed) a {
   padding-left: 2rem;
   max-width: 20rem;
   left: 25px;
+  bottom: 5px;
   z-index: 99;
 }
 .alert::before {

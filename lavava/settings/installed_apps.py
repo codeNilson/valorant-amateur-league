@@ -6,6 +6,7 @@ INSTALLED_APPS = [
     "gamedata",
     "shared",
     "debug_toolbar",
+    "rest_framework",
     "django.contrib.admin",
     "django.contrib.sites",
     "django.contrib.auth",

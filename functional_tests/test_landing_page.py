@@ -5,6 +5,16 @@ from .base import LavavaFunctionalTests
 
 class LavavaLandingPageTests(LavavaFunctionalTests):
 
+    def responsive_helper(self, width, callback):
+        """Helper function to test responsiveness of the welcome title"""
+        self.browser.get(self.live_server_url)
+        self.browser.set_window_size(width, 1024)
+        welcome_title = self.browser.find_element(
+            By.XPATH, "/html/body/main/section[1]/div/div/div[2]"
+        )
+        welcome_title_position = welcome_title.value_of_css_property("position")
+        return callback(welcome_title_position)
+
     def test_landing_page(self):
         # Acessa a página principal
         self.browser.get(self.live_server_url)
