@@ -12,4 +12,3 @@ urlpatterns = [
 ]
 
 urlpatterns += router.urls
-print(router.urls)

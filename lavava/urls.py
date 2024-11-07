@@ -11,9 +11,10 @@ urlpatterns = [
     path("home/", views.HomeView.as_view(), name="home"),
     path("matches/", include("matches.urls")),
     path("teams/", include("teams.urls")),
+    path("players/", include("players.urls")),
+    path("stats/", include("stats.urls")),
     # django-allauth urls
     path("accounts/", include("allauth.urls")),
-    path("players/", include("players.urls")),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
