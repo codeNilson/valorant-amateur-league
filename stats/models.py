@@ -52,13 +52,13 @@ class Stat(models.Model):
     def clean_players(self):
         """Checks if the team already has five players stats and raises an exception if so."""
 
-        team_has_five_players = Stat.objects.filter(team=self.team).count() >= 5
+        team_has_five_players = Stat.objects.filter(team=self.team).exclude(id=self.id).count() >= 5
         player_not_in_team = not Stat.objects.filter(
             player=self.player, team=self.team
         ).exists()
 
         if team_has_five_players and player_not_in_team:
-            self.errors["team"].append(_("The team already has five players."))
+            self.errors["player"].append(_("The team already has five players."))
 
     def clean_mvp(self):
         # Check if the player is both ace and mvp and raise an exception if so.

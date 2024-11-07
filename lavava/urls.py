@@ -10,9 +10,10 @@ urlpatterns = [
     path("", views.LandingPageView.as_view(), name="landing_page"),
     path("home/", views.HomeView.as_view(), name="home"),
     path("matches/", include("matches.urls")),
+    path("teams/", include("teams.urls")),
     # django-allauth urls
-    path("accounts/", include("players.urls")),
     path("accounts/", include("allauth.urls")),
+    path("players/", include("players.urls")),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

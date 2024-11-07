@@ -1,5 +1,10 @@
-from django.urls import path
+from django.urls import include, path
 from players import views
+from rest_framework.routers import DefaultRouter
+
+router = DefaultRouter()
+router.register(r"api/v1", views.PlayerViewSet, basename="player")
+print(router.urls)
 
 urlpatterns = [
     path("login/", views.PlayerLoginView.as_view(), name="account_login"),
@@ -10,10 +15,6 @@ urlpatterns = [
         views.PlayerProfileView.as_view(),
         name="account_profile",
     ),
-    # api
-    path(
-        "api/v1/players/",
-        views.PlayerViewSet.as_view({"get": "list"}),
-        name="player_list_create_api",
-    ),
+    # API
+    path("", include(router.urls)),
 ]

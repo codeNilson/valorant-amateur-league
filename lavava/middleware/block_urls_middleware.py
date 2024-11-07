@@ -15,9 +15,12 @@ class BlockAllauthURLsMiddleware:
             "/accounts/password/reset/key/done/",
             "/accounts/password/change/",
             "/accounts/email/",
+            "/accounts/login/",
+            "/accounts/signup/",
+            "/accounts/logout/",
         ]
 
         if request.path in blocked_paths:
-            raise Http404
+            raise Http404("Allauth URLs are blocked")
 
         return self.get_response(request)

@@ -6,9 +6,11 @@ class PlayerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Player
         fields = [
-            "id",
+            "uuid",
             "username",
             "email",
             "main_agent",
             "tier",
+            "url",
         ]
+        extra_kwargs = {"url": {"view_name": "player-detail", "lookup_field": "uuid"}}

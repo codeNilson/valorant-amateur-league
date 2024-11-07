@@ -28,7 +28,11 @@ class Team(models.Model):
             and not self.match.teams.filter(uuid=self.uuid).exists()
         ):
             raise ValidationError(
-                _("A match cannot have more than two teams"), code="too_many_teams"
+                _(
+                    "You can not add this teams to match %(match)s. This match already has 5 players."
+                    % {"match": self.match}
+                ),
+                code="too_many_teams",
             )
 
     def clean(self):

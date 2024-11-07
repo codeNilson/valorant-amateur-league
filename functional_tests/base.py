@@ -1,5 +1,6 @@
 from django.test import LiveServerTestCase
 from django.contrib.auth import get_user_model
+from django.urls import reverse
 from selenium.webdriver.common.by import By
 from utils import get_browser
 
@@ -7,20 +8,6 @@ from utils import get_browser
 class LavavaFunctionalTests(LiveServerTestCase):
 
     fixtures = ["gamedata_fixtures.json"]
-
-    # @classmethod
-    # def setUpClass(cls):
-
-    # user_model = get_user_model()
-
-    # cls.player = user_model.objects.create_superuser(
-    #     username="testuser",
-    #     email="teste@teste.com",
-    #     password="testpassword",
-    #     is_staff=True,
-    # )
-
-    # return super().setUpClass()
 
     def setUp(self):
         self.browser = get_browser()
@@ -39,7 +26,7 @@ class LavavaFunctionalTests(LiveServerTestCase):
         self.browser.quit()
 
     def login_user(self, email, password):
-        login_url = self.live_server_url + "/accounts/login/"
+        login_url = self.live_server_url + reverse("account_login")
         self.browser.get(login_url)
 
         email_input = self.browser.find_element(By.XPATH, "//*[@id='id_login']")
