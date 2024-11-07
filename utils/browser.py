@@ -17,5 +17,4 @@ def get_browser(*args):
 if __name__ == "__main__":
     browser = get_browser()
     browser.get("https://www.google.com")
-    print(browser.title)
     browser.quit()

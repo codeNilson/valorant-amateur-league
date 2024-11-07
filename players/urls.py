@@ -4,7 +4,6 @@ from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
 router.register(r"api/v1", views.PlayerViewSet, basename="player")
-print(router.urls)
 
 urlpatterns = [
     path("login/", views.PlayerLoginView.as_view(), name="account_login"),
