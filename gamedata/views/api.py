@@ -1,16 +1,14 @@
-from rest_framework.viewsets import ModelViewSet
+from rest_framework.viewsets import ReadOnlyModelViewSet
 from gamedata import models
 from gamedata.serializers import AgentSerializer, TierSerializer
 
 
-class AgentsViewSet(ModelViewSet):
+class AgentsViewSet(ReadOnlyModelViewSet):
     queryset = models.Agent.objects.all()
     serializer_class = AgentSerializer
     lookup_field = "uuid"
-    http_method_names = "get"
 
 
-class TiersViewSet(ModelViewSet):
+class TiersViewSet(ReadOnlyModelViewSet):
     queryset = models.Tier.objects.all()
     serializer_class = TierSerializer
-    http_method_names = "get"

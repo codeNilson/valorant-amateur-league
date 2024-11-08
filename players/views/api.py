@@ -4,23 +4,10 @@ from players.serializers import PlayerSerializer
 
 
 class PlayerViewSet(viewsets.ModelViewSet):
-    queryset = Player.objects.all()
+    queryset = Player.objects.all().select_related("tier", "main_agent", "rankinglog")
     serializer_class = PlayerSerializer
     http_method_names = ["get"]
     lookup_field = "uuid"
-    # lookup_url_kwarg = "uuid"
-    # filter_backends = [filters.SearchFilter]
-    # search_fields = [
-    #     "name",
-    #     "email",
-    #     "phone",
-    #     "address",
-    #     "city",
-    #     "state",
-    #     "country",
-    #     "zip_code",
-    # ]
-    # renderer_classes = [JSONRenderer, BrowsableAPIRenderer]
 
     def get_queryset(self):
         queryset = super().get_queryset()
