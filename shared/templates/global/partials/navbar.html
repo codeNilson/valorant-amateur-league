@@ -30,7 +30,7 @@
                 </li>
                 {% if not user.is_authenticated %}
                 <li class="nav-item d-md-none">
-                    <a class="text-red nav-link" href="{% url "account_login" %}">Sign in</a>
+                    <a class="text-red nav-link" href="{% url "login" %}">Sign in</a>
                 </li>
                 {% endif %}
             </ul>
@@ -39,10 +39,10 @@
             {% if not user.is_authenticated %}
             <ul class="navbar-nav ms-auto d-none d-md-flex">
                 <li class="nav-item">
-                    <a class="btn btn-outline-primary-red rounded-0" role="button" href="{% url "account_login" %}">Sign in</a>
+                    <a class="btn btn-outline-primary-red rounded-0" role="button" href="{% url "login" %}">Sign in</a>
                 </li>
                 <li class="nav-item">
-                    <a class="btn btn-primary-red rounded-0" role="button" href="/accounts/signup">Sign up</a>
+                    <a class="btn btn-primary-red rounded-0" role="button" href={% url "signup" %}>Sign up</a>
                 </li>
             </ul>
             {% else %}
@@ -62,14 +62,14 @@
     </div>
 </nav>
 
-<div class="offcanvas offcanvas-end bg-primary-red w-100 text-center" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
+<div class="offcanvas offcanvas-end bg-primary-red text-center" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
     aria-labelledby="offcanvasWithBothOptionsLabel">
     <div class="offcanvas-header">
-        <h4 class="offcanvas-title display-4 text-title" id="offcanvasWithBothOptionsLabel">Menu</h4>
+        <h4 class="offcanvas-title fs-2 text-title" id="offcanvasWithBothOptionsLabel">Menu</h4>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 d-md-none fs-3">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 d-md-none fs-4">
             <li class="nav-item">
                 <a class="nav-link rounded-pill" href="{% url "home" %}">
                     <i class="fa-solid fa-house"></i>
@@ -82,7 +82,7 @@
             </li>
         </ul>
         <hr class="w-25 d-md-none">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 fs-3">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 fs-4">
             {% if user.is_authenticated %}
             <li class="nav-item">
                 <a class="nav-link" href="{{user.get_absolute_url}}">
@@ -95,7 +95,7 @@
                     Statistics</a>
             </li>
             <hr class="w-25">
-            <li class="nav-item fs-3 text-center">
+            <li class="nav-item fs-4 text-center">
                 <form action="{% url "account_logout" %}" method="POST">
                     {% csrf_token %}
                     <button type="submit" class="nav-link mx-auto">
@@ -105,7 +105,7 @@
             </li>
             {% else %}
             <li class="nav-item">
-                <a class="btn btn-outline-light w-100" role="button" href="{% url "account_login" %}">Sign in</a>
+                <a class="btn btn-outline-light w-100" role="button" href="{% url "login" %}">Sign in</a>
             </li>
             {% endif %}
         </ul>

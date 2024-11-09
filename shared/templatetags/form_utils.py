@@ -7,6 +7,8 @@ register = template.Library()
 ICON_MAP = {
     "username": "fa-user",
     "email": "fa-envelope",
+    "login": "fa-envelope",
+    "password": "fa-lock",
     "password1": "fa-lock",
     "password2": "fa-lock",
     "main_agent": "fa-mask",

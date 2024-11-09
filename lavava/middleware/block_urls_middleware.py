@@ -17,7 +17,6 @@ class BlockAllauthURLsMiddleware:
             "/accounts/email/",
             "/accounts/login/",
             "/accounts/signup/",
-            "/accounts/logout/",
         ]
 
         if request.path in blocked_paths:

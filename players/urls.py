@@ -6,9 +6,9 @@ router = DefaultRouter()
 router.register(r"api/v1", views.PlayerViewSet, basename="player")
 
 urlpatterns = [
-    path("login/", views.PlayerLoginView.as_view(), name="account_login"),
-    path("signup/", views.PlayerRegistrationView.as_view(), name="account_signup"),
-    path("logout/", views.PlayerLogoutView.as_view(), name="account_logout"),
+    path("login/", views.PlayerLoginView.as_view(), name="login"),
+    path("signup/", views.PlayerRegistrationView.as_view(), name="signup"),
+    path("logout/", views.PlayerLogoutView.as_view(), name="logout"),
     path(
         "profile/<str:username>",
         views.PlayerProfileView.as_view(),

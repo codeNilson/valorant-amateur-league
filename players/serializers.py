@@ -14,7 +14,7 @@ class PlayerSerializer(serializers.ModelSerializer):
         return obj.rankinglog.last_position
 
     def get_social_accounts(self, obj):
-        return obj.socialaccount_set.values_list(
+        return obj.socialaccount_set.values(
             "provider",
             "uid",
         )

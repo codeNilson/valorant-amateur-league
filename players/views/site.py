@@ -32,7 +32,7 @@ class PlayerRegistrationView(SignupView):
         ctx.update(
             {
                 "form_title": "Sign Up",
-                "form_action": reverse_lazy("account_signup"),
+                "form_action": reverse_lazy("signup"),
                 "submit_text": "Sign Up",
             }
         )
@@ -52,8 +52,8 @@ class PlayerProfileView(SuccessMessageMixin, UpdateView):
     def get_object(self, queryset=None):
         username = self.kwargs.get("username")
         player_model = get_user_model()
-        queryset = player_model.objects.filter(username=username)
-        if not queryset.exists():  # get_list_or_404
+        queryset = player_model.objects.filter(username=username).select_related("main_agent", "tier")
+        if not queryset.exists():
             raise Http404("Player does not exist")
         queryset = player_model.annotate_wins_and_losses(queryset)
         queryset = player_model.annotate_mvp_and_ace(queryset)
