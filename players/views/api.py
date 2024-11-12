@@ -4,7 +4,7 @@ from players.serializers import PlayerSerializer
 
 
 class PlayerViewSet(viewsets.ModelViewSet):
-    queryset = Player.objects.all().select_related("tier", "main_agent", "rankinglog").prefetch_related("socialaccount_set")
+    queryset = Player.objects.all().select_related("tier", "main_agent", "rankinglog").prefetch_related("socialaccount_set").filter(socialaccount__isnull=False).distinct()
     serializer_class = PlayerSerializer
     http_method_names = ["get"]
     lookup_field = "uuid"
