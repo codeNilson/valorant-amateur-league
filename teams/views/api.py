@@ -4,6 +4,7 @@ from teams.models import Team
 
 
 class TeamViewSet(ModelViewSet):
-    queryset = Team.objects.all()
+    queryset = Team.objects.all().select_related("match").prefetch_related("players")
+
     serializer_class = TeamSerializer
     lookup_field = "uuid"

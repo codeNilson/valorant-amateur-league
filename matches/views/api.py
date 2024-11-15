@@ -4,6 +4,9 @@ from matches.serializers import MatchSerializer
 
 
 class MatchViewSet(ModelViewSet):
-    queryset = Match.objects.all()
+    queryset = Match.objects.select_related(
+        "map",
+        "winner",
+    )
     serializer_class = MatchSerializer
     lookup_field = "uuid"

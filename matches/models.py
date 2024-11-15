@@ -8,7 +8,11 @@ class Match(models.Model):
 
     uuid = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
     map = models.ForeignKey(
-        "gamedata.Map", on_delete=models.SET_NULL, related_name="matches", null=True
+        "gamedata.Map",
+        on_delete=models.SET_NULL,
+        related_name="matches",
+        null=True,
+        blank=True,
     )
     winner = models.ForeignKey(
         "teams.Team",

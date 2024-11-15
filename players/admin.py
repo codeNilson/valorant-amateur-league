@@ -17,6 +17,7 @@ class PlayerAdmin(admin.ModelAdmin):
             "Player Info",
             {
                 "fields": (
+                    "uuid",
                     "username",
                     "password",
                     "email",
@@ -52,6 +53,7 @@ class PlayerAdmin(admin.ModelAdmin):
 
     readonly_fields = [
         "last_login",
+        "uuid",
     ]
 
     list_select_related = [

@@ -1,29 +1,35 @@
 from rest_framework import serializers
-from gamedata import serializers as gamedata_serializers
 from .models import Player
 
 
 class PlayerSerializer(serializers.ModelSerializer):
 
-    main_agent = gamedata_serializers.AgentSerializer()
-    tier = gamedata_serializers.TierSerializer()
+    tier = serializers.StringRelatedField()
+    main_agent = serializers.SerializerMethodField()
     ranking = serializers.SerializerMethodField()
     social_accounts = serializers.SerializerMethodField()
+
+    def get_main_agent(self, obj):
+        return {
+            "uuid": obj.main_agent.uuid,
+            "name": obj.main_agent.name,
+        }
 
     def get_ranking(self, obj):
         return obj.rankinglog.last_position
 
     def get_social_accounts(self, obj):
-        return obj.socialaccount_set.values(
-            "provider",
-            "uid",
-        )
+        return [
+            {"provider": account.provider, "uid": account.uid}
+            for account in obj.socialaccount_set.all()
+            if account.provider == "discord"
+        ]
 
     class Meta:
         model = Player
         fields = [
-            "uuid",
             "url",
+            "uuid",
             "username",
             "main_agent",
             "tier",
