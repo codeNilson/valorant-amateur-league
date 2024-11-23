@@ -14,7 +14,7 @@ def match_history(context, username=None):
         "player__username"
     )[:1]
 
-    matches = Match.objects.select_related("map", "winner").prefetch_related(
+    matches = Match.objects.filter(is_finished=True).select_related("map", "winner").prefetch_related(
         "teams__stats__player", "teams__players__main_agent"
     )
 

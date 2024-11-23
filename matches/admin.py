@@ -17,6 +17,7 @@ class MatchAdmin(admin.ModelAdmin):
         "uuid",
         "map",
         "winner",
+        "is_finished",
         "created_at",
     ]
 
@@ -27,6 +28,7 @@ class MatchAdmin(admin.ModelAdmin):
 
     list_editable = [
         "map",
+        "is_finished",
     ]
 
     search_fields = [

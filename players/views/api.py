@@ -16,7 +16,7 @@ class PlayerViewSet(viewsets.ModelViewSet):
 
     serializer_class = PlayerSerializer
     http_method_names = ["get"]
-    lookup_field = "uuid"
+    lookup_field = "username"
 
     def get_queryset(self):
         queryset = super().get_queryset()

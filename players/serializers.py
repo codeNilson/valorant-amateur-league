@@ -39,6 +39,6 @@ class PlayerSerializer(serializers.ModelSerializer):
         extra_kwargs = {
             "url": {
                 "view_name": "player-detail",
-                "lookup_field": "uuid",
+                "lookup_field": "username",
             },
         }
