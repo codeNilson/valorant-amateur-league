@@ -2,6 +2,7 @@ import uuid
 from datetime import datetime
 from django.db import models
 from django.db.models.functions import Cast
+from django.utils import timezone
 from django.contrib.auth.models import AbstractUser
 from django.core.validators import RegexValidator
 from django.urls import reverse
@@ -124,6 +125,6 @@ class RankingLog(models.Model):
     def save_position_changes(self, index: int) -> None:
         self.last_position_change = (index - self.last_position) * (-1)
         self.last_position = index
-        self.updated_at = datetime.today().date()
+        self.updated_at = timezone.now()
         self.full_clean()
         self.save()

@@ -55,7 +55,7 @@
       <div class="row gy-3">
         <div class="col-lg-8 table-responsive">
           <div class="d-flex align-items-center">
-            <h2 class="me-auto display-3 text-primary-red">Ranking</h2>
+            <h2 class="me-auto display-5 text-primary-red">Ranking</h2>
             {% if user.is_staff %}
             <form method="POST">
               {% csrf_token %}
@@ -106,21 +106,15 @@
         </div>
 
         <aside class="col-10 col-md-8 col-lg-3 mx-auto hall-of-fame">
-            <h2 class="display-3 text-dark">Hall of Fame</h2>
-            <div class="card bg-success text-title">
-              <img src= {% static "lavava/assets/lp_geeko_bg.png" %} class="card-img" alt="...">
-              <div class="card-img-overlay">
-                <h5 class="card-title h3">THE GOAT</h5>
-                <p class="card-text">Aro Might is the player in the first place right now!</p>
-              </div>
-            </div>
+          <h2 class="display-5 text-dark">
+            Discord Channel
+          </h2>
+          <div>
+            <iframe src="https://discord.com/widget?id=1243610772064698398&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+          </div>
         </aside>
-        
       </div>
+    </div>
   </section>
-
 </main>
-
-
-
 {% endblock content %}

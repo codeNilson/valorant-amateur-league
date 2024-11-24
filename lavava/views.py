@@ -1,6 +1,11 @@
 from django.shortcuts import redirect
 from django.views.generic import TemplateView
 from django.contrib.auth import get_user_model
+from django.contrib import messages
+from dotenv import load_dotenv
+from utils.discord_utils import DiscordWebhook
+
+load_dotenv()
 
 
 class LandingPageView(TemplateView):
@@ -32,14 +37,24 @@ class HomeView(TemplateView):
 
         players = self.get_players_ranking()
         ctx["players"] = players
+        ctx["first_place"] = players[0]
         ctx["update_at"] = players[0].rankinglog.updated_at  #  solução não ideal
         return ctx
 
     def post(self, request, *args, **kwargs):  # pylint: disable=unused-argument
 
-        players = self.get_players_ranking()
+        # players = self.get_players_ranking()
+        players = get_user_model().objects.all()
+
+        try:
+            webhook = DiscordWebhook()
+            webhook.send_ranking_update(players)
+        except AttributeError as e:
+            messages.error(request, f"Error sending ranking update to Discord: {e}")
 
         for index, player in enumerate(players, start=1):
             player.rankinglog.save_position_changes(index)
+
+        messages.success(request, "Ranking updated successfully!")
 
         return redirect("home")
