@@ -33,9 +33,9 @@
         </img>
         <div class="container">
           <div class="carousel-caption z-2 text-center text-title">
-            <h2 class="display-1 fw-bold">TOP PLAYERS</h2>
-            <p class="fs-3">Explore Their Perfomance</p>
-            <a href="#" role="button" class="btn btn-primary-red" target="_blank">Discover Now</a>
+            <h2 class="display-1 fw-bold">DISCORD CHANNEL</h2>
+            <p class="fs-3">Join the community</p>
+            <a href="https://discord.com/invite/MJAuKdsV?utm_source=Discord%20Widget&utm_medium=Connect" role="button" class="btn btn-primary-red" target="_blank">Discover Now</a>
           </div>
         </div>
       </div>
@@ -95,6 +95,11 @@
                 <td>{{player.win_rate|floatformat:2}}%</td>
                 <td>{{player.kda|floatformat:2}}</td>
               </tr>
+              {% empty %}
+              <tr>
+                <td colspan="9" class="text-center">No players found</td>
+              </tr>
+              
               {% endfor %}
             </tbody>
             <tfoot>

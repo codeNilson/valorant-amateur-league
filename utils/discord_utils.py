@@ -34,7 +34,7 @@ class DiscordWebhook:
             "url": "http://localhost:8000/home/",
             "color": get_random_color(),
             "author": {
-                "name": "Nova atualiazação!",
+                "name": "Nova atualização!",
                 "url": "https://lavava.com.br",
                 "icon_url": "https://i.pinimg.com/736x/0e/7d/a4/0e7da4a80ec2a70257a5537510455ea5.jpg",
             },

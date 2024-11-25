@@ -17,7 +17,9 @@ class HomeView(TemplateView):
 
     def get_players_ranking(self):
         player_model = get_user_model()
-        players = player_model.objects.select_related("main_agent", "rankinglog")
+        players = player_model.objects.select_related(
+            "main_agent", "rankinglog"
+        ).filter(socialaccount__isnull=False, is_staff=False)
         players = player_model.annotate_wins_and_losses(players)
         players = player_model.annotate_mvp_and_ace(players)
         players = player_model.annotate_kills_deaths_assists(players)
@@ -36,15 +38,16 @@ class HomeView(TemplateView):
         ctx = super().get_context_data(**kwargs)
 
         players = self.get_players_ranking()
-        ctx["players"] = players
-        ctx["first_place"] = players[0]
-        ctx["update_at"] = players[0].rankinglog.updated_at  #  solução não ideal
+        ctx["players"] = players  #  solução não ideal
         return ctx
 
     def post(self, request, *args, **kwargs):  # pylint: disable=unused-argument
 
-        # players = self.get_players_ranking()
-        players = get_user_model().objects.all()
+        players = self.get_players_ranking()
+
+        if not players:
+            messages.error(request, "No players found to update ranking.")
+            return redirect("home")
 
         try:
             webhook = DiscordWebhook()

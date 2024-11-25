@@ -2,7 +2,7 @@
 
 <nav class="navbar navbar-expand-md text-bg-dark">
     <div class="container-fluid d-flex px-5">
-        <a class="navbar-brand" href="/">
+        <a class="navbar-brand" href={% url "home" %}>
             <img src="{% static 'global/assets/lavava_logo.webp' %}" alt="Logo da Lavava" class="lavava-logo img-fluid">
         </a>
         <button class="btn btn-outline-primary-red border-0 d-md-none" type="button"
@@ -22,12 +22,11 @@
                 <li class="nav-item">
                     <a class="nav-link text-white" href="{% url "matches:history" %}">Match History</a>
                 </li>
+                {% if user.is_staff %}
                 <li class="nav-item">
                     <a class="nav-link text-white" href="/admin">Admin Site</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="#">Shop</a>
-                </li>
+                {% endif %}
                 {% if not user.is_authenticated %}
                 <li class="nav-item d-md-none">
                     <a class="text-red nav-link" href="{% url "login" %}">Sign in</a>
@@ -69,32 +68,34 @@
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 d-md-none fs-4">
+        <ul class="navbar-nav d-md-none fs-4">
             <li class="nav-item">
-                <a class="nav-link rounded-pill" href="{% url "home" %}">
+                <a class="nav-link" href="{% url "home" %}">
                     <i class="fa-solid fa-house"></i>
-                    Home</a>
+                    Home
+                </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link rounded-pill" href="{% url "matches:history" %}">
                     <i class="fa-solid fa-clock-rotate-left"></i>
                     Match History</a>
             </li>
+            <hr class="w-25 mx-auto">
         </ul>
-        <hr class="w-25 d-md-none">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 fs-4">
+        <ul class="navbar-nav fs-4">
             {% if user.is_authenticated %}
             <li class="nav-item">
                 <a class="nav-link" href="{{user.get_absolute_url}}">
                     <i class="fa-solid fa-user"></i>
                     Profile</a>
             </li>
-            <li class="nav-item">
+            {% comment %} <li class="nav-item">
                 <a class="nav-link" href="#">
                     <i class="fa-solid fa-chart-simple"></i>
-                    Statistics</a>
-            </li>
-            <hr class="w-25">
+                    Statistics
+                </a>
+            </li> {% endcomment %}
+            <hr class="w-25 mx-auto">
             <li class="nav-item fs-4 text-center">
                 <form action="{% url "account_logout" %}" method="POST">
                     {% csrf_token %}

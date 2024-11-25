@@ -41,7 +41,7 @@
     <div id="collapse-{{forloop.counter}}" class="accordion-collapse collapse">
         <div class="accordion-body p-0">
         <div class="container">
-            <div class="row gy-5 justify-content-center">
+            <div class="row justify-content-center">
             <div class="col-auto container-responsive">
                 <div class="row row-cols-lg-2">
                 {% for team in match.teams.all %}
@@ -101,7 +101,7 @@
     </div>
     </div>
 {% empty %}
-<p class="fs-5 p-5">This player hasn't achieved any MVP awards yet.</p>
+<p class="fs-5 p-5">There's no matches.</p>
 {% endfor %}
 </div>
 </div>
