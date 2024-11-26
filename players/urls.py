@@ -1,6 +1,6 @@
 from django.urls import include, path
-from players import views
 from rest_framework.routers import DefaultRouter
+from players import views
 
 router = DefaultRouter()
 router.register(r"api/v1", views.PlayerViewSet, basename="player")
