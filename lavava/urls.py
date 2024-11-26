@@ -11,7 +11,6 @@ urlpatterns = [
     path("__debug__/", include("debug_toolbar.urls")),
     path("", views.LandingPageView.as_view(), name="landing_page"),
     path("home/", views.HomeView.as_view(), name="home"),
-    path("", include("gamedata.urls")),
     path("matches/", include("matches.urls")),
     path("teams/", include("teams.urls")),
     path("players/", include("players.urls")),
