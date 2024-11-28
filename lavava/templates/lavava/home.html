@@ -113,57 +113,7 @@
         </div>
 
         <aside class="col-10 col-md-auto mx-auto">
-          <h2 class="display-5 text-dark">
-            Discord Channel
-          </h2>
-          <div class="widget rounded-1 overflow-hidden text-light container">
-            <div class="widget-header bg-primary row justify-content-between px-2 py-4">
-              <div class="col-auto d-flex gap-2 fs-5 align-items-center">
-                <p class="mb-0"><i class="fa-brands fa-discord fs-2"></i></p>
-                <a href="{{discord_widget.instant_invite}}"
-                  class="mb-0 text-light text-decoration-none">Lavava</a>
-              </div>
-              <div class="col-auto align-content-center">
-                <p class="mb-0">{{discord_widget.presence_count}} Online</p>
-              </div>
-            </div>
-            <div class="widget-body px-2 py-4 bg-dark row">
-              <div class="rooms">
-                <h3 class="text-center text-light">Rooms</h3>
-                {% for channel in discord_widget.channels %}
-                <div class="mb-2 align-items-center justify-content-center align-items-center">
-
-                  <div class="d-flex align-items-center gap-1">
-                    <span>{{channel.name}}</span>
-                    {% if channel.members %}
-                    <i class="fa-solid fa-circle live-indicator"></i>
-                    {% endif %}
-                  </div>
-
-                  {% for members in channel.members %}
-                  <div class="discord-member text-secondary ms-2 mt-1">
-                    <img src="{{members.avatar_url}}" class="img-fluid discord-avatar rounded-circle w-25"
-                      alt="discord members avatar">
-                    {{members.username}}
-                  </div>
-                  {% endfor %}
-                </div>
-                {% endfor %}
-              </div>
-              <div class="members-online">
-                <h3 class="text-center text-light">Members Online</h3>
-                <div class="d-flex flex-wrap justify-content-center">
-                  {% for member in discord_widget.members %}
-                  <div class="discord-member text-light ms-2 mt-1">
-                    <img src="{{member.avatar_url}}" class="img-fluid discord-avatar rounded-circle"
-                      alt="discord members avatar">
-                    {{member.username}}
-                  </div>
-                  {% endfor %}
-                </div>
-              </div>
-            </div>
-          </div>
+          {% include "global/partials/discord_widget.html" %}
         </aside>
       </div>
     </div>

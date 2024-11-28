@@ -1,5 +1,7 @@
+from dataclasses import dataclass, field
 import random
 import os
+from typing import Optional
 import requests
 from dotenv import load_dotenv
 from django.utils import timezone
@@ -72,59 +74,38 @@ class DiscordWebhook:
 
 
 widget = requests.get(
-    "https://discord.com/api/guilds/1243610772064698398/widget.json"
+    "https://discord.com/api/guilds/1243610772064698398/widget.json", timeout=10
 ).json()
 
 
+@dataclass
 class DiscordMember:
-    def __init__(
-        self,
-        id: str,
-        username: str,
-        status: str,
-        avatar_url: str,
-        channel_id: str,
-    ):
-        self.id = id
-        self.username = username
-        self.status = status
-        self.avatar_url = avatar_url
-        self.channel_id = channel_id or None
+    id: str
+    username: str
+    status: str
+    avatar_url: str
+    channel_id: Optional[str] = None
 
 
+@dataclass
 class DiscordChannel:
-    def __init__(
-        self, id: str, name: str, position: int, members: list[DiscordMember] = None
-    ):
-        self.id = id
-        self.name = name
-        self.position = position
-        self._members = members or []
+    id: str
+    name: str
+    position: int
+    members: list[DiscordMember] = field(default_factory=list)
 
-    @property
-    def members(self):
-        return self._members
-
-    def add_member(self, member: DiscordMember):
-        self._members.append(member)
+    def add_member(self, member: "DiscordMember"):
+        self.members.append(member)
 
 
+@dataclass
 class DiscordWidget:
-    def __init__(
-        self,
-        id: str,
-        name: str,
-        instant_invite: str,
-        presence_count: int,
-        channels: list[DiscordChannel] = None,
-        members: list[DiscordMember] = None,
-    ):
-        self.id = id
-        self.name = name
-        self.instant_invite = instant_invite
-        self.presence_count = presence_count
-        self.channels = channels or []
-        self.members = members or []
+    id: str
+    name: str
+    instant_invite: str
+    presence_count: int
+    channels: list[DiscordChannel] = field(default_factory=list)
+    members: list[DiscordMember] = field(default_factory=list)
 
     @classmethod
     def create_from_json(cls, widget_json):
@@ -137,6 +118,7 @@ class DiscordWidget:
                 position=channel["position"],
             )
             channels.append(discord_channel)
+        channels.sort(key=lambda c: c.position)
 
         members = []
 
