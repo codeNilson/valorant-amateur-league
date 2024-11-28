@@ -3,7 +3,8 @@ from django.views.generic import TemplateView
 from django.contrib.auth import get_user_model
 from django.contrib import messages
 from dotenv import load_dotenv
-from utils.discord_utils import DiscordWebhook
+import requests
+from utils.discord_utils import DiscordWebhook, DiscordWidget
 
 load_dotenv()
 
@@ -36,9 +37,17 @@ class HomeView(TemplateView):
 
     def get_context_data(self, **kwargs):
         ctx = super().get_context_data(**kwargs)
-
         players = self.get_players_ranking()
         ctx["players"] = players  #  solução não ideal
+
+        widget = requests.get(
+            "https://discord.com/api/guilds/1243610772064698398/widget.json", timeout=10
+        ).json()
+
+        discord_widget = DiscordWidget.create_from_json(widget)
+
+        ctx["discord_widget"] = discord_widget
+
         return ctx
 
     def post(self, request, *args, **kwargs):  # pylint: disable=unused-argument

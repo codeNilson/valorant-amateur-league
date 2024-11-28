@@ -69,3 +69,97 @@ class DiscordWebhook:
                 "attachments": [],
             },
         )
+
+
+widget = requests.get(
+    "https://discord.com/api/guilds/1243610772064698398/widget.json"
+).json()
+
+
+class DiscordMember:
+    def __init__(
+        self, id: str, username: str, status: str, avatar_url: str, channel_id: str
+    ):
+        self.id = id
+        self.username = username
+        self.status = status
+        self.avatar_url = avatar_url
+        self.channel_id = channel_id
+
+
+class DiscordChannel:
+    def __init__(
+        self, id: str, name: str, position: int, members: list[DiscordMember] = None
+    ):
+        self.id = id
+        self.name = name
+        self.position = position
+        self._members = members or []
+
+    @property
+    def members(self):
+        return self._members
+
+    def add_member(self, member: DiscordMember):
+        self._members.append(member)
+
+
+class DiscordWidget:
+    def __init__(
+        self,
+        id: str,
+        name: str,
+        instant_invite: str,
+        presence_count: int,
+        channels: list[DiscordChannel] = None,
+        members: list[DiscordMember] = None,
+    ):
+        self.id = id
+        self.name = name
+        self.instant_invite = instant_invite
+        self.presence_count = presence_count
+        self.channels = channels or []
+        self.members = members or []
+
+    @classmethod
+    def create_from_json(cls, widget_json):
+        channels = []
+
+        for channel in widget_json["channels"]:
+            discord_channel = DiscordChannel(
+                id=channel["id"],
+                name=channel["name"],
+                position=channel["position"],
+            )
+            channels.append(discord_channel)
+
+        members = []
+
+        for member in widget_json["members"]:
+            discord_member = DiscordMember(
+                id=member["id"],
+                username=member["username"],
+                status=member["status"],
+                avatar_url=member["avatar_url"],
+                channel_id=member["channel_id"],
+            )
+            for channel in channels:
+                if channel.id == discord_member.channel_id:
+                    channel.add_member(discord_member)
+                    break
+
+            members.append(discord_member)
+
+        widget_id = widget_json["id"]
+        name = widget_json["name"]
+        instant_invite = widget_json["instant_invite"]
+        presence_count = widget_json["presence_count"]
+
+        return cls(
+            id=widget_id,
+            name=name,
+            instant_invite=instant_invite,
+            presence_count=presence_count,
+            channels=channels,
+            members=members,
+        )

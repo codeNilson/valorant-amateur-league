@@ -12604,4 +12604,26 @@ aside.hall-of-fame .card .card-img-overlay {
   color: #fd4556;
 }
 
+.discord-member {
+  font-size: 0.8rem;
+}
+.discord-member .discord-avatar {
+  max-width: 20px;
+}
+
+.live-indicator {
+  font-size: 0.5rem;
+  color: #dc3545;
+  animation: blink 1s infinite alternate;
+}
+
+@keyframes blink {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
 /*# sourceMappingURL=styles.css.map */
