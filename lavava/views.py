@@ -46,6 +46,8 @@ class HomeView(TemplateView):
 
         discord_widget = DiscordWidget.create_from_json(widget)
 
+        print(discord_widget.members)
+
         ctx["discord_widget"] = discord_widget
 
         return ctx

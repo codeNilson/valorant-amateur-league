@@ -78,13 +78,18 @@ widget = requests.get(
 
 class DiscordMember:
     def __init__(
-        self, id: str, username: str, status: str, avatar_url: str, channel_id: str
+        self,
+        id: str,
+        username: str,
+        status: str,
+        avatar_url: str,
+        channel_id: str,
     ):
         self.id = id
         self.username = username
         self.status = status
         self.avatar_url = avatar_url
-        self.channel_id = channel_id
+        self.channel_id = channel_id or None
 
 
 class DiscordChannel:
@@ -137,11 +142,11 @@ class DiscordWidget:
 
         for member in widget_json["members"]:
             discord_member = DiscordMember(
-                id=member["id"],
-                username=member["username"],
-                status=member["status"],
-                avatar_url=member["avatar_url"],
-                channel_id=member["channel_id"],
+                id=member.get("id"),
+                username=member.get("username"),
+                status=member.get("status"),
+                avatar_url=member.get("avatar_url"),
+                channel_id=member.get("channel_id"),
             )
             for channel in channels:
                 if channel.id == discord_member.channel_id:
