@@ -20,7 +20,7 @@ class HomeView(TemplateView):
         player_model = get_user_model()
         players = player_model.objects.select_related(
             "main_agent", "rankinglog"
-        ).filter(socialaccount__isnull=False, is_staff=False)
+        ).filter(socialaccount__isnull=False, is_staff=False, is_approved=True)
         players = player_model.annotate_wins_and_losses(players)
         players = player_model.annotate_mvp_and_ace(players)
         players = player_model.annotate_kills_deaths_assists(players)
@@ -45,8 +45,6 @@ class HomeView(TemplateView):
         ).json()
 
         discord_widget = DiscordWidget.create_from_json(widget)
-
-        print(discord_widget.members)
 
         ctx["discord_widget"] = discord_widget
 
