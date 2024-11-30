@@ -22,6 +22,12 @@ class PlayerModelForm(forms.ModelForm):
             "main_agent",
             css_class="form-control border-0 bg-transparent",
         )
+        update_form_fields(
+            self,
+            "include_in_draft",
+            css_class="form-check-input",
+            label="I want to be included in the draft",
+        )
 
     class Meta:
         model = Player
@@ -29,4 +35,5 @@ class PlayerModelForm(forms.ModelForm):
             "username",
             "email",
             "main_agent",
+            "include_in_draft",
         ]

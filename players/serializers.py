@@ -35,6 +35,7 @@ class PlayerSerializer(serializers.ModelSerializer):
             "tier",
             "ranking",
             "social_accounts",
+            "include_in_draft",
         ]
         extra_kwargs = {
             "url": {
