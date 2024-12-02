@@ -38,7 +38,10 @@ class HomeView(TemplateView):
     def get_context_data(self, **kwargs):
         ctx = super().get_context_data(**kwargs)
         players = self.get_players_ranking()
-        ctx["players"] = players  #  solução não ideal
+        ctx["players"] = players
+        ctx["update_at"] = (
+            players[0].rankinglog.updated_at if players else None
+        )  #  solução não ideal
 
         widget = requests.get(
             "https://discord.com/api/guilds/1243610772064698398/widget.json", timeout=10
