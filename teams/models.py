@@ -31,7 +31,7 @@ class Team(models.Model):
         ):
             raise ValidationError(
                 _(
-                    _("You can not add this teams to match %(match)s. This match already has 5 players.")
+                    _("You can not add this team to match %(match)s. This match already has 2 players.")
                     % {"match": self.match}
                 ),
                 code="too_many_teams",

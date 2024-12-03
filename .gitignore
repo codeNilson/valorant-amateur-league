@@ -12,3 +12,4 @@ npm-debug.log
 emails/
 /static
 *.sqlite3
+locale/**/*.po
