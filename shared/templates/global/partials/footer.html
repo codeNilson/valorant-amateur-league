@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 
 <footer class="text-center">
     <div class="container footer-container">
@@ -9,8 +10,7 @@
             <div class="col-md-4 footer-logo"><img src={% static 'global/assets/lavava_logo.webp' %} alt="lavava_logo"
                     class="lavava-logo img-fluid">
                 <small class="d-flex pt-2">
-                        Riot Games, Valorant, and all associated properties are trademarks or registered trademarks of
-                        Riot Games, Inc.
+                    {% trans "Riot Games, Valorant, and all associated properties are trademarks or registered trademarks of Riot Games, Inc." %}
                 </small>
             </div>
             <div class="footer-brand-icons col-md-4 text-md-end fs-4">

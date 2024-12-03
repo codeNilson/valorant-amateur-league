@@ -1,5 +1,5 @@
 {% extends "global/base.html" %}
-
+{% load i18n %}
 {% load static %}
 
 {% block content %}
@@ -20,9 +20,9 @@
         </img>
         <div class="container">
           <div class="carousel-caption z-2 text-start text-title">
-            <h2 class="display-4 display-1-lg fw-bold">WATCH THE ACTION</h2>
-            <p class="fs-3">Check Our Youtube Channel</p>
-            <a href="https://www.youtube.com/@LAVAVAjp" role="button" class="btn btn-primary-red" target="_blank">Watch Now</a>
+            <h2 class="display-4 display-1-lg fw-bold">{% trans 'WATCH THE ACTION' %}</h2>
+            <p class="fs-3">{% trans 'Check Our Youtube Channel' %}</p>
+            <a href="https://www.youtube.com/@LAVAVAjp" role="button" class="btn btn-primary-red" target="_blank">{% trans 'Watch Now' %}</a>
           </div>
         </div>
       </div>
@@ -33,21 +33,21 @@
         </img>
         <div class="container">
           <div class="carousel-caption z-2 text-center text-title">
-            <h2 class="display-1 fw-bold">DISCORD CHANNEL</h2>
-            <p class="fs-3">Join the community</p>
+            <h2 class="display-1 fw-bold">{% trans 'DISCORD CHANNEL' %}</h2>
+            <p class="fs-3">{% trans 'Join the community' %}</p>
             <a href="https://discord.gg/WAGZAMuDFa" role="button"
-              class="btn btn-primary-red" target="_blank">Discover Now</a>
+              class="btn btn-primary-red" target="_blank">{% trans 'Discover Now' %}</a>
           </div>
         </div>
       </div>
     </div>
     <button class="carousel-control-prev z-2" type="button" data-bs-target="#carouselAutoplaying" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
+      <span class="visually-hidden">{% trans 'Previous' %}</span>
     </button>
     <button class="carousel-control-next z-2" type="button" data-bs-target="#carouselAutoplaying" data-bs-slide="next">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
+      <span class="visually-hidden">{% trans 'Next' %}</span>
     </button>
   </div>
 
@@ -56,11 +56,11 @@
       <div class="row gy-3">
         <div class="col-lg-8 table-responsive">
           <div class="d-flex align-items-center">
-            <h2 class="me-auto display-5 text-primary-red">Ranking</h2>
+            <h2 class="me-auto display-5 text-primary-red">{% trans 'Ranking' %}</h2>
             {% if user.is_staff %}
             <form method="POST">
               {% csrf_token %}
-              <button type="submit" id="updateButton" class="badge text-bg-primary-red">Update Ranking</button>
+              <button type="submit" id="updateButton" class="badge text-bg-primary-red">{% trans 'Update Ranking' %}</button>
             </form>
             {% endif %}
           </div>
@@ -68,14 +68,14 @@
             <thead class="table-dark">
               <tr>
                 <th class="text-start">#</th>
-                <th class="text-start">PLAYER</th>
-                <th>P</th>
-                <th>W</th>
-                <th>L</th>
-                <th>MVP</th>
-                <th>ACE</th>
-                <th>W/R</th>
-                <th>KDA</th>
+                <th class="text-start">{% trans 'PLAYER' %}</th>
+                <th>{% trans 'P' %}</th>
+                <th>{% trans 'W' %}</th>
+                <th>{% trans 'L' %}</th>
+                <th>{% trans 'MVP' %}</th>
+                <th>{% trans 'ACE' %}</th>
+                <th>{% trans 'W/R' %}</th>
+                <th>{% trans 'KDA' %}</th>
               </tr>
             </thead>
             <tbody class="text-center border shadow">
@@ -99,14 +99,14 @@
               </tr>
               {% empty %}
               <tr>
-                <td colspan="9" class="text-center">No players found</td>
+                <td colspan="9" class="text-center">{% trans 'No players found' %}</td>
               </tr>
 
               {% endfor %}
             </tbody>
             <tfoot>
               <tr class="opacity-75 border-0">
-                <td colspan="6" class="text-start fw-bold">Last update: {{ update_at|date:"d/m/Y" }}</td>
+                <td colspan="6" class="text-start fw-bold">{% trans 'Last update' %}: {{ update_at|date:"d/m/Y" }}</td>
               </tr>
             </tfoot>
           </table>

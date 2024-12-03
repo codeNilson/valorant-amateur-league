@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 
 <nav class="navbar navbar-expand-md text-bg-dark">
     <div class="container-fluid d-flex px-5">
@@ -17,19 +18,19 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active text-white" aria-current="page" href="{% url "home" %}">Home</a>
+                    <a class="nav-link active text-white" aria-current="page" href="{% url "home" %}">{% trans "Home" %}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="{% url "matches:history" %}">Match History</a>
+                    <a class="nav-link text-white" href="{% url "matches:history" %}">{% trans "Match History" %}</a>
                 </li>
                 {% if user.is_staff %}
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="/admin">Admin Site</a>
+                    <a class="nav-link text-white" href="/admin">{% trans "Admin Site" %}</a>
                 </li>
                 {% endif %}
                 {% if not user.is_authenticated %}
                 <li class="nav-item d-md-none">
-                    <a class="text-red nav-link" href="{% url "login" %}">Sign in</a>
+                    <a class="text-red nav-link" href="{% url "login" %}">{% trans "Sign in" %}</a>
                 </li>
                 {% endif %}
             </ul>
@@ -38,10 +39,10 @@
             {% if not user.is_authenticated %}
             <ul class="navbar-nav ms-auto d-none d-md-flex">
                 <li class="nav-item">
-                    <a class="btn btn-outline-primary-red rounded-0" role="button" href="{% url "login" %}">Sign in</a>
+                    <a class="btn btn-outline-primary-red rounded-0" role="button" href="{% url "login" %}">{% trans "Sign in" %}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="btn btn-primary-red rounded-0" role="button" href={% url "signup" %}>Sign up</a>
+                    <a class="btn btn-primary-red rounded-0" role="button" href={% url "signup" %}>{% trans "Sign up" %}</a>
                 </li>
             </ul>
             {% else %}
@@ -72,13 +73,13 @@
             <li class="nav-item">
                 <a class="nav-link" href="{% url "home" %}">
                     <i class="fa-solid fa-house"></i>
-                    Home
+                    {% trans "Home" %}
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link rounded-pill" href="{% url "matches:history" %}">
                     <i class="fa-solid fa-clock-rotate-left"></i>
-                    Match History</a>
+                    {% trans "Match History" %}</a>
             </li>
             <hr class="w-25 mx-auto">
         </ul>
@@ -87,14 +88,14 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{user.get_absolute_url}}">
                     <i class="fa-solid fa-user"></i>
-                    Profile
+                    {% trans "Profile" %}
                 </a>
             </li>
             {% if user.is_staff %}
             <li class="nav-item">
                 <a class="nav-link" href="/admin">
                     <i class="fa-solid fa-gear"></i>
-                    Admin Site
+                    {% trans "Admin Site" %}
                 </a>
             </li>
             {% endif %}
@@ -104,12 +105,13 @@
                     {% csrf_token %}
                     <button type="submit" class="nav-link mx-auto">
                         <i class="fa-solid fa-right-from-bracket"></i>
-                        Logout</button>
+                        {% trans "Logout" %}
+                    </button>
                 </form>
             </li>
             {% else %}
             <li class="nav-item">
-                <a class="btn btn-outline-light w-100" role="button" href="{% url "login" %}">Sign in</a>
+                <a class="btn btn-outline-light w-100" role="button" href="{% url "login" %}">{% trans "Sign in" %}</a>
             </li>
             {% endif %}
         </ul>

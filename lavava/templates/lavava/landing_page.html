@@ -1,5 +1,6 @@
 {% extends "global/base.html" %}
 {% load static %}
+{% load i18n %}
 
 {% block content %}
     <header class="p-3">
@@ -19,11 +20,13 @@
                     </div>
                     <div class="hero-text col-md-7 text-center text-md-end z-1 position-md-absolute">
                         <h1 class="display-1 fw-bold text-shadow">
-                            WELCOME TO LAVAVA
+                            {% trans "WELCOME TO LAVAVA" %}
                         </h1>
-                        <p class="fs-4 text-shadow">Follow the standings, statistics, and much more of the Valorant Amateur League.</p>
+                        <p class="fs-4 text-shadow">
+                            {% trans "Follow the standings, statistics, and much more of the Valorant Amateur League." %}
+                        </p>
                         <a type="btn" href="{% url "home" %}" id="mainButton" class="btn btn-outline-light btn-lg rounded-0">
-                            Join the fun!
+                            {% trans "Join the fun!" %}
                         </a>
                     </div>
                 </div>
@@ -36,29 +39,29 @@
                 <div class="feature col-12 col-md-4">
                     <div class="feature-title">
                         <i class="jump-animation fa-solid fa-video fs-1 mb-2 border rounded-circle p-3"></i>
-                        <h3 class="fs-1">WATCH PAST MATCHES</h3>
+                        <h3 class="fs-1">{% trans "WATCH PAST MATCHES" %}</h3>
                     </div>
                     <hr class="w-25 mx-auto">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    <p>{% trans "Watch the recorded matches on our YouTube channel." %}</p>
     
                 </div>
     
                 <div class="feature col-12 col-md-4">
                     <div class="feature-title">
                         <i class="jump-animation fa-solid fa-ranking-star fs-1 mb-2 border rounded-circle p-3"></i>
-                        <h3 class="fs-1">FOLLOW THE RANKINGS</h3>
+                        <h3 class="fs-1">{% trans "FOLLOW THE RANKINGS" %}</h3>
                     </div>
                     <hr class="w-25 mx-auto">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    <p>{% trans "Check the current player rankings." %}</p>
     
                 </div>
                 <div class="feature col-12 col-md-4">
                     <div class="feature-title">
                         <i class="jump-animation fa-solid fa-chart-line fs-1 mb-2 border rounded-circle p-3"></i>
-                        <h3 class="fs-1">SEE PLAYERS STATISTICS</h3>
+                        <h3 class="fs-1">{% trans "SEE PLAYERS STATISTICS" %}</h3>
                     </div>
                     <hr class="w-25 mx-auto">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    <p>{% trans "See the kill, death, assist rates, and much more!" %}</p>
                 </div>
             </div>
         </section>
@@ -67,12 +70,12 @@
             <div class="social-background px-3 py-5" style="background-image: url('{% static 'lavava/assets/lp_jett_bg.webp' %}');">
                 <div class="container-social row text-shadow ms-0 ms-lg-5">
                         <h2 class="fw-bold text-title display-1">
-                            Follow us for more!
+                           {% trans "Follow us for more!" %}
                         </h2>
-                        <p class="fw-semibold fs-4 text-title"> Join the Youtube and Discord communities</p>
+                        <p class="fw-semibold fs-4 text-title"> {% trans "Join the Youtube and Discord communities" %}</p>
                         <div class="social-icons-container d-flex gap-3">
-                            <a href="#" target="_blank"><i class="fa-brands fa-youtube text-title fs-2 jump-animation"></i></a>
-                            <a href="#" target="_blank"><i class="fa-brands fa-discord text-title fs-2 jump-animation"></i></a>
+                            <a href="https://www.youtube.com/@LAVAVAjp" target="_blank"><i class="fa-brands fa-youtube text-title fs-2 jump-animation"></i></a>
+                            <a href="https://discord.gg/WAGZAMuDFa" target="_blank"><i class="fa-brands fa-discord text-title fs-2 jump-animation"></i></a>
                     </div>
                 </div>
             </div>

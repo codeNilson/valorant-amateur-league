@@ -1,5 +1,6 @@
 {% extends "global/base.html" %}
 {% load static %}
+{% load i18n %}
 {% load matches %}
 {% block content %}
 
@@ -9,7 +10,7 @@
     <div class="container bg-dark mt-0 mt-sm-3">
         <div class="row gap-2 profile px-3 px-md-5 py-3">
             <h2 class="display-3 text-primary-red">
-                Profile: <span class="text-title">{{player.username}}</span>
+                {% trans "Profile:" %} <span class="text-title">{{player.username}}</span>
             </h2>
             <div class="col-12 col-xl-5">
                 <div class="profile-picture" >
@@ -17,7 +18,7 @@
                 </div>
                 <div class="profile-info d-none d-xl-block text-light position-relative rounded p-3">
                     <div>
-                        <h3 class="text-primary-red fs-1">Player Info</h3>
+                        <h3 class="text-primary-red fs-1">{% trans "Player Info" %}</h3>
                         {% if can_edit %}
                         <button class="btn-icon editButton" data-id="1">
                             <i class="fa-solid fa-pen-to-square"></i>
@@ -25,8 +26,8 @@
                         {% endif %}
                     </div>
                     <div data-id="1" class="text-center playerInfo">
-                        <p><span class="fw-bold">Username:</span> {{player.username}}</p>
-                        <p><span class="fw-bold">Main Agent:</span> {{player.main_agent}}</p>
+                        <p><span class="fw-bold">{% trans "Username:" %}</span> {{player.username}}</p>
+                        <p><span class="fw-bold">{% trans "Main Agent:" %}</span> {{player.main_agent}}</p>
                         <img src={% static player.tier.small_icon %} alt="tier icon"> <span>{{player.tier}}</span>
                     </div>
                     {% if can_edit %}
@@ -34,7 +35,7 @@
                         {% csrf_token %}
                         {% include "global/partials/forms.html" %}
                         <button type="button" class="btn btn-outline-primary-red w-100 mt-1 cancelButton" data-id="1">
-                            Cancel
+                            {% trans "Cancel" %}
                         </button>
                     </form>
                     {% endif %}
@@ -45,7 +46,7 @@
                     <div class="row gap-2 text-light">
                         <div class="profile-info p-3 col-12 col-md d-xl-none mx-auto text-light position-relative rounded">
                             <div>
-                                <h3 class="text-primary-red fs-1">Player Info</h3>
+                                <h3 class="text-primary-red fs-1">{% trans "Player Info" %}</h3>
                                 {% if can_edit %}
                                 <button class="btn-icon editButton" data-id="2">
                                     <i class="fa-solid fa-pen-to-square"></i>
@@ -53,8 +54,8 @@
                                 {% endif %}
                             </div>
                             <div data-id="2" class="text-center py-md-3 playerInfo">
-                                <p><span class="fw-bold">Username:</span> {{player.username}}</p>
-                                <p><span class="fw-bold">Main Agent:</span> {{player.main_agent}}</p>
+                                <p><span class="fw-bold">{% trans "Username:" %}</span> {{player.username}}</p>
+                                <p><span class="fw-bold">{% trans "Main Agent:" %}</span> {{player.main_agent}}</p>
                                 <img src={% static player.tier.small_icon %} alt="tier icon"> <span>{{player.tier}}</span>
                             </div>
                             {% if can_edit %}
@@ -62,33 +63,33 @@
                                 {% csrf_token %}
                                 {% include "global/partials/forms.html" %}
                                 <button type="button" class="btn btn-outline-primary-red w-100 mt-1 cancelButton" data-id="2">
-                                    Cancel
+                                    {% trans "Cancel" %}
                                 </button>
                             </form>
                             {% endif %}
                         </div>
                         <div class="profile-stats col-12 col-md col-lg-auto col-xl p-3 rounded d-flex flex-column gap-4">
-                            <h3 class="text-primary-red fs-1">Player Stats</h3>
+                            <h3 class="text-primary-red fs-1">{% trans "Player Stats" %}</h3>
                             <div class="row align-content-center justify-content-center">
                                 <div class="col-4">
-                                    <p><spam class="fw-bold">Matches Played</spam>: {{player.total_matches}}</p>
-                                    <p><spam class="fw-bold">Matches Won</spam>: {{player.wins}}</p>
-                                    <p><spam class="fw-bold">Matches Lost</spam>: {{player.losses}}</p>
+                                    <p><span class="fw-bold">{% trans "Matches Played" %}</span>: {{player.total_matches}}</p>
+                                    <p><span class="fw-bold">{% trans "Matches Won" %}</span>: {{player.wins}}</p>
+                                    <p><span class="fw-bold">{% trans "Matches Lost" %}</span>: {{player.losses}}</p>
                                 </div>
                                 <div class="col-4">
-                                    <p><spam class="fw-bold">K/D Ratio</spam>: {{player.kda|floatformat:2}}</p>
-                                    <p><spam class="fw-bold">MVP's</spam>: {{player.mvp}}</p>
-                                    <p><spam class="fw-bold">ACE's</spam>: {{player.ace}}</p>
+                                    <p><span class="fw-bold">{% trans "K/D Ratio" %}</span>: {{player.kda|floatformat:2}}</p>
+                                    <p><span class="fw-bold">{% trans "MVP's" %}</span>: {{player.mvp}}</p>
+                                    <p><span class="fw-bold">{% trans "ACE's" %}</span>: {{player.ace}}</p>
                                 </div>
                                 <div class="col-4">
-                                    <p><spam class="fw-bold">Rank</spam>: {{player.rankinglog.last_position}}</p>
-                                    <p><spam class="fw-bold">Rank Points</spam>: {{player.points}}</p>
-                                    <p><spam class="fw-bold">Win Rate</spam>: {{player.win_rate|floatformat:2}}%</p>
+                                    <p><span class="fw-bold">{% trans "Rank" %}</span>: {{player.rankinglog.last_position}}</p>
+                                    <p><span class="fw-bold">{% trans "Rank Points" %}</span>: {{player.points}}</p>
+                                    <p><span class="fw-bold">{% trans "Win Rate" %}</span>: {{player.win_rate|floatformat:2}}%</p>
                                 </div>
                             </div>
                         </div>
                         <div class="profile-matches col-12 rounded p-3 col-12">
-                            <h3 class="text-primary-red fs-1">MVP's History</h3>
+                            <h3 class="text-primary-red fs-1">{% trans "MVP's History" %}</h3>
                             {% match_history %}
                         </div>
                     </div>

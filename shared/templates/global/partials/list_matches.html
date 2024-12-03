@@ -1,5 +1,6 @@
 {% load matches %}
 {% load static %}
+{% load i18n %}
 
 <div class="accordion" id="accordionExample">
 {% for match in matches %}
@@ -19,7 +20,7 @@
             <a href="{{match.youtube_url}}" target="_blank">
             <i class="fa-brands fa-youtube fa-2x"></i>
             </a>
-            <span class="d-none d-lg-block youtube-captcha">Watch on Youtube</span>
+            <span class="d-none d-lg-block youtube-captcha">{% trans "Watch on Youtube" %}</span>
         </div>
         <div class="d-none d-md-block z-1">
         <div class="match-info d-flex gap-3 align-items-center justify-content-evenly">
@@ -48,20 +49,20 @@
                 <div class="table-responsive">
                     {% if match.winner == team %}
                     <table class="table table-hover table-borderless table-match-history align-middle border text-center caption-top table-winner">
-                        <caption class="text-success">Winner</caption>
+                        <caption class="text-success">{% trans "Winner" %}</caption>
                     {% else %}
                     <table class="table table-hover table-borderless table-match-history align-middle border text-center caption-top table-loser">
-                        <caption class="text-danger">Loser</caption>
+                        <caption class="text-danger">{% trans "Loser" %}</caption>
                     {% endif %}
                         <thead>
                             <tr class="align-middle">
-                                <th>Agent</th>
-                                <th>Average Points</th>
-                                <th>KDA</th>
-                                <th>Stats</th>
-                                <th>First Bloods</th>
-                                <th>Plants</th>
-                                <th>Defuses</th>
+                                <th>{% trans "Agent" %}</th>
+                                <th>{% trans "Average Points" %}</th>
+                                <th>{% trans "KDA" %}</th>
+                                <th>{% trans "Stats" %}</th>
+                                <th>{% trans "First Bloods" %}</th>
+                                <th>{% trans "Plants" %}</th>
+                                <th>{% trans "Defuses" %}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -101,7 +102,7 @@
     </div>
     </div>
 {% empty %}
-<p class="fs-5 p-5">There's no matches.</p>
+<p class="fs-5 p-5">{% trans "There's no matches." %}</p>
 {% endfor %}
 </div>
 </div>
