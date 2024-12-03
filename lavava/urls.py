@@ -11,11 +11,9 @@ urlpatterns = [
     path("__debug__/", include("debug_toolbar.urls")),
     path("", views.LandingPageView.as_view(), name="landing_page"),
     path("home/", views.HomeView.as_view(), name="home"),
-    path("", include("gamedata.urls")),
     path("matches/", include("matches.urls")),
     path("teams/", include("teams.urls")),
     path("players/", include("players.urls")),
-    path("stats/", include("stats.urls")),
     # django-allauth urls
     path("accounts/", include("allauth.urls")),
     # django-rest-framework jwt

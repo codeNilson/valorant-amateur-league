@@ -13,6 +13,7 @@ class Player(AbstractUser):
     username = models.CharField(
         max_length=30,
         unique=True,
+        verbose_name="Username",
         validators=[
             RegexValidator(
                 regex=r"^[\w ]+$",
@@ -26,11 +27,13 @@ class Player(AbstractUser):
         related_name="players",
         blank=True,
         null=True,
+        verbose_name="Tier",
     )
     main_agent = models.ForeignKey(
         "gamedata.Agent",
         on_delete=models.SET_NULL,
         null=True,
+        verbose_name="Main Agent",
     )
 
     def get_absolute_url(self):
@@ -105,13 +108,20 @@ class Player(AbstractUser):
 
 
 class RankingLog(models.Model):
-    player = models.OneToOneField("players.Player", on_delete=models.CASCADE)
+    player = models.OneToOneField(
+        "players.Player",
+        on_delete=models.CASCADE,
+        verbose_name="Player",
+    )
     last_position = models.IntegerField(
-        default=0, help_text="Last position in the ranking"
+        default=0,
+        help_text="Last position in the ranking",
+        verbose_name="Last Position",
     )
     last_position_change = models.IntegerField(
         default=0,
         help_text="Show if the player went up or down in the ranking since the last update",
+        verbose_name="Last Position Change",
     )
     updated_at = models.DateTimeField(auto_now=True)
 

@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from django.utils.translation import gettext as _
 from teams.models import Team
 from matches.models import Match
 from players.models import Player
@@ -31,7 +32,7 @@ class TeamSerializer(serializers.ModelSerializer):
 
         except Match.DoesNotExist as exc:
             raise serializers.ValidationError(
-                {"match": "Didn't find a match with the provided UUID."}
+                {"match": _("Didn't find a match with the provided UUID.")}
             ) from exc
 
         players_uuids = validated_data.pop("players_uuid", [])
@@ -43,7 +44,7 @@ class TeamSerializer(serializers.ModelSerializer):
             except Player.DoesNotExist as exc:
                 raise serializers.ValidationError(
                     {
-                        "players": "Didn't find a player with the UUID %(uuid)s."
+                        "players": _("Didn't find a player with the UUID %(uuid)s.")
                         % {"uuid": uuid}
                     }
                 ) from exc

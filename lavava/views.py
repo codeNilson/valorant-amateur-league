@@ -1,6 +1,7 @@
 from django.shortcuts import redirect
 from django.views.generic import TemplateView
 from django.contrib.auth import get_user_model
+from django.utils.translation import gettext as _
 from django.contrib import messages
 from dotenv import load_dotenv
 from utils.discord_utils import DiscordWebhook
@@ -46,18 +47,18 @@ class HomeView(TemplateView):
         players = self.get_players_ranking()
 
         if not players:
-            messages.error(request, "No players found to update ranking.")
+            messages.error(request, _("No players found to update ranking."))
             return redirect("home")
 
         try:
             webhook = DiscordWebhook()
             webhook.send_ranking_update(players)
         except AttributeError as e:
-            messages.error(request, f"Error sending ranking update to Discord: {e}")
+            messages.error(request, _("Error sending ranking update to Discord: %(error)s") % {"error": e})
 
         for index, player in enumerate(players, start=1):
             player.rankinglog.save_position_changes(index)
 
-        messages.success(request, "Ranking updated successfully!")
+        messages.success(request, _("Ranking updated successfully!"))
 
         return redirect("home")

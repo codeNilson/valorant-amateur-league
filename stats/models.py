@@ -19,6 +19,7 @@ class Stat(models.Model):
         related_name="stats",
         null=True,
         blank=True,
+        verbose_name=_("team"),
     )
     agent = models.ForeignKey(
         "gamedata.Agent",
@@ -26,16 +27,23 @@ class Stat(models.Model):
         related_name="stats",
         null=True,
         blank=True,
+        verbose_name=_("agent"),
     )
-    kills = models.PositiveIntegerField(null=True, blank=True)
-    deaths = models.PositiveIntegerField(null=True, blank=True)
-    assists = models.PositiveIntegerField(null=True, blank=True)
-    first_bloods = models.PositiveIntegerField(null=True, blank=True)
-    plants = models.PositiveIntegerField(null=True, blank=True)
-    spikes_defused = models.PositiveIntegerField(null=True, blank=True)
-    average_points = models.PositiveIntegerField(null=True, blank=True)
-    mvp = models.BooleanField(null=True, default=False)
-    ace = models.BooleanField(null=True, default=False)
+    kills = models.PositiveIntegerField(null=True, blank=True, verbose_name=_("kills"))
+    deaths = models.PositiveIntegerField(
+        null=True, blank=True, verbose_name=_("deaths")
+    )
+    assists = models.PositiveIntegerField(
+        null=True, blank=True, verbose_name=_("assists")
+    )
+    first_bloods = models.PositiveIntegerField(
+        null=True, blank=True, verbose_name=_("first bloods")
+    )
+    plants = models.PositiveIntegerField(null=True, blank=True, verbose_name=_("plants"))
+    spikes_defused = models.PositiveIntegerField(null=True, blank=True, verbose_name=_("spikes defused"))
+    average_points = models.PositiveIntegerField(null=True, blank=True, verbose_name=_("average points"))
+    mvp = models.BooleanField(null=True, default=False, verbose_name=_("mvp"))
+    ace = models.BooleanField(null=True, default=False, verbose_name=_("ace"))
 
     class Meta:
         unique_together = ("player", "team")
@@ -52,7 +60,9 @@ class Stat(models.Model):
     def clean_players(self):
         """Checks if the team already has five players stats and raises an exception if so."""
 
-        team_has_five_players = Stat.objects.filter(team=self.team).exclude(id=self.id).count() >= 5
+        team_has_five_players = (
+            Stat.objects.filter(team=self.team).exclude(id=self.id).count() >= 5
+        )
         player_not_in_team = not Stat.objects.filter(
             player=self.player, team=self.team
         ).exists()

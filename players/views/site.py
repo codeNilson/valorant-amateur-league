@@ -4,6 +4,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.views.generic import UpdateView
 from django.contrib.auth import get_user_model
+from django.utils.translation import gettext as _
 from players.forms import PlayerLoginForm, PlayerSignupForm, PlayerModelForm
 
 
@@ -31,9 +32,9 @@ class PlayerRegistrationView(SignupView):
         ctx = super().get_context_data(**kwargs)
         ctx.update(
             {
-                "form_title": "Sign Up",
+                "form_title": _("Sign Up"),
                 "form_action": reverse_lazy("signup"),
-                "submit_text": "Sign Up",
+                "submit_text": _("Sign Up"),
             }
         )
         return ctx
@@ -47,14 +48,16 @@ class PlayerProfileView(SuccessMessageMixin, UpdateView):
     form_class = PlayerModelForm
     template_name = "players/player_profile.html"
     context_object_name = "player"
-    success_message = "Profile updated successfully!"
+    success_message = _("Profile updated successfully!")
 
     def get_object(self, queryset=None):
         username = self.kwargs.get("username")
         player_model = get_user_model()
-        queryset = player_model.objects.filter(username=username).select_related("main_agent", "tier")
+        queryset = player_model.objects.filter(username=username).select_related(
+            "main_agent", "tier"
+        )
         if not queryset.exists():
-            raise Http404("Player does not exist")
+            raise Http404(_("Player does not exist"))
         queryset = player_model.annotate_wins_and_losses(queryset)
         queryset = player_model.annotate_mvp_and_ace(queryset)
         queryset = player_model.annotate_kills_deaths_assists(queryset)
@@ -69,7 +72,7 @@ class PlayerProfileView(SuccessMessageMixin, UpdateView):
         context.update(
             {
                 "can_edit": self.request.user.username == self.kwargs.get("username"),
-                "submit_text": "Save",
+                "submit_text": _("Save"),
             }
         )
         return context

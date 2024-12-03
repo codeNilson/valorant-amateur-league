@@ -10,6 +10,7 @@ class Team(models.Model):
         "players.Player",
         through="stats.Stat",
         related_name="teams",
+        verbose_name=_("players"),
     )
     match = models.ForeignKey(
         "matches.Match",
@@ -17,6 +18,7 @@ class Team(models.Model):
         related_name="teams",
         null=True,
         blank=True,
+        verbose_name=_("match"),
     )
 
     def clean_match(self):
@@ -29,7 +31,7 @@ class Team(models.Model):
         ):
             raise ValidationError(
                 _(
-                    "You can not add this teams to match %(match)s. This match already has 5 players."
+                    _("You can not add this teams to match %(match)s. This match already has 5 players.")
                     % {"match": self.match}
                 ),
                 code="too_many_teams",
