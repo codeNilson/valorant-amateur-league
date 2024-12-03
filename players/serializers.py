@@ -7,13 +7,13 @@ class PlayerSerializer(serializers.ModelSerializer):
     tier = serializers.StringRelatedField()
     main_agent = serializers.SerializerMethodField()
     ranking = serializers.SerializerMethodField()
+    include_in_draft = serializers.BooleanField()
     social_accounts = serializers.SerializerMethodField()
 
     def get_main_agent(self, obj):
-        return {
-            "uuid": obj.main_agent.uuid,
-            "name": obj.main_agent.name,
-        }
+        if obj.main_agent is not None:
+            return obj.main_agent.name
+        return None
 
     def get_ranking(self, obj):
         return obj.rankinglog.last_position
@@ -35,6 +35,7 @@ class PlayerSerializer(serializers.ModelSerializer):
             "tier",
             "ranking",
             "social_accounts",
+            "include_in_draft",
         ]
         extra_kwargs = {
             "url": {

@@ -15,7 +15,6 @@ class BlockAllauthURLsMiddleware:
             "/accounts/password/reset/key/done/",
             "/accounts/password/change/",
             "/accounts/email/",
-            "/accounts/login/",
             "/accounts/signup/",
         ]
 

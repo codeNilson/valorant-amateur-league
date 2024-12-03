@@ -35,7 +35,8 @@
           <div class="carousel-caption z-2 text-center text-title">
             <h2 class="display-1 fw-bold">DISCORD CHANNEL</h2>
             <p class="fs-3">Join the community</p>
-            <a href="https://discord.com/invite/MJAuKdsV?utm_source=Discord%20Widget&utm_medium=Connect" role="button" class="btn btn-primary-red" target="_blank">Discover Now</a>
+            <a href="https://discord.gg/WAGZAMuDFa" role="button"
+              class="btn btn-primary-red" target="_blank">Discover Now</a>
           </div>
         </div>
       </div>
@@ -80,7 +81,8 @@
             <tbody class="text-center border shadow">
               {% for player in players %}
               <tr>
-                <td class="text-start">{{forloop.counter}} <i class="fa {{player.position_changes}}" aria-hidden="true"></i></td>
+                <td class="text-start">{{forloop.counter}} <i class="fa {{player.position_changes}}"
+                    aria-hidden="true"></i></td>
                 <td class="text-start">
                   <div class="d-flex align-items-center">
                     <img src={% static player.main_agent.small_icon %} class="me-2 player-icon" alt="player">
@@ -99,7 +101,7 @@
               <tr>
                 <td colspan="9" class="text-center">No players found</td>
               </tr>
-              
+
               {% endfor %}
             </tbody>
             <tfoot>
@@ -110,13 +112,8 @@
           </table>
         </div>
 
-        <aside class="col-10 col-md-8 col-lg-3 mx-auto hall-of-fame">
-          <h2 class="display-5 text-dark">
-            Discord Channel
-          </h2>
-          <div>
-            <iframe src="https://discord.com/widget?id=1243610772064698398&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
-          </div>
+        <aside class="col-10 col-md-auto mx-auto">
+          {% include "global/partials/discord_widget.html" %}
         </aside>
       </div>
     </div>

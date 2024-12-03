@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.core.mail import send_mail
 from django.contrib.auth.models import Permission
 from .models import Player, RankingLog
 
@@ -32,6 +33,8 @@ class PlayerAdmin(admin.ModelAdmin):
             {
                 "fields": (
                     "is_active",
+                    "is_approved",
+                    "include_in_draft",
                     "is_staff",
                     "is_superuser",
                     "groups",
@@ -48,6 +51,11 @@ class PlayerAdmin(admin.ModelAdmin):
         "tier",
         "main_agent",
         "email",
+        "include_in_draft",
+    ]
+
+    list_editable = [
+        "include_in_draft",
     ]
 
     readonly_fields = [
@@ -83,8 +91,17 @@ class PlayerAdmin(admin.ModelAdmin):
 
     def save_model(self, request, obj, form, change):
         # If the password is changed, update it
-        if form.cleaned_data.get("password"):
+        if "password" in form.changed_data:
             obj.set_password(form.cleaned_data["password"])
+        if "is_approved" in form.changed_data and obj.is_approved:
+            send_mail(
+                "Sua conta foi ativada!",
+                "Parabéns! Sua conta foi ativada e você já pode acessar o sistema.",
+                None,
+                [obj.email],
+                fail_silently=False,
+            )
+            print(f"Email enviado para {obj.email}")
         super().save_model(request, obj, form, change)
 
 

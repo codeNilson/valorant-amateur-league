@@ -8,5 +8,5 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "allauth.account.middleware.AccountMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "lavava.middleware.block_urls_middleware.BlockAllauthURLsMiddleware",
+    "middleware.block_urls_middleware.BlockAllauthURLsMiddleware",
 ]

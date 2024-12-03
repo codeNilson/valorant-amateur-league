@@ -5,7 +5,7 @@ from players.serializers import PlayerSerializer
 
 class PlayerViewSet(viewsets.ModelViewSet):
     queryset = (
-        Player.objects.all()
+        Player.objects.filter(is_approved=True, is_active=True)
         .select_related(
             "main_agent",
             "tier",

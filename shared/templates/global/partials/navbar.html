@@ -87,14 +87,17 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{user.get_absolute_url}}">
                     <i class="fa-solid fa-user"></i>
-                    Profile</a>
-            </li>
-            {% comment %} <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="fa-solid fa-chart-simple"></i>
-                    Statistics
+                    Profile
                 </a>
-            </li> {% endcomment %}
+            </li>
+            {% if user.is_staff %}
+            <li class="nav-item">
+                <a class="nav-link" href="/admin">
+                    <i class="fa-solid fa-gear"></i>
+                    Admin Site
+                </a>
+            </li>
+            {% endif %}
             <hr class="w-25 mx-auto">
             <li class="nav-item fs-4 text-center">
                 <form action="{% url "account_logout" %}" method="POST">

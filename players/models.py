@@ -33,7 +33,17 @@ class Player(AbstractUser):
         "gamedata.Agent",
         on_delete=models.SET_NULL,
         null=True,
-        verbose_name="Main Agent",
+        blank=True,
+    )
+
+    is_approved = models.BooleanField(
+        default=False,
+        help_text="Indicates if the player is approved to play in matches",
+    )
+
+    include_in_draft = models.BooleanField(
+        default=True,
+        help_text="Indicates if the player is wants to be included in the draft",
     )
 
     def get_absolute_url(self):

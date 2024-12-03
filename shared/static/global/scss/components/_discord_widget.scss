@@ -1,0 +1,24 @@
+.discord-widget {
+    .widget-header {
+        background-color: #7289da;
+    }
+
+    .widget-body {
+        background-color: #2c2f33;
+
+        .live-indicator {
+            font-size: 0.5rem;
+            color: $red;
+            animation: blink 1s infinite alternate;
+        }
+    }
+
+    .discord-member {
+
+        font-size: 0.8rem;
+
+        .discord-avatar {
+            max-width: 20px;
+        }
+    }
+}

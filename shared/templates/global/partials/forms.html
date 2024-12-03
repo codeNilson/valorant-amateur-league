@@ -3,12 +3,16 @@
 {% for field in form %}
 <div class="form-fields mt-3">
     <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+    {% if field.label == "I want to be included in the draft" %}
+    {{field}}
+    {% else %}
     <div class="input-group bg-white border-bottom shadow-sm">
         <span class="input-group-text bg-transparent border-0" id="basic-addon1">
             {{field.html_name|field_icon}}
         </span>
         {{ field }}
     </div>
+    {% endif %}
     {% for error in field.errors %}
     <p class="text-danger">
         {{ error }}

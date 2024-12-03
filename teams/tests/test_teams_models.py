@@ -21,7 +21,7 @@ class TeamsModelTest(TestCase):
 
         error = cm.exception
 
-        self.assertIn("A match cannot have more than two teams", error.messages)
+        self.assertIn(f"You can not add this teams to match {match}. This match already has 5 players.", error.messages)
 
     def test_team_model_str_method(self):
         team = Team.objects.create()
