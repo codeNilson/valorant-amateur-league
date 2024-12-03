@@ -11,7 +11,6 @@ from players.forms import PlayerLoginForm, PlayerSignupForm, PlayerModelForm
 class PlayerLoginView(LoginView):
     form_class = PlayerLoginForm
     template_name = "players/account_forms.html"
-
     def get_context_data(self, **kwargs):
         ctx = super().get_context_data(**kwargs)
         ctx.update(

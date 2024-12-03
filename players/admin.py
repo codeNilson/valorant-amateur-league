@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.core.mail import send_mail
+from django.utils.translation import gettext as _
 from django.contrib.auth.models import Permission
 from .models import Player, RankingLog
 
@@ -41,7 +42,7 @@ class PlayerAdmin(admin.ModelAdmin):
                     "user_permissions",
                 ),
                 "classes": ("collapse",),
-                "description": "Permissions can be changed in the User Permissions section.",
+                "description": _("Permissions can be changed in the User Permissions section."),
             },
         ),
     )
@@ -101,7 +102,7 @@ class PlayerAdmin(admin.ModelAdmin):
                 [obj.email],
                 fail_silently=False,
             )
-            print(f"Email enviado para {obj.email}")
+            print(f"Email sent to {obj.email}")
         super().save_model(request, obj, form, change)
 
 
