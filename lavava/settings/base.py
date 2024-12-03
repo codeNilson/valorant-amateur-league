@@ -15,16 +15,6 @@ AUTH_USER_MODEL = "players.Player"
 LOGIN_REDIRECT_URL = reverse_lazy("home")
 LOGOUT_REDIRECT_URL = reverse_lazy("home")
 
-# Language and time zone
-
-LANGUAGE_CODE = "pt-BR"
-
-TIME_ZONE = "America/Fortaleza"
-
-USE_I18N = True
-
-USE_TZ = True
-
 
 # All-Auth settings
 # Regular Accounts
