@@ -17,7 +17,7 @@ LOGOUT_REDIRECT_URL = reverse_lazy("home")
 
 
 # All-Auth settings
-# Regular Accounts
+# Regular Account
 ACCOUNT_EMAIL_VERIFICATION = "none"  # Disable email verification
 ACCOUNT_EMAIL_REQUIRED = True  # Require email for registration
 ACCOUNT_AUTHENTICATION_METHOD = "email"  # Use email to login
