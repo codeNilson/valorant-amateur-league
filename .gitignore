@@ -13,3 +13,4 @@ emails/
 /static
 *.sqlite3
 locale/**/*.po
+**/scss/**
