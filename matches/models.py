@@ -34,7 +34,7 @@ class Match(models.Model):
     )
 
     def __str__(self):
-        return f"{self.created_at.strftime("%d/%m/%Y")} - {self.map}"
+        return f"{self.created_at.strftime('%d/%m/%Y')} - {self.map}"
 
     def clean_winner(self):
         if self.winner and self.winner not in self.teams.all():
