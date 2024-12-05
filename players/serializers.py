@@ -12,7 +12,10 @@ class PlayerSerializer(serializers.ModelSerializer):
 
     def get_main_agent(self, obj):
         if obj.main_agent is not None:
-            return obj.main_agent.name
+            return {
+                "name": obj.main_agent.name,
+                "icon": obj.main_agent.icon,
+            }
         return None
 
     def get_ranking(self, obj):
