@@ -4,7 +4,7 @@
 {% for field in form %}
 <div class="form-fields mt-3">
     <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-    {% if field.label == "I want to be included in the draft" %}
+    {% if field.label == draft_label %}
     {{field}}
     {% else %}
     <div class="input-group bg-white border-bottom shadow-sm">

@@ -11,6 +11,7 @@ from players.forms import PlayerLoginForm, PlayerSignupForm, PlayerModelForm
 class PlayerLoginView(LoginView):
     form_class = PlayerLoginForm
     template_name = "players/account_forms.html"
+
     def get_context_data(self, **kwargs):
         ctx = super().get_context_data(**kwargs)
         ctx.update(
@@ -68,10 +69,12 @@ class PlayerProfileView(SuccessMessageMixin, UpdateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        draft_label = _("I want to be included in the draft")
         context.update(
             {
                 "can_edit": self.request.user.username == self.kwargs.get("username"),
                 "submit_text": _("Save"),
+                "draft_label": draft_label,
             }
         )
         return context
