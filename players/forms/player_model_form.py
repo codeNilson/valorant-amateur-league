@@ -1,6 +1,7 @@
 from django import forms
 from players.models import Player
 from utils.forms_utils import update_form_fields
+from django.utils.translation import gettext as _
 
 
 class PlayerModelForm(forms.ModelForm):
@@ -26,7 +27,7 @@ class PlayerModelForm(forms.ModelForm):
             self,
             "include_in_draft",
             css_class="form-check-input",
-            label="I want to be included in the draft",
+            label=_("I want to be included in the draft"),
         )
 
     class Meta:
