@@ -1,11 +1,12 @@
 
 # Liga Amadora de Valorant - Site de campeonato de Valorant
 
-Este repositório contém o código-fonte do **lavava.com.br**, um site que organiza um torneio online do jogo Valorant, desenvolvido com Django. 
+Este repositório contém o código-fonte do **lavava.com.br**, um site que organiza um torneio online do jogo Valorant, desenvolvido com Django.
 O site é integrado a um bot do Discord para facilitar a administração e interação entre os jogadores, utilizando APIs para comunicação entre os dois sistemas.
 
 Funcionalidades Principais
 ---------------------------
+
 - Cadastro e autenticação de usuários (com suporte a OAuth2 e autenticação por redes sociais).
 - Gerenciamento de torneio para Valorant que envolve escolha dinâmica de equipes:
   - Dois líderes são sorteados antes de cada partida para formar os times.
@@ -20,17 +21,16 @@ Funcionalidades Principais
 
 Tecnologias Utilizadas
 ----------------------
+
 - **Backend:** Django com Django Rest Framework (DRF) para APIs RESTful.
 - **Frontend:** HTML5, Javascript, SCSS (gerado com SASS) e Bootstrap.
 - **Servidor:** Nginx como proxy reverso, Gunicorn como servidor WSGI.
 - **Banco de Dados:** PostgreSQL em produção.
 - **Infraestrutura:** Configuração de HTTPS com certificados SSL através do Let's Encrypt.
 
-
 ## Screenshots
 
 ![App Screenshot](https://via.placeholder.com/468x300?text=Change+Later)
-
 
 ## Rodando localmente
 
@@ -53,6 +53,7 @@ Tecnologias Utilizadas
 ```
 
 4. Configure as variáveis de ambiente:
+
 ```bash
   - Crie um arquivo `.env` na raiz do projeto e preencha com as configurações necessárias (veja `.env.example`).
 ```
@@ -70,6 +71,7 @@ Tecnologias Utilizadas
 ```
 
 7. Inicie o servidor
+
 ```bash
   python manage.py runserver
 ```
