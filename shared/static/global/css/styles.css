@@ -8562,12 +8562,12 @@ textarea.form-control-lg {
   color: rgba(var(--bs-dark-rgb), var(--bs-text-opacity)) !important;
 }
 
-.text-primary-red {
+.text-primary-red, .bg-primary-red .btn-outline-light:hover {
   --bs-text-opacity: 1;
   color: rgba(var(--bs-primary-red-rgb), var(--bs-text-opacity)) !important;
 }
 
-.text-title, .bg-primary-red .btn-outline-light:hover {
+.text-title {
   --bs-text-opacity: 1;
   color: rgba(var(--bs-title-rgb), var(--bs-text-opacity)) !important;
 }
@@ -12610,6 +12610,11 @@ h6,
 }
 .btn-icon:active {
   color: #fd4556;
+}
+
+.lavava-logo {
+  width: 50px;
+  height: 50px;
 }
 
 /*# sourceMappingURL=styles.css.map */
