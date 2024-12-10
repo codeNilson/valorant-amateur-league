@@ -5,6 +5,7 @@ from django.utils import timezone
 from django.contrib.auth.models import AbstractUser
 from django.core.validators import RegexValidator
 from django.urls import reverse
+from django.utils.translation import gettext as _
 
 
 class Player(AbstractUser):
