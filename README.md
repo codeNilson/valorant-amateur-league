@@ -17,6 +17,7 @@ Funcionalidades Principais
   - Gerenciamento de jogadores e equipes.
   - Registro e sincronização de resultados das partidas.
 - Design responsivo, otimizado para desktop e dispositivos móveis.
+- Idioma em inglês e pt-BR.
 - Configuração em produção com suporte a HTTPS (usando Nginx e Gunicorn).
 
 Tecnologias Utilizadas
@@ -30,7 +31,7 @@ Tecnologias Utilizadas
 
 ## Screenshots
 
-![App Screenshot](https://via.placeholder.com/468x300?text=Change+Later)
+![App Screenshot](https://i.imgur.com/aRIf2Ny.png)
 
 ## Rodando localmente
 
