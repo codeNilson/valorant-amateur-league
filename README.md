@@ -23,7 +23,7 @@ Funcionalidades Principais
 Tecnologias Utilizadas
 ----------------------
 
-- **Backend:** Django com Django Rest Framework (DRF) para APIs RESTful.
+- **Backend:** Django com Django Rest Framework (DRF) para APIs RESTful. Suporte a localização em inglês e pt_br.
 - **Frontend:** HTML5, Javascript, SCSS (gerado com SASS) e Bootstrap.
 - **Servidor:** Nginx como proxy reverso, Gunicorn como servidor WSGI.
 - **Banco de Dados:** PostgreSQL em produção.
@@ -59,16 +59,16 @@ Tecnologias Utilizadas
   - Crie um arquivo `.env` na raiz do projeto e preencha com as configurações necessárias (veja `.env.example`).
 ```
 
-5. Aplique as fixtures para o app gamedata
-
-```bash
-  python manage.py loaddata gamedata/fixtures/gamedata_fixtures.json
-```
-
-6. Aplique as as migrações
+5. Aplique as migrações
 
 ```bash
   python manage.py migrate
+```
+
+6. Aplique as fixtures para o app gamedata
+
+```bash
+  python manage.py loaddata gamedata/fixtures/gamedata_fixtures.json
 ```
 
 7. Inicie o servidor
