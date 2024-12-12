@@ -1,6 +1,6 @@
 {% extends "global/base.html" %}
 {% load i18n %}
-
+{% load cache %}
 {% load static %}
 {% load matches %}
 
@@ -12,7 +12,12 @@
   <div class="bg-light py-5">
     <div class="container">
       <h1 class="text-primary-red display-2">{% trans "Match History" %}</h1>
+      {% cache 600 match_history %}
       {% match_history %}
+      {% endcache %}
+      {% cache 600 match_history %}
+      <h1>OI</h1>
+      {% endcache %}
     </div>
   </div>
 </main>
