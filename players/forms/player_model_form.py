@@ -15,7 +15,7 @@ class PlayerModelForm(forms.ModelForm):
         )
         update_form_fields(
             self,
-            "email",
+            "tier",
             css_class="form-control border-0 bg-transparent",
         )
         update_form_fields(
@@ -34,7 +34,7 @@ class PlayerModelForm(forms.ModelForm):
         model = Player
         fields = [
             "username",
-            "email",
+            "tier",
             "main_agent",
             "include_in_draft",
         ]
