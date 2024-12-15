@@ -30,7 +30,7 @@ def match_history(context):
     # if username is provided in the url, filter matches where the player is the mvp
     username = context["request"].resolver_match.kwargs.get("username")
     if username:
-        matches = matches.filter(mvp=username)
+        matches = matches.filter(teams__stats__player__username=username)
 
     return {"matches": matches}
 
