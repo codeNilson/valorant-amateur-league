@@ -2,6 +2,7 @@ from django.shortcuts import redirect
 from django.views.generic import TemplateView
 from django.contrib.auth import get_user_model
 from django.utils.translation import gettext as _
+from django.core.cache import cache
 from django.contrib import messages
 from dotenv import load_dotenv
 import requests
@@ -18,6 +19,8 @@ class HomeView(TemplateView):
     template_name = "lavava/home.html"
 
     def get_players_ranking(self):
+        if cache.get("players_ranking"):
+            return cache.get("players_ranking")
         player_model = get_user_model()
         players = player_model.objects.select_related(
             "main_agent", "rankinglog"
@@ -33,6 +36,8 @@ class HomeView(TemplateView):
             player.position_changes = player.rankinglog.get_position_class()
 
         players = sorted(players, key=lambda p: (p.points, p.mvp, p.ace), reverse=True)
+
+        cache.set("players_ranking", players, 60 * 10)
 
         return players
 
@@ -66,7 +71,10 @@ class HomeView(TemplateView):
             webhook = DiscordWebhook()
             webhook.send_ranking_update(players)
         except AttributeError as e:
-            messages.error(request, _("Error sending ranking update to Discord: %(error)s") % {"error": e})
+            messages.error(
+                request,
+                _("Error sending ranking update to Discord: %(error)s") % {"error": e},
+            )
 
         for index, player in enumerate(players, start=1):
             player.rankinglog.save_position_changes(index)

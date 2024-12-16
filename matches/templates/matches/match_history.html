@@ -12,9 +12,7 @@
   <div class="bg-light py-5">
     <div class="container">
       <h1 class="text-primary-red display-2">{% trans "Match History" %}</h1>
-      {% cache 600 match_history %}
       {% match_history %}
-      {% endcache %}
     </div>
   </div>
 </main>

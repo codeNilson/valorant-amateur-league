@@ -1,7 +1,7 @@
 
 # Liga Amadora de Valorant - Site de campeonato de Valorant
 
-Este repositório contém o código-fonte do **[LAVAVA](https://www.lavava.com.br)**, um site que organiza um torneio online do jogo Valorant, desenvolvido com Django.
+Este repositório contém o código-fonte do **[LAVAVA](https://www.lavava.com.br/home)**, um site que organiza um torneio online do jogo Valorant, desenvolvido com Django.
 O site é integrado a um bot do Discord para facilitar a administração e interação entre os jogadores, utilizando APIs para comunicação entre os dois sistemas.
 
 Funcionalidades Principais
