@@ -32,6 +32,7 @@ Tecnologias Utilizadas
 ## Screenshots
 
 ![App Screenshot](https://i.imgur.com/aRIf2Ny.png)
+![App Screenshot](https://i.imgur.com/qpx7VYg.png)
 
 ## Rodando localmente
 
