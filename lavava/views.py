@@ -37,7 +37,7 @@ class HomeView(TemplateView):
 
         players = sorted(players, key=lambda p: (p.points, p.mvp, p.ace), reverse=True)
 
-        cache.set("players_ranking", players, 60 * 10)
+        cache.set("players_ranking", players, 60 * 30)
 
         return players
 
@@ -79,6 +79,7 @@ class HomeView(TemplateView):
         for index, player in enumerate(players, start=1):
             player.rankinglog.save_position_changes(index)
 
+        cache.delete("players_ranking")
         messages.success(request, _("Ranking updated successfully!"))
 
         return redirect("home")

@@ -33,7 +33,7 @@ def match_history(context):
             mvp_icon=Subquery(mvp_icon_subquery),
         )
 
-        cache.set("matches", matches)
+        cache.set("matches", matches, timeout=60 * 30)
 
     # if username is provided in the url, filter matches where the player is the mvp
     username = context["request"].resolver_match.kwargs.get("username")

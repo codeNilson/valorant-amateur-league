@@ -1,6 +1,7 @@
 from allauth.account.views import SignupView, LoginView, LogoutView
 from django.http import Http404
 from django.contrib.messages.views import SuccessMessageMixin
+from django.core.cache import cache
 from django.urls import reverse_lazy
 from django.views.generic import UpdateView
 from django.contrib.auth import get_user_model
@@ -50,6 +51,12 @@ class PlayerProfileView(SuccessMessageMixin, UpdateView):
     context_object_name = "player"
     success_message = _("Profile updated successfully!")
 
+    def form_valid(self, form):
+        cache.delete("players_ranking") # cache from players ranking
+        cache.delete("matches") # cache from matches history
+        cache.delete(f"profile_{self.request.user.uuid}") # cache from player profile
+        return super().form_valid(form)
+
     def get_object(self, queryset=None):
         username = self.kwargs.get("username")
         player_model = get_user_model()
@@ -58,6 +65,10 @@ class PlayerProfileView(SuccessMessageMixin, UpdateView):
         )
         if not queryset.exists():
             raise Http404(_("Player does not exist"))
+        
+        if cache.get(f"profile_{queryset.first().uuid}"):
+            return cache.get(f"profile_{queryset.first().uuid}")
+        
         queryset = player_model.annotate_wins_and_losses(queryset)
         queryset = player_model.annotate_mvp_and_ace(queryset)
         queryset = player_model.annotate_kills_deaths_assists(queryset)
@@ -65,6 +76,9 @@ class PlayerProfileView(SuccessMessageMixin, UpdateView):
         queryset = player_model.annotate_win_rate(queryset)
         queryset = player_model.annotate_points(queryset)
         queryset = player_model.annotate_kda(queryset)
+
+        cache.set(f"profile_{queryset.first().uuid}", queryset.first(), timeout=60 * 30)
+        
         return queryset.first()
 
     def get_context_data(self, **kwargs):
