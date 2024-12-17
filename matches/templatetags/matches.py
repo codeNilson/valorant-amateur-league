@@ -11,10 +11,8 @@ register = template.Library()
 @register.inclusion_tag("global/partials/list_matches.html", takes_context=True)
 def match_history(context):
     if cache.get("matches"):
-        print("Cache hit")
         matches = cache.get("matches")
     else:
-        print("Cache miss")
         mvp_subquery = Stat.objects.filter(team__match=OuterRef("pk"), mvp=True).values(
             "player__username"
         )[:1]
