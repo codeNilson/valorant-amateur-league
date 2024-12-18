@@ -53,10 +53,12 @@ class PlayerAdmin(admin.ModelAdmin):
         "main_agent",
         "email",
         "include_in_draft",
+        "is_approved",
     ]
 
     list_editable = [
         "include_in_draft",
+        "is_approved",
     ]
 
     readonly_fields = [
