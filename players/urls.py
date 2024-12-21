@@ -4,6 +4,9 @@ from players import views
 
 router = DefaultRouter()
 router.register(r"api/v1", views.PlayerViewSet, basename="player")
+router.register(
+    r"api/v1/by-uid", views.PlayerByDiscordUidViewSet, basename="player-by-uid"
+)
 
 urlpatterns = [
     path("login/", views.PlayerLoginView.as_view(), name="login"),
