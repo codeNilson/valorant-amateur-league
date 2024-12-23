@@ -19,8 +19,6 @@ class HomeView(TemplateView):
     template_name = "lavava/home.html"
 
     def get_players_ranking(self):
-        if cache.get("players_ranking"):
-            return cache.get("players_ranking")
         player_model = get_user_model()
         players = player_model.objects.select_related(
             "main_agent", "rankinglog"
@@ -36,8 +34,6 @@ class HomeView(TemplateView):
             player.position_changes = player.rankinglog.get_position_class()
 
         players = sorted(players, key=lambda p: (p.points, p.mvp, p.ace), reverse=True)
-
-        cache.set("players_ranking", players, 60 * 30)
 
         return players
 
@@ -79,7 +75,6 @@ class HomeView(TemplateView):
         for index, player in enumerate(players, start=1):
             player.rankinglog.save_position_changes(index)
 
-        cache.delete("players_ranking")
         messages.success(request, _("Ranking updated successfully!"))
 
         return redirect("home")

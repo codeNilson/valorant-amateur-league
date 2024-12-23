@@ -1,5 +1,4 @@
 from django import template
-from django.core.cache import cache
 from django.db.models import OuterRef, Subquery
 from django.template.defaultfilters import stringfilter
 from matches.models import Match
@@ -10,6 +9,7 @@ register = template.Library()
 
 @register.inclusion_tag("global/partials/list_matches.html", takes_context=True)
 def match_history(context):
+<<<<<<< Updated upstream
     if cache.get("matches"):
         matches = cache.get("matches")
     else:
@@ -19,19 +19,25 @@ def match_history(context):
         mvp_icon_subquery = Stat.objects.filter(
             team__match=OuterRef("pk"), mvp=True
         ).values("agent__icon")[:1]
+=======
+    mvp_subquery = Stat.objects.filter(team__match=OuterRef("pk"), mvp=True).values(
+        "player__username"
+    )[:1]
+    mvp_icon_subquery = Stat.objects.filter(
+        team__match=OuterRef("pk"), mvp=True
+    ).values("agent__icon")[:1]
+>>>>>>> Stashed changes
 
-        matches = (
-            Match.objects.filter(is_finished=True)
-            .select_related("map", "winner")
-            .prefetch_related("teams__stats__player", "teams__players__main_agent")
-        )
+    matches = (
+        Match.objects.filter(is_finished=True)
+        .select_related("map", "winner")
+        .prefetch_related("teams__stats__player", "teams__players__main_agent")
+    )
 
-        matches = matches.annotate(
-            mvp=Subquery(mvp_subquery),
-            mvp_icon=Subquery(mvp_icon_subquery),
-        )
-
-        cache.set("matches", matches, timeout=60 * 30)
+    matches = matches.annotate(
+        mvp=Subquery(mvp_subquery),
+        mvp_icon=Subquery(mvp_icon_subquery),
+    )
 
     # if username is provided in the url, filter matches where the player is the mvp
     username = context["request"].resolver_match.kwargs.get("username")

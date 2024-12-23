@@ -22,5 +22,3 @@ def save_player_ranking_log(sender, instance, created, **kwargs):
             )
         except Exception as e:
             print(e)
-        else:
-            print("Email sent")

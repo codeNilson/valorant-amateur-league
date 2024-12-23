@@ -64,7 +64,6 @@ class PlayerProfileView(SuccessMessageMixin, UpdateView):
         )
         if not queryset.exists():
             raise Http404(_("Player does not exist"))
-
         queryset = player_model.annotate_wins_and_losses(queryset)
         queryset = player_model.annotate_mvp_and_ace(queryset)
         queryset = player_model.annotate_kills_deaths_assists(queryset)
@@ -72,7 +71,6 @@ class PlayerProfileView(SuccessMessageMixin, UpdateView):
         queryset = player_model.annotate_win_rate(queryset)
         queryset = player_model.annotate_points(queryset)
         queryset = player_model.annotate_kda(queryset)
-
         return queryset.first()
 
     def get_context_data(self, **kwargs):
