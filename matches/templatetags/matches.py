@@ -9,24 +9,12 @@ register = template.Library()
 
 @register.inclusion_tag("global/partials/list_matches.html", takes_context=True)
 def match_history(context):
-<<<<<<< Updated upstream
-    if cache.get("matches"):
-        matches = cache.get("matches")
-    else:
-        mvp_subquery = Stat.objects.filter(team__match=OuterRef("pk"), mvp=True).values(
-            "player__username"
-        )[:1]
-        mvp_icon_subquery = Stat.objects.filter(
-            team__match=OuterRef("pk"), mvp=True
-        ).values("agent__icon")[:1]
-=======
     mvp_subquery = Stat.objects.filter(team__match=OuterRef("pk"), mvp=True).values(
         "player__username"
     )[:1]
     mvp_icon_subquery = Stat.objects.filter(
         team__match=OuterRef("pk"), mvp=True
     ).values("agent__icon")[:1]
->>>>>>> Stashed changes
 
     matches = (
         Match.objects.filter(is_finished=True)
