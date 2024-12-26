@@ -39,7 +39,7 @@ Tecnologias Utilizadas
 1. Clone o projeto
 
 ```bash
-  git clone https://github.com/AroMight/valorant-amateur-league.git
+  git clone https://github.com/codeNilson/valorant-amateur-league.git
 ```
 
 2. Crie e ative um ambiente virtual:
