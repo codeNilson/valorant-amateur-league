@@ -19,6 +19,6 @@ class BlockAllauthURLsMiddleware:
         ]
 
         if request.path in blocked_paths:
-            raise Http404("Allauth URLs are blocked")
+            raise Http404("Page not found")
 
         return self.get_response(request)
