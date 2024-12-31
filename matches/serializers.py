@@ -1,16 +1,15 @@
 from rest_framework import serializers
+from gamedata.models import Map
 from .models import Match
 
 
 class MatchSerializer(serializers.ModelSerializer):
 
-    map = serializers.SerializerMethodField()
+    map = serializers.SlugRelatedField(
+        slug_field="name",
+        queryset=Map.objects.all(),
+    )
     winner = serializers.SerializerMethodField()
-
-    def get_map(self, obj):  # change str
-        if not obj.map:
-            return None
-        return obj.map.name
 
     def get_winner(self, obj):
         if not obj.winner:
