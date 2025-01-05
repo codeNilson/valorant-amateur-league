@@ -37,8 +37,10 @@ class PlayerSerializer(serializers.ModelSerializer):
             "main_agent",
             "tier",
             "ranking",
+            "is_approved",
             "social_accounts",
             "include_in_draft",
+            "will_play_the_next_match",
         ]
         extra_kwargs = {
             "url": {
