@@ -9,13 +9,11 @@ class PlayerViewSet(viewsets.ModelViewSet):
     lookup_field = "username"
 
     def get_queryset(self):
-        queryset = Player.objects.filter(is_approved=True, is_active=True)
-        queryset = queryset.select_related(
+        queryset = Player.objects.select_related(
             "main_agent",
             "tier",
             "rankinglog",
-        )
-        queryset = queryset.prefetch_related("socialaccount_set")
+        ).prefetch_related("socialaccount_set")
         return queryset
 
 
@@ -25,11 +23,9 @@ class PlayerByDiscordUidViewSet(viewsets.ModelViewSet):
     lookup_field = "socialaccount__uid"
 
     def get_queryset(self):
-        queryset = Player.objects.filter(is_approved=True, is_active=True)
-        queryset = queryset.select_related(
+        queryset = Player.objects.select_related(
             "main_agent",
             "tier",
             "rankinglog",
-        )
-        queryset = queryset.prefetch_related("socialaccount_set")
+        ).prefetch_related("socialaccount_set")
         return queryset

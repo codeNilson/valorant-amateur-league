@@ -36,6 +36,7 @@ class PlayerAdmin(admin.ModelAdmin):
                     "is_active",
                     "is_approved",
                     "include_in_draft",
+                    "will_play_the_next_match",
                     "is_staff",
                     "is_superuser",
                     "groups",
@@ -52,13 +53,15 @@ class PlayerAdmin(admin.ModelAdmin):
         "tier",
         "main_agent",
         "email",
-        "include_in_draft",
         "is_approved",
+        "include_in_draft",
+        "will_play_the_next_match",
     ]
 
     list_editable = [
         "include_in_draft",
         "is_approved",
+        "will_play_the_next_match",
     ]
 
     readonly_fields = [

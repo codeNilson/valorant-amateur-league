@@ -46,6 +46,11 @@ class Player(AbstractUser):
         help_text="Indicates if the player is wants to be included in the draft",
     )
 
+    will_play_the_next_match = models.BooleanField(
+        default=False,
+        help_text="Indicates if the player will play the next match",
+    )
+
     def get_absolute_url(self):
         return reverse("account_profile", kwargs={"username": self.username})
 
