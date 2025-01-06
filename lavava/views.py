@@ -2,7 +2,8 @@ from django.shortcuts import redirect
 from django.views.generic import TemplateView
 from django.contrib.auth import get_user_model
 from django.utils.translation import gettext as _
-from django.core.cache import cache
+from django.views import View
+from django.http import FileResponse
 from django.contrib import messages
 from dotenv import load_dotenv
 import requests
@@ -78,3 +79,8 @@ class HomeView(TemplateView):
         messages.success(request, _("Ranking updated successfully!"))
 
         return redirect("home")
+
+
+class RioTest(View):
+    def get(self, request):
+        return FileResponse(open("riot.txt", "rb"), as_attachment=True, filename="riot.txt")
