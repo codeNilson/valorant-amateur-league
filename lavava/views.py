@@ -79,8 +79,3 @@ class HomeView(TemplateView):
         messages.success(request, _("Ranking updated successfully!"))
 
         return redirect("home")
-
-
-class RioTest(View):
-    def get(self, request):
-        return FileResponse(open("riot.txt", "rb"), as_attachment=True, filename="riot.txt")
